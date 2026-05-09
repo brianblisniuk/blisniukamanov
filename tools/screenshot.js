@@ -9,10 +9,12 @@ const outDir = path.join(repo, "_compare");
 fs.mkdirSync(outDir, { recursive: true });
 
 const pages = [
-  { name: "01-home-desktop",       file: "index.html",        width: 1280, full: true  },
-  { name: "02-destinations-desktop", file: "destinations.html", width: 1280, full: true },
-  { name: "03-journeys-desktop",   file: "journeys.html",     width: 1280, full: true  },
-  { name: "04-home-mobile",        file: "index.html",        width: 414,  full: true  },
+  { name: "01-home-desktop",         file: "index.html",          width: 1280, full: true },
+  { name: "02-destinations-desktop", file: "destinations.html",   width: 1280, full: true },
+  { name: "03-journeys-desktop",     file: "journeys.html",       width: 1280, full: true },
+  { name: "04-home-mobile",          file: "index.html",          width: 414,  full: true },
+  { name: "05-small-group-desktop",  file: "small-group.html",    width: 1280, full: true },
+  { name: "06-gran-migracion-desktop", file: "gran-migracion.html", width: 1280, full: true },
 ];
 
 (async () => {

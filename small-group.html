@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pequeñas expediciones · Blisniuk & Amanov</title>
+  <meta name="description" content="Aventuras compartidas en grupos reducidos, conducidas por expertos. Salidas garantizadas a más de doscientos países." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Utility bar -->
+  <div class="utility-bar">
+    <div class="utility-inner">
+      <div class="utility-left">
+        <a href="tel:+34900123456" class="speak">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.91.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7a2 2 0 0 1 1.72 2.03z"/></svg>
+          Hablar con un experto · +34 900 123 456
+        </a>
+        <span class="utility-status">· Atendemos hoy de 9:00 a 20:00 CET</span>
+      </div>
+      <div class="utility-right">
+        <a href="#newsletter">Suscribirme</a>
+        <span class="dot"></span>
+        <a href="#brochures">Catálogos</a>
+        <span class="dot"></span>
+        <a href="#account">Iniciar sesión / Registro</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <div class="nav-left">
+        <button class="menu-trigger" id="menuTrigger" aria-label="Abrir menú">
+          <span class="bars"><span></span><span></span><span></span></span> Menú
+        </button>
+        <a href="destinations.html">Destinos</a>
+        <a href="journeys.html" style="color:var(--copper);">Viajes</a>
+        <a href="index.html#sanctuary">Casas B&amp;A</a>
+      </div>
+      <a href="index.html" class="brand"><span class="brand-wordmark">BLISNIUK <span class="brand-amp">&amp;</span> AMANOV</span></a>
+      <div class="nav-right">
+        <a href="journeys.html" class="search-trigger">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Encontrar tu viaje
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="drawer-inner">
+      <a href="destinations.html">Destinos</a>
+      <a href="journeys.html">Viajes</a>
+      <a href="index.html#sanctuary">Casas B&amp;A</a>
+      <a href="journeys.html" class="btn btn-dark">Encontrar tu viaje</a>
+    </div>
+  </aside>
+
+  <!-- Hero split (cream text left, image right) -->
+  <section class="page-hero-split">
+    <div class="page-hero-text">
+      <nav class="breadcrumb">
+        <a href="journeys.html">Todos los viajes</a>
+        <span>/</span>
+        <span class="current">Pequeñas expediciones</span>
+      </nav>
+      <h1>Pequeñas<br/>expediciones</h1>
+      <p>Dos docenas de aventuras curadas, llenas de experiencias auténticas y acceso reservado, diseñadas para personas curiosas y de mente abierta que comparten una manera tranquila de viajar.</p>
+      <a href="#explorer" class="btn btn-dark">Ver todas las salidas</a>
+    </div>
+    <div class="page-hero-image">
+      <img src="assets/img/way-group.jpg" alt="Pequeño grupo de viajeros en exterior" />
+    </div>
+  </section>
+
+  <!-- Subnav anchor -->
+  <nav class="subnav">
+    <div class="subnav-inner">
+      <a href="#recomendados" class="active">Salidas recomendadas</a>
+      <a href="#sobre">Sobre nuestras expediciones</a>
+      <a href="#brochures">Catálogos</a>
+      <a href="#info">Buena información</a>
+    </div>
+  </nav>
+
+  <!-- Why choose us — 5 columns with icons -->
+  <section class="section feature-row">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow center">Por qué elegirnos</span>
+        <h2>¿Por qué viajar en pequeño grupo con B&amp;A?</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature">
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a4 4 0 110 8 4 4 0 010-8zM4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+          </span>
+          <h4>Líderes de habla hispana</h4>
+          <p>Acompañantes locales con cinco años de experiencia mínima.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg>
+          </span>
+          <h4>Grupo reducido</h4>
+          <p>Promedio de doce viajeros, con un máximo nunca superior a dieciséis.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L4 6v6c0 5 3.5 9.5 8 10 4.5-.5 8-5 8-10V6l-8-4z"/></svg>
+          </span>
+          <h4>Experiencias auténticas</h4>
+          <p>Diseñadas con conocimiento profundo del terreno y la cultura.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M5 21V11l7-5 7 5v10M9 21v-5h6v5"/></svg>
+          </span>
+          <h4>Hoteles cinco estrellas</h4>
+          <p>Selección de alojamientos que combinan estilo y carácter local.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="8" cy="18" r="2"/><circle cx="16" cy="18" r="2"/></svg>
+          </span>
+          <h4>Traslados privados</h4>
+          <p>Vehículos propios, asientos asegurados y paradas para un solo grupo.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v6M12 22v-6M2 12h6M22 12h-6M5 5l4 4M19 19l-4-4M5 19l4-4M19 5l-4 4"/></svg>
+          </span>
+          <h4>Salidas garantizadas</h4>
+          <p>A partir de seis viajeros confirmados, la salida está asegurada.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recommended journeys (3 large horizontal cards) -->
+  <section class="section recommended-block" id="recomendados">
+    <div class="container">
+      <div class="section-head split">
+        <div>
+          <span class="eyebrow">Recomendaciones</span>
+          <h2>Salidas escogidas por la casa</h2>
+        </div>
+        <button class="filter-button">Filtrar <span aria-hidden="true">▾</span></button>
+      </div>
+
+      <div class="rec-tabs">
+        <button class="rec-tab active">Vida salvaje y safaris</button>
+        <button class="rec-tab">Activo y aventura</button>
+        <button class="rec-tab">Cruceros</button>
+        <button class="rec-tab">Festivales</button>
+        <button class="rec-tab">Cultura e historia</button>
+      </div>
+
+      <div class="rec-list">
+        <article class="rec-row">
+          <a href="gran-migracion.html" class="rec-row-img">
+            <img src="assets/img/j-migration.jpg" alt="La gran migración" />
+            <span class="label-pill">Pequeñas expediciones</span>
+            <span class="rec-offer">Oferta</span>
+          </a>
+          <div class="rec-row-body">
+            <h3>La Gran Migración · Edición definitiva 2026</h3>
+            <span class="rec-meta">14 días · Hasta 16 viajeros</span>
+            <p>Uno de los grandes espectáculos naturales del planeta, recorrido a la luz justa para presenciar los cruces del Mara y los crepúsculos de Kogatende. Acceso privado al Conservatorio Naboisho.</p>
+            <p class="rec-itin"><strong>Itinerario:</strong> Nairobi · Aberdares · Tarangire · Manyara · Ngorongoro · Lago Manyara · Pejeta · Reserva Privada Naboisho</p>
+            <div class="rec-bottom">
+              <span class="rec-price">Desde <strong>16 850 €</strong> por persona</span>
+              <a href="gran-migracion.html" class="btn btn-dark btn-sm">Ver viaje</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="rec-row">
+          <a href="#" class="rec-row-img">
+            <img src="assets/img/j-botswana.jpg" alt="Safari en Botswana" />
+            <span class="label-pill">Pequeñas expediciones</span>
+            <span class="rec-offer">Oferta</span>
+          </a>
+          <div class="rec-row-body">
+            <h3>Botswana en pequeño grupo</h3>
+            <span class="rec-meta">11 días · Hasta 16 viajeros</span>
+            <p>La aventura emblemática del África austral: el Delta del Okavango, las orillas del Chobe y los crepúsculos en el desierto del Kalahari, recorridos en jeep abierto y mokoro tradicional.</p>
+            <p class="rec-itin"><strong>Itinerario:</strong> Johannesburgo · Livingstone · Cataratas Victoria · Delta del Okavango · Reserva de Moremi · Maun</p>
+            <div class="rec-bottom">
+              <span class="rec-price">Desde <strong>13 295 €</strong> por persona</span>
+              <a href="#" class="btn btn-dark btn-sm">Ver viaje</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="rec-row">
+          <a href="#" class="rec-row-img">
+            <img src="assets/img/dest-southamerica.jpg" alt="Amazonía y Pantanal" />
+            <span class="label-pill">Pequeñas expediciones</span>
+            <span class="rec-offer">Oferta</span>
+          </a>
+          <div class="rec-row-body">
+            <h3>Amazonas y Pantanal: dos vidas salvajes</h3>
+            <span class="rec-meta">12 días · Hasta 14 viajeros</span>
+            <p>Una mirada en profundidad a los dos hábitats con mayor densidad de fauna del continente, en compañía de naturalistas brasileños y guías locales formados en la casa.</p>
+            <p class="rec-itin"><strong>Itinerario:</strong> Manaos · Río Negro · Cuiabá · Transpantaneira · Pousada Aguapé · Foz do Iguaçú</p>
+            <div class="rec-bottom">
+              <span class="rec-price">Desde <strong>10 750 €</strong> por persona</span>
+              <a href="#" class="btn btn-dark btn-sm">Ver viaje</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="center-cta">
+        <p class="ready-text">¿Listo para encontrar tu próximo viaje?</p>
+        <a href="journeys.html" class="btn btn-dark">Ver todas las salidas</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About small group: text left + image right -->
+  <section class="section about-split" id="sobre">
+    <div class="container about-split-grid">
+      <div class="about-split-text">
+        <h2>Pequeñas expediciones por B&amp;A</h2>
+        <p>Pensamos siempre las pequeñas expediciones como pieza única: salidas con un máximo de dieciséis viajeros, un líder de viaje propio y especialistas locales que conocen a fondo cada terreno.</p>
+        <p>Lo que nos diferencia es lo que está fuera del calendario público. Cenas en residencias privadas, accesos a museos fuera de horario, encuentros con artesanos en talleres activos. Eso es lo que hace que dos viajeros que vinieron a buscar lo mismo se vayan recordando cosas distintas.</p>
+        <p>Diseñar un viaje en pequeño grupo, para nosotros, es ofrecerle a personas con ganas de descubrir un escenario donde pueda pasar exactamente eso: descubrir.</p>
+      </div>
+      <div class="about-split-image">
+        <img src="assets/img/hero-coast.jpg" alt="Costa azul al mediodía" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Brochure CTA (copper band) -->
+  <section class="brochures-cta" id="brochures">
+    <div class="brochures-cta-inner">
+      <div class="brochures-stack">
+        <img src="assets/img/brochure-1.jpg" alt="Catálogo Pequeñas expediciones" />
+        <img src="assets/img/brochure-2.jpg" alt="Catálogo Pequeñas expediciones 2" />
+        <img src="assets/img/brochure-3.jpg" alt="Catálogo Pequeñas expediciones 3" />
+      </div>
+      <div class="brochures-cta-text">
+        <small>Catálogo</small>
+        <h2>Pequeñas expediciones</h2>
+        <p>El catálogo en papel reúne nuestras dos docenas de aventuras curadas en pequeño grupo, junto a las novedades que se han ido sumando para 2026 y 2027. Lectura ideal para una tarde tranquila.</p>
+        <a href="#" class="btn btn-copper">Solicitar catálogo</a>
+        <a href="#" class="link-arrow" style="color:var(--white); margin-left:14px;">Ver todos los catálogos <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Good to know -->
+  <section class="section good-to-know" id="info">
+    <div class="container">
+      <h2>Buena información</h2>
+      <p class="lede">Sabemos que reservar un viaje, especialmente con un grupo de personas a las que aún no conoces, puede generar ciertas preguntas. Aquí están las respuestas a las más habituales.</p>
+      <div class="accordion">
+        <details>
+          <summary>Salidas garantizadas</summary>
+          <p>Una vez que confirmamos seis viajeros, la salida queda asegurada. Eso significa que puedes reservar tus vuelos sin esperar al último minuto. Si por algo no se completa el grupo mínimo, te lo comunicamos con noventa días de antelación y te ofrecemos alternativas.</p>
+        </details>
+        <details>
+          <summary>Siempre escogemos los mejores lugares para alojarnos</summary>
+          <p>Cada noche elegimos el alojamiento que mejor encaje con la experiencia: lodges privados frente a la sabana, riads que llevan tres siglos en pie, casas de huéspedes regentadas por familias del lugar. La cama es importante, pero el contexto lo es más.</p>
+        </details>
+        <details>
+          <summary>Cuidamos tus viajeros y tu calendario</summary>
+          <p>Cubrimos hasta el último traslado interno y siempre tenemos a alguien al teléfono para imprevistos. Si hay un retraso de aerolínea, lo gestionamos antes de que llegues al hotel. Si necesitas reorganizar tu salida, lo hacemos sin recargo dentro de un margen razonable.</p>
+        </details>
+        <details>
+          <summary>Te dejamos en B&amp;A · Acompañamos hasta el final</summary>
+          <p>El último día siempre se siente corto. Por eso ofrecemos extensiones cuidadosamente diseñadas, traslados privados al aeropuerto y la opción de quedarte un par de noches más en alguno de los lodges seleccionados, sin penalizaciones.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="testimonials testimonial-pull">
+    <div class="container">
+      <span class="eyebrow center">Testimonio</span>
+      <blockquote class="big-quote">
+        "El viaje fue impecable de principio a fin. Los representantes de B&amp;A siempre estaban al teléfono para los viajeros; los hoteles, sin un solo descuido y de una belleza poco común; los guías, atentos a nuestros intereses, informados y de un trato exquisito."
+      </blockquote>
+      <div class="quote-meta">
+        <span>— Marta P., España</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explorer reuse -->
+  <section class="journeys-explorer" id="explorer">
+    <div class="container">
+      <div class="explorer-head">
+        <h2>Descubre dónde podemos llevarte</h2>
+        <p style="color:var(--ink-mute); margin: 6px 0 0;">Mostrando 24 pequeñas expediciones</p>
+      </div>
+
+      <div class="explorer-grid">
+        <aside class="filters">
+          <details open>
+            <summary>Regiones</summary>
+            <div class="filter-list">
+              <a href="#">África</a>
+              <a href="#">Asia</a>
+              <a href="#">Australia y Nueva Zelanda</a>
+              <a href="#">Caribe</a>
+              <a href="#">Centroamérica</a>
+              <a href="#">Europa</a>
+              <a href="#">Océano Índico</a>
+              <a href="#">Oriente Próximo</a>
+              <a href="#">Norte de África</a>
+              <a href="#">Sudamérica</a>
+            </div>
+          </details>
+          <details>
+            <summary>Estilo de viaje</summary>
+            <div class="filter-list">
+              <a href="#">Pequeño grupo</a>
+            </div>
+          </details>
+          <details>
+            <summary>Modalidad</summary>
+            <div class="filter-list">
+              <a href="#">Cruceros</a>
+              <a href="#">Expediciones</a>
+              <a href="#">Listo para reservar</a>
+              <a href="#">Safari</a>
+              <a href="#">Cortos</a>
+            </div>
+          </details>
+          <details>
+            <summary>Intereses</summary>
+            <div class="filter-list">
+              <a href="#">Vida salvaje</a>
+              <a href="#">Cultura</a>
+              <a href="#">Gastronomía</a>
+              <a href="#">Familia</a>
+              <a href="#">Activo</a>
+            </div>
+          </details>
+          <details>
+            <summary>Mes de salida</summary>
+            <div class="filter-list">
+              <a href="#">Enero</a><a href="#">Febrero</a><a href="#">Marzo</a>
+              <a href="#">Abril</a><a href="#">Mayo</a><a href="#">Junio</a>
+              <a href="#">Julio</a><a href="#">Agosto</a><a href="#">Septiembre</a>
+              <a href="#">Octubre</a><a href="#">Noviembre</a><a href="#">Diciembre</a>
+            </div>
+          </details>
+          <details>
+            <summary>Año</summary>
+            <div class="filter-list">
+              <a href="#">2026</a><a href="#">2027</a><a href="#">2028</a>
+            </div>
+          </details>
+          <details>
+            <summary>Duración</summary>
+            <div class="filter-list">
+              <a href="#">5 días o menos</a>
+              <a href="#">6–10 días</a>
+              <a href="#">11–15 días</a>
+              <a href="#">16–20 días</a>
+              <a href="#">21+ días</a>
+            </div>
+          </details>
+        </aside>
+
+        <div class="journey-grid">
+          <article class="j-card">
+            <div class="j-img"><img src="assets/img/j-italy.jpg" alt="Italia" /><span class="j-pill">Pequeño grupo</span><span class="j-offer">Oferta</span></div>
+            <div class="j-body">
+              <h3>Norte de Italia: Cinque Terre, Como y Venecia</h3>
+              <span class="j-years">2026 · 2027</span>
+              <span class="j-meta">11 días · Hasta 16 viajeros</span>
+              <p class="j-itin"><small>Itinerario</small>Milán · Turín · Sestri Levante · Portovenere · Parma · Bolonia · Venecia</p>
+              <div class="j-bottom"><span class="j-price">Desde <strong>14 595 €</strong></span><a href="#" class="j-link">Ver viaje →</a></div>
+            </div>
+          </article>
+          <article class="j-card">
+            <div class="j-img"><img src="assets/img/j-spainport.jpg" alt="España y Portugal" /><span class="j-pill">Pequeño grupo</span><span class="j-offer">Oferta</span></div>
+            <div class="j-body">
+              <h3>España y Portugal: 10 ciudades extraordinarias</h3>
+              <span class="j-years">2026 · 2027</span>
+              <span class="j-meta">14 días · Hasta 18 viajeros</span>
+              <p class="j-itin"><small>Itinerario</small>Lisboa · Évora · Sevilla · Granada · Córdoba · Madrid · Toledo · Bilbao · Barcelona</p>
+              <div class="j-bottom"><span class="j-price">Desde <strong>15 290 €</strong></span><a href="#" class="j-link">Ver viaje →</a></div>
+            </div>
+          </article>
+          <article class="j-card">
+            <div class="j-img"><img src="assets/img/j-japan.jpg" alt="Japón" /><span class="j-pill">Pequeño grupo</span><span class="j-offer">Oferta</span></div>
+            <div class="j-body">
+              <h3>Japón clásico</h3>
+              <span class="j-years">2026 · 2027</span>
+              <span class="j-meta">9 días · Hasta 18 viajeros</span>
+              <p class="j-itin"><small>Itinerario</small>Tokio · Hakone · Osaka · Nara · Kioto</p>
+              <div class="j-bottom"><span class="j-price">Desde <strong>11 685 €</strong></span><a href="#" class="j-link">Ver viaje →</a></div>
+            </div>
+          </article>
+
+          <article class="j-card">
+            <div class="j-img"><img src="assets/img/j-asia.jpg" alt="Sudeste asiático" /><span class="j-pill">Pequeño grupo</span><span class="j-offer">Oferta</span></div>
+            <div class="j-body">
+              <h3>Angkor Wat e iconos del Sudeste Asiático</h3>
+              <span class="j-years">2026 · 2027</span>
+              <span class="j-meta">15 días · Hasta 16 viajeros</span>
+              <p class="j-itin"><small>Itinerario</small>Hanoi · Ha Long Bay · Hai Phong · Ho Chi Minh · Siem Reap · Luang Prabang · Bangkok</p>
+              <div class="j-bottom"><span class="j-price">Desde <strong>17 985 €</strong></span><a href="#" class="j-link">Ver viaje →</a></div>
+            </div>
+          </article>
+          <article class="j-card">
+            <div class="j-img"><img src="assets/img/j-botswana.jpg" alt="Botswana" /><span class="j-pill">Pequeño grupo</span><span class="j-offer">Oferta</span></div>
+            <div class="j-body">
+              <h3>Safari definitivo en Botswana</h3>
+              <span class="j-years">2026 · 2027</span>
+              <span class="j-meta">10 días · Hasta 16 viajeros</span>
+              <p class="j-itin"><small>Itinerario</small>Johannesburgo · Livingstone · Cataratas Victoria · Delta del Okavango · Maun</p>
+              <div class="j-bottom"><span class="j-price">Desde <strong>13 295 €</strong></span><a href="#" class="j-link">Ver viaje →</a></div>
+            </div>
+          </article>
+          <article class="j-card">
+            <div class="j-img"><img src="assets/img/j-migration.jpg" alt="Gran migración" /><span class="j-pill">Pequeño grupo</span><span class="j-offer">Oferta</span></div>
+            <div class="j-body">
+              <h3>Gran migración: edición definitiva</h3>
+              <span class="j-years">2026 · 2027</span>
+              <span class="j-meta">14 días · Hasta 16 viajeros</span>
+              <p class="j-itin"><small>Itinerario</small>Nairobi · Aberdares · Arusha · Tarangire · Ngorongoro · Manyara · Serengeti · Masai Mara</p>
+              <div class="j-bottom"><span class="j-price">Desde <strong>16 850 €</strong></span><a href="gran-migracion.html" class="j-link">Ver viaje →</a></div>
+            </div>
+          </article>
+
+          <article class="j-card">
+            <div class="j-img"><img src="assets/img/j-peru.jpg" alt="Perú" /><span class="j-pill">Pequeño grupo</span><span class="j-offer">Oferta</span></div>
+            <div class="j-body">
+              <h3>Perú: Machu Picchu y el Valle Sagrado</h3>
+              <span class="j-years">2026 · 2027</span>
+              <span class="j-meta">8 días · Hasta 24 viajeros</span>
+              <p class="j-itin"><small>Itinerario</small>Lima · Cuzco · Valle Sagrado · Machu Picchu</p>
+              <div class="j-bottom"><span class="j-price">Desde <strong>9 290 €</strong></span><a href="#" class="j-link">Ver viaje →</a></div>
+            </div>
+          </article>
+          <article class="j-card">
+            <div class="j-img"><img src="assets/img/j-alaska.jpg" alt="Alaska" /><span class="j-pill">Pequeño grupo</span><span class="j-offer">Oferta</span></div>
+            <div class="j-body">
+              <h3>Aventura familiar en Alaska</h3>
+              <span class="j-years">2026 · 2027</span>
+              <span class="j-meta">8 días · Hasta 24 viajeros</span>
+              <p class="j-itin"><small>Itinerario</small>Anchorage · Kenai Fjords · Whittier · Resurrection Bay · Talkeetna · Denali</p>
+              <div class="j-bottom"><span class="j-price">Desde <strong>10 995 €</strong></span><a href="#" class="j-link">Ver viaje →</a></div>
+            </div>
+          </article>
+          <article class="j-card">
+            <div class="j-img"><img src="assets/img/j-egypt.jpg" alt="Egipto" /><span class="j-pill">Pequeño grupo</span><span class="j-offer">Oferta</span></div>
+            <div class="j-body">
+              <h3>Egipto y el Nilo</h3>
+              <span class="j-years">2026 · 2027</span>
+              <span class="j-meta">10 días · Hasta 18 viajeros</span>
+              <p class="j-itin"><small>Itinerario</small>El Cairo · Valle de los Reyes · Komombo · Asuán · Abu Simbel</p>
+              <div class="j-bottom"><span class="j-price">Desde <strong>10 195 €</strong></span><a href="#" class="j-link">Ver viaje →</a></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (compact reuse) -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-row">
+          <span class="footer-mark">B&amp;a</span>
+          <h3>Blisniuk &amp; Amanov</h3>
+        </div>
+        <p>Casa de viajes desde 1972. Diecisiete oficinas propias entre Madrid, Buenos Aires, Nairobi, Kioto, Dubrovnik y otras once ciudades.</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm5.5-.5a1 1 0 100 2 1 1 0 000-2z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.5 9.9v-7H8v-3h2.5V9.5C10.5 7 12 5.7 14.2 5.7c1 0 2.1.2 2.1.2v2.3H15c-1.2 0-1.5.7-1.5 1.5V12H17l-.4 3h-3.1v7A10 10 0 0022 12z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.5c-.3-1.1-1.2-2-2.3-2.3C19 4 12 4 12 4s-7 0-9.2.2c-1.1.3-2 1.2-2.3 2.3C.3 8.7.3 12 .3 12s0 3.3.2 5.5c.3 1.1 1.2 2 2.3 2.3 2.2.2 9.2.2 9.2.2s7 0 9.2-.2c1.1-.3 2-1.2 2.3-2.3.2-2.2.2-5.5.2-5.5s0-3.3-.2-5.5zM9.7 15.5v-7l6 3.5-6 3.5z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5V8h3v11zM6.5 6.7a1.7 1.7 0 110-3.5 1.7 1.7 0 010 3.5zM19 19h-3v-5.3c0-1.3 0-3-1.8-3-1.9 0-2.2 1.4-2.2 2.9V19h-3V8h2.9v1.5h.1a3.2 3.2 0 012.9-1.6c3 0 3.6 2 3.6 4.6V19z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col"><h5>Compañía</h5><ul><li><a href="#">Nuestra historia</a></li><li><a href="#">Filantropía B&amp;A</a></li><li><a href="#">Prensa</a></li><li><a href="#">Carreras</a></li><li><a href="#">Contacto</a></li></ul></div>
+      <div class="footer-col"><h5>Servicios</h5><ul><li><a href="#">Catálogos</a></li><li><a href="#">Programa de protección</a></li><li><a href="#">App B&amp;A</a></li><li><a href="#">Hub de asesores</a></li><li><a href="#">Club Marco Polo</a></li></ul></div>
+      <div class="footer-col"><h5>Legal</h5><ul><li><a href="#">Términos de reserva</a></li><li><a href="#">Términos de uso</a></li><li><a href="#">Política de cookies</a></li><li><a href="#">Privacidad</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">© 1972–2026 Blisniuk &amp; Amanov S.L. Todos los derechos reservados.</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
