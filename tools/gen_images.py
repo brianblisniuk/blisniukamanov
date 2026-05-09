@@ -1,0 +1,210 @@
+"""Procedurally generate landscape-like placeholder images for the website."""
+import os, math, random
+from PIL import Image, ImageDraw, ImageFilter
+
+OUT = "/home/user/blisniukamanov/assets/img"
+os.makedirs(OUT, exist_ok=True)
+
+# Each entry: (filename, [(top RGB), (mid RGB), (bottom RGB)], horizon_y_ratio, accent_band, style)
+# style: 'mountain' | 'flat' | 'water' | 'sky' | 'forest' | 'desert' | 'snow' | 'city'
+PALETTE = [
+    # Hero / spotlight
+    ("hero-savannah.jpg",      [(76,52,30), (180,128,72), (245,200,140)], 0.62, "warm",   "savannah"),
+    ("hero-alpine.jpg",        [(40,55,80), (90,120,150), (200,210,220)], 0.55, "cool",   "mountain"),
+    ("hero-coast.jpg",         [(60,90,130), (110,160,180), (230,210,180)], 0.50, "cool",  "water"),
+
+    # Destinations / regions
+    ("dest-japan.jpg",         [(80,50,80), (170,90,110), (240,200,200)], 0.55, "warm",   "mountain"),
+    ("dest-patagonia.jpg",     [(50,75,100), (110,140,160), (220,225,230)], 0.50, "cool",  "mountain"),
+    ("dest-morocco.jpg",       [(110,55,30), (200,130,70), (245,210,160)], 0.55, "warm",   "desert"),
+    ("dest-kenya.jpg",         [(180,110,60), (210,160,90), (240,210,150)], 0.55, "warm",  "savannah"),
+    ("dest-india.jpg",         [(140,60,50), (210,140,100), (240,200,170)], 0.55, "warm",  "city"),
+    ("dest-italy.jpg",         [(60,80,120), (180,180,160), (235,215,180)], 0.50, "warm",  "city"),
+    ("dest-spain.jpg",         [(120,80,40), (200,150,90), (240,210,170)], 0.55, "warm",   "city"),
+    ("dest-asia.jpg",          [(50,90,80), (120,160,130), (215,220,200)], 0.55, "cool",   "forest"),
+    ("dest-southamerica.jpg",  [(90,60,100), (180,110,90), (240,200,170)], 0.55, "warm",   "mountain"),
+    ("dest-centralamerica.jpg",[(70,90,60), (150,170,100), (230,220,180)], 0.55, "warm",   "forest"),
+    ("dest-northamerica.jpg",  [(120,70,50), (210,150,100), (240,210,170)], 0.55, "warm",   "desert"),
+    ("dest-caribbean.jpg",     [(60,140,170), (150,210,210), (240,235,210)], 0.45, "cool",  "water"),
+    ("dest-oceania.jpg",       [(20,90,130), (60,160,170), (230,225,200)], 0.45, "cool",   "water"),
+    ("dest-europe.jpg",        [(70,90,120), (180,180,160), (240,230,210)], 0.50, "cool",  "mountain"),
+    ("dest-arctic.jpg",        [(80,100,130), (160,180,200), (235,240,245)], 0.55, "cool", "snow"),
+    ("dest-mena.jpg",          [(140,70,40), (220,150,80), (245,215,170)], 0.55, "warm",   "desert"),
+    ("dest-indianocean.jpg",   [(40,110,160), (130,200,210), (240,230,200)], 0.50, "cool", "water"),
+
+    # Trip kinds / ways
+    ("way-private.jpg",        [(60,40,30), (140,90,60), (210,170,130)], 0.55, "warm",    "savannah"),
+    ("way-group.jpg",          [(70,90,60), (150,170,110), (220,210,180)], 0.55, "warm",   "forest"),
+    ("way-safari.jpg",         [(160,90,40), (220,150,80), (240,200,150)], 0.55, "warm",   "savannah"),
+    ("way-cruise.jpg",         [(40,80,120), (110,170,200), (240,220,200)], 0.50, "cool",  "water"),
+    ("way-jet.jpg",            [(50,70,110), (130,160,200), (220,225,235)], 0.45, "cool",  "sky"),
+    ("way-family.jpg",         [(110,80,50), (210,160,110), (240,215,180)], 0.55, "warm",  "savannah"),
+    ("way-honey.jpg",          [(180,90,80), (220,150,140), (240,210,200)], 0.50, "warm",  "water"),
+
+    # Stay with us
+    ("stay-sanctuari.jpg",     [(100,50,40), (190,120,80), (235,200,160)], 0.55, "warm",   "desert"),
+    ("stay-villa.jpg",         [(50,80,120), (120,170,170), (230,220,200)], 0.50, "cool",  "water"),
+
+    # Misc
+    ("intro-quote.jpg",        [(40,50,70), (100,120,140), (210,200,180)], 0.55, "warm",   "mountain"),
+    ("philanthropy.jpg",       [(150,90,40), (210,150,90), (240,200,150)], 0.55, "warm",   "savannah"),
+    ("why-banner.jpg",         [(100,60,40), (190,130,80), (240,200,150)], 0.55, "warm",   "desert"),
+    ("award-thumb.jpg",        [(80,50,30), (160,100,50), (220,170,110)], 0.50, "warm",   "savannah"),
+    ("next-up.jpg",            [(60,80,60), (140,170,110), (220,220,180)], 0.55, "warm",   "forest"),
+    ("magazine-1.jpg",         [(80,60,50), (170,120,90), (220,190,160)], 0.55, "warm",   "mountain"),
+    ("magazine-2.jpg",         [(60,90,70), (150,170,120), (220,210,180)], 0.55, "warm",   "forest"),
+    ("magazine-3.jpg",         [(150,90,50), (220,160,90), (240,210,170)], 0.55, "warm",   "desert"),
+
+    # Brochure stack
+    ("brochure-1.jpg",         [(40,60,90), (120,160,180), (220,215,200)], 0.45, "cool",  "water"),
+    ("brochure-2.jpg",         [(110,60,40), (200,130,70), (240,200,150)], 0.55, "warm",   "desert"),
+    ("brochure-3.jpg",         [(70,90,60), (150,170,110), (220,210,170)], 0.55, "warm",   "forest"),
+
+    # Journey cards
+    ("j-italy.jpg",            [(70,90,120), (180,170,150), (235,220,190)], 0.50, "warm",   "city"),
+    ("j-spainport.jpg",        [(120,80,50), (200,150,100), (240,210,170)], 0.55, "warm",   "city"),
+    ("j-japan.jpg",            [(90,50,80), (180,100,110), (240,200,200)], 0.55, "warm",   "mountain"),
+    ("j-asia.jpg",             [(50,90,70), (130,170,120), (220,220,190)], 0.55, "cool",   "forest"),
+    ("j-botswana.jpg",         [(150,90,40), (220,150,80), (240,200,150)], 0.55, "warm",   "savannah"),
+    ("j-migration.jpg",        [(170,100,50), (230,160,90), (240,210,160)], 0.55, "warm",  "savannah"),
+    ("j-peru.jpg",             [(70,90,110), (160,140,110), (220,200,170)], 0.55, "warm",  "mountain"),
+    ("j-alaska.jpg",           [(70,100,130), (160,180,180), (230,235,235)], 0.55, "cool", "snow"),
+    ("j-egypt.jpg",            [(140,90,40), (220,170,90), (245,215,160)], 0.55, "warm",   "desert"),
+
+    # Fundación
+    ("fund-people.jpg",        [(150,80,60), (220,150,110), (240,210,180)], 0.55, "warm",  "city"),
+]
+
+def add_noise(img, amount=10):
+    """Add subtle noise so it feels like a photo, not a flat gradient."""
+    px = img.load()
+    w, h = img.size
+    for _ in range(int(w * h * 0.02)):
+        x = random.randint(0, w-1); y = random.randint(0, h-1)
+        r, g, b = px[x, y]
+        d = random.randint(-amount, amount)
+        px[x, y] = (max(0, min(255, r+d)), max(0, min(255, g+d)), max(0, min(255, b+d)))
+    return img.filter(ImageFilter.GaussianBlur(0.5))
+
+def lerp(a, b, t):
+    return tuple(int(a[i] + (b[i]-a[i])*t) for i in range(3))
+
+def gen(filename, colors, horizon_ratio, accent, style, w=1600, h=1100):
+    img = Image.new("RGB", (w, h))
+    draw = ImageDraw.Draw(img)
+    top, mid, bot = colors
+    horizon = int(h * horizon_ratio)
+
+    # Sky gradient
+    for y in range(horizon):
+        t = y / horizon
+        c = lerp(top, mid, t)
+        draw.line([(0, y), (w, y)], fill=c)
+
+    # Ground gradient
+    for y in range(horizon, h):
+        t = (y - horizon) / max(1, (h - horizon))
+        c = lerp(mid, bot, t)
+        draw.line([(0, y), (w, y)], fill=c)
+
+    # Style-specific silhouettes
+    if style == "mountain":
+        # Layered mountain silhouettes
+        for layer in range(3):
+            base = horizon + layer * 30 - 60
+            color = lerp(mid, top, 0.7 - layer*0.2)
+            n = 6 + layer
+            pts = [(0, h)]
+            for i in range(n+1):
+                x = int(i / n * w)
+                peak = base - random.randint(40, 140) - layer*20
+                pts.append((x, peak))
+            pts.append((w, h))
+            draw.polygon(pts, fill=color)
+    elif style == "savannah":
+        # Acacia-like horizon shapes
+        for _ in range(10):
+            cx = random.randint(0, w)
+            cy = horizon - random.randint(-10, 50)
+            r = random.randint(30, 80)
+            color = lerp(mid, (40,30,20), 0.6)
+            draw.ellipse([cx-r*1.5, cy-r*0.6, cx+r*1.5, cy+r*0.6], fill=color)
+            draw.line([(cx, cy), (cx, cy+r*1.6)], fill=color, width=4)
+    elif style == "water":
+        # Wave bands
+        for i in range(8):
+            y = horizon + i * 22
+            shade = lerp(mid, bot, i/8)
+            draw.line([(0, y), (w, y+random.randint(-6,6))], fill=shade, width=12)
+    elif style == "desert":
+        # Dune curves
+        for layer in range(3):
+            color = lerp(mid, bot, 0.4 + layer*0.2)
+            base = horizon + layer * 80
+            pts = [(0, h)]
+            for x in range(0, w+1, 40):
+                y = base + int(40 * math.sin(x / 200 + layer))
+                pts.append((x, y))
+            pts.append((w, h))
+            draw.polygon(pts, fill=color)
+    elif style == "forest":
+        # Tree silhouettes
+        for x in range(-20, w+20, 18):
+            ty = horizon + random.randint(-20, 30)
+            th = random.randint(80, 180)
+            color = lerp(mid, (30,40,20), 0.7)
+            draw.polygon([(x-12, ty+th), (x, ty), (x+12, ty+th)], fill=color)
+    elif style == "snow":
+        # Snowy mountain layers
+        for layer in range(2):
+            base = horizon + layer * 30 - 40
+            color = lerp(mid, (250,250,255), 0.4 - layer*0.2)
+            n = 6
+            pts = [(0, h)]
+            for i in range(n+1):
+                x = int(i / n * w)
+                peak = base - random.randint(60, 160)
+                pts.append((x, peak))
+            pts.append((w, h))
+            draw.polygon(pts, fill=color)
+    elif style == "city":
+        # Building silhouettes
+        x = 0
+        while x < w:
+            bw = random.randint(50, 120)
+            bh = random.randint(80, 220)
+            color = lerp(mid, (30,30,40), 0.6)
+            draw.rectangle([x, horizon-bh, x+bw, horizon+20], fill=color)
+            x += bw + 4
+    elif style == "sky":
+        # Cloud streaks
+        for _ in range(6):
+            y = random.randint(int(horizon*0.3), int(horizon*0.9))
+            cw = random.randint(200, 500)
+            cx = random.randint(-100, w)
+            color = lerp(top, (255,255,255), 0.5)
+            draw.ellipse([cx, y, cx+cw, y+30], fill=color)
+
+    # Sun/moon glow
+    cx = random.randint(int(w*0.55), int(w*0.85))
+    cy = random.randint(int(horizon*0.25), int(horizon*0.55))
+    glow = Image.new("RGB", (w, h), (0,0,0))
+    gd = ImageDraw.Draw(glow)
+    for r in range(180, 0, -20):
+        a = int(220 * (1 - r/180))
+        gd.ellipse([cx-r, cy-r, cx+r, cy+r], fill=(a, int(a*0.85), int(a*0.6)))
+    glow = glow.filter(ImageFilter.GaussianBlur(35))
+    img = Image.blend(img, glow, 0.18 if accent == "warm" else 0.12)
+
+    img = img.filter(ImageFilter.GaussianBlur(0.8))
+    img = add_noise(img, amount=8)
+    out = os.path.join(OUT, filename)
+    img.save(out, "JPEG", quality=82)
+    return out
+
+random.seed(42)
+for entry in PALETTE:
+    p = gen(*entry)
+    print("✓", p.split('/')[-1])
+
+print(f"\nGenerated {len(PALETTE)} images in {OUT}")
