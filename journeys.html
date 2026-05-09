@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todos los viajes · Blisniuk & Amanov</title>
+  <meta name="description" content="Itinerarios privados, expediciones en pequeños grupos, jet privado y safaris seleccionados." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Utility bar -->
+  <div class="utility-bar">
+    <div class="utility-inner">
+      <div class="utility-left">
+        <a href="tel:+34900123456" class="speak">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.91.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7a2 2 0 0 1 1.72 2.03z"/></svg>
+          Hablar con un experto · +34 900 123 456
+        </a>
+        <span class="utility-status">· Atendemos hoy de 9:00 a 20:00 CET</span>
+      </div>
+      <div class="utility-right">
+        <a href="#newsletter">Suscribirme</a>
+        <span class="dot"></span>
+        <a href="#brochures">Catálogos</a>
+        <span class="dot"></span>
+        <a href="#account">Iniciar sesión / Registro</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <div class="nav-left">
+        <button class="menu-trigger" id="menuTrigger" aria-label="Abrir menú">
+          <span class="bars"><span></span><span></span><span></span></span> Menú
+        </button>
+        <a href="destinations.html">Destinos</a>
+        <a href="journeys.html" style="color:var(--copper);">Viajes</a>
+        <a href="index.html#sanctuary">Casas B&amp;A</a>
+      </div>
+      <a href="index.html" class="brand"><span class="brand-wordmark">BLISNIUK <span class="brand-amp">&amp;</span> AMANOV</span></a>
+      <div class="nav-right">
+        <a href="journeys.html" class="search-trigger">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Encontrar tu viaje
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="drawer-inner">
+      <a href="destinations.html">Destinos</a>
+      <a href="journeys.html">Viajes</a>
+      <a href="index.html#sanctuary">Casas B&amp;A</a>
+      <a href="journeys.html" class="btn btn-dark">Encontrar tu viaje</a>
+    </div>
+  </aside>
+
+  <!-- Subnav -->
+  <nav class="subnav">
+    <div class="subnav-inner">
+      <a href="#ways">Formas de viajar</a>
+      <a href="#brochures">Catálogos</a>
+      <a href="#explorer" class="active">Ver todos los viajes</a>
+    </div>
+  </nav>
+
+  <!-- Hero split -->
+  <section class="journey-hero">
+    <div class="journey-hero-left">
+      <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1600&q=80" alt="Pequeño grupo en safari" />
+      <div class="journey-hero-content">
+        <span class="eyebrow light">Catálogo 2026 · 2027</span>
+        <h1>Viajes para<br /><em>recordar mejor.</em></h1>
+        <a href="#explorer" class="btn btn-copper">Ver todos los viajes</a>
+      </div>
+    </div>
+    <div class="journey-hero-right">
+      <span class="eyebrow">Carta del editor</span>
+      <p>Conocemos lo que significa viajar bien. Desde nuestra primera salida en 1972 hemos perfeccionado el oficio de componer aventuras llenas de sentido en los seis continentes, y aprendido que no se trata de cubrir lugares sino de dedicarles el tiempo que merecen.</p>
+      <p>Nuestro catálogo cubre los siete continentes y reúne más de trescientas rutas. Algunas se recorren en un pequeño grupo curado; otras se abren a una salida privada para tu familia o un safari de aventura. Donde sea que quieras ir, podemos llevarte.</p>
+
+      <div class="recommended-row">
+        <h5>Viajes recomendados</h5>
+        <div class="recommended-track">
+          <a href="#" class="rec-card">
+            <img src="https://images.unsplash.com/photo-1535139262971-c51845709a48?auto=format&fit=crop&w=600&q=80" alt="Kenia y Tanzania" />
+            <div class="rec-body">
+              <small>Pequeño grupo</small>
+              <h4>Kenia y Tanzania, aventura safari</h4>
+              <span>12 días · Hasta 16 viajeros</span>
+            </div>
+          </a>
+          <a href="#" class="rec-card">
+            <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=600&q=80" alt="Gran migración" />
+            <div class="rec-body">
+              <small>Pequeño grupo</small>
+              <h4>Gran migración: edición definitiva</h4>
+              <span>14 días · Hasta 16 viajeros</span>
+            </div>
+          </a>
+          <a href="#" class="rec-card">
+            <img src="https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=600&q=80" alt="Egipto y el Nilo" />
+            <div class="rec-body">
+              <small>Pequeño grupo</small>
+              <h4>Egipto y el Nilo en jet privado</h4>
+              <span>10 días · Hasta 18 viajeros</span>
+            </div>
+          </a>
+          <a href="#" class="rec-card">
+            <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=600&q=80" alt="Japón" />
+            <div class="rec-body">
+              <small>Pequeño grupo</small>
+              <h4>Japón clásico</h4>
+              <span>9 días · Hasta 18 viajeros</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ways to explore (compact) -->
+  <section class="section ways-explore" id="ways">
+    <div class="container">
+      <div class="section-head left">
+        <h2>Formas de explorar</h2>
+      </div>
+
+      <a href="#" class="img-card" style="aspect-ratio:21/9; margin-bottom:24px;">
+        <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=2000&q=80" alt="Cena en pequeño grupo en exterior" />
+        <div class="img-card-body" style="left:auto; right:0; max-width:420px; background:rgba(255,255,255,0.94); color:var(--ink); padding:26px 28px; border-radius:6px; bottom:24px; right:24px; left:auto;">
+          <h3 style="color:var(--ink);">Pequeñas expediciones</h3>
+          <p style="color:var(--ink-mute);">Nuestros viajes guiados redefinen el concepto del grupo: unen a un pequeño colectivo de personas afines en aventuras compartidas dirigidas por nuestros mejores expertos.</p>
+          <a href="#" class="link-arrow">Ver todas <span aria-hidden="true">→</span></a>
+        </div>
+      </a>
+
+      <div class="cards-3" style="grid-template-columns: repeat(4, 1fr);">
+        <a href="#" class="img-card" style="aspect-ratio:4/5;">
+          <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=900&q=80" alt="Viaje privado por el desierto" />
+          <div class="img-card-body">
+            <h3>Viaje privado</h3>
+            <p>Cada viaje privado es único.</p>
+          </div>
+        </a>
+        <a href="#" class="img-card" style="aspect-ratio:4/5;">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80" alt="Crucero" />
+          <div class="img-card-body">
+            <h3>Cruceros</h3>
+            <p>Llegar al lugar con el ritmo del agua.</p>
+          </div>
+        </a>
+        <a href="#" class="img-card" style="aspect-ratio:4/5;">
+          <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=900&q=80" alt="Jet privado" />
+          <div class="img-card-body">
+            <h3>Jet privado</h3>
+            <p>Volar al confín del mundo en cabina compartida.</p>
+          </div>
+        </a>
+        <a href="#" class="img-card" style="aspect-ratio:4/5;">
+          <img src="https://images.unsplash.com/photo-1535139262971-c51845709a48?auto=format&fit=crop&w=900&q=80" alt="Safari" />
+          <div class="img-card-body">
+            <h3>Safaris</h3>
+            <p>Pioneros en safaris africanos.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brochures CTA -->
+  <section class="brochures-cta" id="brochures">
+    <div class="brochures-cta-inner">
+      <div class="brochures-stack">
+        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=crop&w=400&q=80" alt="Catálogo 1" />
+        <img src="https://images.unsplash.com/photo-1517702145080-e4a4393d4ce4?auto=format&fit=crop&w=400&q=80" alt="Catálogo 2" />
+        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=400&q=80" alt="Catálogo 3" />
+      </div>
+      <div class="brochures-cta-text">
+        <small>Catálogos</small>
+        <h2>Tu próxima aventura empieza aquí</h2>
+        <p>Pide alguno de nuestros catálogos en papel: itinerarios curados por destino, mapas y notas de quien acaba de volver.</p>
+        <a href="#" class="btn btn-copper">Solicitar catálogo</a>
+        <a href="#" class="link-arrow" style="color:var(--white); margin-left:14px;">Ver todos <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explorer with filters -->
+  <section class="journeys-explorer" id="explorer">
+    <div class="container">
+      <div class="explorer-head">
+        <h2>Descubre dónde podemos llevarte</h2>
+        <p style="color:var(--ink-mute); margin: 6px 0 0;">Mostrando 394 resultados</p>
+      </div>
+
+      <div class="explorer-grid">
+        <aside class="filters">
+          <details open>
+            <summary>Regiones</summary>
+            <div class="filter-list">
+              <a href="#">África</a>
+              <a href="#">Antártida</a>
+              <a href="#">Asia</a>
+              <a href="#">Australia y Nueva Zelanda</a>
+              <a href="#">Caribe</a>
+              <a href="#">Centroamérica</a>
+              <a href="#">Europa</a>
+              <a href="#">Océano Índico</a>
+              <a href="#">Oriente Próximo</a>
+              <a href="#">Norte de África</a>
+              <a href="#">Sudamérica</a>
+              <a href="#">Pacífico Sur</a>
+            </div>
+          </details>
+          <details>
+            <summary>Estilo de viaje</summary>
+            <div class="filter-list">
+              <a href="#">Pequeño grupo</a>
+              <a href="#">Privado a medida</a>
+            </div>
+          </details>
+          <details>
+            <summary>Modalidad</summary>
+            <div class="filter-list">
+              <a href="#">Cruceros</a>
+              <a href="#">Expediciones</a>
+              <a href="#">Jet privado</a>
+              <a href="#">Safari</a>
+              <a href="#">Itinerarios cortos</a>
+              <a href="#">Listo para reservar</a>
+              <a href="#">Carretera</a>
+            </div>
+          </details>
+          <details>
+            <summary>Intereses</summary>
+            <div class="filter-list">
+              <a href="#">Naturaleza y vida salvaje</a>
+              <a href="#">Cultura e historia</a>
+              <a href="#">Gastronomía y vinos</a>
+              <a href="#">Familia</a>
+              <a href="#">Activo</a>
+              <a href="#">Lugares Patrimonio</a>
+            </div>
+          </details>
+          <details>
+            <summary>Mes de salida</summary>
+            <div class="filter-list">
+              <a href="#">Enero</a><a href="#">Febrero</a><a href="#">Marzo</a>
+              <a href="#">Abril</a><a href="#">Mayo</a><a href="#">Junio</a>
+              <a href="#">Julio</a><a href="#">Agosto</a><a href="#">Septiembre</a>
+              <a href="#">Octubre</a><a href="#">Noviembre</a><a href="#">Diciembre</a>
+            </div>
+          </details>
+          <details>
+            <summary>Año</summary>
+            <div class="filter-list">
+              <a href="#">2026</a><a href="#">2027</a><a href="#">2028</a>
+            </div>
+          </details>
+          <details>
+            <summary>Duración</summary>
+            <div class="filter-list">
+              <a href="#">5 días o menos</a>
+              <a href="#">6–10 días</a>
+              <a href="#">11–15 días</a>
+              <a href="#">16–20 días</a>
+              <a href="#">21+ días</a>
+            </div>
+          </details>
+        </aside>
+
+        <div class="journey-grid">
+          <article class="j-card">
+            <div class="j-img">
+              <img src="https://images.unsplash.com/photo-1530541930197-ff16ac917b0e?auto=format&fit=crop&w=900&q=80" alt="Italia" />
+              <span class="j-pill">Pequeño grupo</span>
+              <span class="j-offer">Oferta</span>
+            </div>
+            <div class="j-body">
+              <h3>Norte de Italia: Cinque Terre, Como y Venecia</h3>
+              <span class="j-years">2026 · 2027</span>
+              <span class="j-meta">11 días · Hasta 16 viajeros</span>
+              <p class="j-itin"><small>Itinerario</small>Milán · Turín · Sestri Levante · Portovenere · Parma · Bolonia · Venecia</p>
+              <div class="j-bottom">
+                <span class="j-price">Desde <strong>14 595 €</strong> por persona</span>
+                <a href="#" class="j-link">Ver viaje →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="j-card">
+            <div class="j-img">
+              <img src="https://images.unsplash.com/photo-1543783207-ec64e4d95325?auto=format&fit=crop&w=900&q=80" alt="España y Portugal" />
+              <span class="j-pill">Pequeño grupo</span>
+              <span class="j-offer">Oferta</span>
+            </div>
+            <div class="j-body">
+              <h3>España y Portugal: 10 ciudades extraordinarias</h3>
+              <span class="j-years">2026 · 2027</span>
+              <span class="j-meta">14 días · Hasta 18 viajeros</span>
+              <p class="j-itin"><small>Itinerario</small>Lisboa · Évora · Sevilla · Granada · Córdoba · Madrid · Toledo · Bilbao · Barcelona</p>
+              <div class="j-bottom">
+                <span class="j-price">Desde <strong>15 290 €</strong> por persona</span>
+                <a href="#" class="j-link">Ver viaje →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="j-card">
+            <div class="j-img">
+              <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=900&q=80" alt="Japón" />
+              <span class="j-pill">Pequeño grupo</span>
+              <span class="j-offer">Oferta</span>
+            </div>
+            <div class="j-body">
+              <h3>Japón clásico</h3>
+              <span class="j-years">2026 · 2027</span>
+              <span class="j-meta">9 días · Hasta 18 viajeros</span>
+              <p class="j-itin"><small>Itinerario</small>Tokio · Hakone · Osaka · Nara · Kioto</p>
+              <div class="j-bottom">
+                <span class="j-price">Desde <strong>11 685 €</strong> por persona</span>
+                <a href="#" class="j-link">Ver viaje →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="j-card">
+            <div class="j-img">
+              <img src="https://images.unsplash.com/photo-1540202404-1b927e27fa8b?auto=format&fit=crop&w=900&q=80" alt="Sudeste asiático" />
+              <span class="j-pill">Pequeño grupo</span>
+              <span class="j-offer">Oferta</span>
+            </div>
+            <div class="j-body">
+              <h3>Angkor Wat e iconos del Sudeste Asiático</h3>
+              <span class="j-years">2026 · 2027</span>
+              <span class="j-meta">15 días · Hasta 16 viajeros</span>
+              <p class="j-itin"><small>Itinerario</small>Hanoi · Ha Long Bay · Hai Phong · Ho Chi Minh · Siem Reap · Luang Prabang · Bangkok</p>
+              <div class="j-bottom">
+                <span class="j-price">Desde <strong>17 985 €</strong> por persona</span>
+                <a href="#" class="j-link">Ver viaje →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="j-card">
+            <div class="j-img">
+              <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?auto=format&fit=crop&w=900&q=80" alt="Botswana" />
+              <span class="j-pill">Pequeño grupo</span>
+              <span class="j-offer">Oferta</span>
+            </div>
+            <div class="j-body">
+              <h3>Safari definitivo en Botswana</h3>
+              <span class="j-years">2026 · 2027</span>
+              <span class="j-meta">10 días · Hasta 16 viajeros</span>
+              <p class="j-itin"><small>Itinerario</small>Johannesburgo · Livingstone · Cataratas Victoria · Delta del Okavango · Maun</p>
+              <div class="j-bottom">
+                <span class="j-price">Desde <strong>13 295 €</strong> por persona</span>
+                <a href="#" class="j-link">Ver viaje →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="j-card">
+            <div class="j-img">
+              <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=900&q=80" alt="Gran migración" />
+              <span class="j-pill">Pequeño grupo</span>
+              <span class="j-offer">Oferta</span>
+            </div>
+            <div class="j-body">
+              <h3>Gran migración: edición definitiva</h3>
+              <span class="j-years">2026 · 2027</span>
+              <span class="j-meta">14 días · Hasta 16 viajeros</span>
+              <p class="j-itin"><small>Itinerario</small>Nairobi · Aberdares · Arusha · Tarangire · Ngorongoro · Manyara · Serengeti · Masai Mara</p>
+              <div class="j-bottom">
+                <span class="j-price">Desde <strong>16 850 €</strong> por persona</span>
+                <a href="#" class="j-link">Ver viaje →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="j-card">
+            <div class="j-img">
+              <img src="https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=900&q=80" alt="Perú" />
+              <span class="j-pill">Pequeño grupo</span>
+              <span class="j-offer">Oferta</span>
+            </div>
+            <div class="j-body">
+              <h3>Perú: Machu Picchu y el Valle Sagrado</h3>
+              <span class="j-years">2026 · 2027</span>
+              <span class="j-meta">8 días · Hasta 24 viajeros</span>
+              <p class="j-itin"><small>Itinerario</small>Lima · Cuzco · Valle Sagrado · Machu Picchu</p>
+              <div class="j-bottom">
+                <span class="j-price">Desde <strong>9 290 €</strong> por persona</span>
+                <a href="#" class="j-link">Ver viaje →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="j-card">
+            <div class="j-img">
+              <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=900&q=80" alt="Alaska" />
+              <span class="j-pill">Pequeño grupo</span>
+              <span class="j-offer">Oferta</span>
+            </div>
+            <div class="j-body">
+              <h3>Aventura familiar en Alaska</h3>
+              <span class="j-years">2026 · 2027</span>
+              <span class="j-meta">8 días · Hasta 24 viajeros</span>
+              <p class="j-itin"><small>Itinerario</small>Anchorage · Kenai Fjords · Whittier · Resurrection Bay · Talkeetna · Denali</p>
+              <div class="j-bottom">
+                <span class="j-price">Desde <strong>10 995 €</strong> por persona</span>
+                <a href="#" class="j-link">Ver viaje →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="j-card">
+            <div class="j-img">
+              <img src="https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=900&q=80" alt="Egipto" />
+              <span class="j-pill">Pequeño grupo</span>
+              <span class="j-offer">Oferta</span>
+            </div>
+            <div class="j-body">
+              <h3>Egipto y el Nilo</h3>
+              <span class="j-years">2026 · 2027</span>
+              <span class="j-meta">10 días · Hasta 18 viajeros</span>
+              <p class="j-itin"><small>Itinerario</small>El Cairo · Valle de los Reyes · Komombo · Asuán · Abu Simbel</p>
+              <div class="j-bottom">
+                <span class="j-price">Desde <strong>10 195 €</strong> por persona</span>
+                <a href="#" class="j-link">Ver viaje →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (compact reuse) -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-row">
+          <span class="footer-mark">B&amp;a</span>
+          <h3>Blisniuk &amp; Amanov</h3>
+        </div>
+        <p>Casa de viajes desde 1972. Diecisiete oficinas propias entre Madrid, Buenos Aires, Nairobi, Kioto, Dubrovnik y otras once ciudades.</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm5.5-.5a1 1 0 100 2 1 1 0 000-2z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.5 9.9v-7H8v-3h2.5V9.5C10.5 7 12 5.7 14.2 5.7c1 0 2.1.2 2.1.2v2.3H15c-1.2 0-1.5.7-1.5 1.5V12H17l-.4 3h-3.1v7A10 10 0 0022 12z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.5c-.3-1.1-1.2-2-2.3-2.3C19 4 12 4 12 4s-7 0-9.2.2c-1.1.3-2 1.2-2.3 2.3C.3 8.7.3 12 .3 12s0 3.3.2 5.5c.3 1.1 1.2 2 2.3 2.3 2.2.2 9.2.2 9.2.2s7 0 9.2-.2c1.1-.3 2-1.2 2.3-2.3.2-2.2.2-5.5.2-5.5s0-3.3-.2-5.5zM9.7 15.5v-7l6 3.5-6 3.5z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5V8h3v11zM6.5 6.7a1.7 1.7 0 110-3.5 1.7 1.7 0 010 3.5zM19 19h-3v-5.3c0-1.3 0-3-1.8-3-1.9 0-2.2 1.4-2.2 2.9V19h-3V8h2.9v1.5h.1a3.2 3.2 0 012.9-1.6c3 0 3.6 2 3.6 4.6V19z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Compañía</h5>
+        <ul>
+          <li><a href="#">Nuestra historia</a></li>
+          <li><a href="#">Filantropía B&amp;A</a></li>
+          <li><a href="#">Prensa</a></li>
+          <li><a href="#">Carreras</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Servicios</h5>
+        <ul>
+          <li><a href="#">Catálogos</a></li>
+          <li><a href="#">Programa de protección</a></li>
+          <li><a href="#">App B&amp;A</a></li>
+          <li><a href="#">Hub de asesores</a></li>
+          <li><a href="#">Club Marco Polo</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="#">Términos de reserva</a></li>
+          <li><a href="#">Términos de uso</a></li>
+          <li><a href="#">Política de cookies</a></li>
+          <li><a href="#">Privacidad</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 1972–2026 Blisniuk &amp; Amanov S.L. Todos los derechos reservados.</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

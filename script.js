@@ -12,84 +12,67 @@
   onScroll();
 
   // ========== Mobile drawer ==========
-  const hamburger = document.getElementById("hamburger");
+  const trigger = document.getElementById("menuTrigger");
   const drawer = document.getElementById("mobileDrawer");
-  if (hamburger && drawer) {
+  if (trigger && drawer) {
     const close = () => {
-      hamburger.classList.remove("open");
+      trigger.classList.remove("open");
       drawer.classList.remove("open");
-      hamburger.setAttribute("aria-expanded", "false");
       drawer.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
     };
-    hamburger.addEventListener("click", () => {
-      const open = hamburger.classList.toggle("open");
+    trigger.addEventListener("click", () => {
+      const open = trigger.classList.toggle("open");
       drawer.classList.toggle("open", open);
-      hamburger.setAttribute("aria-expanded", String(open));
       drawer.setAttribute("aria-hidden", String(!open));
       document.body.style.overflow = open ? "hidden" : "";
     });
     drawer.querySelectorAll("a").forEach((a) => a.addEventListener("click", close));
-    window.addEventListener("resize", () => {
-      if (window.innerWidth > 800) close();
-    });
+    window.addEventListener("resize", () => { if (window.innerWidth > 800) close(); });
   }
 
-  // ========== Ways carousel: prev/next ==========
-  const track = document.getElementById("waysTrack");
-  const prevBtn = document.getElementById("waysPrev");
-  const nextBtn = document.getElementById("waysNext");
-  if (track && prevBtn && nextBtn) {
-    const step = () => {
-      const card = track.querySelector(".way-card");
-      if (!card) return 360;
-      const gap = 24;
-      return card.getBoundingClientRect().width + gap;
+  // ========== Spotlight crossfade ==========
+  const slides = document.querySelectorAll("#spotlightFrame .slide");
+  const slidePrev = document.getElementById("slidePrev");
+  const slideNext = document.getElementById("slideNext");
+  if (slides.length) {
+    let idx = 0;
+    const go = (next) => {
+      slides[idx].classList.remove("active");
+      idx = (next + slides.length) % slides.length;
+      slides[idx].classList.add("active");
     };
-    prevBtn.addEventListener("click", () => track.scrollBy({ left: -step(), behavior: "smooth" }));
-    nextBtn.addEventListener("click", () => track.scrollBy({ left: step(), behavior: "smooth" }));
+    if (slidePrev) slidePrev.addEventListener("click", () => go(idx - 1));
+    if (slideNext) slideNext.addEventListener("click", () => go(idx + 1));
+    setInterval(() => go(idx + 1), 6500);
   }
 
-  // ========== Testimonial slider ==========
-  const testimonials = Array.from(document.querySelectorAll(".testimonial"));
-  const dotsWrap = document.getElementById("testimonialDots");
-  if (testimonials.length && dotsWrap) {
-    let active = 0;
-    testimonials.forEach((_, i) => {
-      const dot = document.createElement("button");
-      dot.type = "button";
-      dot.setAttribute("aria-label", "Mostrar testimonio " + (i + 1));
-      if (i === 0) dot.classList.add("active");
-      dot.addEventListener("click", () => go(i));
-      dotsWrap.appendChild(dot);
+  // ========== Tabs ==========
+  const tabs = document.querySelectorAll(".tabs .tab");
+  if (tabs.length) {
+    tabs.forEach((t) => {
+      t.addEventListener("click", () => {
+        tabs.forEach((x) => x.classList.remove("active"));
+        t.classList.add("active");
+      });
     });
-    const dots = Array.from(dotsWrap.children);
-    const go = (i) => {
-      testimonials[active].classList.remove("active");
-      dots[active].classList.remove("active");
-      active = (i + testimonials.length) % testimonials.length;
-      testimonials[active].classList.add("active");
-      dots[active].classList.add("active");
-    };
-    setInterval(() => go(active + 1), 6500);
   }
 
   // ========== Reveal on scroll ==========
   const targets = [
     ".section-head",
-    ".art-card",
-    ".dest-card",
-    ".editorial-text",
-    ".way-card",
-    ".mag-card",
-    ".heritage-text",
-    ".heritage-image",
     ".intro-text",
-    ".testimonial.active",
+    ".img-card",
+    ".trip-kinds-text",
+    ".philanthropy-text",
+    ".philanthropy-image",
+    ".stat",
+    ".rec-card",
+    ".j-card",
+    ".tailormade",
   ];
   const els = document.querySelectorAll(targets.join(","));
   els.forEach((el) => el.classList.add("reveal"));
-
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver(
       (entries) => {
@@ -100,7 +83,7 @@
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
     );
     els.forEach((el) => io.observe(el));
   } else {
@@ -111,7 +94,7 @@
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
     a.addEventListener("click", (e) => {
       const id = a.getAttribute("href");
-      if (!id || id === "#") return;
+      if (!id || id === "#" || id.length < 2) return;
       const target = document.querySelector(id);
       if (!target) return;
       e.preventDefault();

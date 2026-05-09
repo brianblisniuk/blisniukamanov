@@ -3,27 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blisniuk & Amanov — El arte de viajar sin prisa</title>
-  <meta name="description" content="Itinerarios privados, expediciones en pequeños grupos y vuelos en jet privado a los rincones más extraordinarios del planeta." />
+  <title>Blisniuk & Amanov · Casa de viajes desde 1972</title>
+  <meta name="description" content="Itinerarios privados, expediciones en pequeños grupos y rutas en jet privado a más de doscientos países, desde 1972." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- Top utility bar -->
+  <!-- Utility bar -->
   <div class="utility-bar">
     <div class="utility-inner">
       <div class="utility-left">
-        <a href="#">Solicitar catálogo</a>
-        <a href="#">Asesores de viaje</a>
-        <a href="#">Mis viajes</a>
+        <a href="tel:+34900123456" class="speak">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.91.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7a2 2 0 0 1 1.72 2.03z"/></svg>
+          Hablar con un experto · +34 900 123 456
+        </a>
+        <span class="utility-status">· Atendemos hoy de 9:00 a 20:00 CET</span>
       </div>
       <div class="utility-right">
-        <a href="#" class="phone">+34 900 123 456</a>
-        <span class="divider">·</span>
-        <a href="#">ES / EN</a>
+        <a href="#newsletter">Suscribirme</a>
+        <span class="dot"></span>
+        <a href="#brochures">Catálogos</a>
+        <span class="dot"></span>
+        <a href="#account">Iniciar sesión / Registro</a>
       </div>
     </div>
   </div>
@@ -31,448 +35,396 @@
   <!-- Main header -->
   <header class="site-header" id="siteHeader">
     <div class="header-inner">
-      <nav class="nav-left">
-        <a href="#destinos">Destinos</a>
-        <a href="#formas">Formas de viajar</a>
-        <a href="#privados">Viajes privados</a>
-        <a href="#inspiracion">Inspiración</a>
-      </nav>
+      <div class="nav-left">
+        <button class="menu-trigger" id="menuTrigger" aria-label="Abrir menú">
+          <span class="bars"><span></span><span></span><span></span></span>
+          Menú
+        </button>
+        <a href="destinations.html">Destinos</a>
+        <a href="journeys.html">Viajes</a>
+        <a href="#sanctuary">Casas B&amp;A</a>
+      </div>
 
-      <a href="#" class="brand" aria-label="Blisniuk & Amanov, inicio">
-        <span class="brand-mark">B&A</span>
-        <span class="brand-wordmark">BLISNIUK &amp; AMANOV</span>
-        <span class="brand-tagline">Viajes extraordinarios · Desde 1972</span>
+      <a href="index.html" class="brand" aria-label="Blisniuk & Amanov, inicio">
+        <span class="brand-wordmark">BLISNIUK <span class="brand-amp">&amp;</span> AMANOV</span>
       </a>
 
-      <nav class="nav-right">
-        <a href="#nosotros">Nosotros</a>
-        <a href="#revista">Revista</a>
-        <a href="#contacto" class="btn btn-ghost">Planificar viaje</a>
-      </nav>
-
-      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="nav-right">
+        <a href="journeys.html" class="search-trigger">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Encontrar tu viaje
+        </a>
+      </div>
     </div>
   </header>
 
-  <!-- Mobile menu drawer -->
+  <!-- Mobile drawer -->
   <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
     <div class="drawer-inner">
-      <a href="#destinos">Destinos</a>
-      <a href="#formas">Formas de viajar</a>
-      <a href="#privados">Viajes privados</a>
-      <a href="#inspiracion">Inspiración</a>
-      <a href="#nosotros">Nosotros</a>
-      <a href="#revista">Revista</a>
-      <a href="#contacto" class="btn btn-ghost">Planificar viaje</a>
+      <a href="destinations.html">Destinos</a>
+      <a href="journeys.html">Viajes</a>
+      <a href="#sanctuary">Casas B&amp;A</a>
+      <a href="#newsletter">Suscribirme</a>
+      <a href="#brochures">Catálogos</a>
+      <a href="journeys.html" class="btn btn-dark">Encontrar tu viaje</a>
     </div>
   </aside>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-media">
-      <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=2400&q=80" alt="Paisaje de horizonte abierto al amanecer" />
-      <div class="hero-overlay"></div>
-    </div>
-    <div class="hero-content">
-      <span class="eyebrow">El arte del viaje desde 1972</span>
-      <h1 class="hero-title">Donde cada horizonte<br /><em>desvela otro más.</em></h1>
-      <p class="hero-sub">Itinerarios privados meticulosamente diseñados, expediciones en pequeños grupos y vuelos en jet privado a los rincones más extraordinarios del planeta.</p>
-      <div class="hero-actions">
-        <a href="#destinos" class="btn btn-primary">Explorar destinos</a>
-        <a href="#contacto" class="btn btn-outline">Hablar con un asesor</a>
+  <!-- Spotlight hero -->
+  <section class="spotlight">
+    <div class="spotlight-frame" id="spotlightFrame">
+      <div class="slide active">
+        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=2400&q=80" alt="Suite con vista a la sabana al amanecer" />
+      </div>
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1455587734955-081b22074882?auto=format&fit=crop&w=2400&q=80" alt="Salón frente a un lago alpino" />
+      </div>
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1542718610-a1d656d1884c?auto=format&fit=crop&w=2400&q=80" alt="Habitación frente al mar" />
+      </div>
+
+      <div class="spotlight-content">
+        <div class="spotlight-text">
+          <span class="eyebrow">Casas B&amp;A · En portada</span>
+          <h1>Cinco refugios premiados,<br /><em>una sola filosofía.</em></h1>
+          <a href="#sanctuary" class="btn btn-copper">Conocer las casas</a>
+        </div>
+        <div class="spotlight-meta">
+          <div class="award-card">
+            <img src="https://images.unsplash.com/photo-1561264486-dad53e7e6c46?auto=format&fit=crop&w=200&q=80" alt="Premio editorial" />
+            <div class="award-card-text">
+              <small>Reconocimiento</small>
+              <strong>Casa del año</strong>
+              <span>Editorial Travesía 2025</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="spotlight-controls">
+        <button id="slidePrev" aria-label="Anterior">‹</button>
+        <button id="slideNext" aria-label="Siguiente">›</button>
       </div>
     </div>
-    <div class="hero-scroll" aria-hidden="true">
-      <span class="scroll-line"></span>
-      <span>Descubrir</span>
+
+    <!-- Next up strip -->
+    <div class="next-up">
+      <div class="next-up-inner">
+        <span class="label">A continuación</span>
+        <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=400&q=80" alt="Encuentro con vida salvaje" />
+        <span class="next-text">Naturaleza salvaje y servicio cinco estrellas: nuevas salidas para 2026</span>
+        <span class="next-arrow">→</span>
+      </div>
     </div>
   </section>
 
-  <!-- Intro statement -->
+  <!-- Intro -->
   <section class="intro">
     <div class="container">
-      <span class="eyebrow center">Una manera distinta de viajar</span>
-      <p class="intro-text">Cinco décadas explorando culturas, paisajes y comunidades nos han enseñado que los viajes más memorables no se reservan: se componen. Cada itinerario es una pieza única, escrita a cuatro manos con quienes lo van a vivir.</p>
+      <p class="intro-text">Llevamos más de cinco décadas componiendo viajes que se quedan a vivir con quien los hace. Creemos que cada itinerario debe ser, sobre todo, <em>extraordinario en lo pequeño</em>: el guía que te recomienda lo que no aparece en ningún mapa, la mesa reservada en silencio, el momento en que el horizonte cambia de color.</p>
     </div>
   </section>
 
-  <!-- The Art of Travel: 3 cards -->
-  <section class="art-of-travel" id="formas">
+  <!-- Where to go: tabs + 3 cards -->
+  <section class="section">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">Formas de viajar</span>
-        <h2 class="section-title">Tres maneras de descubrir el mundo, una sola filosofía.</h2>
+        <h2>¿A dónde te llevamos?</h2>
       </div>
 
-      <div class="art-grid">
-        <article class="art-card">
-          <div class="art-img">
-            <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=1400&q=80" alt="Carpa privada al atardecer" />
-          </div>
-          <div class="art-body">
-            <span class="num">01</span>
-            <h3>Viajes privados a medida</h3>
-            <p>Un itinerario diseñado en exclusiva para ti, con guías privados, vehículos propios y acceso a experiencias que rara vez aparecen en una agenda pública.</p>
-            <a href="#" class="link-arrow">Diseñar mi viaje <span aria-hidden="true">→</span></a>
-          </div>
-        </article>
-
-        <article class="art-card">
-          <div class="art-img">
-            <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1400&q=80" alt="Pequeño grupo en una expedición" />
-          </div>
-          <div class="art-body">
-            <span class="num">02</span>
-            <h3>Pequeñas expediciones</h3>
-            <p>Salidas garantizadas con un máximo de doce viajeros, acompañadas por un experto y un líder de viaje que conocen el terreno como pocos.</p>
-            <a href="#" class="link-arrow">Ver salidas <span aria-hidden="true">→</span></a>
-          </div>
-        </article>
-
-        <article class="art-card">
-          <div class="art-img">
-            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1400&q=80" alt="Jet privado sobre las nubes" />
-          </div>
-          <div class="art-body">
-            <span class="num">03</span>
-            <h3>Expediciones en jet privado</h3>
-            <p>La vuelta al mundo en veinticuatro días con un jet configurado solo para nuestros viajeros, en compañía de naturalistas, historiadores y chefs.</p>
-            <a href="#" class="link-arrow">Calendario 2026–2027 <span aria-hidden="true">→</span></a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Editorial alternating section 1 -->
-  <section class="editorial editorial-light" id="privados">
-    <div class="editorial-grid">
-      <div class="editorial-image">
-        <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=1600&q=80" alt="Lago alpino al amanecer" />
-      </div>
-      <div class="editorial-text">
-        <span class="eyebrow">Itinerarios privados</span>
-        <h2>Un viaje no se reserva.<br /><em>Se compone.</em></h2>
-        <p>Empezamos con una conversación. Cómo viajas, qué te conmueve, qué buscas no encontrar en una guía. A partir de ahí, nuestro equipo de planificadores, en diálogo con doscientos especialistas locales, va trazando una ruta que responde solo a ti.</p>
-        <p>El resultado es un itinerario tan personal como un manuscrito: capítulos elegidos, ritmos calibrados, espacios para la sorpresa.</p>
-        <a href="#" class="link-arrow">Conoce el proceso <span aria-hidden="true">→</span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Destinations grid -->
-  <section class="destinations" id="destinos">
-    <div class="container">
-      <div class="section-head split">
-        <div>
-          <span class="eyebrow">Destinos</span>
-          <h2 class="section-title">Doscientos cinco países.<br />Una mirada propia para cada uno.</h2>
-        </div>
-        <a href="#" class="link-arrow strong">Ver todos los destinos <span aria-hidden="true">→</span></a>
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-tab="loved">Destinos que amamos</button>
+        <button class="tab" data-tab="now">Para reservar ya</button>
+        <button class="tab" data-tab="offers">Ofertas exclusivas</button>
+        <button class="tab" data-tab="new">Nuevo y curioso</button>
       </div>
 
-      <div class="dest-grid">
-        <a href="#" class="dest-card large">
-          <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?auto=format&fit=crop&w=1600&q=80" alt="Patagonia" />
-          <div class="dest-overlay"></div>
-          <div class="dest-caption">
-            <span class="eyebrow light">Sudamérica</span>
+      <div class="cards-3 tab-panel" data-panel="loved">
+        <a href="#" class="img-card">
+          <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1200&q=80" alt="Templos en Japón" />
+          <div class="img-card-body">
+            <small>Asia</small>
+            <h3>Japón</h3>
+            <p>Catorce días entre templos, ferrocarriles y ryokans en el corazón de Honshu.</p>
+          </div>
+        </a>
+        <a href="#" class="img-card">
+          <img src="https://images.unsplash.com/photo-1530521954074-e64f6810b32d?auto=format&fit=crop&w=1200&q=80" alt="Patagonia" />
+          <div class="img-card-body">
+            <small>Sudamérica</small>
             <h3>Patagonia</h3>
             <p>Glaciares, estepa y cielos infinitos en el confín del continente.</p>
           </div>
         </a>
-        <a href="#" class="dest-card">
+        <a href="#" class="img-card">
           <img src="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1200&q=80" alt="Marruecos" />
-          <div class="dest-overlay"></div>
-          <div class="dest-caption">
-            <span class="eyebrow light">Norte de África</span>
+          <div class="img-card-body">
+            <small>Norte de África</small>
             <h3>Marruecos</h3>
+            <p>De los riads de Fez al desierto de Erg Chigaga, en privado.</p>
           </div>
         </a>
-        <a href="#" class="dest-card">
-          <img src="https://images.unsplash.com/photo-1535139262971-c51845709a48?auto=format&fit=crop&w=1200&q=80" alt="Kenia" />
-          <div class="dest-overlay"></div>
-          <div class="dest-caption">
-            <span class="eyebrow light">África Oriental</span>
-            <h3>Kenia &amp; Tanzania</h3>
-          </div>
-        </a>
-        <a href="#" class="dest-card">
-          <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1200&q=80" alt="Japón" />
-          <div class="dest-overlay"></div>
-          <div class="dest-caption">
-            <span class="eyebrow light">Asia</span>
-            <h3>Japón</h3>
-          </div>
-        </a>
-        <a href="#" class="dest-card">
-          <img src="https://images.unsplash.com/photo-1504595403659-9088ce801e29?auto=format&fit=crop&w=1200&q=80" alt="India" />
-          <div class="dest-overlay"></div>
-          <div class="dest-caption">
-            <span class="eyebrow light">Subcontinente</span>
-            <h3>India</h3>
-          </div>
-        </a>
-        <a href="#" class="dest-card large">
-          <img src="https://images.unsplash.com/photo-1530521954074-e64f6810b32d?auto=format&fit=crop&w=1600&q=80" alt="Antártida" />
-          <div class="dest-overlay"></div>
-          <div class="dest-caption">
-            <span class="eyebrow light">Polos</span>
-            <h3>Antártida</h3>
-            <p>El último continente, navegado en pequeños buques de expedición.</p>
-          </div>
-        </a>
+      </div>
+
+      <div class="center-cta">
+        <a href="destinations.html" class="btn btn-dark">Ver todos los destinos</a>
       </div>
     </div>
   </section>
 
-  <!-- Editorial alternating section 2 -->
-  <section class="editorial editorial-dark">
-    <div class="editorial-grid reverse">
-      <div class="editorial-image">
-        <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1600&q=80" alt="Safari en sabana africana" />
-      </div>
-      <div class="editorial-text">
-        <span class="eyebrow">Sobre el terreno</span>
-        <h2>Diecisiete oficinas.<br /><em>El mismo estándar.</em></h2>
-        <p>De Buenos Aires a Nairobi, de Kioto a Dubrovnik, contamos con equipos propios sobre el terreno. Conocen los caminos secundarios, a los guías locales, los días en que un sitio recibe demasiados visitantes y cuáles son los que merece la pena recorrer en silencio.</p>
-        <p>Esa red, construida durante medio siglo, es la que hace que un viaje nuestro no se parezca a ningún otro.</p>
-        <a href="#" class="link-arrow on-dark">Conocer nuestras oficinas <span aria-hidden="true">→</span></a>
+  <!-- Trip kinds -->
+  <section class="section trip-kinds">
+    <div class="container">
+      <div class="trip-kinds-grid">
+        <div class="trip-kinds-text">
+          <span class="eyebrow">Estilos de viaje</span>
+          <h2>¿Qué tipo<br />de viaje<br />estás buscando?</h2>
+          <p>Adventuras compartidas en familia, escapadas en solitario o expediciones al lugar donde el silencio aún tiene textura. Empezamos por entenderte.</p>
+          <a href="journeys.html" class="btn btn-outline-dark">Personalizar mi viaje</a>
+        </div>
+
+        <div class="trip-kinds-cards">
+          <a href="#" class="img-card">
+            <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?auto=format&fit=crop&w=1000&q=80" alt="Refugio entre paisajes vírgenes" />
+            <div class="img-card-body">
+              <h3>Refugios remotos</h3>
+              <p>Lodges donde la naturaleza es el lujo principal.</p>
+            </div>
+          </a>
+          <a href="#" class="img-card">
+            <img src="https://images.unsplash.com/photo-1473625247510-8ceb1760943f?auto=format&fit=crop&w=1000&q=80" alt="Aventura familiar en safari" />
+            <div class="img-card-body">
+              <h3>Aventuras en familia</h3>
+              <p>Pensadas para que tres generaciones lo recuerden igual.</p>
+            </div>
+          </a>
+          <a href="#" class="img-card">
+            <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1000&q=80" alt="Paisaje montañoso al amanecer" />
+            <div class="img-card-body">
+              <h3>Viajar en solitario</h3>
+              <p>Itinerarios diseñados para que viajar solo sea, justamente, lo contrario.</p>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Ways to Travel scroll -->
-  <section class="ways" id="inspiracion">
+  <!-- Stay with us -->
+  <section class="section stay-with" id="sanctuary">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">Inspiración</span>
-        <h2 class="section-title">Maneras de empezar a soñar.</h2>
+        <span class="eyebrow center">Alojarse con nosotros</span>
+        <h2>Casas propias en lugares<br /><em>donde sólo quedarse vale la pena.</em></h2>
       </div>
-      <div class="ways-track" id="waysTrack">
-        <article class="way-card">
-          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80" alt="Playa privada" />
-          <div class="way-body">
-            <h4>Lunas de miel privadas</h4>
-            <p>Catorce días entre playas privadas, villas con plantilla propia y cenas a la luz de las estrellas.</p>
+      <div class="cards-2">
+        <a href="#" class="img-card">
+          <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1400&q=80" alt="Suite con piscina privada al atardecer" />
+          <span class="label-pill">Casas B&amp;A</span>
+          <div class="img-card-body">
+            <h3>Casa Sanctuari</h3>
+            <p>Doce villas en cinco continentes, diseñadas alrededor del paisaje que las recibe.</p>
+            <span class="btn btn-sm">Descubrir Sanctuari</span>
           </div>
-        </article>
-        <article class="way-card">
-          <img src="https://images.unsplash.com/photo-1473625247510-8ceb1760943f?auto=format&fit=crop&w=1000&q=80" alt="Familia en safari" />
-          <div class="way-body">
-            <h4>Aventuras en familia</h4>
-            <p>Diseñadas para tres generaciones, con guías que saben hablar tanto a niños de ocho años como a abuelos curiosos.</p>
+        </a>
+        <a href="#" class="img-card">
+          <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=1400&q=80" alt="Villa privada con vista a la costa" />
+          <span class="label-pill">Villas privadas</span>
+          <div class="img-card-body">
+            <h3>Villas privadas</h3>
+            <p>Casas grandes para grupos pequeños. Plantilla propia, despensa abierta y agenda silenciosa.</p>
+            <span class="btn btn-sm">Ver las villas</span>
           </div>
-        </article>
-        <article class="way-card">
-          <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1000&q=80" alt="Skyline urbano" />
-          <div class="way-body">
-            <h4>Capitales culturales</h4>
-            <p>Acceso fuera de horario a museos, talleres con artistas vivos y mesas que solo se reservan por amistad.</p>
-          </div>
-        </article>
-        <article class="way-card">
-          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=80" alt="Senderismo de montaña" />
-          <div class="way-body">
-            <h4>Expediciones a pie</h4>
-            <p>Desde el Camino de los Incas hasta los Dolomitas, con porteo, gastronomía local y noches bajo cielos limpios.</p>
-          </div>
-        </article>
-        <article class="way-card">
-          <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?auto=format&fit=crop&w=1000&q=80" alt="Mesa con vinos" />
-          <div class="way-body">
-            <h4>Rutas gastronómicas</h4>
-            <p>Comer donde comen los lugareños, cocinar con quien recoge la cosecha, dormir entre viñedos.</p>
-          </div>
-        </article>
-        <article class="way-card">
-          <img src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=1000&q=80" alt="Ártico" />
-          <div class="way-body">
-            <h4>Travesías polares</h4>
-            <p>Pequeños buques de expedición con biólogos, fotógrafos y un trato cercano que ningún crucero puede ofrecer.</p>
-          </div>
-        </article>
-      </div>
-      <div class="ways-controls">
-        <button class="circle-btn" id="waysPrev" aria-label="Anterior">←</button>
-        <button class="circle-btn" id="waysNext" aria-label="Siguiente">→</button>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Testimonials -->
-  <section class="testimonials">
+  <!-- Ways to explore: 3 + 2 -->
+  <section class="section ways-explore">
     <div class="container">
-      <div class="testimonial-stack" id="testimonialStack">
-        <figure class="testimonial active">
-          <blockquote>
-            <p>“Volvimos transformados. Nadie en la familia había imaginado que catorce días podían contener tantas vidas distintas.”</p>
-          </blockquote>
-          <figcaption>
-            <strong>Familia Marín-Olarra</strong>
-            <span>Marruecos privado · Primavera 2025</span>
-          </figcaption>
-        </figure>
-        <figure class="testimonial">
-          <blockquote>
-            <p>“He viajado con muchas agencias. Esta es la única que entiende que el lujo, en realidad, es atención.”</p>
-          </blockquote>
-          <figcaption>
-            <strong>Helena T.</strong>
-            <span>Japón en jet privado · Otoño 2024</span>
-          </figcaption>
-        </figure>
-        <figure class="testimonial">
-          <blockquote>
-            <p>“Cada detalle estaba pensado, y aun así había espacio para que nos sorprendieran. Eso no se improvisa.”</p>
-          </blockquote>
-          <figcaption>
-            <strong>Andrés &amp; Pilar</strong>
-            <span>Patagonia &amp; Atacama · Verano 2025</span>
-          </figcaption>
-        </figure>
+      <div class="section-head">
+        <span class="eyebrow center">Formas de explorar</span>
+        <h2>¿Cómo prefieres viajar?</h2>
       </div>
-      <div class="testimonial-dots" id="testimonialDots"></div>
+      <div class="ways-grid">
+        <a href="#" class="img-card">
+          <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=1200&q=80" alt="Cena privada al aire libre" />
+          <div class="img-card-body">
+            <small>01</small>
+            <h3>Viaje privado</h3>
+            <p>A medida, en exclusiva, desde el primer trayecto hasta la última cena.</p>
+          </div>
+        </a>
+        <a href="#" class="img-card">
+          <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80" alt="Pequeña expedición de viajeros" />
+          <div class="img-card-body">
+            <small>02</small>
+            <h3>Pequeñas expediciones</h3>
+            <p>Salidas garantizadas con un máximo de doce viajeros y un experto a bordo.</p>
+          </div>
+        </a>
+        <a href="#" class="img-card">
+          <img src="https://images.unsplash.com/photo-1535139262971-c51845709a48?auto=format&fit=crop&w=1200&q=80" alt="Safari al atardecer" />
+          <div class="img-card-body">
+            <small>03</small>
+            <h3>Safaris</h3>
+            <p>Cuarenta años abriendo caminos en África. Guías propios, lodges propios, criterio propio.</p>
+          </div>
+        </a>
+        <a href="#" class="img-card">
+          <img src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=1600&q=80" alt="Buque polar entre icebergs" />
+          <div class="img-card-body">
+            <small>04</small>
+            <h3>Travesías oceánicas</h3>
+            <p>Pequeños buques de expedición con biólogos, fotógrafos y cocina a la altura del paisaje.</p>
+          </div>
+        </a>
+        <a href="#" class="img-card">
+          <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1600&q=80" alt="Jet privado sobre las nubes" />
+          <div class="img-card-body">
+            <small>05</small>
+            <h3>Vuelta al mundo en jet</h3>
+            <p>Veinticuatro días, nueve países y ochenta viajeros bajo cabina configurada solo para ellos.</p>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- Heritage -->
-  <section class="heritage" id="nosotros">
-    <div class="container heritage-grid">
-      <div class="heritage-text">
-        <span class="eyebrow">Nuestra historia</span>
-        <h2>Medio siglo<br /><em>buscando la frase justa.</em></h2>
-        <p>Empezamos en 1972 con dos itinerarios y la convicción de que viajar bien era, sobre todo, viajar despacio. Cinco décadas más tarde seguimos creyendo lo mismo. La compañía ha crecido; la idea, no.</p>
-        <div class="heritage-stats">
-          <div><strong>52</strong><span>años de oficio</span></div>
-          <div><strong>17</strong><span>oficinas propias</span></div>
-          <div><strong>205</strong><span>países cubiertos</span></div>
-          <div><strong>87%</strong><span>viajeros que repiten</span></div>
+  <!-- Quote band -->
+  <section class="quote-band">
+    <img src="https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?auto=format&fit=crop&w=2400&q=80" alt="Costa rocosa al amanecer" />
+    <div class="container">
+      <blockquote>"No vendemos viajes; ayudamos a la gente a recordar mejor el resto de su vida."</blockquote>
+      <cite>— Sava Blisniuk, fundador</cite>
+    </div>
+  </section>
+
+  <!-- Philanthropy -->
+  <section class="philanthropy">
+    <div class="philanthropy-grid">
+      <div class="philanthropy-text">
+        <small>Viajar con consciencia</small>
+        <h2>Fundación B&amp;A</h2>
+        <p>Trabajamos con cuarenta y siete proyectos comunitarios en los lugares por los que pasan nuestros itinerarios. Educación, conservación, agua y salud, gestionados por equipos locales y financiados por una pequeña parte de cada viaje.</p>
+        <p>Auditados de forma independiente desde 2009, alineados con los Objetivos de Desarrollo Sostenible de Naciones Unidas.</p>
+        <a href="#" class="link-arrow">Conocer la fundación <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="philanthropy-image">
+        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1400&q=80" alt="Niños en un proyecto educativo local" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Why travel banner -->
+  <section class="why-banner">
+    <img src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?auto=format&fit=crop&w=2400&q=80" alt="Dunas del desierto al amanecer" />
+    <div class="container">
+      <div>
+        <small>Vidas bien viajadas desde 1972</small>
+        <h2>¿Por qué viajar con<br /><em>Blisniuk &amp; Amanov?</em></h2>
+      </div>
+      <a href="#contact" class="btn btn-copper">Reservar mi viaje</a>
+    </div>
+  </section>
+
+  <!-- Stats strip -->
+  <section class="stats-strip">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat">
+          <h5>Nadie lo hace mejor</h5>
+          <p>Premiados durante diecisiete años consecutivos como mejor casa de viajes de lujo por Travesía Magazine.</p>
+        </div>
+        <div class="stat">
+          <h5>Cubrimos lo que pasa</h5>
+          <p>Equipo de asistencia 24/7 en cuatro idiomas, con seguro de cancelación incluido y apoyo médico repatriable.</p>
+        </div>
+        <div class="stat">
+          <h5>Nuestra gente, nuestro lujo</h5>
+          <p>Más de cuatrocientos guías, planificadores y conductores formados en casa. Viajamos con quienes saben.</p>
+        </div>
+        <div class="stat">
+          <h5>Tu viaje deja huella</h5>
+          <p>El uno por ciento de cada itinerario va directo a proyectos locales en el destino que visitas.</p>
         </div>
       </div>
-      <div class="heritage-image">
-        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1400&q=80" alt="Detalle de un libro de viajes antiguo" />
-      </div>
-    </div>
-  </section>
-
-  <!-- Magazine -->
-  <section class="magazine" id="revista">
-    <div class="container">
-      <div class="section-head split">
-        <div>
-          <span class="eyebrow">Revista</span>
-          <h2 class="section-title">Crónicas, ensayos y mapas.</h2>
-        </div>
-        <a href="#" class="link-arrow strong">Toda la revista <span aria-hidden="true">→</span></a>
-      </div>
-      <div class="mag-grid">
-        <article class="mag-card">
-          <a href="#" class="mag-img">
-            <img src="https://images.unsplash.com/photo-1500964757637-c85e8a162699?auto=format&fit=crop&w=1200&q=80" alt="Viaje por Bután" />
-          </a>
-          <span class="mag-tag">Bután</span>
-          <h3><a href="#">Caminar entre monasterios: ocho días al ritmo del Himalaya</a></h3>
-          <p>Una crónica desde el reino donde se mide la felicidad antes que el PIB.</p>
-        </article>
-        <article class="mag-card">
-          <a href="#" class="mag-img">
-            <img src="https://images.unsplash.com/photo-1530541930197-ff16ac917b0e?auto=format&fit=crop&w=1200&q=80" alt="Viaje por Italia" />
-          </a>
-          <span class="mag-tag">Italia</span>
-          <h3><a href="#">El Piamonte fuera de temporada: trufa, niebla y una mesa</a></h3>
-          <p>Por qué noviembre es el mes en que conviene volver a Alba.</p>
-        </article>
-        <article class="mag-card">
-          <a href="#" class="mag-img">
-            <img src="https://images.unsplash.com/photo-1502989642968-94fbdc9eace4?auto=format&fit=crop&w=1200&q=80" alt="Viaje por Namibia" />
-          </a>
-          <span class="mag-tag">Namibia</span>
-          <h3><a href="#">Sossusvlei al amanecer, o cómo el silencio cambia de color</a></h3>
-          <p>Notas desde el desierto más antiguo del planeta.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Newsletter -->
-  <section class="newsletter" id="contacto">
-    <div class="container newsletter-inner">
-      <span class="eyebrow center">Cartas desde el mundo</span>
-      <h2>Recibe nuestras crónicas mensuales.</h2>
-      <p>Una carta breve, sin promociones agresivas: un destino, una historia, una recomendación de quien acaba de volver.</p>
-      <form class="newsletter-form" onsubmit="event.preventDefault(); this.querySelector('input').value=''; this.nextElementSibling.style.opacity=1;">
-        <input type="email" placeholder="Tu correo electrónico" required />
-        <button type="submit" class="btn btn-primary">Suscribirme</button>
-      </form>
-      <p class="newsletter-thanks" aria-live="polite">Gracias. Bienvenido a bordo.</p>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="site-footer">
+  <footer class="site-footer" id="contact">
     <div class="container footer-grid">
       <div class="footer-brand">
-        <span class="brand-mark large">B&A</span>
-        <p>Blisniuk &amp; Amanov es una casa de viajes fundada en 1972, con oficinas en Madrid, Buenos Aires, Nairobi, Kioto, Dubrovnik y once ciudades más.</p>
+        <div class="footer-brand-row">
+          <span class="footer-mark">B&amp;a</span>
+          <h3>Blisniuk &amp; Amanov</h3>
+        </div>
+        <p>Casa de viajes desde 1972. Diecisiete oficinas propias entre Madrid, Buenos Aires, Nairobi, Kioto, Dubrovnik y otras once ciudades.</p>
+
+        <form class="newsletter" id="newsletter" onsubmit="event.preventDefault();">
+          <strong style="color:var(--white); font-family:var(--serif); font-size:24px; line-height:1.1;">Encuentra tu próxima aventura</strong>
+          <span class="terms" style="margin: 4px 0 8px;">Una carta breve al mes, sin promociones agresivas. Un destino, una historia, una recomendación.</span>
+          <div class="newsletter-row">
+            <input type="text" placeholder="Nombre" />
+            <input type="text" placeholder="Apellido" />
+          </div>
+          <input type="email" placeholder="Correo electrónico" required />
+          <div class="radio-row" aria-label="¿Eres asesor de viajes?">
+            <span>¿Eres asesor de viajes?</span>
+            <label><input type="radio" name="advisor" value="si" /> Sí</label>
+            <label><input type="radio" name="advisor" value="no" defaultChecked /> No</label>
+          </div>
+          <span class="terms">Al registrarte aceptas nuestros <a href="#">Términos de uso</a> y <a href="#">Política de privacidad</a>, incluyendo el envío de comunicaciones.</span>
+          <button class="btn btn-copper" type="submit">Suscribirme</button>
+        </form>
+
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm5.5-.5a1 1 0 100 2 1 1 0 000-2z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.5 9.9v-7H8v-3h2.5V9.5C10.5 7 12 5.7 14.2 5.7c1 0 2.1.2 2.1.2v2.3H15c-1.2 0-1.5.7-1.5 1.5V12H17l-.4 3h-3.1v7A10 10 0 0022 12z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.5c-.3-1.1-1.2-2-2.3-2.3C19 4 12 4 12 4s-7 0-9.2.2c-1.1.3-2 1.2-2.3 2.3C.3 8.7.3 12 .3 12s0 3.3.2 5.5c.3 1.1 1.2 2 2.3 2.3 2.2.2 9.2.2 9.2.2s7 0 9.2-.2c1.1-.3 2-1.2 2.3-2.3.2-2.2.2-5.5.2-5.5s0-3.3-.2-5.5zM9.7 15.5v-7l6 3.5-6 3.5z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5V8h3v11zM6.5 6.7a1.7 1.7 0 110-3.5 1.7 1.7 0 010 3.5zM19 19h-3v-5.3c0-1.3 0-3-1.8-3-1.9 0-2.2 1.4-2.2 2.9V19h-3V8h2.9v1.5h.1a3.2 3.2 0 012.9-1.6c3 0 3.6 2 3.6 4.6V19z"/></svg></a>
+        </div>
       </div>
+
       <div class="footer-col">
         <h5>Compañía</h5>
         <ul>
           <li><a href="#">Nuestra historia</a></li>
-          <li><a href="#">Equipo</a></li>
-          <li><a href="#">Sostenibilidad</a></li>
-          <li><a href="#">Carreras</a></li>
+          <li><a href="#">Filantropía B&amp;A</a></li>
           <li><a href="#">Prensa</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Viajar con nosotros</h5>
-        <ul>
-          <li><a href="#">Viajes privados</a></li>
-          <li><a href="#">Pequeñas expediciones</a></li>
-          <li><a href="#">Jet privado</a></li>
-          <li><a href="#">Familias</a></li>
-          <li><a href="#">Lunas de miel</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Recursos</h5>
-        <ul>
-          <li><a href="#">Catálogos</a></li>
-          <li><a href="#">Revista</a></li>
-          <li><a href="#">Guías de destinos</a></li>
-          <li><a href="#">Asesores aliados</a></li>
+          <li><a href="#">Carreras</a></li>
           <li><a href="#">Contacto</a></li>
         </ul>
       </div>
+
       <div class="footer-col">
-        <h5>Hablemos</h5>
+        <h5>Servicios</h5>
         <ul>
-          <li><a href="tel:+34900123456">+34 900 123 456</a></li>
-          <li><a href="mailto:hola@blisniukamanov.com">hola@blisniukamanov.com</a></li>
-          <li><span>L–V · 9:00 a 20:00 CET</span></li>
+          <li><a href="#">Catálogos</a></li>
+          <li><a href="#">Programa de protección</a></li>
+          <li><a href="#">App B&amp;A</a></li>
+          <li><a href="#">Hub de asesores</a></li>
+          <li><a href="#">B&amp;A DMC</a></li>
+          <li><a href="#">Club Marco Polo</a></li>
         </ul>
-        <div class="socials">
-          <a href="#" aria-label="Instagram">IG</a>
-          <a href="#" aria-label="LinkedIn">IN</a>
-          <a href="#" aria-label="Pinterest">PIN</a>
-          <a href="#" aria-label="YouTube">YT</a>
-        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="#">Términos de reserva</a></li>
+          <li><a href="#">Términos de uso</a></li>
+          <li><a href="#">Política de cookies</a></li>
+          <li><a href="#">Privacidad</a></li>
+          <li><a href="#">Tratamiento de datos</a></li>
+          <li><a href="#">Acta antiesclavitud</a></li>
+        </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="container">
-        <span>© 2026 Blisniuk &amp; Amanov. Todos los derechos reservados.</span>
-        <ul class="legal">
-          <li><a href="#">Aviso legal</a></li>
-          <li><a href="#">Privacidad</a></li>
-          <li><a href="#">Cookies</a></li>
-          <li><a href="#">Condiciones generales</a></li>
-        </ul>
-      </div>
+      © 1972–2026 Blisniuk &amp; Amanov S.L. Todos los derechos reservados. Reg. CIF B12345678
     </div>
   </footer>
 
