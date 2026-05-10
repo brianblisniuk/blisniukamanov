@@ -945,6 +945,69 @@ p  { margin: 0 0 1em; }
 .reveal.in { opacity: 1; transform: translateY(0); }
 
 /* =========================
+   Toast (form feedback)
+   ========================= */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--ink);
+  color: var(--white);
+  padding: 14px 22px;
+  border-radius: 6px;
+  font-size: 14px;
+  z-index: 9999;
+  opacity: 0;
+  transition: transform 300ms ease, opacity 300ms ease;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.18);
+  max-width: calc(100vw - 32px);
+}
+.toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+.toast[data-kind="ok"]    { background: var(--copper); }
+.toast[data-kind="error"] { background: #B33A2B; }
+
+/* =========================
+   Filter list active state
+   ========================= */
+.filters .filter-list a {
+  position: relative;
+  padding-left: 22px;
+  display: inline-block;
+}
+.filters .filter-list a::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 50%;
+  transform: translateY(-50%);
+  width: 12px; height: 12px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: var(--white);
+  transition: background var(--t-fast), border-color var(--t-fast);
+}
+.filters .filter-list a.active { color: var(--ink); font-weight: 600; }
+.filters .filter-list a.active::before {
+  background: var(--copper);
+  border-color: var(--copper);
+}
+.filters .filter-list a.active::after {
+  content: "✓";
+  position: absolute;
+  left: 1px; top: 50%;
+  transform: translateY(-55%);
+  color: var(--white);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* Subnav active state (scroll-spy) */
+.subnav a.active {
+  color: var(--copper);
+  border-bottom: 2px solid var(--copper);
+}
+
+/* =========================
    Destinations page mosaic
    ========================= */
 .dest-page-head { background: var(--paper); padding: clamp(60px, 7vw, 90px) 0 24px; text-align: center; }
@@ -1441,16 +1504,18 @@ p  { margin: 0 0 1em; }
 .rec-list { display: flex; flex-direction: column; gap: 24px; }
 .rec-row {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
+  grid-template-columns: 1.3fr 1fr;
   background: var(--white);
   border-radius: var(--r);
   overflow: hidden;
   border: 1px solid var(--line-soft);
+  transition: box-shadow var(--t-fast);
 }
+.rec-row:hover { box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
 .rec-row-img {
   position: relative;
   display: block;
-  min-height: 280px;
+  min-height: 320px;
   overflow: hidden;
 }
 .rec-row-img img {
@@ -1615,7 +1680,7 @@ p  { margin: 0 0 1em; }
   position: relative;
   min-height: 540px;
   color: var(--white);
-  overflow: hidden;
+  /* deliberately no overflow:hidden so stat-cards can overlap below */
 }
 .journey-detail-hero img {
   position: absolute; inset: 0;
@@ -1784,20 +1849,31 @@ p  { margin: 0 0 1em; }
 .day-by-day { background: var(--paper); padding: clamp(40px, 5vw, 80px) 0 clamp(60px, 8vw, 100px); }
 .day {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(30px, 4vw, 60px);
-  align-items: center;
-  padding: 36px 0;
+  grid-template-columns: 110px 1fr 1fr;
+  gap: clamp(20px, 3vw, 40px);
+  align-items: start;
+  padding: 44px 0;
   border-top: 1px solid var(--line);
 }
-.day:nth-child(even) .day-text { order: 2; }
-.day:nth-child(even) .day-img { order: 1; }
+.day::before {
+  content: attr(data-day);
+  font-family: var(--serif);
+  font-size: 64px;
+  line-height: 1;
+  font-weight: 300;
+  color: var(--copper);
+  align-self: start;
+  letter-spacing: -0.02em;
+}
+.day:nth-child(even) { background: linear-gradient(180deg, var(--paper-2) 0%, var(--paper) 100%); border-radius: var(--r); padding-left: 24px; padding-right: 24px; }
 .day-num {
-  font-size: 12px;
-  letter-spacing: 0.22em;
+  font-size: 11px;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   font-weight: 700;
-  color: var(--copper);
+  color: var(--ink-mute);
+  display: block;
+  margin-bottom: 4px;
 }
 .day-text h3 {
   font-family: var(--serif);
@@ -2067,9 +2143,9 @@ p  { margin: 0 0 1em; }
   .intro-grid { grid-template-columns: 1fr; }
   .intro-portrait { max-width: 380px; aspect-ratio: 4/5; }
   .map-itinerary-grid { grid-template-columns: 1fr; }
-  .day { grid-template-columns: 1fr; gap: 24px; }
-  .day:nth-child(even) .day-text { order: initial; }
-  .day:nth-child(even) .day-img { order: initial; }
+  .day { grid-template-columns: 60px 1fr; gap: 18px; padding: 28px 0; }
+  .day::before { font-size: 40px; }
+  .day .day-img { grid-column: 1 / -1; aspect-ratio: 16/10; }
   .ext-grid { grid-template-columns: repeat(2, 1fr); }
   .lodge-grid { grid-template-columns: repeat(2, 1fr); }
   .reviews-grid { grid-template-columns: 1fr; }
