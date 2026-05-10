@@ -1164,6 +1164,127 @@ p  { margin: 0 0 1em; }
 }
 
 /* =========================
+   Legal pages
+   ========================= */
+.legal-page { padding: clamp(60px, 8vw, 110px) 0; background: var(--bone); }
+.legal-container { max-width: 820px; }
+.legal-page h1 {
+  font-size: clamp(40px, 5vw, 64px);
+  margin: 12px 0 24px;
+}
+.legal-page h2 {
+  font-size: clamp(20px, 2vw, 26px);
+  margin: 40px 0 12px;
+  color: var(--ink);
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+}
+.legal-page p, .legal-page li {
+  color: var(--ink-2);
+  font-size: 15px;
+  line-height: 1.75;
+}
+.legal-page ul { margin: 0 0 14px 0; padding-left: 20px; }
+.legal-page li { list-style: disc; margin-bottom: 6px; }
+.legal-page a { color: var(--laurel); border-bottom: 1px solid var(--line); }
+.legal-page a:hover { color: var(--laurel-deep); }
+.legal-intro {
+  background: var(--white);
+  padding: 16px 20px;
+  border-left: 3px solid var(--brass);
+  border-radius: 4px;
+  font-size: 14px !important;
+  color: var(--ink-mute) !important;
+}
+.legal-intro strong { color: var(--ink); }
+.legal-update {
+  margin-top: 40px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-size: 12px !important;
+  color: var(--stone) !important;
+  font-style: italic;
+}
+
+/* =========================
+   Catalogos
+   ========================= */
+.catalogos { padding: clamp(60px, 8vw, 110px) 0; background: var(--bone); }
+.catalogos h2 { font-size: clamp(34px, 4vw, 52px); margin-bottom: 12px; text-align: center; }
+.catalogos .lede { color: var(--ink-mute); text-align: center; max-width: 720px; margin: 0 auto 56px; font-size: 16px; line-height: 1.7; }
+.catalogos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+}
+.cat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.cat-cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: var(--laurel);
+  color: var(--white);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 22px 20px;
+  transition: transform var(--t-med);
+}
+.cat-card:hover .cat-cover { transform: translateY(-4px); }
+.cat-cover.cream { background: var(--bone-2); color: var(--ink); }
+.cat-cover.dark { background: var(--laurel-deep); }
+.cat-cover img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+  z-index: 0;
+}
+.cat-cover .cat-mark, .cat-cover h3 { position: relative; z-index: 1; }
+.cat-cover .cat-mark {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  opacity: 0.92;
+}
+.cat-cover h3 {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.2;
+}
+.cat-meta {
+  margin-top: 18px;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--stone);
+  font-weight: 600;
+}
+.cat-title { font-family: var(--serif); font-size: 18px; margin: 6px 0 12px; font-weight: 400; }
+.cat-actions { display: flex; gap: 12px; justify-content: center; }
+.cat-actions a {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink);
+  border-bottom: 1px solid var(--laurel);
+  padding-bottom: 2px;
+}
+.cat-actions a:hover { color: var(--laurel); }
+
+/* =========================
    FAB stack (Expert pill + WhatsApp circle)
    ========================= */
 .fab-stack {

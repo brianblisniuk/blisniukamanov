@@ -23,6 +23,8 @@ const pages = [
   { name: "12-contact-desktop",         file: "contact.html",        width: 1280, full: true },
   { name: "13-contact-mobile",          file: "contact.html",        width: 414,  full: true },
   { name: "14-gracias-desktop",         file: "gracias.html",        width: 1280, full: true },
+  { name: "15-catalogos-desktop",       file: "catalogos.html",      width: 1280, full: true },
+  { name: "16-terminos-desktop",        file: "terminos.html",       width: 1280, full: true },
 ];
 
 (async () => {
