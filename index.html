@@ -363,7 +363,7 @@
         </div>
         <p>Casa de viajes desde 1972. Diecisiete oficinas propias entre Madrid, Buenos Aires, Nairobi, Kioto, Dubrovnik y otras once ciudades.</p>
 
-        <form class="newsletter" id="newsletter" onsubmit="event.preventDefault();">
+        <form class="newsletter" id="newsletter" name="newsletter" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/gracias.html"><input type="hidden" name="form-name" value="newsletter" /><p class="hidden-field"><label>No completar: <input name="bot-field" /></label></p>
           <strong style="color:var(--white); font-family:var(--serif); font-size:24px; line-height:1.1;">Encuentra tu próxima aventura</strong>
           <span class="terms" style="margin: 4px 0 8px;">Una carta breve al mes, sin promociones agresivas. Un destino, una historia, una recomendación.</span>
           <div class="newsletter-row">

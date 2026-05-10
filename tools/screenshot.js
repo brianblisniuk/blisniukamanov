@@ -20,6 +20,9 @@ const pages = [
   { name: "09-destinations-mobile",     file: "destinations.html",   width: 414,  full: true },
   { name: "10-europe-desktop",          file: "europe.html",         width: 1280, full: true },
   { name: "11-europe-mobile",           file: "europe.html",         width: 414,  full: true },
+  { name: "12-contact-desktop",         file: "contact.html",        width: 1280, full: true },
+  { name: "13-contact-mobile",          file: "contact.html",        width: 414,  full: true },
+  { name: "14-gracias-desktop",         file: "gracias.html",        width: 1280, full: true },
 ];
 
 (async () => {
