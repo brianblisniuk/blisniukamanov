@@ -1,22 +1,55 @@
 /* =========================
+   Fonts
+   ========================= */
+@font-face {
+  font-family: "GT Sectra Display";
+  src: url("assets/fonts/GT-Sectra-Display-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Sohne";
+  src: url("assets/fonts/Sohne-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* =========================
    Tokens
    ========================= */
 :root {
-  --copper: #AA5432;
-  --copper-deep: #8E4427;
-  --copper-soft: #C46A45;
-  --ink: #111111;
-  --ink-2: #1F1F1F;
-  --ink-mute: #666666;
-  --line: #E5DFD2;
+  /* Brand palette — Blisniuk & Amanov */
+  --laurel: #3D5A3E;          /* primary — Mediterranean Laurel */
+  --laurel-deep: #1F2E20;     /* depth — Deep Forest */
+  --laurel-soft: #4A6A4B;     /* hover */
+  --bone: #F5F1E8;            /* paper / surface */
+  --bone-2: #ECE6D8;          /* paper alt */
+  --ink: #1A1A1A;             /* text */
+  --ink-2: #2B2B2B;
+  --stone: #8B8478;           /* secondary text — Stone */
+  --brass: #B8945A;           /* accent — Aged Brass (use sparingly) */
+  --line: #E5DED0;
   --line-soft: #EFE9DA;
-  --paper: #F5F2EB;
-  --paper-2: #ECE6D8;
   --white: #FFFFFF;
-  --black: #0B0B0B;
+  --black: #0E0E0E;
+  --paper: var(--bone);
+  --paper-2: var(--bone-2);
+  --ink-mute: var(--stone);
 
-  --serif: "Cormorant Garamond", "Times New Roman", serif;
-  --sans: "Manrope", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  /* Legacy aliases — keep so existing rules referencing copper still work */
+  --copper: var(--laurel);
+  --copper-deep: var(--laurel-deep);
+  --copper-soft: var(--laurel-soft);
+  --gold: var(--brass);
+  --gold-deep: var(--brass);
+  --cream: var(--bone);
+
+  /* Typography */
+  --serif: "GT Sectra Display", "Cormorant Garamond", "Times New Roman", serif;
+  --sans: "Inter", "Sohne", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", "JetBrains Mono", ui-monospace, monospace;
 
   --maxw: 1380px;
   --gutter: clamp(20px, 4vw, 60px);
@@ -943,6 +976,32 @@ p  { margin: 0 0 1em; }
   transition: opacity 700ms ease, transform 700ms cubic-bezier(.22,.61,.36,1);
 }
 .reveal.in { opacity: 1; transform: translateY(0); }
+
+/* =========================
+   WhatsApp floating button
+   ========================= */
+.whatsapp-fab {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 9000;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  color: var(--white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.20);
+  transition: transform var(--t-fast), box-shadow var(--t-fast);
+  text-decoration: none;
+}
+.whatsapp-fab:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 14px 36px rgba(0,0,0,0.24); }
+.whatsapp-fab svg { width: 28px; height: 28px; }
+@media (max-width: 520px) {
+  .whatsapp-fab { right: 16px; bottom: 16px; width: 52px; height: 52px; }
+}
 
 /* =========================
    Toast (form feedback)
@@ -2110,6 +2169,173 @@ p  { margin: 0 0 1em; }
   grid-template-columns: repeat(4, 1fr);
   gap: 18px;
   margin-top: 24px;
+}
+
+/* =========================
+   Region hero (Europa-style page)
+   ========================= */
+.region-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--bone);
+  min-height: 540px;
+}
+.region-hero-image {
+  position: relative;
+  overflow: hidden;
+  min-height: 420px;
+}
+.region-hero-image img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.region-hero-image::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.0) 30%, rgba(0,0,0,0.45) 100%);
+}
+.region-hero-overlay {
+  position: absolute;
+  z-index: 2;
+  left: 0; right: 0; bottom: 0;
+  padding: 36px 40px;
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
+.region-hero-overlay h1 {
+  color: var(--white);
+  font-size: clamp(40px, 5.4vw, 64px);
+  margin: 0;
+}
+.region-hero-content {
+  padding: clamp(40px, 4vw, 60px) clamp(30px, 4vw, 60px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.region-lede {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2vw, 28px);
+  line-height: 1.3;
+  color: var(--ink);
+  margin: 8px 0 4px;
+}
+.region-lede em { font-style: italic; }
+.region-hero-content p {
+  color: var(--ink-mute);
+  font-size: 14px;
+  line-height: 1.7;
+  max-width: 560px;
+}
+
+.region-rec { margin-top: 8px; }
+.region-rec .eyebrow { margin-bottom: 14px; }
+.rec-mini-track {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  padding-bottom: 8px;
+}
+.rec-mini-track::-webkit-scrollbar { display: none; }
+.rec-mini-track { scrollbar-width: none; }
+.rec-mini {
+  flex: 0 0 220px;
+  scroll-snap-align: start;
+  display: block;
+}
+.rec-mini img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: var(--r);
+  margin-bottom: 8px;
+}
+.rec-mini small {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--laurel);
+}
+.rec-mini h4 {
+  font-family: var(--serif);
+  font-size: 16px;
+  margin: 4px 0 4px;
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--ink);
+}
+.rec-mini span { font-size: 11px; color: var(--ink-mute); letter-spacing: 0.04em; }
+.rec-mini-controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+  justify-content: flex-end;
+}
+.rec-mini-controls .circle-btn {
+  width: 40px; height: 40px;
+  font-size: 16px;
+}
+
+/* =========================
+   Countries mosaic
+   ========================= */
+.region-countries { background: var(--white); padding: clamp(60px, 7vw, 100px) 0; }
+.region-countries h2 { font-size: clamp(34px, 4vw, 52px); margin-bottom: 28px; }
+.countries-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.country-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.country-card img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: var(--r);
+  transition: transform var(--t-slow);
+}
+.country-card.wide {
+  grid-column: span 1;
+}
+.country-card:hover img { transform: scale(1.03); }
+.country-body h3 {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+  margin: 6px 0 4px;
+  color: var(--ink);
+}
+.country-body p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ink-mute);
+  line-height: 1.55;
+}
+
+/* On wider rows: every 4 cards starting from index 5 share row in 3 cols */
+.countries-grid > .country-card.wide {
+  grid-column: span 1;
+}
+@media (min-width: 1101px) {
+  /* Keep first 4 in a 4-col row, then groups of 3 wider */
+  .countries-grid {
+    grid-template-columns: repeat(12, 1fr);
+  }
+  .countries-grid > .country-card { grid-column: span 3; }
+  .countries-grid > .country-card.wide { grid-column: span 4; }
 }
 
 /* =========================

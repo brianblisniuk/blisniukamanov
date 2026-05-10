@@ -18,6 +18,8 @@ const pages = [
   { name: "07-small-group-mobile",      file: "small-group.html",    width: 414,  full: true },
   { name: "08-gran-migracion-mobile",   file: "gran-migracion.html", width: 414,  full: true },
   { name: "09-destinations-mobile",     file: "destinations.html",   width: 414,  full: true },
+  { name: "10-europe-desktop",          file: "europe.html",         width: 1280, full: true },
+  { name: "11-europe-mobile",           file: "europe.html",         width: 414,  full: true },
 ];
 
 (async () => {
