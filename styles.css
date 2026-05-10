@@ -1164,6 +1164,238 @@ p  { margin: 0 0 1em; }
 }
 
 /* =========================
+   Heritage page
+   ========================= */
+.heritage-hero {
+  position: relative;
+  min-height: 520px;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.heritage-hero img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.heritage-hero::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.55) 100%);
+}
+.heritage-hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+}
+.heritage-hero-inner h1 {
+  color: var(--white);
+  font-size: clamp(48px, 7vw, 84px);
+  margin: 14px 0 0;
+}
+.heritage-intro {
+  background: var(--bone);
+  padding: clamp(70px, 9vw, 120px) 0;
+  text-align: center;
+}
+.heritage-intro .intro-text {
+  font-family: var(--serif);
+  font-size: clamp(22px, 2.3vw, 30px);
+  line-height: 1.45;
+  color: var(--ink);
+  max-width: 820px;
+  margin: 0 auto;
+}
+.travel-way { background: var(--white); padding: clamp(70px, 9vw, 120px) 0; }
+
+.acknowledgments {
+  background: var(--bone);
+  padding: clamp(70px, 8vw, 100px) 0;
+}
+.acknowledgments h2 { font-size: clamp(28px, 3.2vw, 40px); margin: 6px 0 36px; }
+.ack-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+  text-align: center;
+  margin-top: 24px;
+}
+.ack-item {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--ink-mute);
+  padding: 18px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--white);
+  line-height: 1.5;
+}
+.ack-item strong {
+  display: block;
+  margin-top: 4px;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* =========================
+   Philanthropy page
+   ========================= */
+.phila-hero {
+  position: relative;
+  min-height: 560px;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+}
+.phila-hero img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.phila-hero::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.20) 0%, rgba(0,0,0,0.60) 100%);
+}
+.phila-hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+}
+.phila-hero-inner h1 {
+  color: var(--white);
+  font-size: clamp(40px, 5.4vw, 64px);
+  margin: 14px 0 22px;
+}
+.phila-hero-inner h1 em { font-style: italic; }
+.phila-hero-inner p {
+  color: rgba(255,255,255,0.92);
+  font-size: 17px;
+  line-height: 1.7;
+  margin: 0 0 28px;
+}
+
+.phila-stats {
+  background: var(--white);
+  padding: clamp(70px, 9vw, 120px) 0;
+  text-align: center;
+}
+.phila-stats h2 { font-size: clamp(28px, 3.2vw, 40px); margin: 10px 0 50px; }
+.phila-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  text-align: center;
+}
+.phila-stat strong {
+  display: block;
+  font-family: var(--serif);
+  font-size: clamp(40px, 4.6vw, 60px);
+  color: var(--laurel);
+  font-weight: 400;
+  line-height: 1;
+}
+.phila-stat span {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.phila-video {
+  background: var(--bone);
+  padding: clamp(50px, 7vw, 90px) 0;
+  text-align: center;
+}
+.video-frame {
+  position: relative;
+  max-width: 920px;
+  margin: 0 auto;
+  aspect-ratio: 16/9;
+  border-radius: var(--r);
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+}
+.video-frame img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.play-btn {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.95);
+  color: var(--laurel);
+  border: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--t-fast);
+}
+.play-btn:hover { transform: translate(-50%, -50%) scale(1.08); }
+.play-btn svg { width: 32px; height: 32px; }
+.phila-video-caption {
+  margin-top: 20px;
+  font-size: 13px;
+  color: var(--ink-mute);
+}
+
+.phila-projects { background: var(--white); }
+
+.phila-cta {
+  position: relative;
+  padding: clamp(80px, 12vw, 160px) 0;
+  color: var(--white);
+  text-align: center;
+  overflow: hidden;
+}
+.phila-cta img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.phila-cta::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(31,46,32,0.85) 0%, rgba(31,46,32,0.95) 100%);
+}
+.phila-cta-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+}
+.phila-cta-inner h2 {
+  color: var(--white);
+  font-size: clamp(36px, 4.6vw, 56px);
+  margin: 12px 0 22px;
+}
+.phila-cta-inner p {
+  color: rgba(255,255,255,0.85);
+  font-size: 16px;
+  line-height: 1.75;
+  margin: 0 auto 32px;
+  max-width: 580px;
+}
+
+@media (max-width: 1100px) {
+  .ack-grid { grid-template-columns: repeat(3, 1fr); }
+  .phila-stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .ack-grid { grid-template-columns: repeat(2, 1fr); }
+  .phila-stats-grid { grid-template-columns: 1fr; gap: 28px; }
+}
+
+/* =========================
    Legal pages
    ========================= */
 .legal-page { padding: clamp(60px, 8vw, 110px) 0; background: var(--bone); }

@@ -25,6 +25,11 @@ const pages = [
   { name: "14-gracias-desktop",         file: "gracias.html",        width: 1280, full: true },
   { name: "15-catalogos-desktop",       file: "catalogos.html",      width: 1280, full: true },
   { name: "16-terminos-desktop",        file: "terminos.html",       width: 1280, full: true },
+  { name: "17-heritage-desktop",        file: "heritage.html",       width: 1280, full: true },
+  { name: "18-filantropia-desktop",     file: "filantropia.html",    width: 1280, full: true },
+  { name: "19-africa-desktop",          file: "africa.html",         width: 1280, full: true },
+  { name: "20-botswana-desktop",        file: "botswana-definitivo.html", width: 1280, full: true },
+  { name: "21-japon-desktop",           file: "japon-clasico.html",  width: 1280, full: true },
 ];
 
 (async () => {
