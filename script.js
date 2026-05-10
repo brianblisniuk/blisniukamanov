@@ -2,9 +2,23 @@
   "use strict";
 
   /* ==========================================================
-     WhatsApp floating button — injected once site-wide
+     Floating action stack: WhatsApp + "Speak to expert" pill
+     Both injected once site-wide
      ========================================================== */
-  if (!document.getElementById("waButton")) {
+  if (!document.getElementById("fabStack")) {
+    const stack = document.createElement("div");
+    stack.id = "fabStack";
+    stack.className = "fab-stack";
+
+    // "Hablá con un experto" pill (opens modal)
+    const expert = document.createElement("button");
+    expert.type = "button";
+    expert.className = "expert-fab js-expert-trigger";
+    expert.setAttribute("aria-haspopup", "dialog");
+    expert.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>Hablá con un experto</span>';
+    stack.appendChild(expert);
+
+    // WhatsApp circular FAB
     const wa = document.createElement("a");
     wa.id = "waButton";
     wa.className = "whatsapp-fab";
@@ -13,7 +27,108 @@
     wa.rel = "noopener";
     wa.setAttribute("aria-label", "Chatear por WhatsApp");
     wa.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.1-1.2-.5-2.4-1.5-.9-.8-1.5-1.7-1.7-2-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.7.4-.2.3-.9.9-.9 2.2 0 1.3.9 2.5 1.1 2.7.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.2-1.4c1.5.8 3.1 1.3 4.8 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.2.9.9-3.1-.2-.3C3.9 14.9 3.5 13.5 3.5 12c0-4.7 3.8-8.5 8.5-8.5s8.5 3.8 8.5 8.5-3.8 8.5-8.5 8.5z"/></svg>';
-    document.body.appendChild(wa);
+    stack.appendChild(wa);
+
+    document.body.appendChild(stack);
+  }
+
+  /* ==========================================================
+     "Hablá con un experto" modal — injected once
+     ========================================================== */
+  function ctxFromPage() {
+    // Detect region/country from the page context
+    const path = location.pathname.toLowerCase();
+    if (path.includes("europe")) return { region: "Europa", country: "" };
+    if (path.includes("gran-migracion")) return { region: "África", country: "Kenia y Tanzania" };
+    if (path.includes("small-group")) return { region: "", country: "" };
+    return { region: "", country: "" };
+  }
+
+  if (!document.getElementById("expertModal")) {
+    const ctx = ctxFromPage();
+    const ctxLabel = ctx.region ? "Consultar sobre " + ctx.region : "Hablá con un experto";
+
+    const wrap = document.createElement("div");
+    wrap.id = "expertModal";
+    wrap.className = "modal-wrap";
+    wrap.setAttribute("aria-hidden", "true");
+    wrap.setAttribute("role", "dialog");
+    wrap.setAttribute("aria-labelledby", "expertModalTitle");
+    wrap.innerHTML = `
+      <div class="modal-backdrop" data-close></div>
+      <div class="modal-card">
+        <button class="modal-close" data-close aria-label="Cerrar">×</button>
+        <h2 id="expertModalTitle" class="modal-title">${ctxLabel}</h2>
+
+        <form name="consulta-experto" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/gracias.html" class="modal-form">
+          <input type="hidden" name="form-name" value="consulta-experto" />
+          <p class="hidden-field"><label>No completar: <input name="bot-field" /></label></p>
+          <input type="hidden" name="contexto" value="${location.pathname}" />
+
+          <fieldset class="radios m-radios">
+            <legend>¿Sos asesor de viajes?</legend>
+            <label><input type="radio" name="asesor" value="si" /> Sí</label>
+            <label><input type="radio" name="asesor" value="no" checked /> No</label>
+          </fieldset>
+
+          <label class="field">
+            <span>Elegí una región</span>
+            <select name="region" required>
+              <option value="">Seleccionar región</option>
+              <option ${ctx.region==='África'?'selected':''}>África</option>
+              <option ${ctx.region==='Asia'?'selected':''}>Asia</option>
+              <option ${ctx.region==='Europa'?'selected':''}>Europa</option>
+              <option ${ctx.region==='Sudamérica'?'selected':''}>Sudamérica</option>
+              <option ${ctx.region==='Norteamérica'?'selected':''}>Norteamérica</option>
+              <option ${ctx.region==='Oceanía'?'selected':''}>Oceanía</option>
+              <option ${ctx.region==='Antártida y polos'?'selected':''}>Antártida y polos</option>
+              <option ${ctx.region==='Oriente Próximo y Norte de África'?'selected':''}>Oriente Próximo y Norte de África</option>
+              <option ${ctx.region==='Caribe'?'selected':''}>Caribe</option>
+              <option>Aún no lo sé</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Elegí un país</span>
+            <input type="text" name="pais" placeholder="Cualquiera" value="${ctx.country}" />
+          </label>
+
+          <label class="field">
+            <span>Contanos sobre tu viaje ideal</span>
+            <textarea name="mensaje" rows="4" placeholder="Fechas tentativas, intereses, viajeros…"></textarea>
+          </label>
+
+          <label class="check"><input type="checkbox" name="acepta_privacidad" value="si" required /> Acepto la <a href="#" target="_blank">política de privacidad</a></label>
+          <label class="check"><input type="checkbox" name="acepta_news" value="si" /> Quiero recibir novedades, salidas exclusivas y otra información de Blisniuk &amp; Amanov</label>
+
+          <button type="submit" class="btn btn-laurel modal-submit">Hablar con un experto</button>
+
+          <p class="modal-legal">Al enviar este formulario nos autorizás a que te contactemos con respecto a esta consulta. Tus datos no se comparten con terceros. Podés darte de baja en cualquier momento.</p>
+        </form>
+      </div>
+    `;
+    document.body.appendChild(wrap);
+
+    const open = () => {
+      wrap.classList.add("open");
+      wrap.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    };
+    const close = () => {
+      wrap.classList.remove("open");
+      wrap.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    };
+
+    document.addEventListener("click", (e) => {
+      const trig = e.target.closest(".js-expert-trigger");
+      if (trig) { e.preventDefault(); open(); return; }
+      const closer = e.target.closest("[data-close]");
+      if (closer && wrap.contains(closer)) { e.preventDefault(); close(); }
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && wrap.classList.contains("open")) close();
+    });
   }
 
   /* ==========================================================

@@ -361,7 +361,7 @@
           <span class="footer-mark">B&amp;a</span>
           <h3>Blisniuk &amp; Amanov</h3>
         </div>
-        <p>Casa de viajes desde 1972. Diecisiete oficinas propias entre Madrid, Buenos Aires, Nairobi, Kioto, Dubrovnik y otras once ciudades.</p>
+        <p>Casa de viajes desde 1972. Casa central en <a href="https://maps.google.com/?q=Manuel+Ugarte+2035+Buenos+Aires" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.85); border-bottom:1px solid rgba(255,255,255,0.3);">Manuel Ugarte 2035, Buenos Aires</a>.</p>
 
         <form class="newsletter" id="newsletter" name="newsletter" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/gracias.html"><input type="hidden" name="form-name" value="newsletter" /><p class="hidden-field"><label>No completar: <input name="bot-field" /></label></p>
           <strong style="color:var(--white); font-family:var(--serif); font-size:24px; line-height:1.1;">Encuentra tu próxima aventura</strong>
@@ -427,6 +427,18 @@
       © 1972–2026 Blisniuk &amp; Amanov S.L. Todos los derechos reservados. Reg. CIF B12345678
     </div>
   </footer>
+
+  <!-- Netlify form detection (decoy — real form is injected by script.js) -->
+  <form name="consulta-experto" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+    <input type="text" name="bot-field" />
+    <input type="hidden" name="contexto" />
+    <input type="text" name="asesor" />
+    <input type="text" name="region" />
+    <input type="text" name="pais" />
+    <textarea name="mensaje"></textarea>
+    <input type="text" name="acepta_privacidad" />
+    <input type="text" name="acepta_news" />
+  </form>
 
   <script src="script.js"></script>
 </body>

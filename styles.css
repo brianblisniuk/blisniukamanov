@@ -3,7 +3,9 @@
    ========================= */
 @font-face {
   font-family: "GT Sectra Display";
-  src: url("assets/fonts/GT-Sectra-Display-Regular.ttf") format("truetype");
+  src: url("assets/fonts/GT-Sectra-Display-Regular.woff2") format("woff2"),
+       url("assets/fonts/GT-Sectra-Display-Regular.woff") format("woff"),
+       url("assets/fonts/GT-Sectra-Display-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -1162,13 +1164,38 @@ p  { margin: 0 0 1em; }
 }
 
 /* =========================
-   WhatsApp floating button
+   FAB stack (Expert pill + WhatsApp circle)
    ========================= */
-.whatsapp-fab {
+.fab-stack {
   position: fixed;
   right: 22px;
   bottom: 22px;
   z-index: 9000;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.expert-fab {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--laurel);
+  color: var(--white);
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  padding: 14px 22px;
+  border: 0;
+  border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.20);
+  cursor: pointer;
+  transition: transform var(--t-fast), background var(--t-fast);
+}
+.expert-fab:hover { background: var(--laurel-deep); transform: translateY(-2px); }
+.expert-fab svg { width: 18px; height: 18px; }
+
+.whatsapp-fab {
   width: 56px;
   height: 56px;
   border-radius: 50%;
@@ -1180,12 +1207,131 @@ p  { margin: 0 0 1em; }
   box-shadow: 0 10px 30px rgba(0,0,0,0.20);
   transition: transform var(--t-fast), box-shadow var(--t-fast);
   text-decoration: none;
+  flex-shrink: 0;
 }
 .whatsapp-fab:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 14px 36px rgba(0,0,0,0.24); }
 .whatsapp-fab svg { width: 28px; height: 28px; }
 @media (max-width: 520px) {
-  .whatsapp-fab { right: 16px; bottom: 16px; width: 52px; height: 52px; }
+  .fab-stack { right: 12px; bottom: 12px; gap: 8px; }
+  .expert-fab { padding: 12px 16px; font-size: 12px; }
+  .expert-fab span { display: none; }
+  .whatsapp-fab { width: 48px; height: 48px; }
 }
+
+/* =========================
+   Modal (Speak to expert)
+   ========================= */
+.modal-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--t-med);
+}
+.modal-wrap.open { opacity: 1; pointer-events: auto; }
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(31, 46, 32, 0.62);
+  backdrop-filter: blur(2px);
+}
+.modal-card {
+  position: relative;
+  background: var(--bone);
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: var(--r);
+  padding: 36px 40px 32px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.30);
+  transform: translateY(20px);
+  transition: transform var(--t-med);
+}
+.modal-wrap.open .modal-card { transform: translateY(0); }
+.modal-close {
+  position: absolute;
+  top: 12px; right: 14px;
+  width: 32px; height: 32px;
+  border: 0;
+  background: transparent;
+  font-size: 26px;
+  color: var(--ink);
+  cursor: pointer;
+  line-height: 1;
+}
+.modal-close:hover { color: var(--laurel); }
+.modal-title {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 400;
+  margin: 0 0 22px;
+  line-height: 1.15;
+  color: var(--ink);
+}
+.modal-form { display: flex; flex-direction: column; gap: 14px; }
+.modal-form .field { display: flex; flex-direction: column; gap: 6px; }
+.modal-form .field span {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink);
+}
+.modal-form input[type="text"],
+.modal-form input[type="email"],
+.modal-form select,
+.modal-form textarea {
+  font: inherit;
+  font-size: 15px;
+  padding: 11px 14px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--white);
+  color: var(--ink);
+}
+.modal-form textarea { resize: vertical; min-height: 100px; }
+.modal-form input:focus, .modal-form select:focus, .modal-form textarea:focus {
+  outline: none;
+  border-color: var(--laurel);
+}
+.m-radios {
+  border: 0;
+  padding: 0;
+  margin: 0 0 4px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.m-radios legend {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink);
+  padding: 0;
+  margin-right: 8px;
+}
+.m-radios label { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; cursor: pointer; }
+.m-radios input { accent-color: var(--laurel); }
+.modal-form .check {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--ink-mute);
+  line-height: 1.5;
+  cursor: pointer;
+}
+.modal-form .check input { margin-top: 3px; accent-color: var(--laurel); }
+.modal-form .check a { color: var(--ink); border-bottom: 1px solid var(--line); }
+.modal-submit { margin-top: 8px; align-self: stretch; }
+.modal-legal { font-size: 11px; color: var(--stone); margin: 8px 0 0; line-height: 1.55; }
 
 /* =========================
    Toast (form feedback)
