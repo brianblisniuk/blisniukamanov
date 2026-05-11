@@ -2,6 +2,44 @@
   "use strict";
 
   /* ==========================================================
+     CMS — load site settings and replace marked elements
+     Runtime swap so editing content/site-settings.json from
+     the Decap panel updates phone, email, hours, etc.
+     ========================================================== */
+  function applySiteSettings(s) {
+    // data-cms="key" → replace textContent
+    document.querySelectorAll("[data-cms]").forEach((el) => {
+      const k = el.dataset.cms;
+      if (s[k] != null) el.textContent = s[k];
+    });
+    // data-cms-href="key" → set href to the value (used for full URLs like maps)
+    document.querySelectorAll("[data-cms-href]").forEach((el) => {
+      const k = el.dataset.cmsHref;
+      if (s[k] != null) el.setAttribute("href", s[k]);
+    });
+    // data-cms-tel="key" → href = "tel:" + value
+    document.querySelectorAll("[data-cms-tel]").forEach((el) => {
+      const k = el.dataset.cmsTel;
+      if (s[k] != null) el.setAttribute("href", "tel:" + s[k]);
+    });
+    // data-cms-mailto="key" → href = "mailto:" + value
+    document.querySelectorAll("[data-cms-mailto]").forEach((el) => {
+      const k = el.dataset.cmsMailto;
+      if (s[k] != null) el.setAttribute("href", "mailto:" + s[k]);
+    });
+    // Special: WhatsApp FAB
+    const wa = document.getElementById("waButton");
+    if (wa && s.whatsapp) {
+      const greeting = s.whatsapp_greeting || "Hola.";
+      wa.href = "https://wa.me/" + s.whatsapp + "?text=" + encodeURIComponent(greeting);
+    }
+  }
+  fetch("content/site-settings.json", { cache: "no-store" })
+    .then((r) => (r.ok ? r.json() : null))
+    .then((s) => { if (s) applySiteSettings(s); })
+    .catch(() => {});
+
+  /* ==========================================================
      Floating action stack: WhatsApp + "Speak to expert" pill
      Both injected once site-wide
      ========================================================== */
