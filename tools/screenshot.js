@@ -35,6 +35,15 @@ const pages = [
   { name: "24-peru-desktop",            file: "peru-machu-picchu.html", width: 1280, full: true },
   { name: "25-piamonte-desktop",        file: "piamonte-tartufo.html", width: 1280, full: true },
   { name: "26-piamonte-mobile",         file: "piamonte-tartufo.html", width: 414,  full: true },
+  { name: "27-uzbekistan-desktop",      file: "uzbekistan-ruta-seda.html", width: 1280, full: true },
+  { name: "28-namibia-desktop",         file: "namibia-dunas.html", width: 1280, full: true },
+  { name: "29-laponia-desktop",         file: "laponia-auroras.html", width: 1280, full: true },
+  { name: "30-bahia-desktop",           file: "bahia-otro-carnaval.html", width: 1280, full: true },
+  { name: "31-japon-mono-desktop",      file: "japon-mono-no-aware.html", width: 1280, full: true },
+  { name: "32-butan-desktop",           file: "butan-nepal-himalaya.html", width: 1280, full: true },
+  { name: "33-marruecos-desktop",       file: "marruecos-imperial.html", width: 1280, full: true },
+  { name: "34-croacia-desktop",         file: "croacia-islas-dalmatas.html", width: 1280, full: true },
+  { name: "35-alaska-salvaje-desktop",  file: "alaska-salvaje.html", width: 1280, full: true },
 ];
 
 (async () => {
