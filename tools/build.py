@@ -63,6 +63,14 @@ STOP_COORDS = {
     "Lago di Como": [45.9700, 9.2500],
     "Bolonia": [44.4949, 11.3426],
     "Venecia": [45.4408, 12.3155],
+    "Santo Stefano Belbo": [44.7115, 8.2434],
+    "Canelli": [44.7222, 8.2933],
+    "Barbaresco": [44.7232, 8.0788],
+    "Treiso": [44.6843, 8.0530],
+    "Alba": [44.7000, 8.0333],
+    "Pollenzo": [44.7034, 7.8983],
+    "Bra": [44.6989, 7.8589],
+    "Barolo": [44.6125, 7.9436],
     "Lisboa": [38.7223, -9.1393],
     "Évora": [38.5667, -7.9000],
     "Sevilla": [37.3886, -5.9823],
@@ -255,6 +263,14 @@ def build_journey(j):
         </a>""" for s in j['similar']
     ])
     incl_html = "\n".join([f"          <li>{x}</li>" for x in j['includes']])
+    excl_html = ""
+    if j.get('excludes'):
+        items = "\n".join([f"          <li>{x}</li>" for x in j['excludes']])
+        excl_html = f"""
+        <h3 class="excludes-head">Lo que no incluye</h3>
+        <ul class="check-list excludes-list">
+{items}
+        </ul>"""
 
     return f"""{HEAD(j['title'] + ' · Blisniuk & Amanov', j['meta_desc'])}
 
@@ -273,6 +289,7 @@ def build_journey(j):
       </nav>
       <span class="eyebrow light">{j['eyebrow']}</span>
       <h1>{j['headline']}</h1>
+      {f'<p class="hero-sub"><em>{j["subtitle"]}</em></p>' if j.get('subtitle') else ''}
       <a href="#fechas" class="btn btn-laurel">Ver fechas y precios</a>
     </div>
 
@@ -349,7 +366,7 @@ def build_journey(j):
         <h2>Lo que incluye</h2>
         <ul class="check-list">
 {incl_html}
-        </ul>
+        </ul>{excl_html}
       </div>
       <div class="dates-table" id="fechas">
         <h2>Fechas y precios</h2>
@@ -582,57 +599,89 @@ JOURNEYS = [
         "includes": DEFAULT_INCLUDES,
     },
     {
-        "slug": "norte-italia",
-        "title": "Norte de Italia",
-        "headline": "Norte de Italia 2026",
-        "eyebrow": "Pequeña expedición · Europa",
-        "meta_desc": "Once días de la riviera ligure al alto Véneto, atravesando Cinque Terre, los Alpes lombardos y la laguna de Venecia.",
-        "hero": "j-italy.jpg", "hero_alt": "Costa amalfitana al atardecer",
-        "portrait": "dest-italy.jpg",
-        "duration": "11 días", "nights": "10 noches", "max_guests": 16,
-        "window": "Abril–Octubre", "price_from": "$14,800 USD",
-        "intro_h2": "Once días entre lago, viñedo, costa y laguna — el norte italiano sin atajos.",
-        "intro_p1": "Empezamos en Milán con una cena privada en una casa señorial del centro, descendemos a la Liguria para tres días de Cinque Terre con barco propio, subimos a los lagos prealpinos y cerramos en Venecia con una góndola al amanecer cuando todavía no hay nadie despierto.",
-        "intro_p2": "Comemos donde comen los locales — y donde comen los locales que saben — con paradas en cinco mesas marcadas con estrella y otras tantas trattorias familiares. Dormimos en cuatro propiedades históricas seleccionadas a mano.",
+        "slug": "piamonte-tartufo",
+        "title": "Piamonte",
+        "headline": "Piamonte",
+        "subtitle": "Tartufo, Nebbiolo y Pavese · Edición octubre 2026",
+        "eyebrow": "Pequeño grupo · Italia · Otoño",
+        "meta_desc": "Ocho días en las Langhe en el peak de la temporada del tartufo bianco. Bodegas históricas, caza al amanecer y la casa natal de Pavese. La única ventana del año en que todo coincide al mismo tiempo.",
+        "hero": "hero-piamonte-tartufo.jpg", "hero_alt": "Viñedos de las Langhe en octubre con niebla baja",
+        "portrait": "wildlife-piamonte-tartufo.jpg",
+        "duration": "8 días", "nights": "7 noches", "max_guests": 8,
+        "window": "Octubre", "price_from": "$8,450 USD",
+        "intro_h2": "Ocho días en el Piamonte gastronómico y literario, en la única ventana del año en que todo sucede al mismo tiempo.",
+        "intro_p1": "A mediados de octubre, las Langhe entran en su momento más pleno: los grandes domaines terminan la cosecha del Nebbiolo, los trifolau salen al amanecer a buscar el primer tartufo bianco de la temporada, las hojas de las viñas se ponen rojas, y los productores chicos están en el ritmo más fértil del año. Ir tres semanas antes de la subasta de Alba significa producto fresco, productores no saturados de prensa, y el campo todavía respirando a su ritmo humano.",
+        "intro_p2": "Nos instalamos en una cascina de uso exclusivo en Santo Stefano Belbo — la casa natal de Cesare Pavese, el escenario de <em>La luna y las hogueras</em>. Desde ahí salimos a Barbaresco, Barolo, Pollenzo, las catedrales subterráneas de Canelli. Pero también volvemos cada noche a casa, donde una cocinera del pueblo nos espera, donde el sommelier abre vinos en el jardín, y donde la sobremesa se vuelve el corazón del viaje.",
         "highlights": [
-            {"t": "Cena en palazzo privado", "b": "Cena de bienvenida en una casa milanesa del siglo XVII reservada para nuestro grupo."},
-            {"t": "Cinque Terre con embarcación propia", "b": "Tres días recorriendo los cinco pueblos en velero, sin la presión de los ferries."},
-            {"t": "Venecia antes del amanecer", "b": "Una hora de góndola privada con guía gondoliero de tercera generación."}
+            {"t": "La trufa, al amanecer", "b": "Caza con un trifolau de linaje en los bosques del Belbo, a las cinco y media de la madrugada, seguida del desayuno con frittata de tartufo en su casa familiar."},
+            {"t": "El Nebbiolo en tres voces", "b": "Produttori del Barbaresco con sus nueve cru comparados, una visita extendida a Vajra en Barolo, y una cata vertical histórica (1985, 1996, 2004, 2016) en la cascina, moderada por nuestro sommelier."},
+            {"t": "La cena donde somos anfitriones", "b": "La última noche cambia el rol: invitamos a las familias productoras que abrieron sus cantinas durante la semana. Asado al fuego en el jardín de la cascina, vinos que ellos traen, mate al final."}
         ],
-        "stops": ["Milán", "Turín", "Sestri Levante", "Portovenere", "Parma", "Lago di Como", "Bolonia", "Venecia"],
-        "itin_intro": "Once días, ocho ciudades, una sola idea: leer el norte de Italia a través de su cocina, su arte y su agua.",
+        "stops": ["Santo Stefano Belbo", "Canelli", "Barbaresco", "Treiso", "Alba", "Pollenzo", "Bra", "Barolo"],
+        "itin_intro": "Ocho días, una sola base, un solo grupo. Empezamos en la cascina con una cena cocinada en casa por una cocinera del pueblo y terminamos siete noches después en el mismo jardín, con los productores que conocimos durante la semana sentados a la mesa como nuestros invitados. En el medio: una caza de trufas a las cinco y media de la madrugada, los nueve cru del Barbaresco comparados en una sola cata, las catedrales subterráneas de Canelli, la casa natal de Pavese, una vertical de Nebbiolo en la cascina iluminada por velas, y una cena estrellada en la única terraza del Piamonte donde el ocaso cae sobre las Langhe.",
         "days": [
-            {"n": 1, "label": "Día 1 · Llegada", "title": "Llegada a Milán", "body": "Bienvenida privada en el aeropuerto, traslado al hotel y cena de apertura en un palazzo del siglo XVII.", "meals": "Cena", "lodging": "Park Hyatt Milán", "img": "day-1.jpg"},
-            {"n": 2, "label": "Días 2 · 3", "title": "Milán y Turín", "body": "Visita a la Última Cena con acceso privado, tarde en La Scala con un asistente del director, almuerzo del barolo en Turín y noche entre vinos del Piamonte.", "meals": "Desayuno y almuerzo", "lodging": "Principe di Savoia", "img": "day-2.jpg"},
-            {"n": 4, "label": "Días 4 · 5 · 6", "title": "Liguria y Cinque Terre", "body": "Tres días en la Riviera con embarcación propia. Pesto en Génova, focaccia en Recco, los cinco pueblos a velocidad de vela y cena al pie del castillo de Portovenere.", "meals": "Pensión completa", "lodging": "Grand Hotel dei Castelli", "img": "day-3.jpg"},
-            {"n": 7, "label": "Días 7 · 8", "title": "Parma y los lagos", "body": "Visita a una fromaggería de parmigiano y una de prosciutto. Tarde en el Lago di Como, alojados en Villa d'Este con cóctel en la terraza al atardecer.", "meals": "Desayuno y cena", "lodging": "Villa d'Este", "img": "day-4.jpg"},
-            {"n": 9, "label": "Días 9 · 10 · 11", "title": "Bolonia y Venecia", "body": "Bolonia en bicicleta, una tarde en el Quadrilatero del Mercado y tres noches en Venecia con visita matutina a la Basílica de San Marco antes de la apertura al público.", "meals": "Pensión completa", "lodging": "Aman Venice", "img": "day-2.jpg"},
+            {"n": 1, "label": "Día 1 · Llegada", "title": "Bienvenida en la cascina", "body": "Llegadas escalonadas desde Torino o Milán. Check-in en la casa de Santo Stefano Belbo. Aperitivo en el jardín con vermut local y Moscato d'Asti, cena de bienvenida cocinada por la cocinera del pueblo: tajarin al ragù, brasato al Barolo, bonet. El sommelier presenta el viaje.", "meals": "Cena", "lodging": "Cascina privada en Santo Stefano Belbo", "img": "day-piamonte-tartufo-1.jpg"},
+            {"n": 2, "label": "Día 2 · Pavese y Canelli", "title": "La casa del escritor y las catedrales subterráneas", "body": "Caminata por Santo Stefano Belbo y visita a la Fondazione Cesare Pavese y la casa natal. Almuerzo en la Enoteca Regionale di Canelli. Por la tarde, descenso a las Catedrales Subterráneas de Canelli, las antiguas bodegas históricas de espumantes inscriptas por UNESCO. Cata final. Cena ligera en casa.", "meals": "Pensión completa", "lodging": "Cascina privada en Santo Stefano Belbo", "img": "day-piamonte-tartufo-2.jpg"},
+            {"n": 3, "label": "Día 3 · Barbaresco", "title": "Los nueve cru", "body": "Visita y cata comparativa en Produttori del Barbaresco — los nueve cru Riserva en una sola sesión. Almuerzo en Trattoria Antica Torre, en el corazón del pueblo. Por la tarde, cata íntima en Roagna: Barbaresco artesanal, sin filtración. Vuelta vía el Bricco di Treiso para el ocaso. Cena en casa con sobremesa larga.", "meals": "Pensión completa", "lodging": "Cascina privada en Santo Stefano Belbo", "img": "day-piamonte-tartufo-3.jpg"},
+            {"n": 4, "label": "Día 4 · La trufa", "title": "Amanecer en el bosque y cena estrellada", "body": "5:30 caza con trifolau y su lagotto romagnolo, seguida del desayuno en su casa familiar. Vuelta a la cascina para una larga siesta. Por la tarde, MUDET — Museo del Tartufo en Alba y paseo por el centro histórico. La cena, en la terraza de La Ciau del Tornavento (1 estrella Michelin), justo cuando el ocaso cae sobre las Langhe.", "meals": "Pensión completa", "lodging": "Cascina privada en Santo Stefano Belbo", "img": "day-piamonte-tartufo-4.jpg"},
+            {"n": 5, "label": "Día 5 · Pollenzo y Bra", "title": "La idea del Slow Food", "body": "Mañana en la Università di Scienze Gastronomiche de Pollenzo con una sesión sobre el manifiesto del Slow Food, la biodiversidad alimentaria y los Presidi. Almuerzo en el Albergo dell'Agenzia. Tarde en la Banca del Vino (350.000 botellas conservadas) y caminata por Bra, la ciudad donde nació el movimiento en 1986. Aperitivo en Boccondivino, el restaurante fundacional. Cena ligera en casa.", "meals": "Pensión completa", "lodging": "Cascina privada en Santo Stefano Belbo", "img": "day-piamonte-tartufo-2.jpg"},
+            {"n": 6, "label": "Día 6 · Barolo", "title": "El Nebbiolo y la vertical histórica", "body": "Visita extendida y cata vertical en G.D. Vajra, con almuerzo en cantina junto a la familia Vaira. Por la tarde, WiMu — Museo del Vino en el Castello di Barolo, y mirador de La Morra. Cena en casa preparada por la cocinera, y a las 22:30 la cata histórica vertical: cuatro Nebbiolos de 1985, 1996, 2004 y 2016, moderada por nuestro sommelier.", "meals": "Pensión completa", "lodging": "Cascina privada en Santo Stefano Belbo", "img": "day-piamonte-tartufo-3.jpg"},
+            {"n": 7, "label": "Día 7 · La noche B&A", "title": "Cuando nosotros somos los anfitriones", "body": "Mañana libre — caminata opcional por el Sentiero Pavesiano o tarde tranquila en el jardín. Visita opcional al productor de avellana Tonda Gentile o al quesero de Castelmagno. A la noche, la cena B&A: las familias productoras que abrieron sus cantinas durante la semana llegan como nuestros invitados. Asado al fuego en el patio de la cascina, vinos que ellos traen, mate y dulce de leche al final. Lectura del último párrafo de <em>La luna y las hogueras</em>.", "meals": "Pensión completa", "lodging": "Cascina privada en Santo Stefano Belbo", "img": "day-piamonte-tartufo-1.jpg"},
+            {"n": 8, "label": "Día 8 · Despedida", "title": "Vuelta", "body": "Desayuno tranquilo. Traslados escalonados a Torino Caselle o Milán Malpensa según horarios de vuelo. Parada opcional en Asti o Cherasco camino al aeropuerto.", "meals": "Desayuno", "lodging": "—", "img": "day-piamonte-tartufo-4.jpg"},
         ],
         "lodges": [
-            {"name": "Park Hyatt Milán", "where": "Milán, Italia", "img": "lodge-2.jpg"},
-            {"name": "Grand Hotel dei Castelli", "where": "Liguria, Italia", "img": "lodge-1.jpg"},
-            {"name": "Villa d'Este", "where": "Lago di Como, Italia", "img": "lodge-4.jpg"},
-            {"name": "Aman Venice", "where": "Venecia, Italia", "img": "lodge-3.jpg"},
+            {"name": "Cascina privada Santo Stefano Belbo", "where": "Santo Stefano Belbo, Langa Astigiana, Cuneo", "img": "lodge-piamonte-tartufo-1.jpg"},
+            {"name": "Cantine Contratto · Catedrales Subterráneas", "where": "Canelli — Patrimonio UNESCO", "img": "lodge-piamonte-tartufo-2.jpg"},
+            {"name": "G.D. Vajra", "where": "Vergne, Barolo", "img": "lodge-piamonte-tartufo-3.jpg"},
+            {"name": "La Ciau del Tornavento", "where": "Treiso · 1 estrella Michelin", "img": "lodge-piamonte-tartufo-4.jpg"},
         ],
         "extensions": [
-            {"meta": "+4 días · desde $5,200 USD", "title": "Sicilia y Erice", "body": "Cuatro noches entre Palermo, Cefalú y Erice. Cocina sícula y arte normando.", "img": "dest-italy.jpg"},
-            {"meta": "+5 días · desde $6,400 USD", "title": "Roma y Costa Amalfitana", "body": "Roma con audiencias privadas y cinco noches en Positano.", "img": "dest-europe.jpg"},
-            {"meta": "+3 días · desde $3,900 USD", "title": "Dolomitas", "body": "Tres días entre los picos del Tirol italiano. Senderismo de altura suave y cocina alpina.", "img": "dest-arctic.jpg"},
+            {"meta": "+2 días · desde $1,450 USD", "title": "Torino antes · capital del Risorgimento", "body": "Caffè reales (Al Bicerin, Mulassano), Museo Egizio (el segundo más grande del mundo), Pinacoteca Agnelli y una cata de vermut en Carpano.", "img": "dest-italy.jpg"},
+            {"meta": "+3 días · desde $2,850 USD", "title": "Lago di Como después · descompresión", "body": "Bellagio, Villa Carlotta, Villa del Balbianello y dos noches en Villa d'Este. El descanso después de las Langhe, con el ritmo del lago.", "img": "dest-europe.jpg"},
+            {"meta": "+2 días · desde $1,650 USD", "title": "Milán antes · diseño y Triennale", "body": "Triennale di Milano, Fondazione Prada, Bagatti Valsecchi y una cena en Cracco. La precondición urbana al campo.", "img": "j-italy.jpg"},
         ],
         "dates": [
-            {"date": "12 abril 2026", "status": "Abierta", "status_class": "open", "price": "$14,800"},
-            {"date": "10 mayo 2026", "status": "Pocas plazas", "status_class": "few", "price": "$15,400"},
-            {"date": "7 junio 2026", "status": "Abierta", "status_class": "open", "price": "$16,200"},
-            {"date": "13 septiembre 2026", "status": "Abierta", "status_class": "open", "price": "$15,800"},
-            {"date": "11 octubre 2026", "status": "Abierta", "status_class": "open", "price": "$14,800"},
+            {"date": "Vie 16 oct – Vie 23 oct 2026", "status": "Abierta", "status_class": "open", "price": "$8,450"},
+            {"date": "Vie 15 oct – Vie 22 oct 2027", "status": "Abierta", "status_class": "open", "price": "$9,750"},
         ],
         "similar": [
             {"href": "espana-portugal.html", "img": "j-spainport.jpg", "pill": "14 días", "title": "España y Portugal"},
             {"href": "japon-clasico.html", "img": "j-japan.jpg", "pill": "9 días", "title": "Japón clásico"},
+            {"href": "gran-migracion.html", "img": "j-migration.jpg", "pill": "14 días", "title": "La Gran Migración"},
             {"href": "angkor-sudeste-asiatico.html", "img": "j-asia.jpg", "pill": "15 días", "title": "Angkor y Sudeste Asiático"},
-            {"href": "egipto-nilo.html", "img": "j-egypt.jpg", "pill": "10 días", "title": "Egipto y el Nilo"},
         ],
-        "includes": DEFAULT_INCLUDES,
+        "includes": [
+            "7 noches en cascina privada en Santo Stefano Belbo (uso exclusivo del grupo)",
+            "Pensión completa: 7 desayunos, 7 almuerzos, 7 cenas",
+            "Cocinera local que prepara los desayunos y las cenas en casa",
+            "1 cena en restaurante 1 estrella Michelin (La Ciau del Tornavento)",
+            "Cata histórica vertical de Nebbiolo (4 añadas: 1985, 1996, 2004, 2016) en la cascina",
+            "Caza de tartufo bianco al amanecer con trifolau de linaje + desayuno en su casa",
+            "Visitas y catas con productores: Produttori del Barbaresco, Roagna, G.D. Vajra",
+            "Visita a las Catedrales Subterráneas de Canelli (Patrimonio UNESCO)",
+            "Visita a la Fondazione Cesare Pavese y la casa natal",
+            "Sesión académica en Università di Scienze Gastronomiche, Pollenzo",
+            "Visita guiada a la Banca del Vino, Pollenzo",
+            "MUDET — Museo del Tartufo, Alba",
+            "WiMu — Museo del Vino, Castello di Barolo",
+            "La cena B&amp;A en la cascina (productores invitados, asado al fuego)",
+            "Sommelier italoparlante acompañando al grupo toda la semana",
+            "Fotógrafo profesional documentando los 8 días + libro custom impreso para cada pasajero",
+            "Kit B&amp;A pre-viaje: 5 libros (incluyendo <em>La luna y las hogueras</em> de Pavese), journal de cuero, mapa de las Langhe, carta de bienvenida",
+            "Detalles diarios: flores frescas, cartas manuscritas con el plan del día",
+            "Dos furgones privados con chofer durante los 8 días",
+            "Traslados aeropuerto-cascina-aeropuerto (Torino Caselle o Milán Malpensa)",
+            "Anfitrión B&amp;A en piso durante toda la semana",
+            "Aporte a la Fundación B&amp;A (3% del valor del viaje)",
+        ],
+        "excludes": [
+            "Vuelos internacionales desde/hacia Latinoamérica",
+            "Seguro de viaje (B&amp;A lo coordina a costo)",
+            "Bebidas premium y vinos de cellar fuera del programa",
+            "Gastos personales y compras (incluida la trufa que cada pasajero quiera llevar)",
+            "Propinas opcionales para el equipo en piso",
+            "Extensiones pre y post viaje (cotizadas por separado)",
+        ],
     },
     {
         "slug": "japon-clasico",
@@ -681,7 +730,7 @@ JOURNEYS = [
         "similar": [
             {"href": "angkor-sudeste-asiatico.html", "img": "j-asia.jpg", "pill": "15 días", "title": "Angkor y Sudeste Asiático"},
             {"href": "india-tigres.html", "img": "dest-india.jpg", "pill": "11 días", "title": "India y los tigres"},
-            {"href": "norte-italia.html", "img": "j-italy.jpg", "pill": "11 días", "title": "Norte de Italia"},
+            {"href": "piamonte-tartufo.html", "img": "j-italy.jpg", "pill": "8 días", "title": "Piamonte"},
             {"href": "peru-machu-picchu.html", "img": "j-peru.jpg", "pill": "8 días", "title": "Perú y Machu Picchu"},
         ],
         "includes": DEFAULT_INCLUDES,
@@ -735,7 +784,7 @@ JOURNEYS = [
             {"href": "gran-migracion.html", "img": "j-migration.jpg", "pill": "14 días", "title": "La Gran Migración"},
             {"href": "japon-clasico.html", "img": "j-japan.jpg", "pill": "9 días", "title": "Japón clásico"},
             {"href": "india-tigres.html", "img": "dest-india.jpg", "pill": "11 días", "title": "India y los tigres"},
-            {"href": "norte-italia.html", "img": "j-italy.jpg", "pill": "11 días", "title": "Norte de Italia"},
+            {"href": "piamonte-tartufo.html", "img": "j-italy.jpg", "pill": "8 días", "title": "Piamonte"},
         ],
         "includes": DEFAULT_INCLUDES,
     },
@@ -838,7 +887,7 @@ JOURNEYS = [
             {"date": "11 octubre 2026", "status": "Abierta", "status_class": "open", "price": "$16,800"},
         ],
         "similar": [
-            {"href": "norte-italia.html", "img": "j-italy.jpg", "pill": "11 días", "title": "Norte de Italia"},
+            {"href": "piamonte-tartufo.html", "img": "j-italy.jpg", "pill": "8 días", "title": "Piamonte"},
             {"href": "japon-clasico.html", "img": "j-japan.jpg", "pill": "9 días", "title": "Japón clásico"},
             {"href": "egipto-nilo.html", "img": "j-egypt.jpg", "pill": "10 días", "title": "Egipto y el Nilo"},
             {"href": "india-tigres.html", "img": "dest-india.jpg", "pill": "11 días", "title": "India y los tigres"},
@@ -895,7 +944,7 @@ JOURNEYS = [
             {"href": "japon-clasico.html", "img": "j-japan.jpg", "pill": "9 días", "title": "Japón clásico"},
             {"href": "india-tigres.html", "img": "dest-india.jpg", "pill": "11 días", "title": "India y los tigres"},
             {"href": "egipto-nilo.html", "img": "j-egypt.jpg", "pill": "10 días", "title": "Egipto y el Nilo"},
-            {"href": "norte-italia.html", "img": "j-italy.jpg", "pill": "11 días", "title": "Norte de Italia"},
+            {"href": "piamonte-tartufo.html", "img": "j-italy.jpg", "pill": "8 días", "title": "Piamonte"},
         ],
         "includes": DEFAULT_INCLUDES,
     },

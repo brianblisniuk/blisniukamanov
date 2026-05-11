@@ -73,6 +73,18 @@ PALETTE = [
 
     # Fundación
     ("fund-people.jpg",        [(150,80,60), (220,150,110), (240,210,180)], 0.55, "warm",  "city"),
+
+    # Piamonte (paleta otoñal: viñedos rojos, niebla, dorado bajo)
+    ("hero-piamonte-tartufo.jpg",     [(70,55,75), (170,110,80), (235,200,140)], 0.55, "warm", "mountain"),
+    ("wildlife-piamonte-tartufo.jpg", [(60,50,40), (140,110,70), (220,190,140)], 0.60, "warm", "forest"),
+    ("day-piamonte-tartufo-1.jpg",    [(80,60,50), (190,140,90), (240,210,170)], 0.55, "warm", "city"),
+    ("day-piamonte-tartufo-2.jpg",    [(50,45,55), (110,90,90), (190,170,150)], 0.50, "warm", "city"),
+    ("day-piamonte-tartufo-3.jpg",    [(70,55,55), (160,120,100), (230,200,170)], 0.55, "warm", "city"),
+    ("day-piamonte-tartufo-4.jpg",    [(60,50,40), (140,110,80), (220,190,150)], 0.55, "warm", "forest"),
+    ("lodge-piamonte-tartufo-1.jpg",  [(80,65,55), (190,150,110), (235,210,170)], 0.55, "warm", "city"),
+    ("lodge-piamonte-tartufo-2.jpg",  [(45,40,45), (100,85,80), (180,160,140)], 0.50, "warm", "city"),
+    ("lodge-piamonte-tartufo-3.jpg",  [(70,55,50), (150,115,85), (215,185,150)], 0.55, "warm", "city"),
+    ("lodge-piamonte-tartufo-4.jpg",  [(60,75,90), (170,160,140), (235,215,185)], 0.50, "warm", "mountain"),
 ]
 
 def add_noise(img, amount=10):

@@ -33,6 +33,8 @@ const pages = [
   { name: "22-espana-portugal-desktop", file: "espana-portugal.html", width: 1280, full: true },
   { name: "23-india-tigres-desktop",    file: "india-tigres.html",   width: 1280, full: true },
   { name: "24-peru-desktop",            file: "peru-machu-picchu.html", width: 1280, full: true },
+  { name: "25-piamonte-desktop",        file: "piamonte-tartufo.html", width: 1280, full: true },
+  { name: "26-piamonte-mobile",         file: "piamonte-tartufo.html", width: 414,  full: true },
 ];
 
 (async () => {
