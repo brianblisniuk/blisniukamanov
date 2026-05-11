@@ -4,9 +4,107 @@ Generates journey detail pages + region pages from data structures.
 
 Usage: python3 tools/build.py
 """
-import os, html as html_lib
+import os, json, html as html_lib
 
 REPO = "/home/user/blisniukamanov"
+
+# Map of stop name → [lat, lng]. Used to render the interactive Leaflet map.
+# Add new stops here when adding a new journey.
+STOP_COORDS = {
+    # África
+    "Nairobi": [-1.2921, 36.8219],
+    "Aberdares": [-0.3678, 36.7372],
+    "Tarangire": [-3.8278, 36.0186],
+    "Manyara y Ngorongoro": [-3.2403, 35.4881],
+    "Manyara": [-3.6500, 35.7833],
+    "Ngorongoro": [-3.2403, 35.4881],
+    "Serengeti central": [-2.3333, 34.8333],
+    "Kogatende": [-1.6700, 34.9000],
+    "Reserva privada Naboisho": [-1.4400, 35.3500],
+    "Naboisho": [-1.4400, 35.3500],
+    "Masai Mara": [-1.4400, 35.1500],
+    "Arusha": [-3.3869, 36.6830],
+    "Pejeta": [0.0167, 36.9000],
+    "Johannesburgo": [-26.2041, 28.0473],
+    "Livingstone": [-17.8419, 25.8543],
+    "Cataratas Victoria": [-17.9243, 25.8572],
+    "Chobe": [-18.7833, 25.0500],
+    "Sabi Sands": [-24.7833, 31.3833],
+    "Khwai": [-19.1500, 23.7833],
+    "Delta del Okavango": [-19.2833, 22.8000],
+    "Maun": [-19.9800, 23.4200],
+    # Sudamérica
+    "Buenos Aires": [-34.6037, -58.3816],
+    "El Calafate": [-50.3403, -72.2647],
+    "Perito Moreno": [-50.4861, -73.0306],
+    "Torres del Paine": [-51.0000, -73.0000],
+    "Puerto Natales": [-51.7236, -72.5167],
+    "Ushuaia": [-54.8019, -68.3030],
+    "Canal Beagle": [-54.8500, -68.3000],
+    "Manaos": [-3.1190, -60.0217],
+    "Río Negro": [-3.0000, -60.0000],
+    "Anavilhanas": [-2.4500, -60.7500],
+    "Cuiabá": [-15.6014, -56.0979],
+    "Transpantaneira": [-16.5333, -56.7500],
+    "Porto Jofre": [-17.3500, -56.8000],
+    "Foz do Iguaçú": [-25.5163, -54.5854],
+    "Lima": [-12.0464, -77.0428],
+    "Cuzco": [-13.5320, -71.9675],
+    "Valle Sagrado": [-13.3167, -72.0833],
+    "Ollantaytambo": [-13.2583, -72.2625],
+    "Aguas Calientes": [-13.1631, -72.5286],
+    "Machu Picchu": [-13.1631, -72.5450],
+    # Europa
+    "Milán": [45.4642, 9.1900],
+    "Turín": [45.0703, 7.6869],
+    "Sestri Levante": [44.2733, 9.4000],
+    "Portovenere": [44.0489, 9.8389],
+    "Parma": [44.8015, 10.3279],
+    "Lago di Como": [45.9700, 9.2500],
+    "Bolonia": [44.4949, 11.3426],
+    "Venecia": [45.4408, 12.3155],
+    "Lisboa": [38.7223, -9.1393],
+    "Évora": [38.5667, -7.9000],
+    "Sevilla": [37.3886, -5.9823],
+    "Granada": [37.1773, -3.5986],
+    "Córdoba": [37.8847, -4.7794],
+    "Madrid": [40.4168, -3.7038],
+    "Toledo": [39.8628, -4.0273],
+    "Bilbao": [43.2630, -2.9350],
+    "Barcelona": [41.3851, 2.1734],
+    # Asia
+    "Tokio": [35.6762, 139.6503],
+    "Hakone": [35.2329, 139.1058],
+    "Kioto": [35.0116, 135.7681],
+    "Nara": [34.6851, 135.8048],
+    "Osaka": [34.6937, 135.5023],
+    "Hanoi": [21.0285, 105.8542],
+    "Ha Long Bay": [20.9101, 107.1839],
+    "Hai Phong": [20.8449, 106.6881],
+    "Ho Chi Minh": [10.8231, 106.6297],
+    "Siem Reap": [13.3633, 103.8564],
+    "Luang Prabang": [19.8845, 102.1348],
+    "Bangkok": [13.7563, 100.5018],
+    "Delhi": [28.7041, 77.1025],
+    "Agra": [27.1767, 78.0081],
+    "Ranthambore": [26.0173, 76.5026],
+    "Jaipur": [26.9124, 75.7873],
+    "Udaipur": [24.5854, 73.7125],
+    # Norte de África / Oriente Medio
+    "El Cairo": [30.0444, 31.2357],
+    "Saqqara": [29.8714, 31.2167],
+    "Luxor": [25.6872, 32.6396],
+    "Edfu": [24.9779, 32.8731],
+    "Kom Ombo": [24.4658, 32.9281],
+    "Asuán": [24.0889, 32.8998],
+    "Abu Simbel": [22.3372, 31.6258],
+    # Norteamérica
+    "Anchorage": [61.2181, -149.9003],
+    "Seward": [60.1042, -149.4422],
+    "Kenai Fjords": [59.9197, -149.6500],
+    "Talkeetna": [62.3208, -150.1078],
+    "Denali": [63.0695, -151.0070],
+}
 
 # =============================================================================
 # COMMON BLOCKS
@@ -113,6 +211,13 @@ def build_journey(j):
         for d in j['days']
     ])
     stops_html = "\n".join([f'          <li><span>{i+1}</span> {s}</li>' for i, s in enumerate(j['stops'])])
+    # Build JSON data for the interactive map: only stops with known coords
+    coords_data = []
+    for s in j['stops']:
+        if s in STOP_COORDS:
+            lat, lng = STOP_COORDS[s]
+            coords_data.append({"name": s, "lat": lat, "lng": lng})
+    coords_json = json.dumps(coords_data, ensure_ascii=False).replace("'", "&#39;")
     lodges_html = "\n".join([
         f"""        <a href="#" class="lodge-card">
           <img src="assets/img/{l['img']}" alt="{l['name']}" />
@@ -196,7 +301,9 @@ def build_journey(j):
   <section class="map-itinerary">
     <div class="container map-itinerary-grid">
       <div class="map-side">
-        <img src="assets/img/route-map.jpg" alt="Mapa de la ruta" />
+        <div class="map-frame" data-stops='{coords_json}'>
+          <img src="assets/img/route-map.jpg" alt="Mapa de la ruta" />
+        </div>
         <ul class="map-stops">
 {stops_html}
         </ul>

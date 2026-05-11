@@ -595,4 +595,75 @@
     if (a.getAttribute("href") === "journeys.html") return; // anchor handles itself
   });
 
+  /* ==========================================================
+     Interactive route map (Leaflet + OpenStreetMap / Carto)
+     Looks for .map-frame[data-stops] and renders an interactive
+     map with numbered markers + dashed polyline connecting stops.
+     ========================================================== */
+  function initRouteMaps() {
+    if (typeof L === "undefined") return;
+    document.querySelectorAll(".map-frame[data-stops]").forEach((frame) => {
+      let stops;
+      try { stops = JSON.parse(frame.dataset.stops); } catch (e) { return; }
+      if (!Array.isArray(stops) || stops.length === 0) return;
+
+      const mapEl = document.createElement("div");
+      mapEl.className = "leaflet-map";
+      frame.innerHTML = "";
+      frame.appendChild(mapEl);
+
+      const map = L.map(mapEl, {
+        zoomControl: true,
+        scrollWheelZoom: false,
+        attributionControl: true,
+      });
+
+      L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · © <a href="https://carto.com/attributions">CARTO</a>',
+        subdomains: "abcd",
+        maxZoom: 19,
+      }).addTo(map);
+
+      const latlngs = stops.map((s) => [s.lat, s.lng]);
+
+      stops.forEach((stop, i) => {
+        const icon = L.divIcon({
+          className: "route-marker",
+          iconSize: [28, 28],
+          iconAnchor: [14, 14],
+          html: `<span>${i + 1}</span>`,
+        });
+        L.marker([stop.lat, stop.lng], { icon })
+          .addTo(map)
+          .bindPopup(`<strong>${i + 1}. ${stop.name}</strong>`);
+      });
+
+      L.polyline(latlngs, {
+        color: "#3D5A3E",
+        weight: 2.5,
+        opacity: 0.9,
+        dashArray: "6,8",
+      }).addTo(map);
+
+      if (latlngs.length > 1) {
+        map.fitBounds(latlngs, { padding: [30, 30] });
+      } else {
+        map.setView(latlngs[0], 8);
+      }
+    });
+  }
+
+  if (document.querySelector(".map-frame[data-stops]")) {
+    const css = document.createElement("link");
+    css.rel = "stylesheet";
+    css.href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
+    document.head.appendChild(css);
+
+    const script = document.createElement("script");
+    script.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+    script.async = true;
+    script.onload = initRouteMaps;
+    document.head.appendChild(script);
+  }
+
 })();
