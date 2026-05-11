@@ -253,7 +253,7 @@
       const key = panelKey(b);
       panels.forEach((p) => {
         const match = p.dataset.panel === key;
-        p.style.display = match ? "" : (panels.length > 1 ? "none" : "");
+        p.classList.toggle("active", match);
         if (match) {
           p.classList.add("just-tabbed");
           setTimeout(() => p.classList.remove("just-tabbed"), 600);
@@ -628,6 +628,7 @@
         zoomControl: true,
         scrollWheelZoom: false,
         attributionControl: true,
+        zoomSnap: 0.25,
       });
 
       L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
@@ -659,11 +660,19 @@
         dashArray: "6,8",
       }).addTo(map);
 
+      const bounds = L.latLngBounds(latlngs);
       const fitAll = () => {
-        if (latlngs.length > 1) map.fitBounds(latlngs, { padding: [30, 30] });
+        if (latlngs.length > 1) map.fitBounds(bounds, { padding: [30, 30] });
         else map.setView(latlngs[0], 8);
       };
       fitAll();
+
+      // Recompute size once the layout settles (sticky containers + tab swaps
+      // sometimes initialize the map with 0×0 dimensions otherwise).
+      const refreshSize = () => { map.invalidateSize(); fitAll(); };
+      setTimeout(refreshSize, 80);
+      setTimeout(refreshSize, 400);
+      window.addEventListener("resize", () => { map.invalidateSize(); });
 
       // ----- Scroll-spy (only if there are days with data-stop-index) -----
       const section = frame.closest(".itinerary-sticky");
@@ -673,39 +682,45 @@
       if (!days.length) return;
 
       const highlight = (idx) => {
-        // Markers
         markers.forEach((m, i) => {
           if (!m._icon) return;
           m._icon.classList.toggle("route-marker-active", i === idx);
         });
-        // Map stops list
         stopsList.forEach((li, i) => li.classList.toggle("active", i === idx));
-        // Days
         days.forEach((d) => {
           const di = parseInt(d.dataset.stopIndex, 10);
           d.classList.toggle("is-active", di === idx);
         });
       };
 
+      // Pan to the active stop without changing zoom drastically — keep the
+      // surrounding context visible. If user is zoomed out beyond a sensible
+      // level, snap to a moderate zoom that shows the marker + neighbours.
+      const targetZoom = () => {
+        const z = map.getZoom();
+        const fit = map.getBoundsZoom(bounds, false);
+        // If we're at fit-all zoom, bump in a little; otherwise keep current.
+        return z <= fit + 0.3 ? Math.min(fit + 1.5, 8) : z;
+      };
+
       let currentIdx = -1;
       const io = new IntersectionObserver(
         (entries) => {
-          // Find the entry closest to the top of the viewport (40% line)
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               const idx = parseInt(entry.target.dataset.stopIndex, 10);
               if (!isNaN(idx) && idx !== currentIdx && idx < stops.length) {
                 currentIdx = idx;
                 highlight(idx);
-                map.flyTo([stops[idx].lat, stops[idx].lng], 6, {
-                  duration: 1.0,
-                  easeLinearity: 0.4,
+                map.flyTo([stops[idx].lat, stops[idx].lng], targetZoom(), {
+                  duration: 0.9,
+                  easeLinearity: 0.35,
                 });
               }
             }
           });
         },
-        { rootMargin: "-40% 0px -45% 0px", threshold: 0 }
+        { rootMargin: "-35% 0px -55% 0px", threshold: 0 }
       );
       days.forEach((d) => io.observe(d));
     });
