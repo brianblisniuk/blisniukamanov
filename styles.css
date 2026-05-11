@@ -3121,3 +3121,72 @@ p  { margin: 0 0 1em; }
   h1 { font-size: 38px; }
   h2 { font-size: 28px; }
 }
+
+/* =========================
+   Square corners on all images / image containers
+   (Override: keep buttons, form fields, modal cards rounded;
+    image cards and their bodies → 0)
+   ========================= */
+.img-card,
+.img-card img,
+.country-card img,
+.j-card,
+.j-card .j-img,
+.j-card .j-img img,
+.lodge-card img,
+.intro-portrait,
+.intro-portrait img,
+.rec-card,
+.rec-card img,
+.rec-mini img,
+.cat-cover,
+.cat-cover img,
+.video-frame,
+.video-frame img,
+.contact-split-image,
+.contact-split-image img,
+.day-img,
+.day-img img,
+.ext-card,
+.ext-card img,
+.about-split-image,
+.about-split-image img,
+.map-side,
+.map-side img,
+.region-hero,
+.region-hero-image,
+.region-hero-image img,
+.page-hero-image,
+.page-hero-image img,
+.brochures-stack img,
+.brochures-stack img:nth-child(1),
+.brochures-stack img:nth-child(3),
+.spotlight-frame,
+.spotlight-frame .slide img,
+.award-card,
+.award-card img,
+.heritage-hero,
+.heritage-hero img,
+.phila-hero,
+.phila-hero img,
+.phila-cta,
+.phila-cta img,
+.why-banner,
+.why-banner img,
+.quote-band,
+.quote-band img,
+.philanthropy-image,
+.philanthropy-image img,
+.editorial-image,
+.editorial-image img,
+.next-up img,
+.img-card-body,
+.img-card .label-pill,
+.j-card .j-pill,
+.j-card .j-offer,
+.label-pill {
+  border-radius: 0 !important;
+}
+/* Reset the brochure stack transform (no longer tilted) */
+.brochures-stack img:nth-child(1),
+.brochures-stack img:nth-child(3) { transform: none; }
