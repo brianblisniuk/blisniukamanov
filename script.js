@@ -599,6 +599,9 @@
      Interactive route map (Leaflet + OpenStreetMap / Carto)
      Looks for .map-frame[data-stops] and renders an interactive
      map with numbered markers + dashed polyline connecting stops.
+     If the section also contains .day[data-stop-index] children,
+     it sets up a scroll-spy that pans the map and highlights the
+     active marker as the user scrolls through the day-by-day.
      ========================================================== */
   function initRouteMaps() {
     if (typeof L === "undefined") return;
@@ -625,17 +628,19 @@
       }).addTo(map);
 
       const latlngs = stops.map((s) => [s.lat, s.lng]);
+      const markers = [];
 
       stops.forEach((stop, i) => {
         const icon = L.divIcon({
           className: "route-marker",
           iconSize: [28, 28],
           iconAnchor: [14, 14],
-          html: `<span>${i + 1}</span>`,
+          html: `<span data-i="${i}">${i + 1}</span>`,
         });
-        L.marker([stop.lat, stop.lng], { icon })
+        const m = L.marker([stop.lat, stop.lng], { icon })
           .addTo(map)
           .bindPopup(`<strong>${i + 1}. ${stop.name}</strong>`);
+        markers.push(m);
       });
 
       L.polyline(latlngs, {
@@ -645,11 +650,55 @@
         dashArray: "6,8",
       }).addTo(map);
 
-      if (latlngs.length > 1) {
-        map.fitBounds(latlngs, { padding: [30, 30] });
-      } else {
-        map.setView(latlngs[0], 8);
-      }
+      const fitAll = () => {
+        if (latlngs.length > 1) map.fitBounds(latlngs, { padding: [30, 30] });
+        else map.setView(latlngs[0], 8);
+      };
+      fitAll();
+
+      // ----- Scroll-spy (only if there are days with data-stop-index) -----
+      const section = frame.closest(".itinerary-sticky");
+      const days = section ? section.querySelectorAll(".day[data-stop-index]") : [];
+      const stopsList = section ? section.querySelectorAll(".map-stops li") : [];
+
+      if (!days.length) return;
+
+      const highlight = (idx) => {
+        // Markers
+        markers.forEach((m, i) => {
+          if (!m._icon) return;
+          m._icon.classList.toggle("route-marker-active", i === idx);
+        });
+        // Map stops list
+        stopsList.forEach((li, i) => li.classList.toggle("active", i === idx));
+        // Days
+        days.forEach((d) => {
+          const di = parseInt(d.dataset.stopIndex, 10);
+          d.classList.toggle("is-active", di === idx);
+        });
+      };
+
+      let currentIdx = -1;
+      const io = new IntersectionObserver(
+        (entries) => {
+          // Find the entry closest to the top of the viewport (40% line)
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const idx = parseInt(entry.target.dataset.stopIndex, 10);
+              if (!isNaN(idx) && idx !== currentIdx && idx < stops.length) {
+                currentIdx = idx;
+                highlight(idx);
+                map.flyTo([stops[idx].lat, stops[idx].lng], 6, {
+                  duration: 1.0,
+                  easeLinearity: 0.4,
+                });
+              }
+            }
+          });
+        },
+        { rootMargin: "-40% 0px -45% 0px", threshold: 0 }
+      );
+      days.forEach((d) => io.observe(d));
     });
   }
 

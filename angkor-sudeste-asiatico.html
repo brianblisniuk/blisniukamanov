@@ -100,9 +100,11 @@
     </div>
   </section>
 
-  <section class="map-itinerary">
-    <div class="container map-itinerary-grid">
-      <div class="map-side">
+  <section class="itinerary-sticky">
+    <div class="container itinerary-sticky-grid">
+      <aside class="itinerary-aside">
+        <h2>Itinerario</h2>
+        <p class="itin-lede">Quince días en avance hacia el oeste. De los cafés de Hanoi a los mercados de Bangkok, atravesando dos civilizaciones que se conocen poco.</p>
         <div class="map-frame" data-stops='[{"name": "Hanoi", "lat": 21.0285, "lng": 105.8542}, {"name": "Ha Long Bay", "lat": 20.9101, "lng": 107.1839}, {"name": "Hai Phong", "lat": 20.8449, "lng": 106.6881}, {"name": "Ho Chi Minh", "lat": 10.8231, "lng": 106.6297}, {"name": "Siem Reap", "lat": 13.3633, "lng": 103.8564}, {"name": "Luang Prabang", "lat": 19.8845, "lng": 102.1348}, {"name": "Bangkok", "lat": 13.7563, "lng": 100.5018}]'>
           <img src="assets/img/route-map.jpg" alt="Mapa de la ruta" />
         </div>
@@ -115,18 +117,9 @@
           <li><span>6</span> Luang Prabang</li>
           <li><span>7</span> Bangkok</li>
         </ul>
-      </div>
-      <div class="itin-intro">
-        <h2>Itinerario</h2>
-        <p>Quince días en avance hacia el oeste. De los cafés de Hanoi a los mercados de Bangkok, atravesando dos civilizaciones que se conocen poco.</p>
-        <a href="#dia-1" class="link-arrow">Empezar por el día 1 <span aria-hidden="true">→</span></a>
-      </div>
-    </div>
-  </section>
-
-  <section class="day-by-day">
-    <div class="container">
-      <article class="day" data-day="01">
+      </aside>
+      <div class="itinerary-days">
+      <article class="day" data-day="01" data-stop-index="0">
         <div class="day-text">
           <span class="day-num">Días 1 · 2</span>
           <h3>Hanoi</h3>
@@ -135,7 +128,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-1.jpg" alt="Hanoi" /></div>
       </article>
-      <article class="day" data-day="03">
+      <article class="day" data-day="03" data-stop-index="1">
         <div class="day-text">
           <span class="day-num">Días 3 · 4</span>
           <h3>Ha Long Bay en junco</h3>
@@ -144,7 +137,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-2.jpg" alt="Ha Long Bay en junco" /></div>
       </article>
-      <article class="day" data-day="05">
+      <article class="day" data-day="05" data-stop-index="2">
         <div class="day-text">
           <span class="day-num">Días 5 · 6</span>
           <h3>Ho Chi Minh y el Mekong</h3>
@@ -153,7 +146,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-3.jpg" alt="Ho Chi Minh y el Mekong" /></div>
       </article>
-      <article class="day" data-day="07">
+      <article class="day" data-day="07" data-stop-index="3">
         <div class="day-text">
           <span class="day-num">Días 7 · 8 · 9</span>
           <h3>Camboya · Angkor Wat</h3>
@@ -162,7 +155,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-4.jpg" alt="Camboya · Angkor Wat" /></div>
       </article>
-      <article class="day" data-day="10">
+      <article class="day" data-day="10" data-stop-index="4">
         <div class="day-text">
           <span class="day-num">Días 10 · 11 · 12</span>
           <h3>Laos · Luang Prabang</h3>
@@ -171,7 +164,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-6.jpg" alt="Laos · Luang Prabang" /></div>
       </article>
-      <article class="day" data-day="13">
+      <article class="day" data-day="13" data-stop-index="5">
         <div class="day-text">
           <span class="day-num">Días 13 · 14 · 15</span>
           <h3>Bangkok</h3>
@@ -180,6 +173,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-8.jpg" alt="Bangkok" /></div>
       </article>
+      </div>
     </div>
   </section>
 

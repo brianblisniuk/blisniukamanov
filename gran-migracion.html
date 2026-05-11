@@ -141,10 +141,12 @@
     </div>
   </section>
 
-  <!-- Map + Itinerary intro -->
-  <section class="map-itinerary">
-    <div class="container map-itinerary-grid">
-      <div class="map-side">
+  <!-- Itinerario sticky: mapa pegado a la izq + días scrolleando a la der -->
+  <section class="itinerary-sticky">
+    <div class="container itinerary-sticky-grid">
+      <aside class="itinerary-aside">
+        <h2>Itinerario</h2>
+        <p class="itin-lede">Catorce días, siete escenarios, un solo grupo. Empezamos en las tierras altas de Kenia, descendemos por el Rift hasta el cráter del Ngorongoro y avanzamos hacia el norte siguiendo a la migración hasta el río Mara.</p>
         <div class="map-frame" data-stops='[{"name":"Nairobi","lat":-1.2921,"lng":36.8219},{"name":"Aberdares","lat":-0.3678,"lng":36.7372},{"name":"Tarangire","lat":-3.8278,"lng":36.0186},{"name":"Manyara y Ngorongoro","lat":-3.2403,"lng":35.4881},{"name":"Serengeti central","lat":-2.3333,"lng":34.8333},{"name":"Kogatende","lat":-1.6700,"lng":34.9000},{"name":"Reserva privada Naboisho","lat":-1.4400,"lng":35.3500}]'>
           <img src="assets/img/route-map.jpg" alt="Mapa estilizado de la ruta entre Kenia y Tanzania" />
         </div>
@@ -157,105 +159,89 @@
           <li><span>6</span> Kogatende</li>
           <li><span>7</span> Reserva privada Naboisho</li>
         </ul>
+      </aside>
+
+      <div class="itinerary-days">
+        <article class="day" id="dia-1" data-day="01" data-stop-index="0">
+          <div class="day-text">
+            <span class="day-num">Día 1 · Llegada</span>
+            <h3>Llegada a Nairobi</h3>
+            <p>Recibimiento privado en el aeropuerto Jomo Kenyatta y traslado al Hemingways Nairobi, en el barrio residencial de Karen. Cena de bienvenida con el líder de viaje y el resto del grupo en la terraza, frente a las jacarandas.</p>
+            <p class="day-meta"><strong>Comidas:</strong> Cena · <strong>Alojamiento:</strong> Hemingways Nairobi</p>
+          </div>
+          <div class="day-img"><img src="assets/img/day-1.jpg" alt="Llegada al aeropuerto" /></div>
+        </article>
+
+        <article class="day" id="dia-2" data-day="02" data-stop-index="1">
+          <div class="day-text">
+            <span class="day-num">Días 2 · 3</span>
+            <h3>Tierras altas de Aberdares</h3>
+            <p>Subimos a las tierras altas centrales de Kenia, terreno montañoso de bambúes y cascadas donde habita el rinoceronte negro y el elusivo bongo. Recorridos en jeep abierto al amanecer y al atardecer, comida sobre el terreno con vistas al monte Kenia.</p>
+            <p class="day-meta"><strong>Comidas:</strong> Pensión completa · <strong>Alojamiento:</strong> The Ark Lodge</p>
+          </div>
+          <div class="day-img"><img src="assets/img/day-2.jpg" alt="Avistamiento de elefantes" /></div>
+        </article>
+
+        <article class="day" id="dia-3" data-day="04" data-stop-index="2">
+          <div class="day-text">
+            <span class="day-num">Días 4 · 5</span>
+            <h3>Tarangire · El reino de los elefantes</h3>
+            <p>Vuelo en avioneta hacia Tanzania y traslado al campamento de Tarangire. La estación seca concentra aquí la mayor población de elefantes del país, con manadas que se acercan a los baobabs y las charcas residuales.</p>
+            <p class="day-meta"><strong>Comidas:</strong> Pensión completa · <strong>Alojamiento:</strong> Sanctuary Swala Camp</p>
+          </div>
+          <div class="day-img"><img src="assets/img/day-3.jpg" alt="Sabana al amanecer" /></div>
+        </article>
+
+        <article class="day" id="dia-4" data-day="06" data-stop-index="3">
+          <div class="day-text">
+            <span class="day-num">Día 6</span>
+            <h3>Lago Manyara · Cráter del Ngorongoro</h3>
+            <p>Cruzamos el Rift hacia el lago Manyara, célebre por sus leones que duermen en lo alto de las acacias. A media tarde subimos al borde del cráter del Ngorongoro y nos instalamos en el lodge.</p>
+            <p class="day-meta"><strong>Comidas:</strong> Pensión completa · <strong>Alojamiento:</strong> Ngorongoro Crater Lodge</p>
+          </div>
+          <div class="day-img"><img src="assets/img/day-4.jpg" alt="Leones en el cráter" /></div>
+        </article>
+
+        <article class="day" id="dia-5" data-day="07" data-stop-index="4">
+          <div class="day-text">
+            <span class="day-num">Día 7</span>
+            <h3>Vuelo en globo sobre el Serengeti</h3>
+            <p>Despegue antes del amanecer. Una hora de vuelo silencioso sobre las llanuras del Serengeti central seguido de un desayuno champagne en mitad de la sabana. Por la tarde, exploración fotográfica con el guía especializado.</p>
+            <p class="day-meta"><strong>Comidas:</strong> Pensión completa · <strong>Alojamiento:</strong> Sanctuary Kichakani Camp</p>
+          </div>
+          <div class="day-img"><img src="assets/img/day-5.jpg" alt="Globos al amanecer" /></div>
+        </article>
+
+        <article class="day" id="dia-6" data-day="08" data-stop-index="5">
+          <div class="day-text">
+            <span class="day-num">Días 8 · 9 · 10</span>
+            <h3>Kogatende · Los cruces del Mara</h3>
+            <p>Tres noches en el norte profundo del Serengeti. Madrugadas en el río Mara para presenciar los cruces de la migración. Almuerzos al pie de un kopje con vistas a la frontera de Kenia. Salidas opcionales a pie con guarda armado.</p>
+            <p class="day-meta"><strong>Comidas:</strong> Pensión completa · <strong>Alojamiento:</strong> Kogatende Tented Camp</p>
+          </div>
+          <div class="day-img"><img src="assets/img/day-6.jpg" alt="Río Mara y migración" /></div>
+        </article>
+
+        <article class="day" id="dia-7" data-day="11" data-stop-index="6">
+          <div class="day-text">
+            <span class="day-num">Días 11 · 12 · 13</span>
+            <h3>Reserva privada Naboisho · Masai Mara</h3>
+            <p>Cruzamos a Kenia y nos instalamos en el conservatorio Naboisho, una reserva privada gestionada por once aldeas masais. Tres noches de safaris a pie, encuentros con los pastores morani y avistamientos sin la presión de los vehículos públicos.</p>
+            <p class="day-meta"><strong>Comidas:</strong> Pensión completa · <strong>Alojamiento:</strong> Naboisho Camp</p>
+          </div>
+          <div class="day-img"><img src="assets/img/day-7.jpg" alt="Campamento bajo las estrellas" /></div>
+        </article>
+
+        <article class="day" id="dia-8" data-day="14" data-stop-index="0">
+          <div class="day-text">
+            <span class="day-num">Día 14 · Salida</span>
+            <h3>De vuelta a Nairobi</h3>
+            <p>Vuelo en avioneta de regreso a Nairobi y un almuerzo final en Karen, antes del traslado al aeropuerto internacional. Para quienes lo deseen, día opcional en el orfanato de elefantes Sheldrick antes de la salida.</p>
+            <p class="day-meta"><strong>Comidas:</strong> Desayuno y almuerzo</p>
+          </div>
+          <div class="day-img"><img src="assets/img/day-8.jpg" alt="Lodge final" /></div>
+        </article>
       </div>
-      <div class="itin-intro">
-        <h2>Itinerario</h2>
-        <p>Catorce días, siete escenarios, un solo grupo. Empezamos en las tierras altas de Kenia, descendemos por el Rift hasta el cráter del Ngorongoro y avanzamos hacia el norte siguiendo a la migración hasta el río Mara.</p>
-        <a href="#dia-1" class="link-arrow">Empezar por el día 1 <span aria-hidden="true">→</span></a>
-        <a href="#" class="link-arrow" style="margin-left:18px;">Descargar itinerario en PDF <span aria-hidden="true">↓</span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Day by day -->
-  <section class="day-by-day">
-    <div class="container">
-      <article class="day" id="dia-1" data-day="01">
-        <div class="day-text">
-          <span class="day-num">Día 1 · Llegada</span>
-          <h3>Llegada a Nairobi</h3>
-          <p>Recibimiento privado en el aeropuerto Jomo Kenyatta y traslado al Hemingways Nairobi, en el barrio residencial de Karen. Cena de bienvenida con el líder de viaje y el resto del grupo en la terraza, frente a las jacarandas.</p>
-          <p class="day-meta"><strong>Comidas:</strong> Cena · <strong>Alojamiento:</strong> Hemingways Nairobi</p>
-          <a href="#" class="link-arrow">Más sobre el alojamiento <span aria-hidden="true">→</span></a>
-        </div>
-        <div class="day-img"><img src="assets/img/day-1.jpg" alt="Llegada al aeropuerto" /></div>
-      </article>
-
-      <article class="day" id="dia-2" data-day="02">
-        <div class="day-text">
-          <span class="day-num">Días 2 · 3</span>
-          <h3>Tierras altas de Aberdares</h3>
-          <p>Subimos a las tierras altas centrales de Kenia, terreno montañoso de bambúes y cascadas donde habita el rinoceronte negro y el elusivo bongo. Recorridos en jeep abierto al amanecer y al atardecer, comida sobre el terreno con vistas al monte Kenia.</p>
-          <p class="day-meta"><strong>Comidas:</strong> Pensión completa · <strong>Alojamiento:</strong> The Ark Lodge</p>
-          <a href="#" class="link-arrow">Más sobre el alojamiento <span aria-hidden="true">→</span></a>
-        </div>
-        <div class="day-img"><img src="assets/img/day-2.jpg" alt="Avistamiento de elefantes" /></div>
-      </article>
-
-      <article class="day" id="dia-3" data-day="04">
-        <div class="day-text">
-          <span class="day-num">Días 4 · 5</span>
-          <h3>Tarangire · El reino de los elefantes</h3>
-          <p>Vuelo en avioneta hacia Tanzania y traslado al campamento de Tarangire. La estación seca concentra aquí la mayor población de elefantes del país, con manadas que se acercan a los baobabs y las charcas residuales.</p>
-          <p class="day-meta"><strong>Comidas:</strong> Pensión completa · <strong>Alojamiento:</strong> Sanctuary Swala Camp</p>
-          <a href="#" class="link-arrow">Más sobre el alojamiento <span aria-hidden="true">→</span></a>
-        </div>
-        <div class="day-img"><img src="assets/img/day-3.jpg" alt="Sabana al amanecer" /></div>
-      </article>
-
-      <article class="day" id="dia-4" data-day="06">
-        <div class="day-text">
-          <span class="day-num">Día 6</span>
-          <h3>Lago Manyara · Cráter del Ngorongoro</h3>
-          <p>Cruzamos el Rift hacia el lago Manyara, célebre por sus leones que duermen en lo alto de las acacias. A media tarde subimos al borde del cráter del Ngorongoro y nos instalamos en el lodge.</p>
-          <p class="day-meta"><strong>Comidas:</strong> Pensión completa · <strong>Alojamiento:</strong> Ngorongoro Crater Lodge</p>
-          <a href="#" class="link-arrow">Más sobre el alojamiento <span aria-hidden="true">→</span></a>
-        </div>
-        <div class="day-img"><img src="assets/img/day-4.jpg" alt="Leones en el cráter" /></div>
-      </article>
-
-      <article class="day" id="dia-5" data-day="07">
-        <div class="day-text">
-          <span class="day-num">Día 7</span>
-          <h3>Vuelo en globo sobre el Serengeti</h3>
-          <p>Despegue antes del amanecer. Una hora de vuelo silencioso sobre las llanuras del Serengeti central seguido de un desayuno champagne en mitad de la sabana. Por la tarde, exploración fotográfica con el guía especializado.</p>
-          <p class="day-meta"><strong>Comidas:</strong> Pensión completa · <strong>Alojamiento:</strong> Sanctuary Kichakani Camp</p>
-          <a href="#" class="link-arrow">Más sobre el alojamiento <span aria-hidden="true">→</span></a>
-        </div>
-        <div class="day-img"><img src="assets/img/day-5.jpg" alt="Globos al amanecer" /></div>
-      </article>
-
-      <article class="day" id="dia-6" data-day="08">
-        <div class="day-text">
-          <span class="day-num">Días 8 · 9 · 10</span>
-          <h3>Kogatende · Los cruces del Mara</h3>
-          <p>Tres noches en el norte profundo del Serengeti. Madrugadas en el río Mara para presenciar los cruces de la migración. Almuerzos al pie de un kopje con vistas a la frontera de Kenia. Salidas opcionales a pie con guarda armado.</p>
-          <p class="day-meta"><strong>Comidas:</strong> Pensión completa · <strong>Alojamiento:</strong> Kogatende Tented Camp</p>
-          <a href="#" class="link-arrow">Más sobre el alojamiento <span aria-hidden="true">→</span></a>
-        </div>
-        <div class="day-img"><img src="assets/img/day-6.jpg" alt="Río Mara y migración" /></div>
-      </article>
-
-      <article class="day" id="dia-7" data-day="11">
-        <div class="day-text">
-          <span class="day-num">Días 11 · 12 · 13</span>
-          <h3>Reserva privada Naboisho · Masai Mara</h3>
-          <p>Cruzamos a Kenia y nos instalamos en el conservatorio Naboisho, una reserva privada gestionada por once aldeas masais. Tres noches de safaris a pie, encuentros con los pastores morani y avistamientos sin la presión de los vehículos públicos.</p>
-          <p class="day-meta"><strong>Comidas:</strong> Pensión completa · <strong>Alojamiento:</strong> Naboisho Camp</p>
-          <a href="#" class="link-arrow">Más sobre el alojamiento <span aria-hidden="true">→</span></a>
-        </div>
-        <div class="day-img"><img src="assets/img/day-7.jpg" alt="Campamento bajo las estrellas" /></div>
-      </article>
-
-      <article class="day" id="dia-8" data-day="14">
-        <div class="day-text">
-          <span class="day-num">Día 14 · Salida</span>
-          <h3>De vuelta a Nairobi</h3>
-          <p>Vuelo en avioneta de regreso a Nairobi y un almuerzo final en Karen, antes del traslado al aeropuerto internacional. Para quienes lo deseen, día opcional en el orfanato de elefantes Sheldrick antes de la salida.</p>
-          <p class="day-meta"><strong>Comidas:</strong> Desayuno y almuerzo</p>
-        </div>
-        <div class="day-img"><img src="assets/img/day-8.jpg" alt="Lodge final" /></div>
-      </article>
     </div>
   </section>
 

@@ -100,9 +100,11 @@
     </div>
   </section>
 
-  <section class="map-itinerary">
-    <div class="container map-itinerary-grid">
-      <div class="map-side">
+  <section class="itinerary-sticky">
+    <div class="container itinerary-sticky-grid">
+      <aside class="itinerary-aside">
+        <h2>Itinerario</h2>
+        <p class="itin-lede">Nueve días con dos cambios de base. Tokio, ryokan en Hakone, Kioto. El ritmo es contemplativo, las mañanas tempranas, las tardes con espacio para perderse.</p>
         <div class="map-frame" data-stops='[{"name": "Tokio", "lat": 35.6762, "lng": 139.6503}, {"name": "Hakone", "lat": 35.2329, "lng": 139.1058}, {"name": "Kioto", "lat": 35.0116, "lng": 135.7681}, {"name": "Nara", "lat": 34.6851, "lng": 135.8048}, {"name": "Osaka", "lat": 34.6937, "lng": 135.5023}]'>
           <img src="assets/img/route-map.jpg" alt="Mapa de la ruta" />
         </div>
@@ -113,18 +115,9 @@
           <li><span>4</span> Nara</li>
           <li><span>5</span> Osaka</li>
         </ul>
-      </div>
-      <div class="itin-intro">
-        <h2>Itinerario</h2>
-        <p>Nueve días con dos cambios de base. Tokio, ryokan en Hakone, Kioto. El ritmo es contemplativo, las mañanas tempranas, las tardes con espacio para perderse.</p>
-        <a href="#dia-1" class="link-arrow">Empezar por el día 1 <span aria-hidden="true">→</span></a>
-      </div>
-    </div>
-  </section>
-
-  <section class="day-by-day">
-    <div class="container">
-      <article class="day" data-day="01">
+      </aside>
+      <div class="itinerary-days">
+      <article class="day" data-day="01" data-stop-index="0">
         <div class="day-text">
           <span class="day-num">Días 1 · 2 · 3</span>
           <h3>Tokio</h3>
@@ -133,7 +126,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-1.jpg" alt="Tokio" /></div>
       </article>
-      <article class="day" data-day="04">
+      <article class="day" data-day="04" data-stop-index="1">
         <div class="day-text">
           <span class="day-num">Días 4 · 5</span>
           <h3>Hakone y monte Fuji</h3>
@@ -142,7 +135,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-2.jpg" alt="Hakone y monte Fuji" /></div>
       </article>
-      <article class="day" data-day="06">
+      <article class="day" data-day="06" data-stop-index="2">
         <div class="day-text">
           <span class="day-num">Días 6 · 7 · 8</span>
           <h3>Kioto</h3>
@@ -151,7 +144,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-3.jpg" alt="Kioto" /></div>
       </article>
-      <article class="day" data-day="09">
+      <article class="day" data-day="09" data-stop-index="3">
         <div class="day-text">
           <span class="day-num">Día 9 · Salida</span>
           <h3>Vuelo desde Osaka</h3>
@@ -160,6 +153,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-8.jpg" alt="Vuelo desde Osaka" /></div>
       </article>
+      </div>
     </div>
   </section>
 

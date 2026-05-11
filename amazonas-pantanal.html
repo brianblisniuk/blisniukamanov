@@ -100,9 +100,11 @@
     </div>
   </section>
 
-  <section class="map-itinerary">
-    <div class="container map-itinerary-grid">
-      <div class="map-side">
+  <section class="itinerary-sticky">
+    <div class="container itinerary-sticky-grid">
+      <aside class="itinerary-aside">
+        <h2>Itinerario</h2>
+        <p class="itin-lede">De Manaos a Iguazú, de la selva inundada al humedal más grande del mundo, en doce días con dos noches en barco y siete en posadas seleccionadas.</p>
         <div class="map-frame" data-stops='[{"name": "Manaos", "lat": -3.119, "lng": -60.0217}, {"name": "Río Negro", "lat": -3.0, "lng": -60.0}, {"name": "Anavilhanas", "lat": -2.45, "lng": -60.75}, {"name": "Cuiabá", "lat": -15.6014, "lng": -56.0979}, {"name": "Transpantaneira", "lat": -16.5333, "lng": -56.75}, {"name": "Porto Jofre", "lat": -17.35, "lng": -56.8}, {"name": "Foz do Iguaçú", "lat": -25.5163, "lng": -54.5854}]'>
           <img src="assets/img/route-map.jpg" alt="Mapa de la ruta" />
         </div>
@@ -115,18 +117,9 @@
           <li><span>6</span> Porto Jofre</li>
           <li><span>7</span> Foz do Iguaçú</li>
         </ul>
-      </div>
-      <div class="itin-intro">
-        <h2>Itinerario</h2>
-        <p>De Manaos a Iguazú, de la selva inundada al humedal más grande del mundo, en doce días con dos noches en barco y siete en posadas seleccionadas.</p>
-        <a href="#dia-1" class="link-arrow">Empezar por el día 1 <span aria-hidden="true">→</span></a>
-      </div>
-    </div>
-  </section>
-
-  <section class="day-by-day">
-    <div class="container">
-      <article class="day" data-day="01">
+      </aside>
+      <div class="itinerary-days">
+      <article class="day" data-day="01" data-stop-index="0">
         <div class="day-text">
           <span class="day-num">Día 1 · Llegada</span>
           <h3>Llegada a Manaos</h3>
@@ -135,7 +128,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-1.jpg" alt="Llegada a Manaos" /></div>
       </article>
-      <article class="day" data-day="02">
+      <article class="day" data-day="02" data-stop-index="1">
         <div class="day-text">
           <span class="day-num">Días 2 · 3 · 4</span>
           <h3>Río Negro en barco</h3>
@@ -144,7 +137,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-6.jpg" alt="Río Negro en barco" /></div>
       </article>
-      <article class="day" data-day="05">
+      <article class="day" data-day="05" data-stop-index="2">
         <div class="day-text">
           <span class="day-num">Días 5 · 6</span>
           <h3>Vuelo a Cuiabá</h3>
@@ -153,7 +146,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-3.jpg" alt="Vuelo a Cuiabá" /></div>
       </article>
-      <article class="day" data-day="07">
+      <article class="day" data-day="07" data-stop-index="3">
         <div class="day-text">
           <span class="day-num">Días 7 · 8 · 9</span>
           <h3>Porto Jofre · En busca de jaguares</h3>
@@ -162,7 +155,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-4.jpg" alt="Porto Jofre · En busca de jaguares" /></div>
       </article>
-      <article class="day" data-day="10">
+      <article class="day" data-day="10" data-stop-index="4">
         <div class="day-text">
           <span class="day-num">Días 10 · 11</span>
           <h3>Cataratas del Iguazú</h3>
@@ -171,7 +164,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-2.jpg" alt="Cataratas del Iguazú" /></div>
       </article>
-      <article class="day" data-day="12">
+      <article class="day" data-day="12" data-stop-index="5">
         <div class="day-text">
           <span class="day-num">Día 12 · Salida</span>
           <h3>Regreso</h3>
@@ -180,6 +173,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-8.jpg" alt="Regreso" /></div>
       </article>
+      </div>
     </div>
   </section>
 

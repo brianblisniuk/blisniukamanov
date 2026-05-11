@@ -100,9 +100,11 @@
     </div>
   </section>
 
-  <section class="map-itinerary">
-    <div class="container map-itinerary-grid">
-      <div class="map-side">
+  <section class="itinerary-sticky">
+    <div class="container itinerary-sticky-grid">
+      <aside class="itinerary-aside">
+        <h2>Itinerario</h2>
+        <p class="itin-lede">Once días, siete escenarios. Cruzamos del Zambezi al Kalahari siguiendo las rutas de los grandes elefantes, con noches en campamentos remotos y concesiones privadas.</p>
         <div class="map-frame" data-stops='[{"name": "Johannesburgo", "lat": -26.2041, "lng": 28.0473}, {"name": "Cataratas Victoria", "lat": -17.9243, "lng": 25.8572}, {"name": "Chobe", "lat": -18.7833, "lng": 25.05}, {"name": "Sabi Sands", "lat": -24.7833, "lng": 31.3833}, {"name": "Khwai", "lat": -19.15, "lng": 23.7833}, {"name": "Delta del Okavango", "lat": -19.2833, "lng": 22.8}, {"name": "Maun", "lat": -19.98, "lng": 23.42}]'>
           <img src="assets/img/route-map.jpg" alt="Mapa de la ruta" />
         </div>
@@ -115,18 +117,9 @@
           <li><span>6</span> Delta del Okavango</li>
           <li><span>7</span> Maun</li>
         </ul>
-      </div>
-      <div class="itin-intro">
-        <h2>Itinerario</h2>
-        <p>Once días, siete escenarios. Cruzamos del Zambezi al Kalahari siguiendo las rutas de los grandes elefantes, con noches en campamentos remotos y concesiones privadas.</p>
-        <a href="#dia-1" class="link-arrow">Empezar por el día 1 <span aria-hidden="true">→</span></a>
-      </div>
-    </div>
-  </section>
-
-  <section class="day-by-day">
-    <div class="container">
-      <article class="day" data-day="01">
+      </aside>
+      <div class="itinerary-days">
+      <article class="day" data-day="01" data-stop-index="0">
         <div class="day-text">
           <span class="day-num">Día 1 · Llegada</span>
           <h3>Llegada a Johannesburgo</h3>
@@ -135,7 +128,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-1.jpg" alt="Llegada a Johannesburgo" /></div>
       </article>
-      <article class="day" data-day="02">
+      <article class="day" data-day="02" data-stop-index="1">
         <div class="day-text">
           <span class="day-num">Días 2 · 3</span>
           <h3>Cataratas Victoria</h3>
@@ -144,7 +137,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-2.jpg" alt="Cataratas Victoria" /></div>
       </article>
-      <article class="day" data-day="04">
+      <article class="day" data-day="04" data-stop-index="2">
         <div class="day-text">
           <span class="day-num">Días 4 · 5</span>
           <h3>Parque Nacional Chobe</h3>
@@ -153,7 +146,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-3.jpg" alt="Parque Nacional Chobe" /></div>
       </article>
-      <article class="day" data-day="06">
+      <article class="day" data-day="06" data-stop-index="3">
         <div class="day-text">
           <span class="day-num">Días 6 · 7</span>
           <h3>Reserva Khwai · Comunidad</h3>
@@ -162,7 +155,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-4.jpg" alt="Reserva Khwai · Comunidad" /></div>
       </article>
-      <article class="day" data-day="08">
+      <article class="day" data-day="08" data-stop-index="4">
         <div class="day-text">
           <span class="day-num">Días 8 · 9 · 10</span>
           <h3>Corazón del Delta del Okavango</h3>
@@ -171,7 +164,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-6.jpg" alt="Corazón del Delta del Okavango" /></div>
       </article>
-      <article class="day" data-day="11">
+      <article class="day" data-day="11" data-stop-index="5">
         <div class="day-text">
           <span class="day-num">Día 11 · Salida</span>
           <h3>Maun y vuelo de regreso</h3>
@@ -180,6 +173,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-8.jpg" alt="Maun y vuelo de regreso" /></div>
       </article>
+      </div>
     </div>
   </section>
 

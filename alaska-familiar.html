@@ -100,9 +100,11 @@
     </div>
   </section>
 
-  <section class="map-itinerary">
-    <div class="container map-itinerary-grid">
-      <div class="map-side">
+  <section class="itinerary-sticky">
+    <div class="container itinerary-sticky-grid">
+      <aside class="itinerary-aside">
+        <h2>Itinerario</h2>
+        <p class="itin-lede">Ocho días con tres bases. Combinamos costa, río y tundra alpina.</p>
         <div class="map-frame" data-stops='[{"name": "Anchorage", "lat": 61.2181, "lng": -149.9003}, {"name": "Seward", "lat": 60.1042, "lng": -149.4422}, {"name": "Kenai Fjords", "lat": 59.9197, "lng": -149.65}, {"name": "Talkeetna", "lat": 62.3208, "lng": -150.1078}]'>
           <img src="assets/img/route-map.jpg" alt="Mapa de la ruta" />
         </div>
@@ -113,18 +115,9 @@
           <li><span>4</span> Talkeetna</li>
           <li><span>5</span> Parque Nacional Denali</li>
         </ul>
-      </div>
-      <div class="itin-intro">
-        <h2>Itinerario</h2>
-        <p>Ocho días con tres bases. Combinamos costa, río y tundra alpina.</p>
-        <a href="#dia-1" class="link-arrow">Empezar por el día 1 <span aria-hidden="true">→</span></a>
-      </div>
-    </div>
-  </section>
-
-  <section class="day-by-day">
-    <div class="container">
-      <article class="day" data-day="01">
+      </aside>
+      <div class="itinerary-days">
+      <article class="day" data-day="01" data-stop-index="0">
         <div class="day-text">
           <span class="day-num">Día 1 · Anchorage</span>
           <h3>Llegada</h3>
@@ -133,7 +126,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-1.jpg" alt="Llegada" /></div>
       </article>
-      <article class="day" data-day="02">
+      <article class="day" data-day="02" data-stop-index="1">
         <div class="day-text">
           <span class="day-num">Días 2 · 3</span>
           <h3>Seward y Kenai Fjords</h3>
@@ -142,7 +135,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-2.jpg" alt="Seward y Kenai Fjords" /></div>
       </article>
-      <article class="day" data-day="04">
+      <article class="day" data-day="04" data-stop-index="2">
         <div class="day-text">
           <span class="day-num">Día 4</span>
           <h3>Vuelo a Katmai</h3>
@@ -151,7 +144,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-4.jpg" alt="Vuelo a Katmai" /></div>
       </article>
-      <article class="day" data-day="05">
+      <article class="day" data-day="05" data-stop-index="3">
         <div class="day-text">
           <span class="day-num">Días 5 · 6 · 7</span>
           <h3>Denali</h3>
@@ -160,7 +153,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-6.jpg" alt="Denali" /></div>
       </article>
-      <article class="day" data-day="08">
+      <article class="day" data-day="08" data-stop-index="3">
         <div class="day-text">
           <span class="day-num">Día 8 · Salida</span>
           <h3>Regreso</h3>
@@ -169,6 +162,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-8.jpg" alt="Regreso" /></div>
       </article>
+      </div>
     </div>
   </section>
 

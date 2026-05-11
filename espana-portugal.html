@@ -100,9 +100,11 @@
     </div>
   </section>
 
-  <section class="map-itinerary">
-    <div class="container map-itinerary-grid">
-      <div class="map-side">
+  <section class="itinerary-sticky">
+    <div class="container itinerary-sticky-grid">
+      <aside class="itinerary-aside">
+        <h2>Itinerario</h2>
+        <p class="itin-lede">Catorce días en avance lento del Atlántico al Mediterráneo, pasando por todas las cocinas y todos los climas ibéricos.</p>
         <div class="map-frame" data-stops='[{"name": "Lisboa", "lat": 38.7223, "lng": -9.1393}, {"name": "Évora", "lat": 38.5667, "lng": -7.9}, {"name": "Sevilla", "lat": 37.3886, "lng": -5.9823}, {"name": "Granada", "lat": 37.1773, "lng": -3.5986}, {"name": "Córdoba", "lat": 37.8847, "lng": -4.7794}, {"name": "Madrid", "lat": 40.4168, "lng": -3.7038}, {"name": "Toledo", "lat": 39.8628, "lng": -4.0273}, {"name": "Bilbao", "lat": 43.263, "lng": -2.935}, {"name": "Barcelona", "lat": 41.3851, "lng": 2.1734}]'>
           <img src="assets/img/route-map.jpg" alt="Mapa de la ruta" />
         </div>
@@ -117,18 +119,9 @@
           <li><span>8</span> Bilbao</li>
           <li><span>9</span> Barcelona</li>
         </ul>
-      </div>
-      <div class="itin-intro">
-        <h2>Itinerario</h2>
-        <p>Catorce días en avance lento del Atlántico al Mediterráneo, pasando por todas las cocinas y todos los climas ibéricos.</p>
-        <a href="#dia-1" class="link-arrow">Empezar por el día 1 <span aria-hidden="true">→</span></a>
-      </div>
-    </div>
-  </section>
-
-  <section class="day-by-day">
-    <div class="container">
-      <article class="day" data-day="01">
+      </aside>
+      <div class="itinerary-days">
+      <article class="day" data-day="01" data-stop-index="0">
         <div class="day-text">
           <span class="day-num">Días 1 · 2 · 3</span>
           <h3>Lisboa</h3>
@@ -137,7 +130,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-1.jpg" alt="Lisboa" /></div>
       </article>
-      <article class="day" data-day="04">
+      <article class="day" data-day="04" data-stop-index="1">
         <div class="day-text">
           <span class="day-num">Días 4 · 5</span>
           <h3>Évora y entrada a Andalucía</h3>
@@ -146,7 +139,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-3.jpg" alt="Évora y entrada a Andalucía" /></div>
       </article>
-      <article class="day" data-day="06">
+      <article class="day" data-day="06" data-stop-index="2">
         <div class="day-text">
           <span class="day-num">Días 6 · 7</span>
           <h3>Granada y la Alhambra</h3>
@@ -155,7 +148,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-4.jpg" alt="Granada y la Alhambra" /></div>
       </article>
-      <article class="day" data-day="08">
+      <article class="day" data-day="08" data-stop-index="3">
         <div class="day-text">
           <span class="day-num">Días 8 · 9 · 10</span>
           <h3>Madrid</h3>
@@ -164,7 +157,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-2.jpg" alt="Madrid" /></div>
       </article>
-      <article class="day" data-day="11">
+      <article class="day" data-day="11" data-stop-index="4">
         <div class="day-text">
           <span class="day-num">Días 11 · 12 · 13 · 14</span>
           <h3>Bilbao y Barcelona</h3>
@@ -173,6 +166,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-6.jpg" alt="Bilbao y Barcelona" /></div>
       </article>
+      </div>
     </div>
   </section>
 

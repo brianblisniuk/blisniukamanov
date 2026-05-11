@@ -3253,3 +3253,135 @@ p  { margin: 0 0 1em; }
   font-size: 10px !important;
   background: rgba(245,241,232,0.85) !important;
 }
+
+/* =========================
+   Itinerario sticky (mapa pegado + días scrolleando)
+   ========================= */
+.itinerary-sticky {
+  background: var(--white);
+  padding: clamp(40px, 5vw, 70px) 0;
+  border-top: 1px solid var(--line-soft);
+}
+.itinerary-sticky-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.25fr;
+  gap: clamp(40px, 5vw, 80px);
+  align-items: start;
+}
+.itinerary-aside {
+  position: sticky;
+  top: 110px;
+  align-self: start;
+}
+.itinerary-aside h2 {
+  font-size: clamp(34px, 4vw, 56px);
+  margin: 0 0 18px;
+}
+.itinerary-aside p.itin-lede {
+  color: var(--ink-mute);
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0 0 22px;
+}
+.itinerary-aside .map-frame {
+  margin-bottom: 16px;
+  max-height: 56vh;
+  aspect-ratio: auto;
+}
+.itinerary-aside .map-frame .leaflet-map {
+  height: 56vh;
+  aspect-ratio: auto;
+}
+.itinerary-aside .map-stops {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  margin: 0;
+  font-size: 12px;
+  color: var(--ink-mute);
+}
+.itinerary-aside .map-stops li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color var(--t-fast);
+}
+.itinerary-aside .map-stops li span {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--laurel);
+  color: var(--white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: transform var(--t-fast), box-shadow var(--t-fast);
+}
+.itinerary-aside .map-stops li.active {
+  color: var(--ink);
+  font-weight: 600;
+}
+.itinerary-aside .map-stops li.active span {
+  transform: scale(1.18);
+  box-shadow: 0 0 0 4px rgba(61, 90, 62, 0.18);
+}
+
+/* Right column: days */
+.itinerary-days .itinerary-intro {
+  color: var(--ink-mute);
+  font-size: 16px;
+  line-height: 1.75;
+  margin: 0 0 30px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+.itinerary-days .day {
+  grid-template-columns: 80px 1fr;
+  padding: 36px 0;
+}
+.itinerary-days .day:nth-child(even) {
+  background: transparent;
+  padding-left: 0;
+  padding-right: 0;
+  border-radius: 0;
+}
+.itinerary-days .day::before {
+  font-size: 52px;
+  align-self: start;
+}
+.itinerary-days .day .day-text { min-width: 0; }
+.itinerary-days .day .day-img {
+  grid-column: 1 / -1;
+  margin-top: 18px;
+  aspect-ratio: 16/9;
+}
+/* Highlight the active day */
+.itinerary-days .day.is-active::before {
+  color: var(--laurel-deep);
+}
+.itinerary-days .day.is-active .day-text h3 {
+  color: var(--laurel-deep);
+}
+
+@media (max-width: 1100px) {
+  .itinerary-sticky-grid { grid-template-columns: 1fr; gap: 32px; }
+  .itinerary-aside { position: static; top: auto; }
+  .itinerary-aside .map-frame .leaflet-map { height: 50vh; min-height: 320px; }
+  .itinerary-days .day { grid-template-columns: 50px 1fr; padding: 24px 0; }
+  .itinerary-days .day::before { font-size: 32px; }
+}
+
+/* Active marker on the sticky map (highlights as days scroll into view) */
+.route-marker-active span,
+.route-marker span.is-active {
+  background: var(--laurel-deep);
+  transform: scale(1.35);
+  box-shadow: 0 0 0 6px rgba(61, 90, 62, 0.22), 0 4px 14px rgba(0,0,0,0.35);
+  z-index: 1000;
+}
+.leaflet-marker-icon.route-marker-active {
+  z-index: 1000 !important;
+}

@@ -100,9 +100,11 @@
     </div>
   </section>
 
-  <section class="map-itinerary">
-    <div class="container map-itinerary-grid">
-      <div class="map-side">
+  <section class="itinerary-sticky">
+    <div class="container itinerary-sticky-grid">
+      <aside class="itinerary-aside">
+        <h2>Itinerario</h2>
+        <p class="itin-lede">Diez días, dos países, tres tipos de paisaje. Empezamos en Buenos Aires y cerramos en el confín del continente.</p>
         <div class="map-frame" data-stops='[{"name": "Buenos Aires", "lat": -34.6037, "lng": -58.3816}, {"name": "El Calafate", "lat": -50.3403, "lng": -72.2647}, {"name": "Perito Moreno", "lat": -50.4861, "lng": -73.0306}, {"name": "Torres del Paine", "lat": -51.0, "lng": -73.0}, {"name": "Puerto Natales", "lat": -51.7236, "lng": -72.5167}, {"name": "Ushuaia", "lat": -54.8019, "lng": -68.303}, {"name": "Canal Beagle", "lat": -54.85, "lng": -68.3}]'>
           <img src="assets/img/route-map.jpg" alt="Mapa de la ruta" />
         </div>
@@ -115,18 +117,9 @@
           <li><span>6</span> Ushuaia</li>
           <li><span>7</span> Canal Beagle</li>
         </ul>
-      </div>
-      <div class="itin-intro">
-        <h2>Itinerario</h2>
-        <p>Diez días, dos países, tres tipos de paisaje. Empezamos en Buenos Aires y cerramos en el confín del continente.</p>
-        <a href="#dia-1" class="link-arrow">Empezar por el día 1 <span aria-hidden="true">→</span></a>
-      </div>
-    </div>
-  </section>
-
-  <section class="day-by-day">
-    <div class="container">
-      <article class="day" data-day="01">
+      </aside>
+      <div class="itinerary-days">
+      <article class="day" data-day="01" data-stop-index="0">
         <div class="day-text">
           <span class="day-num">Día 1</span>
           <h3>Buenos Aires</h3>
@@ -135,7 +128,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-1.jpg" alt="Buenos Aires" /></div>
       </article>
-      <article class="day" data-day="02">
+      <article class="day" data-day="02" data-stop-index="1">
         <div class="day-text">
           <span class="day-num">Días 2 · 3</span>
           <h3>Calafate y Perito Moreno</h3>
@@ -144,7 +137,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-2.jpg" alt="Calafate y Perito Moreno" /></div>
       </article>
-      <article class="day" data-day="04">
+      <article class="day" data-day="04" data-stop-index="2">
         <div class="day-text">
           <span class="day-num">Días 4 · 5 · 6</span>
           <h3>Torres del Paine</h3>
@@ -153,7 +146,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-3.jpg" alt="Torres del Paine" /></div>
       </article>
-      <article class="day" data-day="07">
+      <article class="day" data-day="07" data-stop-index="3">
         <div class="day-text">
           <span class="day-num">Días 7 · 8 · 9</span>
           <h3>Ushuaia y Canal Beagle</h3>
@@ -162,7 +155,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-6.jpg" alt="Ushuaia y Canal Beagle" /></div>
       </article>
-      <article class="day" data-day="10">
+      <article class="day" data-day="10" data-stop-index="4">
         <div class="day-text">
           <span class="day-num">Día 10 · Salida</span>
           <h3>Regreso a Buenos Aires</h3>
@@ -171,6 +164,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-8.jpg" alt="Regreso a Buenos Aires" /></div>
       </article>
+      </div>
     </div>
   </section>
 

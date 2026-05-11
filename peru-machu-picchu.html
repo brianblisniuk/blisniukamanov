@@ -100,9 +100,11 @@
     </div>
   </section>
 
-  <section class="map-itinerary">
-    <div class="container map-itinerary-grid">
-      <div class="map-side">
+  <section class="itinerary-sticky">
+    <div class="container itinerary-sticky-grid">
+      <aside class="itinerary-aside">
+        <h2>Itinerario</h2>
+        <p class="itin-lede">Ocho días de descenso lento por la cordillera. Aclimatamos en el Valle Sagrado antes de subir al santuario.</p>
         <div class="map-frame" data-stops='[{"name": "Lima", "lat": -12.0464, "lng": -77.0428}, {"name": "Cuzco", "lat": -13.532, "lng": -71.9675}, {"name": "Valle Sagrado", "lat": -13.3167, "lng": -72.0833}, {"name": "Ollantaytambo", "lat": -13.2583, "lng": -72.2625}, {"name": "Aguas Calientes", "lat": -13.1631, "lng": -72.5286}, {"name": "Machu Picchu", "lat": -13.1631, "lng": -72.545}]'>
           <img src="assets/img/route-map.jpg" alt="Mapa de la ruta" />
         </div>
@@ -114,18 +116,9 @@
           <li><span>5</span> Aguas Calientes</li>
           <li><span>6</span> Machu Picchu</li>
         </ul>
-      </div>
-      <div class="itin-intro">
-        <h2>Itinerario</h2>
-        <p>Ocho días de descenso lento por la cordillera. Aclimatamos en el Valle Sagrado antes de subir al santuario.</p>
-        <a href="#dia-1" class="link-arrow">Empezar por el día 1 <span aria-hidden="true">→</span></a>
-      </div>
-    </div>
-  </section>
-
-  <section class="day-by-day">
-    <div class="container">
-      <article class="day" data-day="01">
+      </aside>
+      <div class="itinerary-days">
+      <article class="day" data-day="01" data-stop-index="0">
         <div class="day-text">
           <span class="day-num">Día 1 · Lima</span>
           <h3>Llegada</h3>
@@ -134,7 +127,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-1.jpg" alt="Llegada" /></div>
       </article>
-      <article class="day" data-day="02">
+      <article class="day" data-day="02" data-stop-index="1">
         <div class="day-text">
           <span class="day-num">Día 2</span>
           <h3>Lima cultural</h3>
@@ -143,7 +136,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-2.jpg" alt="Lima cultural" /></div>
       </article>
-      <article class="day" data-day="03">
+      <article class="day" data-day="03" data-stop-index="2">
         <div class="day-text">
           <span class="day-num">Días 3 · 4</span>
           <h3>Valle Sagrado</h3>
@@ -152,7 +145,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-3.jpg" alt="Valle Sagrado" /></div>
       </article>
-      <article class="day" data-day="05">
+      <article class="day" data-day="05" data-stop-index="3">
         <div class="day-text">
           <span class="day-num">Días 5 · 6</span>
           <h3>Machu Picchu</h3>
@@ -161,7 +154,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-4.jpg" alt="Machu Picchu" /></div>
       </article>
-      <article class="day" data-day="07">
+      <article class="day" data-day="07" data-stop-index="4">
         <div class="day-text">
           <span class="day-num">Días 7 · 8</span>
           <h3>Cuzco</h3>
@@ -170,6 +163,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-6.jpg" alt="Cuzco" /></div>
       </article>
+      </div>
     </div>
   </section>
 

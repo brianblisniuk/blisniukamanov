@@ -100,9 +100,11 @@
     </div>
   </section>
 
-  <section class="map-itinerary">
-    <div class="container map-itinerary-grid">
-      <div class="map-side">
+  <section class="itinerary-sticky">
+    <div class="container itinerary-sticky-grid">
+      <aside class="itinerary-aside">
+        <h2>Itinerario</h2>
+        <p class="itin-lede">De Giza a la frontera con Sudán siguiendo la línea verde del Nilo. Diez días, tres bases, un solo país que cambió la idea de tiempo.</p>
         <div class="map-frame" data-stops='[{"name": "El Cairo", "lat": 30.0444, "lng": 31.2357}, {"name": "Saqqara", "lat": 29.8714, "lng": 31.2167}, {"name": "Luxor", "lat": 25.6872, "lng": 32.6396}, {"name": "Edfu", "lat": 24.9779, "lng": 32.8731}, {"name": "Kom Ombo", "lat": 24.4658, "lng": 32.9281}, {"name": "Asuán", "lat": 24.0889, "lng": 32.8998}, {"name": "Abu Simbel", "lat": 22.3372, "lng": 31.6258}]'>
           <img src="assets/img/route-map.jpg" alt="Mapa de la ruta" />
         </div>
@@ -115,18 +117,9 @@
           <li><span>6</span> Asuán</li>
           <li><span>7</span> Abu Simbel</li>
         </ul>
-      </div>
-      <div class="itin-intro">
-        <h2>Itinerario</h2>
-        <p>De Giza a la frontera con Sudán siguiendo la línea verde del Nilo. Diez días, tres bases, un solo país que cambió la idea de tiempo.</p>
-        <a href="#dia-1" class="link-arrow">Empezar por el día 1 <span aria-hidden="true">→</span></a>
-      </div>
-    </div>
-  </section>
-
-  <section class="day-by-day">
-    <div class="container">
-      <article class="day" data-day="01">
+      </aside>
+      <div class="itinerary-days">
+      <article class="day" data-day="01" data-stop-index="0">
         <div class="day-text">
           <span class="day-num">Días 1 · 2 · 3 · 4</span>
           <h3>El Cairo y sus pirámides</h3>
@@ -135,7 +128,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-1.jpg" alt="El Cairo y sus pirámides" /></div>
       </article>
-      <article class="day" data-day="05">
+      <article class="day" data-day="05" data-stop-index="1">
         <div class="day-text">
           <span class="day-num">Día 5</span>
           <h3>Vuelo a Luxor</h3>
@@ -144,7 +137,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-2.jpg" alt="Vuelo a Luxor" /></div>
       </article>
-      <article class="day" data-day="06">
+      <article class="day" data-day="06" data-stop-index="2">
         <div class="day-text">
           <span class="day-num">Días 6 · 7 · 8</span>
           <h3>Dahabiya en el Nilo</h3>
@@ -153,7 +146,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-6.jpg" alt="Dahabiya en el Nilo" /></div>
       </article>
-      <article class="day" data-day="09">
+      <article class="day" data-day="09" data-stop-index="3">
         <div class="day-text">
           <span class="day-num">Día 9</span>
           <h3>Asuán y Abu Simbel</h3>
@@ -162,7 +155,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-4.jpg" alt="Asuán y Abu Simbel" /></div>
       </article>
-      <article class="day" data-day="10">
+      <article class="day" data-day="10" data-stop-index="4">
         <div class="day-text">
           <span class="day-num">Día 10 · Salida</span>
           <h3>Regreso</h3>
@@ -171,6 +164,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-8.jpg" alt="Regreso" /></div>
       </article>
+      </div>
     </div>
   </section>
 

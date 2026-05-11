@@ -100,9 +100,11 @@
     </div>
   </section>
 
-  <section class="map-itinerary">
-    <div class="container map-itinerary-grid">
-      <div class="map-side">
+  <section class="itinerary-sticky">
+    <div class="container itinerary-sticky-grid">
+      <aside class="itinerary-aside">
+        <h2>Itinerario</h2>
+        <p class="itin-lede">Once días, ocho ciudades, una sola idea: leer el norte de Italia a través de su cocina, su arte y su agua.</p>
         <div class="map-frame" data-stops='[{"name": "Milán", "lat": 45.4642, "lng": 9.19}, {"name": "Turín", "lat": 45.0703, "lng": 7.6869}, {"name": "Sestri Levante", "lat": 44.2733, "lng": 9.4}, {"name": "Portovenere", "lat": 44.0489, "lng": 9.8389}, {"name": "Parma", "lat": 44.8015, "lng": 10.3279}, {"name": "Lago di Como", "lat": 45.97, "lng": 9.25}, {"name": "Bolonia", "lat": 44.4949, "lng": 11.3426}, {"name": "Venecia", "lat": 45.4408, "lng": 12.3155}]'>
           <img src="assets/img/route-map.jpg" alt="Mapa de la ruta" />
         </div>
@@ -116,18 +118,9 @@
           <li><span>7</span> Bolonia</li>
           <li><span>8</span> Venecia</li>
         </ul>
-      </div>
-      <div class="itin-intro">
-        <h2>Itinerario</h2>
-        <p>Once días, ocho ciudades, una sola idea: leer el norte de Italia a través de su cocina, su arte y su agua.</p>
-        <a href="#dia-1" class="link-arrow">Empezar por el día 1 <span aria-hidden="true">→</span></a>
-      </div>
-    </div>
-  </section>
-
-  <section class="day-by-day">
-    <div class="container">
-      <article class="day" data-day="01">
+      </aside>
+      <div class="itinerary-days">
+      <article class="day" data-day="01" data-stop-index="0">
         <div class="day-text">
           <span class="day-num">Día 1 · Llegada</span>
           <h3>Llegada a Milán</h3>
@@ -136,7 +129,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-1.jpg" alt="Llegada a Milán" /></div>
       </article>
-      <article class="day" data-day="02">
+      <article class="day" data-day="02" data-stop-index="1">
         <div class="day-text">
           <span class="day-num">Días 2 · 3</span>
           <h3>Milán y Turín</h3>
@@ -145,7 +138,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-2.jpg" alt="Milán y Turín" /></div>
       </article>
-      <article class="day" data-day="04">
+      <article class="day" data-day="04" data-stop-index="2">
         <div class="day-text">
           <span class="day-num">Días 4 · 5 · 6</span>
           <h3>Liguria y Cinque Terre</h3>
@@ -154,7 +147,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-3.jpg" alt="Liguria y Cinque Terre" /></div>
       </article>
-      <article class="day" data-day="07">
+      <article class="day" data-day="07" data-stop-index="3">
         <div class="day-text">
           <span class="day-num">Días 7 · 8</span>
           <h3>Parma y los lagos</h3>
@@ -163,7 +156,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-4.jpg" alt="Parma y los lagos" /></div>
       </article>
-      <article class="day" data-day="09">
+      <article class="day" data-day="09" data-stop-index="4">
         <div class="day-text">
           <span class="day-num">Días 9 · 10 · 11</span>
           <h3>Bolonia y Venecia</h3>
@@ -172,6 +165,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-2.jpg" alt="Bolonia y Venecia" /></div>
       </article>
+      </div>
     </div>
   </section>
 

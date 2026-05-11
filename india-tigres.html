@@ -100,9 +100,11 @@
     </div>
   </section>
 
-  <section class="map-itinerary">
-    <div class="container map-itinerary-grid">
-      <div class="map-side">
+  <section class="itinerary-sticky">
+    <div class="container itinerary-sticky-grid">
+      <aside class="itinerary-aside">
+        <h2>Itinerario</h2>
+        <p class="itin-lede">Once días en el cuadrante del norte, con tres bases y dos vuelos cortos.</p>
         <div class="map-frame" data-stops='[{"name": "Delhi", "lat": 28.7041, "lng": 77.1025}, {"name": "Agra", "lat": 27.1767, "lng": 78.0081}, {"name": "Ranthambore", "lat": 26.0173, "lng": 76.5026}, {"name": "Jaipur", "lat": 26.9124, "lng": 75.7873}, {"name": "Udaipur", "lat": 24.5854, "lng": 73.7125}]'>
           <img src="assets/img/route-map.jpg" alt="Mapa de la ruta" />
         </div>
@@ -113,18 +115,9 @@
           <li><span>4</span> Jaipur</li>
           <li><span>5</span> Udaipur</li>
         </ul>
-      </div>
-      <div class="itin-intro">
-        <h2>Itinerario</h2>
-        <p>Once días en el cuadrante del norte, con tres bases y dos vuelos cortos.</p>
-        <a href="#dia-1" class="link-arrow">Empezar por el día 1 <span aria-hidden="true">→</span></a>
-      </div>
-    </div>
-  </section>
-
-  <section class="day-by-day">
-    <div class="container">
-      <article class="day" data-day="01">
+      </aside>
+      <div class="itinerary-days">
+      <article class="day" data-day="01" data-stop-index="0">
         <div class="day-text">
           <span class="day-num">Días 1 · 2</span>
           <h3>Delhi</h3>
@@ -133,7 +126,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-1.jpg" alt="Delhi" /></div>
       </article>
-      <article class="day" data-day="03">
+      <article class="day" data-day="03" data-stop-index="1">
         <div class="day-text">
           <span class="day-num">Días 3 · 4</span>
           <h3>Agra y el Taj</h3>
@@ -142,7 +135,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-2.jpg" alt="Agra y el Taj" /></div>
       </article>
-      <article class="day" data-day="05">
+      <article class="day" data-day="05" data-stop-index="2">
         <div class="day-text">
           <span class="day-num">Días 5 · 6</span>
           <h3>Ranthambore</h3>
@@ -151,7 +144,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-4.jpg" alt="Ranthambore" /></div>
       </article>
-      <article class="day" data-day="07">
+      <article class="day" data-day="07" data-stop-index="3">
         <div class="day-text">
           <span class="day-num">Días 7 · 8 · 9</span>
           <h3>Jaipur</h3>
@@ -160,7 +153,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-3.jpg" alt="Jaipur" /></div>
       </article>
-      <article class="day" data-day="10">
+      <article class="day" data-day="10" data-stop-index="4">
         <div class="day-text">
           <span class="day-num">Días 10 · 11</span>
           <h3>Udaipur</h3>
@@ -169,6 +162,7 @@
         </div>
         <div class="day-img"><img src="assets/img/day-6.jpg" alt="Udaipur" /></div>
       </article>
+      </div>
     </div>
   </section>
 

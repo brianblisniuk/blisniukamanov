@@ -198,8 +198,21 @@ FOOTER = """  <footer class="site-footer">
 # JOURNEY TEMPLATE
 # =============================================================================
 def build_journey(j):
-    days_html = "\n".join([
-        f"""      <article class="day" data-day="{d['n']:02d}">
+    # Coords first (used by days for data-stop-index)
+    coords_data = []
+    for s in j['stops']:
+        if s in STOP_COORDS:
+            lat, lng = STOP_COORDS[s]
+            coords_data.append({"name": s, "lat": lat, "lng": lng})
+    coords_json = json.dumps(coords_data, ensure_ascii=False).replace("'", "&#39;")
+    stops_html = "\n".join([f'          <li><span>{i+1}</span> {s}</li>' for i, s in enumerate(j['stops'])])
+
+    days_html_items = []
+    n_stops = max(1, len(coords_data))
+    for i, d in enumerate(j['days']):
+        stop_idx = min(i, n_stops - 1) if coords_data else 0
+        days_html_items.append(
+            f"""      <article class="day" data-day="{d['n']:02d}" data-stop-index="{stop_idx}">
         <div class="day-text">
           <span class="day-num">{d['label']}</span>
           <h3>{d['title']}</h3>
@@ -208,16 +221,8 @@ def build_journey(j):
         </div>
         <div class="day-img"><img src="assets/img/{d['img']}" alt="{d['title']}" /></div>
       </article>"""
-        for d in j['days']
-    ])
-    stops_html = "\n".join([f'          <li><span>{i+1}</span> {s}</li>' for i, s in enumerate(j['stops'])])
-    # Build JSON data for the interactive map: only stops with known coords
-    coords_data = []
-    for s in j['stops']:
-        if s in STOP_COORDS:
-            lat, lng = STOP_COORDS[s]
-            coords_data.append({"name": s, "lat": lat, "lng": lng})
-    coords_json = json.dumps(coords_data, ensure_ascii=False).replace("'", "&#39;")
+        )
+    days_html = "\n".join(days_html_items)
     lodges_html = "\n".join([
         f"""        <a href="#" class="lodge-card">
           <img src="assets/img/{l['img']}" alt="{l['name']}" />
@@ -298,27 +303,21 @@ def build_journey(j):
     </div>
   </section>
 
-  <section class="map-itinerary">
-    <div class="container map-itinerary-grid">
-      <div class="map-side">
+  <section class="itinerary-sticky">
+    <div class="container itinerary-sticky-grid">
+      <aside class="itinerary-aside">
+        <h2>Itinerario</h2>
+        <p class="itin-lede">{j['itin_intro']}</p>
         <div class="map-frame" data-stops='{coords_json}'>
           <img src="assets/img/route-map.jpg" alt="Mapa de la ruta" />
         </div>
         <ul class="map-stops">
 {stops_html}
         </ul>
-      </div>
-      <div class="itin-intro">
-        <h2>Itinerario</h2>
-        <p>{j['itin_intro']}</p>
-        <a href="#dia-1" class="link-arrow">Empezar por el día 1 <span aria-hidden="true">→</span></a>
-      </div>
-    </div>
-  </section>
-
-  <section class="day-by-day">
-    <div class="container">
+      </aside>
+      <div class="itinerary-days">
 {days_html}
+      </div>
     </div>
   </section>
 
