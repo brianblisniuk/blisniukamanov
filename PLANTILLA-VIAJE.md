@@ -213,7 +213,7 @@ Lista de 4 viajes ya existentes en el catálogo que querés que aparezcan al fin
 | 3 | `__________` | `__________` |
 | 4 | `__________` | `__________` |
 
-*(Slugs disponibles: `botswana-definitivo`, `amazonas-pantanal`, `piamonte-tartufo`, `japon-clasico`, `egipto-nilo`, `patagonia-circuito`, `espana-portugal`, `angkor-sudeste-asiatico`, `peru-machu-picchu`, `alaska-familiar`, `india-tigres`, `gran-migracion`, `uzbekistan-ruta-seda`, `namibia-dunas`, `laponia-auroras`, `bahia-otro-carnaval`, `japon-mono-no-aware`, `butan-nepal-himalaya`, `marruecos-imperial`, `croacia-islas-dalmatas`, `alaska-salvaje`.)*
+*(Slugs disponibles: `uzbekistan-ruta-seda`, `piamonte-tartufo`, `namibia-dunas`, `laponia-auroras`, `bahia-otro-carnaval`, `japon-mono-no-aware`, `butan-nepal-himalaya`, `marruecos-imperial`, `croacia-islas-dalmatas`, `alaska-salvaje`.)*
 
 ---
 

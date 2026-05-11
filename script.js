@@ -77,7 +77,16 @@
     // Detect region/country from the page context
     const path = location.pathname.toLowerCase();
     if (path.includes("europe")) return { region: "Europa", country: "" };
-    if (path.includes("gran-migracion")) return { region: "África", country: "Kenia y Tanzania" };
+    if (path.includes("piamonte"))      return { region: "Europa",       country: "Italia" };
+    if (path.includes("croacia"))       return { region: "Mediterráneo", country: "Croacia" };
+    if (path.includes("uzbekistan"))    return { region: "Asia Central", country: "Uzbekistán" };
+    if (path.includes("namibia"))       return { region: "África",       country: "Namibia" };
+    if (path.includes("laponia"))       return { region: "Ártico",       country: "Finlandia y Noruega" };
+    if (path.includes("bahia"))         return { region: "Sudamérica",   country: "Brasil" };
+    if (path.includes("japon-mono"))    return { region: "Asia",         country: "Japón" };
+    if (path.includes("butan"))         return { region: "Himalaya",     country: "Bután y Nepal" };
+    if (path.includes("marruecos"))     return { region: "Norte de África", country: "Marruecos" };
+    if (path.includes("alaska"))        return { region: "Norteamérica", country: "Alaska" };
     if (path.includes("small-group")) return { region: "", country: "" };
     return { region: "", country: "" };
   }

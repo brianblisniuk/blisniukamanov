@@ -54,7 +54,7 @@ collections:
     fields:
       - { label: "Título del viaje", name: "title", widget: "string" }
       - { label: "Eyebrow / categoría", name: "eyebrow", widget: "string", default: "Pequeña expedición" }
-      - { label: "Slug (URL)", name: "slug", widget: "string", hint: "ej: gran-migracion" }
+      - { label: "Slug (URL)", name: "slug", widget: "string", hint: "ej: piamonte-tartufo" }
       - { label: "Hero (imagen)", name: "hero", widget: "image", required: false }
       - { label: "Región", name: "region", widget: "select", options: ["África","Asia","Europa","Sudamérica","Norteamérica","Centroamérica","Oceanía","Antártida","Caribe","Oriente Próximo"] }
       - { label: "Países", name: "countries", widget: "list", default: [] }
