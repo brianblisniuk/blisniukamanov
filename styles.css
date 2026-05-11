@@ -1869,6 +1869,7 @@ p  { margin: 0 0 1em; }
   background: var(--white);
   min-height: 480px;
 }
+.journey-hero > * { min-width: 0; }
 .journey-hero-left {
   position: relative;
   overflow: hidden;
