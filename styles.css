@@ -1164,6 +1164,24 @@ p  { margin: 0 0 1em; }
 }
 
 /* =========================
+   Filter empty state
+   ========================= */
+.filter-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 24px;
+  background: var(--bone);
+  border-radius: var(--r);
+  margin-top: 16px;
+}
+.filter-empty p {
+  font-family: var(--serif);
+  font-size: 22px;
+  margin: 0 0 18px;
+  color: var(--ink);
+}
+
+/* =========================
    Heritage page
    ========================= */
 .heritage-hero {

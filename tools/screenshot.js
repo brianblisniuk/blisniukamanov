@@ -30,6 +30,9 @@ const pages = [
   { name: "19-africa-desktop",          file: "africa.html",         width: 1280, full: true },
   { name: "20-botswana-desktop",        file: "botswana-definitivo.html", width: 1280, full: true },
   { name: "21-japon-desktop",           file: "japon-clasico.html",  width: 1280, full: true },
+  { name: "22-espana-portugal-desktop", file: "espana-portugal.html", width: 1280, full: true },
+  { name: "23-india-tigres-desktop",    file: "india-tigres.html",   width: 1280, full: true },
+  { name: "24-peru-desktop",            file: "peru-machu-picchu.html", width: 1280, full: true },
 ];
 
 (async () => {

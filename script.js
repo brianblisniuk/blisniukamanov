@@ -243,22 +243,186 @@
   });
 
   /* ==========================================================
-     Filter sidebar — visual checkbox toggle on links
+     Filter sidebar — toggle + actually filter cards
      ========================================================== */
+  const TEXT_TO_VALUE = {
+    // Regiones
+    "África": "africa", "Asia": "asia", "Europa": "europa",
+    "Sudamérica": "sudamerica", "Norteamérica": "norteamerica",
+    "Caribe": "caribe", "Oceanía": "oceania",
+    "Australia y Nueva Zelanda": "oceania",
+    "Antártida": "polos", "Polos": "polos",
+    "Oriente Próximo": "oriente-medio",
+    "Norte de África": "oriente-medio",
+    "Océano Índico": "oriente-medio",
+    "Pacífico Sur": "oceania",
+    "Centroamérica": "sudamerica",
+    // Estilo / Modalidad / Intereses
+    "Pequeño grupo": "pequeno-grupo",
+    "Privado a medida": "privado",
+    "Privado": "privado",
+    "Safari": "safari",
+    "Cruceros": "crucero",
+    "Crucero": "crucero",
+    "Expediciones": "pequeno-grupo",
+    "Jet privado": "jet",
+    "Familia": "familia",
+    "Cultura": "cultura",
+    "Cultura e historia": "cultura",
+    "Vida salvaje": "vida-salvaje",
+    "Vida salvaje y safaris": "vida-salvaje",
+    "Naturaleza y vida salvaje": "vida-salvaje",
+    "Gastronomía": "gastronomia",
+    "Gastronomía y vinos": "gastronomia",
+    "Activo": "activo",
+    "Activo y aventura": "activo",
+    "Festivales": "festivales",
+    "Listo para reservar": "lista-para-reservar",
+    "Cortos": "cortos",
+    "Itinerarios cortos": "cortos",
+    "Lugares Patrimonio": "patrimonio",
+    // Meses
+    "Enero": "enero", "Febrero": "febrero", "Marzo": "marzo",
+    "Abril": "abril", "Mayo": "mayo", "Junio": "junio",
+    "Julio": "julio", "Agosto": "agosto", "Septiembre": "septiembre",
+    "Octubre": "octubre", "Noviembre": "noviembre", "Diciembre": "diciembre",
+  };
+
+  const SUMMARY_DIM = {
+    "Regiones":         { kind: "region",   match: "any" },
+    "Estilo de viaje":  { kind: "style",    match: "any" },
+    "Modalidad":        { kind: "style",    match: "any" },
+    "Intereses":        { kind: "style",    match: "any" },
+    "Mes de salida":    { kind: "months",   match: "any" },
+    "Año":              { kind: "year",     match: "any" },
+    "Duración":         { kind: "duration", match: "range" },
+  };
+
+  const DURATION_RANGES = {
+    "5 días o menos":  [0, 5],
+    "6–10 días":        [6, 10],
+    "6-10 días":        [6, 10],
+    "11–15 días":       [11, 15],
+    "11-15 días":       [11, 15],
+    "16–20 días":       [16, 20],
+    "16-20 días":       [16, 20],
+    "21+ días":         [21, 999],
+  };
+
+  function getSummaryBase(summary) {
+    return (summary.dataset.label || summary.textContent.replace(/\s*\(\d+\)\s*$/, "").trim());
+  }
+
+  function applyFilters() {
+    const filters = {}; // {kind: Set of values}
+    document.querySelectorAll(".filters .filter-list a.active").forEach((a) => {
+      const det = a.closest("details");
+      const summary = det && det.querySelector("summary");
+      if (!summary) return;
+      const baseLabel = getSummaryBase(summary);
+      const dim = SUMMARY_DIM[baseLabel];
+      if (!dim) return;
+      const txt = a.textContent.trim();
+      let val;
+      if (dim.kind === "duration") {
+        val = DURATION_RANGES[txt] || null;
+      } else if (dim.kind === "year") {
+        val = txt;
+      } else {
+        val = TEXT_TO_VALUE[txt] || txt.toLowerCase();
+      }
+      if (val == null) return;
+      if (!filters[dim.kind]) filters[dim.kind] = { values: [], match: dim.match };
+      filters[dim.kind].values.push(val);
+    });
+
+    const cards = document.querySelectorAll(".j-card");
+    let visible = 0;
+    cards.forEach((card) => {
+      let show = true;
+      Object.entries(filters).forEach(([kind, conf]) => {
+        if (kind === "duration") {
+          const d = parseInt(card.dataset.duration || "0", 10);
+          const anyRangeMatches = conf.values.some(([lo, hi]) => d >= lo && d <= hi);
+          if (!anyRangeMatches) show = false;
+        } else if (kind === "year") {
+          // we don't have year data — soft-pass; future: data-years="2026,2027"
+          // any filter active here lets all cards through (no-op)
+        } else {
+          const cardVals = (card.dataset[kind] || "").split(",").map(s => s.trim()).filter(Boolean);
+          const match = conf.values.some(v => cardVals.includes(v));
+          if (!match) show = false;
+        }
+      });
+      card.style.display = show ? "" : "none";
+      if (show) visible++;
+    });
+
+    // Update result count
+    const head = document.querySelector(".explorer-head p");
+    if (head) {
+      const total = cards.length;
+      head.textContent = visible === total
+        ? `Mostrando ${total} resultados`
+        : `Mostrando ${visible} de ${total} resultados`;
+    }
+
+    // Show "no results" empty state
+    let empty = document.getElementById("filterEmpty");
+    const grid = document.querySelector(".journey-grid");
+    if (visible === 0 && grid) {
+      if (!empty) {
+        empty = document.createElement("div");
+        empty.id = "filterEmpty";
+        empty.className = "filter-empty";
+        empty.innerHTML = '<p>Ningún viaje coincide con los filtros seleccionados.</p><button class="btn btn-outline-dark" type="button" id="clearFilters">Limpiar filtros</button>';
+        grid.parentElement.appendChild(empty);
+        document.getElementById("clearFilters").addEventListener("click", () => {
+          document.querySelectorAll(".filters .filter-list a.active").forEach((a) => a.classList.remove("active"));
+          document.querySelectorAll(".filters summary").forEach((s) => {
+            const base = getSummaryBase(s);
+            s.dataset.label = base;
+            s.textContent = base;
+          });
+          applyFilters();
+        });
+      }
+      empty.style.display = "";
+    } else if (empty) {
+      empty.style.display = "none";
+    }
+  }
+
   document.querySelectorAll(".filters .filter-list a").forEach((a) => {
     a.addEventListener("click", (e) => {
       e.preventDefault();
       a.classList.toggle("active");
-      // Update count display if present
       const summary = a.closest("details")?.querySelector("summary");
       if (summary) {
         const active = a.closest(".filter-list").querySelectorAll("a.active").length;
-        const baseLabel = summary.dataset.label || summary.textContent.replace(/\s*\(\d+\)\s*$/, "").trim();
+        const baseLabel = getSummaryBase(summary);
         summary.dataset.label = baseLabel;
         summary.textContent = active > 0 ? `${baseLabel} (${active})` : baseLabel;
       }
+      applyFilters();
     });
   });
+
+  // Read query string ?q=... and pre-filter cards by title text
+  const params = new URLSearchParams(window.location.search);
+  const q = (params.get("q") || "").trim().toLowerCase();
+  if (q) {
+    document.querySelectorAll(".j-card").forEach((card) => {
+      const title = card.querySelector("h3")?.textContent.toLowerCase() || "";
+      const itin = card.querySelector(".j-itin")?.textContent.toLowerCase() || "";
+      const match = title.includes(q) || itin.includes(q);
+      card.style.display = match ? "" : "none";
+    });
+    const cards = document.querySelectorAll(".j-card");
+    const visible = document.querySelectorAll('.j-card:not([style*="display: none"])').length;
+    const head = document.querySelector(".explorer-head p");
+    if (head) head.textContent = `Mostrando ${visible} resultados para "${q}"`;
+  }
 
   /* ==========================================================
      Forms — newsletter and any inline form: prevent submit, show feedback
