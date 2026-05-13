@@ -604,127 +604,149 @@
 
   /* ==========================================================
      Interactive route map (Leaflet + OpenStreetMap / Carto)
-     Looks for .map-frame[data-stops] and renders an interactive
-     map with numbered markers + dashed polyline connecting stops.
-     If the section also contains .day[data-stop-index] children,
-     it sets up a scroll-spy that pans the map and highlights the
-     active marker as the user scrolls through the day-by-day.
+     Two independent concerns:
+       (a) Scroll-spy that highlights the active day + map-stop as
+           the user scrolls. Runs always, no Leaflet required.
+       (b) Leaflet map rendering. If the CDN loads, the map is wired
+           up and follows the active stop via flyTo.
+     Decoupling them means the day/stops highlight works even when
+     Leaflet fails to load (offline, blocked CDN, etc.).
      ========================================================== */
-  function initRouteMaps() {
+  // Per-frame state so Leaflet can attach to scroll-spy that's
+  // already running by the time the library finishes loading.
+  const routeFrames = [];
+
+  function setupScrollSpy(frame, stops) {
+    const section = frame.closest(".itinerary-sticky");
+    if (!section) return null;
+    const days = section.querySelectorAll(".day[data-stop-index]");
+    const stopsList = section.querySelectorAll(".map-stops li");
+    if (!days.length) return null;
+
+    let currentIdx = -1;
+    const state = { stops, days, stopsList, currentIdx, onChange: [] };
+
+    const highlight = (idx) => {
+      state.currentIdx = idx;
+      stopsList.forEach((li, i) => li.classList.toggle("active", i === idx));
+      days.forEach((d) => {
+        const di = parseInt(d.dataset.stopIndex, 10);
+        d.classList.toggle("is-active", di === idx);
+      });
+      state.onChange.forEach((cb) => cb(idx));
+    };
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const idx = parseInt(entry.target.dataset.stopIndex, 10);
+            if (!isNaN(idx) && idx !== state.currentIdx && idx < stops.length) {
+              highlight(idx);
+            }
+          }
+        });
+      },
+      { rootMargin: "-35% 0px -55% 0px", threshold: 0 }
+    );
+    days.forEach((d) => io.observe(d));
+    return state;
+  }
+
+  function attachLeaflet(frame, stops, spyState) {
     if (typeof L === "undefined") return;
+    const mapEl = document.createElement("div");
+    mapEl.className = "leaflet-map";
+    frame.innerHTML = "";
+    frame.appendChild(mapEl);
+
+    const map = L.map(mapEl, {
+      zoomControl: true,
+      scrollWheelZoom: false,
+      attributionControl: true,
+      zoomSnap: 0.25,
+    });
+
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · © <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: "abcd",
+      maxZoom: 19,
+    }).addTo(map);
+
+    const latlngs = stops.map((s) => [s.lat, s.lng]);
+    const markers = stops.map((stop, i) => {
+      const icon = L.divIcon({
+        className: "route-marker",
+        iconSize: [28, 28],
+        iconAnchor: [14, 14],
+        html: `<span data-i="${i}">${i + 1}</span>`,
+      });
+      return L.marker([stop.lat, stop.lng], { icon })
+        .addTo(map)
+        .bindPopup(`<strong>${i + 1}. ${stop.name}</strong>`);
+    });
+
+    L.polyline(latlngs, {
+      color: "#3D5A3E",
+      weight: 2.5,
+      opacity: 0.9,
+      dashArray: "6,8",
+    }).addTo(map);
+
+    const bounds = L.latLngBounds(latlngs);
+    const fitAll = () => {
+      if (latlngs.length > 1) map.fitBounds(bounds, { padding: [30, 30] });
+      else map.setView(latlngs[0], 8);
+    };
+    fitAll();
+
+    const refreshSize = () => { map.invalidateSize(); fitAll(); };
+    setTimeout(refreshSize, 80);
+    setTimeout(refreshSize, 400);
+    window.addEventListener("resize", () => { map.invalidateSize(); });
+
+    const targetZoom = () => {
+      const z = map.getZoom();
+      const fit = map.getBoundsZoom(bounds, false);
+      return z <= fit + 0.3 ? Math.min(fit + 1.5, 8) : z;
+    };
+
+    const flyToStop = (idx) => {
+      markers.forEach((m, i) => {
+        if (!m._icon) return;
+        m._icon.classList.toggle("route-marker-active", i === idx);
+      });
+      if (idx >= 0 && idx < stops.length) {
+        map.flyTo([stops[idx].lat, stops[idx].lng], targetZoom(), {
+          duration: 0.9,
+          easeLinearity: 0.35,
+        });
+      }
+    };
+
+    if (spyState) {
+      spyState.onChange.push(flyToStop);
+      // Apply current state immediately if scroll-spy already activated a day
+      if (spyState.currentIdx >= 0) flyToStop(spyState.currentIdx);
+    }
+  }
+
+  function initRouteMaps() {
     document.querySelectorAll(".map-frame[data-stops]").forEach((frame) => {
       let stops;
       try { stops = JSON.parse(frame.dataset.stops); } catch (e) { return; }
       if (!Array.isArray(stops) || stops.length === 0) return;
-
-      const mapEl = document.createElement("div");
-      mapEl.className = "leaflet-map";
-      frame.innerHTML = "";
-      frame.appendChild(mapEl);
-
-      const map = L.map(mapEl, {
-        zoomControl: true,
-        scrollWheelZoom: false,
-        attributionControl: true,
-        zoomSnap: 0.25,
-      });
-
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · © <a href="https://carto.com/attributions">CARTO</a>',
-        subdomains: "abcd",
-        maxZoom: 19,
-      }).addTo(map);
-
-      const latlngs = stops.map((s) => [s.lat, s.lng]);
-      const markers = [];
-
-      stops.forEach((stop, i) => {
-        const icon = L.divIcon({
-          className: "route-marker",
-          iconSize: [28, 28],
-          iconAnchor: [14, 14],
-          html: `<span data-i="${i}">${i + 1}</span>`,
-        });
-        const m = L.marker([stop.lat, stop.lng], { icon })
-          .addTo(map)
-          .bindPopup(`<strong>${i + 1}. ${stop.name}</strong>`);
-        markers.push(m);
-      });
-
-      L.polyline(latlngs, {
-        color: "#3D5A3E",
-        weight: 2.5,
-        opacity: 0.9,
-        dashArray: "6,8",
-      }).addTo(map);
-
-      const bounds = L.latLngBounds(latlngs);
-      const fitAll = () => {
-        if (latlngs.length > 1) map.fitBounds(bounds, { padding: [30, 30] });
-        else map.setView(latlngs[0], 8);
-      };
-      fitAll();
-
-      // Recompute size once the layout settles (sticky containers + tab swaps
-      // sometimes initialize the map with 0×0 dimensions otherwise).
-      const refreshSize = () => { map.invalidateSize(); fitAll(); };
-      setTimeout(refreshSize, 80);
-      setTimeout(refreshSize, 400);
-      window.addEventListener("resize", () => { map.invalidateSize(); });
-
-      // ----- Scroll-spy (only if there are days with data-stop-index) -----
-      const section = frame.closest(".itinerary-sticky");
-      const days = section ? section.querySelectorAll(".day[data-stop-index]") : [];
-      const stopsList = section ? section.querySelectorAll(".map-stops li") : [];
-
-      if (!days.length) return;
-
-      const highlight = (idx) => {
-        markers.forEach((m, i) => {
-          if (!m._icon) return;
-          m._icon.classList.toggle("route-marker-active", i === idx);
-        });
-        stopsList.forEach((li, i) => li.classList.toggle("active", i === idx));
-        days.forEach((d) => {
-          const di = parseInt(d.dataset.stopIndex, 10);
-          d.classList.toggle("is-active", di === idx);
-        });
-      };
-
-      // Pan to the active stop without changing zoom drastically — keep the
-      // surrounding context visible. If user is zoomed out beyond a sensible
-      // level, snap to a moderate zoom that shows the marker + neighbours.
-      const targetZoom = () => {
-        const z = map.getZoom();
-        const fit = map.getBoundsZoom(bounds, false);
-        // If we're at fit-all zoom, bump in a little; otherwise keep current.
-        return z <= fit + 0.3 ? Math.min(fit + 1.5, 8) : z;
-      };
-
-      let currentIdx = -1;
-      const io = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const idx = parseInt(entry.target.dataset.stopIndex, 10);
-              if (!isNaN(idx) && idx !== currentIdx && idx < stops.length) {
-                currentIdx = idx;
-                highlight(idx);
-                map.flyTo([stops[idx].lat, stops[idx].lng], targetZoom(), {
-                  duration: 0.9,
-                  easeLinearity: 0.35,
-                });
-              }
-            }
-          });
-        },
-        { rootMargin: "-35% 0px -55% 0px", threshold: 0 }
-      );
-      days.forEach((d) => io.observe(d));
+      // Scroll-spy runs immediately, independent of Leaflet
+      const spyState = setupScrollSpy(frame, stops);
+      routeFrames.push({ frame, stops, spyState });
     });
   }
 
-  if (document.querySelector(".map-frame[data-stops]")) {
+  function loadLeaflet() {
+    if (typeof L !== "undefined") {
+      routeFrames.forEach((f) => attachLeaflet(f.frame, f.stops, f.spyState));
+      return;
+    }
     const css = document.createElement("link");
     css.rel = "stylesheet";
     css.href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
@@ -733,8 +755,15 @@
     const script = document.createElement("script");
     script.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
     script.async = true;
-    script.onload = initRouteMaps;
+    script.onload = () => {
+      routeFrames.forEach((f) => attachLeaflet(f.frame, f.stops, f.spyState));
+    };
     document.head.appendChild(script);
+  }
+
+  if (document.querySelector(".map-frame[data-stops]")) {
+    initRouteMaps();   // scroll-spy now
+    loadLeaflet();     // map asap (separate concern)
   }
 
 })();

@@ -580,9 +580,11 @@ p  { margin: 0 0 1em; }
 .tab.active, .tab:hover { color: var(--ink); }
 .tab.active::after { transform: scaleX(1); }
 
-/* Tab panels: only the active one is visible. JS toggles the .active class. */
-.tab-panel { display: none; }
-.tab-panel.active { display: grid; }
+/* Tab panels: only the active one is visible. JS toggles the .active class.
+   Using !important because .cards-3/.cards-4 (which apply display:grid)
+   come later in this file and otherwise win the cascade. */
+.tab-panel { display: none !important; }
+.tab-panel.active { display: grid !important; }
 .tab-panel.just-tabbed { animation: tab-fade 0.45s ease-out; }
 @keyframes tab-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
