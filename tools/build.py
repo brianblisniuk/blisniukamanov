@@ -265,7 +265,7 @@ FOOTER = """  <footer class="site-footer">
         </div>
       </div>
       <div class="footer-col"><h5>Compañía</h5><ul><li><a href="heritage.html">Nuestra historia</a></li><li><a href="filantropia.html">Filantropía B&amp;A</a></li><li><a href="contact.html">Contacto</a></li></ul></div>
-      <div class="footer-col"><h5>Servicios</h5><ul><li><a href="catalogos.html">Catálogos</a></li><li><a href="journeys.html">Todos los viajes</a></li></ul></div>
+      <div class="footer-col"><h5>Servicios</h5><ul><li><a href="catalogos.html">Catálogos</a></li><li><a href="journeys.html">Todos los viajes</a></li><li><a href="small-group.html">Pequeñas expediciones</a></li><li><a href="destinations.html">Destinos</a></li></ul></div>
       <div class="footer-col"><h5>Legal</h5><ul><li><a href="terminos.html">Términos y condiciones</a></li><li><a href="privacidad.html">Privacidad</a></li><li><a href="cookies.html">Cookies</a></li></ul></div>
     </div>
     <div class="footer-bottom">© 2026 Blisniuk &amp; Amanov S.A. · RNAV Legajo 20943</div>

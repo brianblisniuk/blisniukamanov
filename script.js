@@ -145,7 +145,7 @@
             <textarea name="mensaje" rows="4" placeholder="Fechas tentativas, intereses, viajeros…"></textarea>
           </label>
 
-          <label class="check"><input type="checkbox" name="acepta_privacidad" value="si" required /> Acepto la <a href="#" target="_blank">política de privacidad</a></label>
+          <label class="check"><input type="checkbox" name="acepta_privacidad" value="si" required /> Acepto la <a href="privacidad.html" target="_blank">política de privacidad</a></label>
           <label class="check"><input type="checkbox" name="acepta_news" value="si" /> Quiero recibir novedades, salidas exclusivas y otra información de Blisniuk &amp; Amanov</label>
 
           <button type="submit" class="btn btn-laurel modal-submit">Hablar con un experto</button>
@@ -472,19 +472,24 @@
   }
 
   /* ==========================================================
-     Forms — newsletter and any inline form: prevent submit, show feedback
+     Forms — newsletter: validate email client-side, then let Netlify
+     Forms handle the actual submission (action="/gracias.html").
+     If the form has no action/data-netlify, fall back to fake-submit.
      ========================================================== */
   document.querySelectorAll("form.newsletter, form.newsletter-form").forEach((form) => {
     form.addEventListener("submit", (e) => {
-      e.preventDefault();
       const email = form.querySelector('input[type="email"]');
       if (!email || !email.value || !/.+@.+\..+/.test(email.value)) {
+        e.preventDefault();
         showToast("Por favor ingresá un correo válido.", "error");
         return;
       }
-      // simulate submit
-      form.querySelectorAll("input").forEach((i) => i.value = "");
-      showToast("¡Suscripción confirmada! Revisa tu correo.", "ok");
+      // If the form is wired to Netlify Forms, let it submit normally
+      // (it will POST and redirect to action). Otherwise fake-submit.
+      if (form.hasAttribute("data-netlify") && form.getAttribute("action")) return;
+      e.preventDefault();
+      form.querySelectorAll("input").forEach((i) => { if (i.type !== "hidden") i.value = ""; });
+      showToast("¡Suscripción confirmada! Revisá tu correo.", "ok");
     });
   });
 
@@ -595,13 +600,6 @@
       const date = row?.cells?.[0]?.textContent?.trim() || "";
       showToast(`Tu solicitud para la salida del ${date} se envió a tu asesor.`, "ok");
     });
-  });
-
-  /* ==========================================================
-     Search trigger (header magnifier) — focuses on /viajes filter
-     ========================================================== */
-  document.querySelectorAll(".search-trigger").forEach((a) => {
-    if (a.getAttribute("href") === "journeys.html") return; // anchor handles itself
   });
 
   /* ==========================================================
