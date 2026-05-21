@@ -30,11 +30,6 @@
   status = 200
 
 [[redirects]]
-  from = "/gran-migracion"
-  to = "/gran-migracion.html"
-  status = 200
-
-[[redirects]]
   from = "/gracias"
   to = "/gracias.html"
   status = 200
