@@ -534,7 +534,15 @@ p  { margin: 0 0 1em; }
   margin-bottom: clamp(36px, 4.5vw, 56px);
 }
 .section-head h2 { margin: 0; }
+.section-head .section-intro {
+  margin: 18px auto 0;
+  max-width: 620px;
+  color: var(--stone);
+  font-size: 17px;
+  line-height: 1.6;
+}
 .section-head.left { text-align: left; }
+.section-head.left .section-intro { margin-left: 0; }
 .section-head.split {
   display: flex;
   justify-content: space-between;
