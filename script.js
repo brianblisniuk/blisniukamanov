@@ -216,7 +216,10 @@
   }
 
   /* ==========================================================
-     Spotlight crossfade with autoplay + manual controls
+     Spotlight crossfade with autoplay + manual controls.
+     Each slide can have a <video class="slide-media"> background.
+     We restart the active video from 0 and pause the inactive ones
+     so each rotation begins on the first frame.
      ========================================================== */
   const slides = document.querySelectorAll("#spotlightFrame .slide");
   const slidePrev = document.getElementById("slidePrev");
@@ -224,10 +227,21 @@
   if (slides.length) {
     let idx = 0;
     let autoTimer;
+    const playSlide = (i) => {
+      const v = slides[i].querySelector("video.slide-media");
+      if (!v) return;
+      try { v.currentTime = 0; const p = v.play(); if (p && p.catch) p.catch(() => {}); } catch (e) {}
+    };
+    const pauseSlide = (i) => {
+      const v = slides[i].querySelector("video.slide-media");
+      if (v) { try { v.pause(); } catch (e) {} }
+    };
     const go = (next) => {
+      pauseSlide(idx);
       slides[idx].classList.remove("active");
       idx = (next + slides.length) % slides.length;
       slides[idx].classList.add("active");
+      playSlide(idx);
     };
     const restartAuto = () => {
       clearInterval(autoTimer);
@@ -235,6 +249,7 @@
     };
     if (slidePrev) slidePrev.addEventListener("click", () => { go(idx - 1); restartAuto(); });
     if (slideNext) slideNext.addEventListener("click", () => { go(idx + 1); restartAuto(); });
+    playSlide(0);
     restartAuto();
   }
 
