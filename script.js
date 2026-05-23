@@ -217,11 +217,14 @@
 
   /* ==========================================================
      Spotlight crossfade with autoplay + manual controls.
-     Each slide can have a <video class="slide-media"> background.
-     We restart the active video from 0 and pause the inactive ones
-     so each rotation begins on the first frame.
+     Each slide has a <video class="slide-media"> background.
+     The text overlays live OUTSIDE the slides as siblings in
+     .spotlight-content, so they always paint above any slide's
+     ::before vignette. We sync the active text with the active
+     slide so each rotation shows its own copy + CTA.
      ========================================================== */
   const slides = document.querySelectorAll("#spotlightFrame .slide");
+  const texts = document.querySelectorAll("#spotlightFrame .spotlight-text");
   const slidePrev = document.getElementById("slidePrev");
   const slideNext = document.getElementById("slideNext");
   if (slides.length) {
@@ -239,8 +242,10 @@
     const go = (next) => {
       pauseSlide(idx);
       slides[idx].classList.remove("active");
+      if (texts[idx]) texts[idx].classList.remove("active");
       idx = (next + slides.length) % slides.length;
       slides[idx].classList.add("active");
+      if (texts[idx]) texts[idx].classList.add("active");
       playSlide(idx);
     };
     const restartAuto = () => {

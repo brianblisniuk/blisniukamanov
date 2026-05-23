@@ -376,10 +376,10 @@ p  { margin: 0 0 1em; }
   object-fit: cover;
   display: block;
 }
-/* Vignette localizada por slide: entre el video/poster y el
-   spotlight-content. Como vive adentro de .slide, hereda la
-   opacidad del crossfade y no tapa el texto (que está en
-   z-index mayor dentro del mismo stacking context). */
+/* Vignette localizada por slide: dentro del propio stacking
+   context de la slide para que se desvanezca junto con ella en
+   el crossfade. El texto vive afuera de las slides (ver más
+   abajo), así que siempre queda por encima del vignette. */
 .spotlight-frame .slide::before {
   content: "";
   position: absolute;
@@ -397,18 +397,34 @@ p  { margin: 0 0 1em; }
   content: none;
 }
 
+/* Spotlight-content vive a nivel de .spotlight-frame, NO adentro
+   de las slides. Eso garantiza que su z-index 10 le gane a
+   cualquier slide (z-index 2) y a su ::before (vignette). */
 .spotlight-content {
   position: absolute;
   inset: 0;
-  z-index: 4;
+  z-index: 10;
+  pointer-events: none;
+}
+.spotlight-text {
+  position: absolute;
+  inset: 0;
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 36px var(--gutter);
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-end;
   color: var(--white);
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
 }
-.spotlight-text { max-width: 700px; align-self: end; }
+.spotlight-text > * { max-width: 700px; }
+.spotlight-text.active {
+  opacity: 1;
+  pointer-events: auto;
+}
 .spotlight-text .eyebrow { color: rgba(255,255,255,0.92); }
 .spotlight-text h1 {
   color: var(--white);
@@ -467,7 +483,7 @@ p  { margin: 0 0 1em; }
   position: absolute;
   right: var(--gutter);
   bottom: 16px;
-  z-index: 5;
+  z-index: 11;
   display: flex;
   gap: 8px;
 }
