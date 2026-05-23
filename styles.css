@@ -377,12 +377,7 @@ p  { margin: 0 0 1em; }
   display: block;
 }
 .spotlight-frame::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, rgba(11,11,11,0.55) 0%, rgba(11,11,11,0.2) 50%, rgba(11,11,11,0) 100%);
-  z-index: 3;
-  pointer-events: none;
+  content: none;
 }
 
 .spotlight-content {
@@ -397,12 +392,16 @@ p  { margin: 0 0 1em; }
   color: var(--white);
 }
 .spotlight-text { max-width: 700px; align-self: end; }
-.spotlight-text .eyebrow { color: rgba(255,255,255,0.92); }
+.spotlight-text .eyebrow {
+  color: rgba(255,255,255,0.92);
+  text-shadow: 0 1px 14px rgba(0,0,0,0.45);
+}
 .spotlight-text h1 {
   color: var(--white);
   font-size: clamp(42px, 6vw, 72px);
   line-height: 1.05;
   margin-bottom: 30px;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.4);
 }
 .spotlight-text h1 em { font-style: italic; color: var(--white); }
 
