@@ -392,16 +392,12 @@ p  { margin: 0 0 1em; }
   color: var(--white);
 }
 .spotlight-text { max-width: 700px; align-self: end; }
-.spotlight-text .eyebrow {
-  color: rgba(255,255,255,0.92);
-  text-shadow: 0 1px 14px rgba(0,0,0,0.45);
-}
+.spotlight-text .eyebrow { color: rgba(255,255,255,0.92); }
 .spotlight-text h1 {
   color: var(--white);
   font-size: clamp(42px, 6vw, 72px);
   line-height: 1.05;
   margin-bottom: 30px;
-  text-shadow: 0 2px 24px rgba(0,0,0,0.4);
 }
 .spotlight-text h1 em { font-style: italic; color: var(--white); }
 
