@@ -376,9 +376,11 @@ p  { margin: 0 0 1em; }
   object-fit: cover;
   display: block;
 }
-/* Vignette localizada solo en la esquina inferior-izquierda donde
-   está el texto: da contraste sin ensuciar el resto de la imagen. */
-.spotlight-frame::after {
+/* Vignette localizada por slide: entre el video/poster y el
+   spotlight-content. Como vive adentro de .slide, hereda la
+   opacidad del crossfade y no tapa el texto (que está en
+   z-index mayor dentro del mismo stacking context). */
+.spotlight-frame .slide::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -388,8 +390,11 @@ p  { margin: 0 0 1em; }
     rgba(0,0,0,0.25) 35%,
     rgba(0,0,0,0) 65%
   );
-  z-index: 3;
+  z-index: 1;
   pointer-events: none;
+}
+.spotlight-frame::after {
+  content: none;
 }
 
 .spotlight-content {
