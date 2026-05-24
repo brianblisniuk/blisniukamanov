@@ -298,6 +298,11 @@ p  { margin: 0 0 1em; }
   color: var(--ink);
   white-space: nowrap;
 }
+.brand-logo {
+  height: 34px;
+  width: auto;
+  display: block;
+}
 .brand-amp {
   font-family: var(--serif);
   font-style: italic;
@@ -931,6 +936,12 @@ p  { margin: 0 0 1em; }
   font-size: 48px;
   line-height: 1;
   color: var(--copper);
+}
+.footer-mark-img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  display: block;
 }
 .footer-brand h3 {
   font-family: var(--serif);
@@ -3183,6 +3194,7 @@ p  { margin: 0 0 1em; }
   .nav-left a:not(.menu-trigger), .nav-right a:not(.search-trigger) { display: none; }
   .nav-left { gap: 12px; }
   .brand-wordmark { font-size: 14px; letter-spacing: 0.24em; }
+  .brand-logo { height: 24px; }
   .header-inner { gap: 8px; }
 
   .spotlight-content { padding-bottom: 24px; }
