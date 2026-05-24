@@ -299,7 +299,7 @@ p  { margin: 0 0 1em; }
   white-space: nowrap;
 }
 .brand-logo {
-  height: 34px;
+  height: 48px;
   width: auto;
   display: block;
 }
@@ -938,8 +938,8 @@ p  { margin: 0 0 1em; }
   color: var(--copper);
 }
 .footer-mark-img {
-  width: 52px;
-  height: 52px;
+  width: 72px;
+  height: 72px;
   object-fit: contain;
   display: block;
 }
@@ -3194,7 +3194,7 @@ p  { margin: 0 0 1em; }
   .nav-left a:not(.menu-trigger), .nav-right a:not(.search-trigger) { display: none; }
   .nav-left { gap: 12px; }
   .brand-wordmark { font-size: 14px; letter-spacing: 0.24em; }
-  .brand-logo { height: 24px; }
+  .brand-logo { height: 30px; }
   .header-inner { gap: 8px; }
 
   .spotlight-content { padding-bottom: 24px; }
