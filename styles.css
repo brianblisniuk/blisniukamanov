@@ -2797,7 +2797,14 @@ p  { margin: 0 0 1em; }
   margin: 6px 0 0;
   font-weight: 500;
 }
-.lodge-card p { color: var(--ink-mute); font-size: 13px; margin: 0; }
+.lodge-card p { color: var(--ink-mute); font-size: 13px; margin: 0; line-height: 1.55; }
+.lodges .lodge-intro {
+  max-width: 640px;
+  margin: 14px 0 0;
+  color: var(--stone);
+  font-size: 17px;
+  line-height: 1.6;
+}
 
 /* =========================
    Reviews
