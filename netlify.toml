@@ -5,11 +5,6 @@
 
 # Clean URLs — visitors don't need to type .html
 [[redirects]]
-  from = "/destinos"
-  to = "/destinations.html"
-  status = 200
-
-[[redirects]]
   from = "/viajes"
   to = "/journeys.html"
   status = 200
@@ -25,14 +20,15 @@
   status = 200
 
 [[redirects]]
-  from = "/europa"
-  to = "/europe.html"
-  status = 200
-
-[[redirects]]
   from = "/gracias"
   to = "/gracias.html"
   status = 200
+
+# Archive folder: no se sirve públicamente
+[[redirects]]
+  from = "/_archive-pre-simplificacion/*"
+  to = "/404.html"
+  status = 404
 
 # 404 fallback
 [[redirects]]
