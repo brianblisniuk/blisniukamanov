@@ -787,3 +787,87 @@
   }
 
 })();
+
+/* ==========================================================
+   Newsletter pop-up modal (Sprint 2)
+   - Aparece a los 20s O cuando el mouse sale por arriba (exit-intent)
+   - Una sola vez por sesión; si se cierra/suscribe, no vuelve por 30 días
+   - localStorage key: ba_newsletter_modal_v1 (timestamp del dismiss)
+   ========================================================== */
+(function() {
+  var STORAGE_KEY = "ba_newsletter_modal_v1";
+  var DISMISS_DAYS = 30;
+  var SHOW_AFTER_MS = 20000;
+
+  function getDismissedAt() {
+    try { var v = localStorage.getItem(STORAGE_KEY); return v ? parseInt(v, 10) : 0; }
+    catch (e) { return 0; }
+  }
+  function setDismissedAt() {
+    try { localStorage.setItem(STORAGE_KEY, Date.now().toString()); } catch (e) {}
+  }
+  function shouldShow() {
+    var t = getDismissedAt();
+    if (!t) return true;
+    var daysSince = (Date.now() - t) / 86400000;
+    return daysSince >= DISMISS_DAYS;
+  }
+  if (!shouldShow()) return;
+
+  // Construir DOM
+  var modal = document.createElement("div");
+  modal.className = "newsletter-modal";
+  modal.setAttribute("role", "dialog");
+  modal.setAttribute("aria-modal", "true");
+  modal.innerHTML = ''
+    + '<div class="newsletter-modal-card">'
+    + '  <button class="newsletter-modal-close" aria-label="Cerrar">&times;</button>'
+    + '  <span class="eyebrow">Newsletter</span>'
+    + '  <h3>Una carta breve al mes</h3>'
+    + '  <p class="lede">Un destino, una historia, una recomendación. Sin promociones agresivas, sin saturar tu bandeja.</p>'
+    + '  <form name="newsletter-popup" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/gracias.html">'
+    + '    <input type="hidden" name="form-name" value="newsletter-popup" />'
+    + '    <p style="position:absolute;left:-9999px;"><label>No completar: <input name="bot-field" /></label></p>'
+    + '    <input type="email" name="email" placeholder="Tu correo electrónico" required />'
+    + '    <button class="btn btn-laurel" type="submit">Suscribirme</button>'
+    + '    <span class="terms">Al suscribirte aceptas nuestros <a href="terminos.html">Términos</a> y <a href="privacidad.html">Política de privacidad</a>.</span>'
+    + '  </form>'
+    + '</div>';
+
+  function attach() {
+    if (!document.body) return;
+    document.body.appendChild(modal);
+
+    var shown = false;
+    var timer;
+
+    function show() {
+      if (shown) return;
+      shown = true;
+      modal.classList.add("open");
+      clearTimeout(timer);
+      document.removeEventListener("mouseleave", onLeave);
+    }
+    function close() {
+      modal.classList.remove("open");
+      setDismissedAt();
+    }
+    function onLeave(e) { if (e.clientY <= 0) show(); }
+
+    timer = setTimeout(show, SHOW_AFTER_MS);
+    document.addEventListener("mouseleave", onLeave);
+
+    modal.querySelector(".newsletter-modal-close").addEventListener("click", close);
+    modal.addEventListener("click", function(e) { if (e.target === modal) close(); });
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape" && modal.classList.contains("open")) close();
+    });
+    modal.querySelector("form").addEventListener("submit", setDismissedAt);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", attach);
+  } else {
+    attach();
+  }
+})();

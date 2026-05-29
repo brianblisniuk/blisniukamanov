@@ -3532,3 +3532,97 @@ p  { margin: 0 0 1em; }
 .leaflet-marker-icon.route-marker-active {
   z-index: 1000 !important;
 }
+
+/* ======================================================================
+   Newsletter pop-up modal (Sprint 2)
+   Triggers: timer 20s + exit-intent. LocalStorage de 30 días.
+   ====================================================================== */
+.newsletter-modal {
+  position: fixed; inset: 0;
+  z-index: 9998;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(14,14,14,0.6);
+  backdrop-filter: blur(4px);
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 380ms ease;
+}
+.newsletter-modal.open { display: flex; opacity: 1; }
+.newsletter-modal-card {
+  background: var(--white);
+  border-radius: var(--r);
+  padding: 40px 38px;
+  max-width: 460px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+  transform: translateY(20px);
+  transition: transform 380ms cubic-bezier(.22,.61,.36,1);
+}
+.newsletter-modal.open .newsletter-modal-card { transform: translateY(0); }
+.newsletter-modal-close {
+  position: absolute;
+  top: 10px; right: 10px;
+  background: transparent;
+  border: 0;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--ink-mute);
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 200ms, color 200ms;
+}
+.newsletter-modal-close:hover { background: var(--bone-2); color: var(--ink); }
+.newsletter-modal .eyebrow {
+  display: block;
+  margin-bottom: 10px;
+}
+.newsletter-modal h3 {
+  font-family: var(--serif);
+  font-size: 32px;
+  line-height: 1.1;
+  margin: 0 0 12px;
+  color: var(--ink);
+}
+.newsletter-modal p.lede {
+  color: var(--ink-mute);
+  font-size: 15px;
+  line-height: 1.55;
+  margin: 0 0 22px;
+}
+.newsletter-modal form input[type="email"] {
+  width: 100%;
+  padding: 13px 14px;
+  font-size: 15px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  margin-bottom: 10px;
+  background: var(--white);
+  font-family: var(--sans);
+  box-sizing: border-box;
+}
+.newsletter-modal form input[type="email"]:focus {
+  outline: none;
+  border-color: var(--laurel);
+}
+.newsletter-modal form button[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  font-size: 14px;
+}
+.newsletter-modal .terms {
+  display: block;
+  font-size: 11px;
+  color: var(--ink-mute);
+  margin-top: 14px;
+  line-height: 1.5;
+}
+.newsletter-modal .terms a { color: var(--ink); text-decoration: underline; }
+@media (max-width: 520px) {
+  .newsletter-modal-card { padding: 30px 22px; }
+  .newsletter-modal h3 { font-size: 26px; }
+}
