@@ -918,3 +918,49 @@
   }
   document.addEventListener("submit", handler, true);
 })();
+
+
+/* ==========================================================
+   Consulta -> backend B&A (CRM Leads, endpoint publico)
+   Captura el form de contacto (.inquiry-form / name=consulta)
+   y lo manda a public-lead. Redirige a la pagina de gracias.
+   ========================================================== */
+(function () {
+  "use strict";
+  var EP = "https://onnqcdjkvpvpvtsorpup.supabase.co/functions/v1/public-lead";
+  var KEY = "sb_publishable_PcVUGfWVD_Aj_gE1H0Jr4g_fKrLn-Ua";
+  function isLead(form) {
+    if (!form || form.tagName !== "FORM") return false;
+    return (form.classList && form.classList.contains("inquiry-form")) || form.getAttribute("name") === "consulta";
+  }
+  function val(form, name) {
+    var el = form.querySelector('[name="' + name + '"]');
+    return el ? (el.value || "").trim() : "";
+  }
+  function handler(e) {
+    var form = e.target;
+    if (!isLead(form)) return;
+    e.preventDefault();
+    var emailEl = form.querySelector('input[type="email"], [name="email"]');
+    var email = emailEl ? (emailEl.value || "").trim() : "";
+    if (!email) { if (emailEl) emailEl.focus(); return; }
+    var hp = form.querySelector('[name="bot-field"]');
+    var asesorEl = form.querySelector('[name="asesor"]:checked');
+    var body = {
+      nombre: val(form, "nombre"), apellido: val(form, "apellido"), email: email,
+      telefono: val(form, "telefono"), destino: val(form, "destino"), tipo: val(form, "tipo"),
+      viajeros: val(form, "viajeros"), fecha: val(form, "fecha"), presupuesto: val(form, "presupuesto"),
+      mensaje: val(form, "mensaje"), asesor: asesorEl ? asesorEl.value : "", hp: hp ? hp.value : ""
+    };
+    var btn = form.querySelector('button[type="submit"], button:not([type])');
+    if (btn) btn.disabled = true;
+    fetch(EP, { method: "POST", headers: { "Content-Type": "application/json", "apikey": KEY }, body: JSON.stringify(body) })
+      .then(function (r) { return r.json().catch(function () { return {}; }); })
+      .then(function (d) {
+        if (d && d.ok) { window.location.href = form.getAttribute("action") || "/gracias.html"; }
+        else { if (btn) btn.disabled = false; alert((d && d.error) || "No pudimos enviar la consulta. Proba de nuevo."); }
+      })
+      .catch(function () { if (btn) btn.disabled = false; alert("No pudimos enviar la consulta. Proba de nuevo."); });
+  }
+  document.addEventListener("submit", handler, true);
+})();
