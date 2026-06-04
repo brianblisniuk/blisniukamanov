@@ -946,11 +946,13 @@
     if (!email) { if (emailEl) emailEl.focus(); return; }
     var hp = form.querySelector('[name="bot-field"]');
     var asesorEl = form.querySelector('[name="asesor"]:checked');
+    var q = new URLSearchParams(window.location.search || "");
     var body = {
       nombre: val(form, "nombre"), apellido: val(form, "apellido"), email: email,
       telefono: val(form, "telefono"), destino: val(form, "destino"), tipo: val(form, "tipo"),
       viajeros: val(form, "viajeros"), fecha: val(form, "fecha"), presupuesto: val(form, "presupuesto"),
-      mensaje: val(form, "mensaje"), asesor: asesorEl ? asesorEl.value : "", hp: hp ? hp.value : ""
+      mensaje: val(form, "mensaje"), asesor: asesorEl ? asesorEl.value : "", hp: hp ? hp.value : "",
+      utm_source: q.get("utm_source") || "", utm_medium: q.get("utm_medium") || "", utm_campaign: q.get("utm_campaign") || "", utm_content: q.get("utm_content") || "", utm_term: q.get("utm_term") || "", referrer: document.referrer || ""
     };
     var btn = form.querySelector('button[type="submit"], button:not([type])');
     if (btn) btn.disabled = true;
