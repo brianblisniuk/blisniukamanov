@@ -871,3 +871,50 @@
     attach();
   }
 })();
+
+
+/* ==========================================================
+   Newsletter -> backend B&A (endpoint publico Supabase)
+   Captura el form del footer (#newsletter) y el del modal,
+   en cualquier pagina. Reemplaza el submit de Netlify Forms.
+   ========================================================== */
+(function () {
+  "use strict";
+  var EP = "https://onnqcdjkvpvpvtsorpup.supabase.co/functions/v1/public-subscribe";
+  var KEY = "sb_publishable_PcVUGfWVD_Aj_gE1H0Jr4g_fKrLn-Ua";
+  function isNews(form) {
+    if (!form || form.tagName !== "FORM") return false;
+    return form.id === "newsletter" || (form.classList && form.classList.contains("newsletter")) || !!(form.closest && form.closest(".newsletter-modal"));
+  }
+  function done(form) {
+    var msg = document.createElement("div");
+    msg.className = "newsletter-done";
+    msg.innerHTML = '<strong style="display:block; color:var(--white); font-family:var(--serif); font-size:22px; line-height:1.15; margin-bottom:6px;">Listo, te sumaste al Cuaderno B&amp;A.</strong><span class="terms">Te llega la próxima carta. Revisá tu correo.</span>';
+    if (form.parentNode) form.parentNode.replaceChild(msg, form);
+  }
+  function handler(e) {
+    var form = e.target;
+    if (!isNews(form)) return;
+    e.preventDefault();
+    var hp = form.querySelector('[name="bot-field"]');
+    var emailEl = form.querySelector('input[type="email"]');
+    var email = emailEl ? (emailEl.value || "").trim() : "";
+    if (!email) { if (emailEl) emailEl.focus(); return; }
+    var nom = form.querySelector('input[placeholder*="ombre"]');
+    var ape = form.querySelector('input[placeholder*="pellido"]');
+    var name = [nom && nom.value, ape && ape.value].filter(Boolean).join(" ").trim();
+    var btn = form.querySelector('button[type="submit"], button:not([type]), input[type="submit"]');
+    if (btn) btn.disabled = true;
+    fetch(EP, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "apikey": KEY },
+      body: JSON.stringify({ email: email, name: name, hp: hp ? hp.value : "" })
+    }).then(function (r) { return r.json().catch(function () { return {}; }); })
+      .then(function (d) {
+        if (d && d.ok) { done(form); }
+        else { if (btn) btn.disabled = false; alert((d && d.error) || "No pudimos sumarte. Proba de nuevo."); }
+      })
+      .catch(function () { if (btn) btn.disabled = false; alert("No pudimos sumarte. Proba de nuevo."); });
+  }
+  document.addEventListener("submit", handler, true);
+})();
