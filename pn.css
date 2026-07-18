@@ -524,7 +524,7 @@ img, svg, video { max-width: 100%; }
 .pn-doc-body p { color: var(--ink-2); font-size: 16px; line-height: 1.78; margin: 0; }
 
 .pn-doc-test {
-  list-style: none; margin: 0 0 var(--pn-s5); padding: 0;
+  list-style: none; margin: 0; padding: 0;
   display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px;
   background: var(--line); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
 }
@@ -538,7 +538,8 @@ img, svg, video { max-width: 100%; }
 
 /* Galería: los lugares quedan armados y no se muestran hasta
    que existan las fotos. Sin imagen, la tarjeta no se dibuja. */
-.pn-doc-galeria { margin: 0; }
+/* Se enciende cuando esten las fotos: quitar este display:none. */
+.pn-doc-galeria { margin: 0; display: none; }
 .pn-galeria-tira {
   display: grid; grid-auto-flow: column; grid-auto-columns: minmax(260px, 1fr);
   gap: var(--pn-s2); overflow-x: auto; scroll-snap-type: x mandatory;
@@ -557,7 +558,8 @@ img, svg, video { max-width: 100%; }
   margin-top: 10px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em;
   text-transform: uppercase; color: #9BA0A8;
 }
-.pn-doc-galeria:not(:has(.pn-galeria-item:not(.vacio))) { display: none; }
+.pn-doc-galeria.activa { display: block; }
+.pn-doc-galeria.activa:not(:has(.pn-galeria-item:not(.vacio))) { display: none; }
 
 /* =========================================================
    11 · CÓMO TRABAJAMOS — cuatro columnas que se deslizan
