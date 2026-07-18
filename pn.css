@@ -209,7 +209,7 @@ h1 em, h2 em, h3 em, blockquote em {
    4 · PÁGINAS DE EXPEDICIÓN
    ========================================================= */
 
-.pn-hero { position: relative; min-height: 66vh; display: flex; align-items: flex-end; overflow: hidden; }
+.pn-hero { position: relative; min-height: 66vh; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
 .pn-hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .pn-hero::after {
   content: ""; position: absolute; inset: 0;
@@ -222,6 +222,7 @@ h1 em, h2 em, h3 em, blockquote em {
   position: relative;
   z-index: 2;
   width: 100%;
+  margin-top: auto;
   padding-top: 0;
   padding-bottom: var(--pn-s4);
 }
@@ -246,8 +247,8 @@ h1 em, h2 em, h3 em, blockquote em {
    partían en dos líneas y un dato partido deja de leerse. */
 .pn-hero-facts {
   position: relative; z-index: 2; display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  border-top: 1px solid var(--line); background: var(--bone); width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  border-top: 1px solid var(--line); background: var(--bone); width: 100%; flex-shrink: 0;
 }
 .pn-hero-facts > div { padding: var(--pn-s2) var(--gutter); border-right: 1px solid var(--line); }
 .pn-hero-facts > div:last-child { border-right: 0; }
