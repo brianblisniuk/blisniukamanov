@@ -652,3 +652,67 @@ img, svg, video { max-width: 100%; }
   .pn-casa-inner { grid-template-columns: 1fr; gap: var(--pn-s3); }
   .pn-casa-retrato { max-width: 260px; }
 }
+
+/* =========================================================
+   14 · BANDA DE CITA CON IMAGEN
+   ========================================================= */
+
+.quote-band {
+  position: relative; height: auto; min-height: 52vh;
+  display: flex; align-items: center;
+  padding: var(--pn-s6) 0; overflow: hidden;
+  background: var(--bone);
+  border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft);
+}
+.quote-band img {
+  display: block; position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+  filter: grayscale(.55) saturate(.6) brightness(.62);
+}
+.quote-band::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(10,10,11,.72) 0%, rgba(10,10,11,.55) 50%, rgba(10,10,11,.78) 100%);
+}
+.quote-band .container { position: relative; z-index: 2; }
+.quote-band blockquote {
+  font-family: var(--serif);
+  font-size: clamp(26px, 3.6vw, 46px);
+  line-height: 1.28;
+  color: var(--pn-sobre-imagen);
+  max-width: 17em; margin: 0 auto var(--pn-s3); text-align: center;
+  text-shadow: 0 2px 40px rgba(10,10,11,.6);
+}
+.quote-band cite {
+  display: block; text-align: center;
+  font-family: var(--mono); font-style: normal; font-size: 11px;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--pn-sobre-imagen-2);
+}
+.quote-band cite::before { content: "— "; }
+
+/* =========================================================
+   15 · PLACAS DE ACCESO SIN FOTO
+   Un acceso que no tiene imagen propia se muestra escrito.
+   ========================================================= */
+
+.pn-galeria-item.placa { display: flex; }
+.pn-placa {
+  width: 100%; aspect-ratio: 4 / 5;
+  background: var(--bone-2); border: 1px solid var(--line);
+  padding: var(--pn-s3);
+  display: flex; flex-direction: column; justify-content: flex-end;
+}
+.pn-placa .pn-rom { margin-bottom: auto; }
+.pn-placa h4 {
+  font-family: var(--serif); font-size: 22px; font-weight: 400; line-height: 1.25;
+  color: var(--ink); margin: 0 0 10px;
+}
+.pn-placa p { color: var(--ink-2); font-size: 14.5px; line-height: 1.68; margin: 0; }
+
+.pn-galeria-item { margin: 0; }
+.pn-galeria-item figcaption { max-width: 30em; }
+
+@media (max-width: 720px) {
+  .quote-band { min-height: 0; padding: var(--pn-s5) 0; }
+  .quote-band blockquote { font-size: 24px; max-width: none; }
+}
