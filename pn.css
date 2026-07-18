@@ -495,9 +495,9 @@ h1 em, h2 em, h3 em, blockquote em {
    9 · DESBORDE EN PANTALLAS CHICAS
    ========================================================= */
 
-.cat-grid, .cat-list { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.catalogos-grid, .cat-grid, .cat-list { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
 @media (max-width: 560px) {
-  .cat-grid, .cat-list { grid-template-columns: 1fr; }
+  .catalogos-grid, .cat-grid, .cat-list { grid-template-columns: 1fr; }
   .cat-card, .cat-cover { max-width: 100%; }
   .field, .field.full, .field input, .field select, .field textarea { max-width: 100%; width: 100%; box-sizing: border-box; }
   .newsletter-row { grid-template-columns: 1fr; }
