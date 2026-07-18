@@ -505,3 +505,98 @@ h1 em, h2 em, h3 em, blockquote em {
 }
 .field, .field input, .field select, .field textarea { box-sizing: border-box; max-width: 100%; }
 img, svg, video { max-width: 100%; }
+
+/* =========================================================
+   10 · QUÉ ES UN ACCESO
+   ========================================================= */
+
+.pn-acceso-doc { padding: var(--pn-s6) 0; border-top: 1px solid var(--line-soft); }
+.pn-doc-head { margin-bottom: var(--pn-s3); }
+.pn-doc-head h2 {
+  font-family: var(--serif); font-size: clamp(32px, 4.4vw, 52px); line-height: 1.06;
+  color: var(--ink); margin: 0; letter-spacing: .01em;
+}
+.pn-doc-body { max-width: 36em; margin-bottom: var(--pn-s5); }
+.pn-doc-lead {
+  font-family: var(--serif); font-size: clamp(20px, 2.1vw, 27px); line-height: 1.5;
+  color: var(--ink); margin: 0 0 var(--pn-s2);
+}
+.pn-doc-body p { color: var(--ink-2); font-size: 16px; line-height: 1.78; margin: 0; }
+
+.pn-doc-test {
+  list-style: none; margin: 0 0 var(--pn-s5); padding: 0;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px;
+  background: var(--line); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+}
+.pn-doc-test li { background: var(--bone); padding: var(--pn-s3) var(--pn-s3) var(--pn-s4) 0; }
+.pn-doc-test li + li { padding-left: var(--pn-s3); }
+.pn-doc-test h3 {
+  font-family: var(--serif); font-size: 21px; font-weight: 400; color: var(--ink);
+  margin: 0 0 10px; line-height: 1.25;
+}
+.pn-doc-test p { color: var(--ink-2); font-size: 15px; line-height: 1.72; margin: 0; }
+
+/* Galería: los lugares quedan armados y no se muestran hasta
+   que existan las fotos. Sin imagen, la tarjeta no se dibuja. */
+.pn-doc-galeria { margin: 0; }
+.pn-galeria-tira {
+  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(260px, 1fr);
+  gap: var(--pn-s2); overflow-x: auto; scroll-snap-type: x mandatory;
+  scrollbar-width: none; -ms-overflow-style: none;
+  padding-bottom: var(--pn-s1);
+}
+.pn-galeria-tira::-webkit-scrollbar { display: none; }
+.pn-galeria-item { scroll-snap-align: start; }
+.pn-galeria-item.vacio { display: none; }
+.pn-galeria-item img {
+  width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block;
+  background: var(--bone-2); filter: saturate(.82);
+}
+.pn-galeria-item figcaption,
+.pn-galeria-item .pie {
+  margin-top: 10px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em;
+  text-transform: uppercase; color: #9BA0A8;
+}
+.pn-doc-galeria:not(:has(.pn-galeria-item:not(.vacio))) { display: none; }
+
+/* =========================================================
+   11 · CÓMO TRABAJAMOS — cuatro columnas que se deslizan
+   ========================================================= */
+
+.stats-strip .pn-doc-head { margin-bottom: var(--pn-s4); }
+.stats-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--pn-s3);
+  align-items: start;
+}
+.stat { border-top: 1px solid var(--line); padding-top: var(--pn-s2); }
+.stat h5 {
+  font-family: var(--serif); font-size: 24px; font-weight: 400; letter-spacing: .01em;
+  text-transform: none; color: var(--ink); margin: 0 0 var(--pn-s1);
+}
+.stat p { font-size: 15px; line-height: 1.72; color: var(--ink-2); margin: 0; max-width: none; }
+
+@media (max-width: 1000px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: var(--pn-s4) var(--pn-s3); }
+}
+
+/* En pantalla chica la fila se desliza y se ve el borde de la
+   siguiente, para que se lea que hay más. */
+@media (max-width: 700px) {
+  .stats-grid {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 78%;
+    gap: var(--pn-s3);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; -ms-overflow-style: none;
+    margin-right: calc(var(--gutter) * -1);
+    padding-right: var(--gutter);
+  }
+  .stats-grid::-webkit-scrollbar { display: none; }
+  .stat { scroll-snap-align: start; }
+  .pn-doc-test { grid-auto-flow: row; }
+  .pn-doc-test li,
+  .pn-doc-test li + li { padding-left: 0; padding-right: 0; }
+  .pn-galeria-tira { grid-auto-columns: 76%; margin-right: calc(var(--gutter) * -1); padding-right: var(--gutter); }
+}
