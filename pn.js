@@ -48,29 +48,43 @@
   });
 })();
 
-/* El video del hero pesa 15 MB por pieza. En pantalla chica no se descarga:
-   queda el poster, que es la misma imagen. En escritorio se carga solo el
-   de la diapositiva visible. */
+/* El video del hero pesa 15 MB por pieza y son tres. En pantalla chica se le
+   quitan las fuentes al elemento antes de que ningun script pida reproducir:
+   queda el poster, que es la misma imagen. En escritorio se carga solo el de
+   la diapositiva visible. Corre en el parseo, antes de DOMContentLoaded. */
 (function () {
-  function esChica() { return window.innerWidth < 900 || (navigator.connection && navigator.connection.saveData); }
+  var chica = window.innerWidth < 900 || (navigator.connection && navigator.connection.saveData);
+  var videos = document.querySelectorAll('.spotlight-frame video.slide-media');
+  if (!videos.length) return;
+
+  if (chica) {
+    for (var i = 0; i < videos.length; i++) {
+      var v = videos[i];
+      var fuentes = v.querySelectorAll('source');
+      for (var k = 0; k < fuentes.length; k++) fuentes[k].parentNode.removeChild(fuentes[k]);
+      v.removeAttribute('autoplay');
+      v.setAttribute('preload', 'none');
+      try { v.load(); } catch (e) {}
+      var poster = v.getAttribute('poster');
+      if (poster) { v.style.background = 'center/cover no-repeat url("' + poster + '")'; }
+    }
+    return;
+  }
+
+  function activar(v) {
+    if (!v) return;
+    if (v.getAttribute('preload') === 'none') { v.setAttribute('preload', 'auto'); try { v.load(); } catch (e) {} }
+    var p = v.play(); if (p && p.catch) p.catch(function () {});
+  }
   function arrancar() {
-    var videos = document.querySelectorAll('.spotlight-frame video.slide-media');
-    if (!videos.length || esChica()) return;
-    var primero = videos[0];
-    primero.setAttribute('preload', 'auto');
-    try { primero.load(); var pr = primero.play(); if (pr && pr.catch) pr.catch(function () {}); } catch (e) {}
-    var obs = new MutationObserver(function () {
-      document.querySelectorAll('.spotlight-frame .slide').forEach(function (s) {
+    activar(videos[0]);
+    document.querySelectorAll('.spotlight-frame .slide').forEach(function (s) {
+      new MutationObserver(function () {
         var v = s.querySelector('video.slide-media');
         if (!v) return;
-        if (s.classList.contains('active')) {
-          if (v.getAttribute('preload') === 'none') { v.setAttribute('preload', 'auto'); try { v.load(); } catch (e) {} }
-          var p = v.play(); if (p && p.catch) p.catch(function () {});
-        } else { try { v.pause(); } catch (e) {} }
-      });
-    });
-    document.querySelectorAll('.spotlight-frame .slide').forEach(function (s) {
-      obs.observe(s, { attributes: true, attributeFilter: ['class'] });
+        if (s.classList.contains('active')) activar(v);
+        else { try { v.pause(); } catch (e) {} }
+      }).observe(s, { attributes: true, attributeFilter: ['class'] });
     });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', arrancar);
