@@ -97,7 +97,25 @@
     <div class="pn-cta"><div class="pn-precio"><small>Por persona</small><strong>USD #.###</strong></div><a href="#consultar" class="btn btn-laurel">Consultar por esta expedición</a></div>
   </div></section>
 
-  <footer class="site-footer" id="consultar"><div class="container footer-grid">
+  <section class="pn-consulta" id="consultar"><div class="container">
+    <div class="pn-sec-head"><span class="pn-kicker">Sin compromiso</span><h2>Consultar por esta expedición</h2>
+    <p>Escribime y te contesto yo, por correo, con lo que necesites saber antes de decidir. El lugar se reserva con seña; hasta entonces no hay nada firmado.</p></div>
+    <form class="pn-form" novalidate>
+      <input type="hidden" name="destino" data-valor="Bahía" value="Bahía" />
+      <div class="pn-hp"><label>No completar <input name="hp" tabindex="-1" autocomplete="off" /></label></div>
+      <div class="pn-form-grid">
+        <label class="pn-campo"><span>Nombre</span><input name="nombre" autocomplete="given-name" required /></label>
+        <label class="pn-campo"><span>Apellido</span><input name="apellido" autocomplete="family-name" /></label>
+        <label class="pn-campo"><span>Correo</span><input name="email" type="email" autocomplete="email" required /></label>
+        <label class="pn-campo"><span>Teléfono</span><input name="telefono" autocomplete="tel" /></label>
+        <label class="pn-campo"><span>Cuántos viajan</span><input name="viajeros" type="number" min="1" max="10" /></label>
+      </div>
+      <label class="pn-campo pn-campo-ancho"><span>Mensaje</span><textarea name="mensaje" rows="4" placeholder="Lo que quieras preguntar."></textarea></label>
+      <div class="pn-form-pie"><button class="btn btn-laurel" type="submit">Enviar consulta</button><p class="pn-form-estado" role="status"></p></div>
+    </form>
+  </div></section>
+
+  <footer class="site-footer"><div class="container footer-grid">
     <div class="footer-brand"><div class="footer-brand-row"><img class="footer-sello" src="assets/brand/simbolo_marfil.svg" alt="Pasaporte Negro" /><h3>Pasaporte Negro</h3></div>
       <p>Turismo de lujo en expediciones de hasta diez viajeros. Buenos Aires, Argentina.</p>
       <p>Escribinos a <a href="mailto:pasaportenegroviajes@gmail.com">pasaportenegroviajes@gmail.com</a></p>
@@ -110,5 +128,6 @@
   </div><div class="footer-bottom">© 2026 Pasaporte Negro · Buenos Aires · Todos los derechos reservados.</div></footer>
 
   <script src="script.js"></script>
+  <script src="pn.js"></script>
 </body>
 </html>
