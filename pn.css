@@ -84,12 +84,14 @@ h1 em, h2 em, h3 em, blockquote em {
   letter-spacing: 0.01em;
 }
 
-.brand-lockup { height: 26px; display: block; }
+.brand-lockup { height: 40px; display: block; }
+@media (max-width: 900px) { .brand-lockup { height: 32px; } }
+@media (max-width: 520px) { .brand-lockup { height: 27px; } }
 
 /* El sello completo está dibujado para 400px: a 54px sus dos
    círculos y los textos circulares se empastan. En pie de
    página va el símbolo, que es la versión para tamaño chico. */
-.footer-sello { width: 46px; height: 46px; display: block; opacity: .95; }
+.footer-sello { width: 56px; height: 56px; display: block; opacity: .95; }
 
 .site-header {
   background: rgba(10, 10, 11, 0.92);
