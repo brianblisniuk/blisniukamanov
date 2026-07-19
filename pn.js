@@ -47,3 +47,32 @@
       .then(function () { boton.disabled = false; });
   });
 })();
+
+/* El video del hero pesa 15 MB por pieza. En pantalla chica no se descarga:
+   queda el poster, que es la misma imagen. En escritorio se carga solo el
+   de la diapositiva visible. */
+(function () {
+  function esChica() { return window.innerWidth < 900 || (navigator.connection && navigator.connection.saveData); }
+  function arrancar() {
+    var videos = document.querySelectorAll('.spotlight-frame video.slide-media');
+    if (!videos.length || esChica()) return;
+    var primero = videos[0];
+    primero.setAttribute('preload', 'auto');
+    try { primero.load(); var pr = primero.play(); if (pr && pr.catch) pr.catch(function () {}); } catch (e) {}
+    var obs = new MutationObserver(function () {
+      document.querySelectorAll('.spotlight-frame .slide').forEach(function (s) {
+        var v = s.querySelector('video.slide-media');
+        if (!v) return;
+        if (s.classList.contains('active')) {
+          if (v.getAttribute('preload') === 'none') { v.setAttribute('preload', 'auto'); try { v.load(); } catch (e) {} }
+          var p = v.play(); if (p && p.catch) p.catch(function () {});
+        } else { try { v.pause(); } catch (e) {} }
+      });
+    });
+    document.querySelectorAll('.spotlight-frame .slide').forEach(function (s) {
+      obs.observe(s, { attributes: true, attributeFilter: ['class'] });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', arrancar);
+  else arrancar();
+})();
