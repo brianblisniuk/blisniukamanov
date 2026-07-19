@@ -718,3 +718,50 @@ img, svg, video { max-width: 100%; }
   .quote-band { min-height: 0; padding: var(--pn-s5) 0; }
   .quote-band blockquote { font-size: 24px; max-width: none; }
 }
+
+/* =========================================================
+   16 · FORMULARIO DE CONSULTA
+   ========================================================= */
+
+.pn-consulta { padding: var(--pn-s6) 0; background: var(--bone-2); border-top: 1px solid var(--line-soft); }
+.pn-form { max-width: 44em; }
+.pn-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.pn-form-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: var(--pn-s2) var(--pn-s3); margin-bottom: var(--pn-s2);
+}
+.pn-campo { display: block; }
+.pn-campo > span {
+  display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: .18em;
+  text-transform: uppercase; color: #9BA0A8; margin-bottom: 8px;
+}
+.pn-campo input,
+.pn-campo textarea {
+  width: 100%; box-sizing: border-box;
+  background: var(--bone); border: 1px solid var(--line); border-radius: 0;
+  color: var(--ink); font-family: var(--sans); font-size: 15.5px;
+  padding: 13px 14px; transition: border-color 180ms ease;
+}
+.pn-campo textarea { resize: vertical; min-height: 118px; line-height: 1.65; }
+.pn-campo input:focus,
+.pn-campo textarea:focus { outline: none; border-color: var(--ink); }
+.pn-campo input::placeholder,
+.pn-campo textarea::placeholder { color: #6B7078; }
+.pn-campo-ancho { margin-bottom: var(--pn-s3); }
+
+.pn-form-pie {
+  display: flex; align-items: center; gap: var(--pn-s3); flex-wrap: wrap;
+  padding-top: var(--pn-s2); border-top: 1px solid var(--line);
+}
+.pn-form-pie .btn { display: inline-flex; width: auto; }
+.pn-form-estado {
+  margin: 0; font-family: var(--mono); font-size: 11.5px; letter-spacing: .1em;
+  color: #9BA0A8; min-height: 1em;
+}
+.pn-form-estado.ok { color: var(--ink); }
+.pn-form-estado.error { color: #C9A9A0; }
+
+@media (max-width: 560px) {
+  .pn-form-grid { grid-template-columns: 1fr; }
+  .pn-form-pie { flex-direction: column; align-items: flex-start; gap: var(--pn-s2); }
+}
