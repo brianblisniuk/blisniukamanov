@@ -31,10 +31,10 @@
     const wa = document.getElementById("waButton");
     if (wa && s.whatsapp) {
       const greeting = s.whatsapp_greeting || "Hola.";
-      wa.href = "https://wa.me/" + s.whatsapp + "?text=" + encodeURIComponent(greeting);
+      wa.href = "https://onnqcdjkvpvpvtsorpup.supabase.co/functions/v1/go?to=wa&c=sitio&src=fab";
     }
   }
-  fetch("content/site-settings.json", { cache: "no-store" })
+  fetch("/content/site-settings.json", { cache: "no-store" })
     .then((r) => (r.ok ? r.json() : null))
     .then((s) => { if (s) applySiteSettings(s); })
     .catch(() => {});
@@ -48,19 +48,19 @@
     stack.id = "fabStack";
     stack.className = "fab-stack";
 
-    // "Escribinos" pill (opens modal)
+    // "Hablá con un experto" pill (opens modal)
     const expert = document.createElement("button");
     expert.type = "button";
     expert.className = "expert-fab js-expert-trigger";
     expert.setAttribute("aria-haspopup", "dialog");
-    expert.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>Escribinos</span>';
+    expert.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>Hablá con un experto</span>';
     stack.appendChild(expert);
 
     // WhatsApp circular FAB
     const wa = document.createElement("a");
     wa.id = "waButton";
     wa.className = "whatsapp-fab";
-    wa.href = "https://wa.me/5491161395550?text=" + encodeURIComponent("Hola, me gustaría hablar con un asesor de Blisniuk & Amanov.");
+    wa.href = "https://onnqcdjkvpvpvtsorpup.supabase.co/functions/v1/go?to=wa&c=sitio&src=fab";
     wa.target = "_blank";
     wa.rel = "noopener";
     wa.setAttribute("aria-label", "Chatear por WhatsApp");
@@ -71,7 +71,7 @@
   }
 
   /* ==========================================================
-     "Escribinos" modal — injected once
+     "Hablá con un experto" modal — injected once
      ========================================================== */
   function ctxFromPage() {
     // Detect region/country from the page context
@@ -93,7 +93,7 @@
 
   if (!document.getElementById("expertModal")) {
     const ctx = ctxFromPage();
-    const ctxLabel = ctx.region ? "Consultar sobre " + ctx.region : "Escribinos";
+    const ctxLabel = ctx.region ? "Consultar sobre " + ctx.region : "Hablá con un experto";
 
     const wrap = document.createElement("div");
     wrap.id = "expertModal";
@@ -107,10 +107,25 @@
         <button class="modal-close" data-close aria-label="Cerrar">×</button>
         <h2 id="expertModalTitle" class="modal-title">${ctxLabel}</h2>
 
-        <form name="consulta-experto" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/gracias.html" class="modal-form">
-          <input type="hidden" name="form-name" value="consulta-experto" />
+        <form name="consulta-experto" method="POST" action="/gracias.html" class="modal-form">
           <p class="hidden-field"><label>No completar: <input name="bot-field" /></label></p>
           <input type="hidden" name="contexto" value="${location.pathname}" />
+          <input type="hidden" name="intent" value="consulta" />
+          <input type="hidden" name="salida" value="" />
+          <input type="hidden" name="viaje" value="${ctx.country}" />
+
+          <label class="field">
+            <span>Tu nombre</span>
+            <input type="text" name="nombre" required placeholder="Nombre y apellido" />
+          </label>
+          <label class="field">
+            <span>Tu email</span>
+            <input type="email" name="email" required placeholder="vos@email.com" />
+          </label>
+          <label class="field">
+            <span>Teléfono (opcional)</span>
+            <input type="tel" name="telefono" placeholder="+54 9 11 …" />
+          </label>
 
           <fieldset class="radios m-radios">
             <legend>¿Sos asesor de viajes?</legend>
@@ -146,9 +161,9 @@
           </label>
 
           <label class="check"><input type="checkbox" name="acepta_privacidad" value="si" required /> Acepto la <a href="privacidad.html" target="_blank">política de privacidad</a></label>
-          <label class="check"><input type="checkbox" name="acepta_news" value="si" /> Quiero recibir novedades, salidas exclusivas y otra información de Blisniuk &amp; Amanov</label>
+          <label class="check"><input type="checkbox" name="acepta_news" value="si" /> Quiero recibir novedades y otra información de Pasaporte Negro</label>
 
-          <button type="submit" class="btn btn-laurel modal-submit">Hablar con un experto</button>
+          <button type="submit" class="btn btn-laurel modal-submit">Enviar consulta</button>
 
           <p class="modal-legal">Al enviar este formulario nos autorizás a que te contactemos con respecto a esta consulta. Tus datos no se comparten con terceros. Podés darte de baja en cualquier momento.</p>
         </form>
@@ -156,11 +171,27 @@
     `;
     document.body.appendChild(wrap);
 
-    const open = () => {
+    const fSalida = wrap.querySelector('[name="salida"]');
+    const fIntent = wrap.querySelector('[name="intent"]');
+    const fMensaje = wrap.querySelector('[name="mensaje"]');
+    const fTitle = wrap.querySelector('#expertModalTitle');
+    const open = (opts) => {
+      opts = opts || {};
+      if (opts.salida) {
+        if (fSalida) fSalida.value = opts.salida;
+        if (fIntent) fIntent.value = "reserva";
+        if (fTitle) fTitle.textContent = "Reservar salida · " + opts.salida;
+        if (fMensaje && !fMensaje.value) fMensaje.value = "Quiero reservar la salida del " + opts.salida + ".";
+      } else {
+        if (fSalida) fSalida.value = "";
+        if (fIntent) fIntent.value = "consulta";
+        if (fTitle) fTitle.textContent = ctxLabel;
+      }
       wrap.classList.add("open");
       wrap.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
     };
+    window.__openExpert = open;
     const close = () => {
       wrap.classList.remove("open");
       wrap.setAttribute("aria-hidden", "true");
@@ -326,7 +357,7 @@
     "Centroamérica": "sudamerica",
     // Estilo / Modalidad / Intereses
     "Pequeño grupo": "pequeno-grupo",
-    "Privado a medida": "privado",
+    "Salida privada": "privado",
     "Privado": "privado",
     "Safari": "safari",
     "Cruceros": "crucero",
@@ -382,6 +413,8 @@
 
   function applyFilters() {
     const filters = {}; // {kind: Set of values}
+    const _se = document.getElementById("jSearch");
+    const _term = _se ? _se.value.trim().toLowerCase() : "";
     document.querySelectorAll(".filters .filter-list a.active").forEach((a) => {
       const det = a.closest("details");
       const summary = det && det.querySelector("summary");
@@ -421,6 +454,11 @@
           if (!match) show = false;
         }
       });
+      if (show && _term) {
+        const _t = (card.querySelector("h3")?.textContent || "").toLowerCase();
+        const _i = (card.querySelector(".j-itin")?.textContent || "").toLowerCase();
+        if (!(_t.includes(_term) || _i.includes(_term))) show = false;
+      }
       card.style.display = show ? "" : "none";
       if (show) visible++;
     });
@@ -475,43 +513,19 @@
     });
   });
 
-  // Read query string ?q=... and pre-filter cards by title text
+  // Buscador en vivo (compone con los filtros)
+  const _jSearch = document.getElementById("jSearch");
+  if (_jSearch) _jSearch.addEventListener("input", applyFilters);
+
+  // ?q=... pre-carga el buscador y aplica
   const params = new URLSearchParams(window.location.search);
-  const q = (params.get("q") || "").trim().toLowerCase();
+  const q = (params.get("q") || "").trim();
   if (q) {
-    document.querySelectorAll(".j-card").forEach((card) => {
-      const title = card.querySelector("h3")?.textContent.toLowerCase() || "";
-      const itin = card.querySelector(".j-itin")?.textContent.toLowerCase() || "";
-      const match = title.includes(q) || itin.includes(q);
-      card.style.display = match ? "" : "none";
-    });
-    const cards = document.querySelectorAll(".j-card");
-    const visible = document.querySelectorAll('.j-card:not([style*="display: none"])').length;
-    const head = document.querySelector(".explorer-head p");
-    if (head) head.textContent = `Mostrando ${visible} resultados para "${q}"`;
+    if (_jSearch) _jSearch.value = q;
+    applyFilters();
   }
 
-  /* ==========================================================
-     Forms — newsletter: validate email client-side, then let Netlify
-     Forms handle the actual submission (action="/gracias.html").
-     If the form has no action/data-netlify, fall back to fake-submit.
-     ========================================================== */
-  document.querySelectorAll("form.newsletter, form.newsletter-form").forEach((form) => {
-    form.addEventListener("submit", (e) => {
-      const email = form.querySelector('input[type="email"]');
-      if (!email || !email.value || !/.+@.+\..+/.test(email.value)) {
-        e.preventDefault();
-        showToast("Por favor ingresá un correo válido.", "error");
-        return;
-      }
-      // If the form is wired to Netlify Forms, let it submit normally
-      // (it will POST and redirect to action). Otherwise fake-submit.
-      if (form.hasAttribute("data-netlify") && form.getAttribute("action")) return;
-      e.preventDefault();
-      form.querySelectorAll("input").forEach((i) => { if (i.type !== "hidden") i.value = ""; });
-      showToast("¡Suscripción confirmada! Revisá tu correo.", "ok");
-    });
-  });
+  /* Newsletter: lo maneja el handler único de public-subscribe (más abajo). */
 
   /* ==========================================================
      Toast (small floating message)
@@ -618,7 +632,8 @@
       e.preventDefault();
       const row = a.closest("tr");
       const date = row?.cells?.[0]?.textContent?.trim() || "";
-      showToast(`Tu solicitud para la salida del ${date} se envió a tu asesor.`, "ok");
+      if (window.__openExpert) { window.__openExpert({ salida: date }); }
+      else { showToast(`Escribinos para reservar la salida del ${date}.`, "ok"); }
     });
   });
 
@@ -931,7 +946,7 @@
   var KEY = "sb_publishable_PcVUGfWVD_Aj_gE1H0Jr4g_fKrLn-Ua";
   function isLead(form) {
     if (!form || form.tagName !== "FORM") return false;
-    return (form.classList && form.classList.contains("inquiry-form")) || form.getAttribute("name") === "consulta";
+    return (form.classList && form.classList.contains("inquiry-form")) || (form.getAttribute("name") || "").indexOf("consulta") === 0;
   }
   function val(form, name) {
     var el = form.querySelector('[name="' + name + '"]');
@@ -949,8 +964,12 @@
     var q = new URLSearchParams(window.location.search || "");
     var body = {
       nombre: val(form, "nombre"), apellido: val(form, "apellido"), email: email,
-      telefono: val(form, "telefono"), destino: val(form, "destino"), tipo: val(form, "tipo"),
-      viajeros: val(form, "viajeros"), fecha: val(form, "fecha"), presupuesto: val(form, "presupuesto"),
+      telefono: val(form, "telefono"),
+      destino: val(form, "destino") || [val(form, "region"), val(form, "pais")].filter(Boolean).join(" · ") || val(form, "viaje"),
+      tipo: val(form, "tipo") || val(form, "intent"),
+      viajeros: val(form, "viajeros"),
+      fecha: val(form, "fecha") || val(form, "salida"),
+      presupuesto: val(form, "presupuesto"),
       mensaje: val(form, "mensaje"), asesor: asesorEl ? asesorEl.value : "", hp: hp ? hp.value : "",
       utm_source: q.get("utm_source") || "", utm_medium: q.get("utm_medium") || "", utm_campaign: q.get("utm_campaign") || "", utm_content: q.get("utm_content") || "", utm_term: q.get("utm_term") || "", referrer: document.referrer || ""
     };
@@ -965,4 +984,18 @@
       .catch(function () { if (btn) btn.disabled = false; alert("No pudimos enviar la consulta. Proba de nuevo."); });
   }
   document.addEventListener("submit", handler, true);
+})();
+
+/* Prefill de destino en /contact?exp=<slug|nombre> */
+(function () {
+  var sel = document.querySelector('select[name="destino"]');
+  if (!sel) return;
+  var q = new URLSearchParams(window.location.search || "");
+  var exp = (q.get("exp") || "").trim();
+  if (!exp) return;
+  var MAP = {"piamonte-tartufo":"Piemonte","engadin-navidad":"Engadina","uzbekistan-ruta-seda":"Uzbekist\u00e1n","namibia-dunas":"Namibia","laponia-auroras":"Laponia","bahia-otro-carnaval":"Bah\u00eda","japon-mono-no-aware":"Jap\u00f3n","butan-nepal-himalaya":"But\u00e1n y Nepal","marruecos-imperial":"Marruecos","croacia-islas-dalmatas":"Dalmacia","alaska-salvaje":"Alaska"};
+  var nombre = MAP[exp] || exp;
+  for (var i = 0; i < sel.options.length; i++) {
+    if (sel.options[i].value === nombre) { sel.selectedIndex = i; break; }
+  }
 })();

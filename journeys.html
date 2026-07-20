@@ -3,146 +3,298 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>El calendario · Pasaporte Negro</title>
-  <meta name="description" content="Once expediciones por año, en grupos de hasta diez viajeros. Cada una con dos accesos de la casa." />
-  <meta property="og:title" content="El calendario · Pasaporte Negro" />
+  <title>Expediciones · Pasaporte Negro</title>
+  <meta name="description" content="Once expediciones por año, cada destino una sola vez. Diez lugares, dos anfitriones de la casa y dos accesos en cada una." />
+  <!-- Open Graph + Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Expediciones · Pasaporte Negro" />
+  <meta property="og:description" content="Once expediciones por año, cada destino una sola vez." />
+  <meta property="og:image" content="assets/img/hero-piamonte-tartufo.jpg" />
+  <meta property="og:locale" content="es_AR" />
   <meta property="og:site_name" content="Pasaporte Negro" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Expediciones · Pasaporte Negro" />
+  <meta name="twitter:description" content="Once expediciones por año, cada destino una sola vez." />
+  <meta name="twitter:image" content="assets/img/hero-piamonte-tartufo.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="pn.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+  <link rel="stylesheet" href="styles.css" /><link rel="stylesheet" href="pn.css" />
 </head>
 <body>
 
-  <header class="site-header" id="siteHeader"><div class="header-inner">
-    <div class="nav-left"><button class="menu-trigger" id="menuTrigger" aria-label="Abrir menú"><span class="bars"><span></span><span></span><span></span></span>Menú</button><a href="/journeys">Expediciones</a></div>
-    <a aria-label="Pasaporte Negro, inicio" class="brand" href="/"><img class="brand-lockup" src="assets/brand/lockup-horizontal_marfil.svg" alt="Pasaporte Negro · Turismo de lujo" /></a>
-    <div class="nav-right"><a class="btn btn-ghost" href="#consultar">Consultar</a></div>
-  </div></header>
+  <!-- Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <div class="nav-left">
+        <button class="menu-trigger" id="menuTrigger" aria-label="Abrir menú">
+          <span class="bars"><span></span><span></span><span></span></span>
+          Menú
+        </button>
+        <a href='/journeys'>Expediciones</a>
+      </div>
 
-  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true"><div class="drawer-inner"><a href="/">Inicio</a><a href="/journeys">Expediciones</a><a class="btn btn-dark" href="#consultar">Consultar</a></div></aside>
+      <a aria-label='Pasaporte Negro, inicio' class='brand' href='/'>
+        <img class="brand-lockup" src="assets/brand/lockup-horizontal_marfil.svg" alt="Pasaporte Negro · Turismo de lujo" />
+      </a>
 
-  <section class="pn-cal-head"><div class="container">
-    <span class="pn-kicker">Acceso, no exceso</span>
-    <h1>El calendario</h1>
-    <p>Once expediciones por año, en grupos de hasta diez. Cada una incluye dos accesos: puertas que no se compran con una entrada. El detalle es de los que viajan.</p>
-  </div></section>
-
-  <section class="pn-cal"><div class="container"><ol class="pn-cal-list">
-    <li class="pn-cal-item"><a href="/piamonte-tartufo">
-      <div class="pn-cal-img"><img src="assets/img/hero-piamonte-tartufo.jpg" alt="Piemonte" loading="lazy" /></div>
-      <div class="pn-cal-txt">
-        <span class="pn-cal-fecha">Octubre 2026</span>
-        <h2>Piemonte</h2>
-        <p>Seis noches en una villa privada de Castiglione Tinella, en la línea que separa las Langhe del Monferrato, durante la semana de la trufa blanca.</p>
-        <span class="pn-cal-meta">Seis noches · Hasta diez viajeros · Desde USD 9.001</span>
+      <div class="nav-right">
+        <a class='btn btn-ghost' href='/contact'>Consultar</a>
       </div>
-    </a></li>
-    <li class="pn-cal-item"><a href="/namibia-dunas">
-      <div class="pn-cal-img"><img src="assets/img/hero-namibia-dunas.jpg" alt="Namibia" loading="lazy" /></div>
-      <div class="pn-cal-txt">
-        <span class="pn-cal-fecha">Noviembre 2026</span>
-        <h2>Namibia</h2>
-        <p>Diez noches por el desierto más antiguo del mundo, de las dunas de Sossusvlei a la fauna de Etosha.</p>
-        <span class="pn-cal-meta">Diez noches · Hasta diez viajeros · Desde USD #.###</span>
-      </div>
-    </a></li>
-    <li class="pn-cal-item"><a href="/engadin-navidad">
-      <div class="pn-cal-img"><img src="assets/img/hero-engadin.jpg" alt="Engadina" loading="lazy" /></div>
-      <div class="pn-cal-txt">
-        <span class="pn-cal-fecha">Diciembre 2026</span>
-        <h2>Engadina</h2>
-        <p>Siete noches en una casa engadina de Zuoz, entera para el grupo.</p>
-        <span class="pn-cal-meta">Siete noches · Hasta diez viajeros · Desde USD 8.695</span>
-      </div>
-    </a></li>
-    <li class="pn-cal-item"><a href="/laponia-auroras">
-      <div class="pn-cal-img"><img src="assets/img/hero-laponia-auroras.jpg" alt="Laponia" loading="lazy" /></div>
-      <div class="pn-cal-txt">
-        <span class="pn-cal-fecha">Enero 2027</span>
-        <h2>Laponia</h2>
-        <p>Nueve noches por el norte del norte, de la Laponia finlandesa a los fiordos de Lyngen.</p>
-        <span class="pn-cal-meta">Nueve noches · Hasta diez viajeros · Desde USD #.###</span>
-      </div>
-    </a></li>
-    <li class="pn-cal-item"><a href="/bahia-otro-carnaval">
-      <div class="pn-cal-img"><img src="assets/img/hero-bahia-otro-carnaval.jpg" alt="Bahía" loading="lazy" /></div>
-      <div class="pn-cal-txt">
-        <span class="pn-cal-fecha">Febrero 2027</span>
-        <h2>Bahía</h2>
-        <p>Ocho noches en la Bahía negra, del Pelourinho de Salvador a las playas del sur.</p>
-        <span class="pn-cal-meta">Ocho noches · Hasta diez viajeros · Desde USD #.###</span>
-      </div>
-    </a></li>
-    <li class="pn-cal-item"><a href="/japon-mono-no-aware">
-      <div class="pn-cal-img"><img src="assets/img/hero-japon-mono-no-aware.jpg" alt="Japón" loading="lazy" /></div>
-      <div class="pn-cal-txt">
-        <span class="pn-cal-fecha">Marzo 2027</span>
-        <h2>Japón</h2>
-        <p>Once noches por el Japón de la flor que cae, de Tokio a las islas de arte del mar interior.</p>
-        <span class="pn-cal-meta">Once noches · Hasta diez viajeros · Desde USD #.###</span>
-      </div>
-    </a></li>
-    <li class="pn-cal-item"><a href="/butan-nepal-himalaya">
-      <div class="pn-cal-img"><img src="assets/img/hero-butan-nepal-himalaya.jpg" alt="Bután y Nepal" loading="lazy" /></div>
-      <div class="pn-cal-txt">
-        <span class="pn-cal-fecha">Abril 2027</span>
-        <h2>Bután y Nepal</h2>
-        <p>Doce noches por el Himalaya budista, del valle de Kathmandu a los de Bután.</p>
-        <span class="pn-cal-meta">Doce noches · Hasta diez viajeros · Desde USD #.###</span>
-      </div>
-    </a></li>
-    <li class="pn-cal-item"><a href="/marruecos-imperial">
-      <div class="pn-cal-img"><img src="assets/img/hero-marruecos-imperial.jpg" alt="Marruecos" loading="lazy" /></div>
-      <div class="pn-cal-txt">
-        <span class="pn-cal-fecha">Mayo 2027</span>
-        <h2>Marruecos</h2>
-        <p>Nueve noches por el Marruecos de las ciudades imperiales, de Rabat a Marrakech, con el Alto Atlas en el medio.</p>
-        <span class="pn-cal-meta">Nueve noches · Hasta diez viajeros · Desde USD #.###</span>
-      </div>
-    </a></li>
-    <li class="pn-cal-item"><a href="/croacia-islas-dalmatas">
-      <div class="pn-cal-img"><img src="assets/img/hero-croacia-islas-dalmatas.jpg" alt="Dalmacia" loading="lazy" /></div>
-      <div class="pn-cal-txt">
-        <span class="pn-cal-fecha">Junio 2027</span>
-        <h2>Dalmacia</h2>
-        <p>Ocho noches por las islas dálmatas a bordo de un catamarán tomado entero para el grupo, de Split a Dubrovnik.</p>
-        <span class="pn-cal-meta">Ocho noches · Hasta diez viajeros · Desde USD #.###</span>
-      </div>
-    </a></li>
-    <li class="pn-cal-item"><a href="/alaska-salvaje">
-      <div class="pn-cal-img"><img src="assets/img/hero-alaska-salvaje.jpg" alt="Alaska" loading="lazy" /></div>
-      <div class="pn-cal-txt">
-        <span class="pn-cal-fecha">Julio 2027</span>
-        <h2>Alaska</h2>
-        <p>Diez noches por la Alaska salvaje, de los osos de Lake Clark a los glaciares del mar.</p>
-        <span class="pn-cal-meta">Diez noches · Hasta diez viajeros · Desde USD #.###</span>
-      </div>
-    </a></li>
-    <li class="pn-cal-item"><a href="/uzbekistan-ruta-seda">
-      <div class="pn-cal-img"><img src="assets/img/hero-uzbekistan-ruta-seda.jpg" alt="Uzbekistán" loading="lazy" /></div>
-      <div class="pn-cal-txt">
-        <span class="pn-cal-fecha">Septiembre 2027</span>
-        <h2>Uzbekistán</h2>
-        <p>Diez noches por la Ruta de la Seda uzbeka, de Tashkent a Samarcanda.</p>
-        <span class="pn-cal-meta">Diez noches · Hasta diez viajeros · Desde USD 9.800</span>
-      </div>
-    </a></li>
-  </ol></div></section>
-
-  <footer class="site-footer" id="consultar"><div class="container footer-grid">
-    <div class="footer-brand"><div class="footer-brand-row"><img class="footer-sello" src="assets/brand/simbolo_marfil.svg" alt="Pasaporte Negro" /><h3>Pasaporte Negro</h3></div>
-      <p>Turismo de lujo en expediciones de hasta diez viajeros. Buenos Aires, Argentina.</p>
-      <p>Escribinos a <a href="mailto:pasaportenegroviajes@gmail.com">pasaportenegroviajes@gmail.com</a></p>
-      <div class="socials"><a href="https://www.instagram.com/pasaportenegro" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm5.5-.5a1 1 0 100 2 1 1 0 000-2z"/></svg></a>
-      <a href="https://www.tiktok.com/@pasaportenegro" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.81 20.1a6.34 6.34 0 0 0 10.86-4.43V8.45a8.16 8.16 0 0 0 4.77 1.52V6.69h-1.85z"/></svg></a></div>
     </div>
-    <div class="footer-col"><h5>La casa</h5><ul><li><a href="/contact">Contacto</a></li></ul></div>
-    <div class="footer-col"><h5>Expediciones</h5><ul><li><a href="/journeys">El calendario</a></li><li><a href="/catalogos">Dossiers</a></li></ul></div>
-    <div class="footer-col"><h5>Legal</h5><ul><li><a href="/terminos">Términos y condiciones</a></li><li><a href="/privacidad">Privacidad</a></li><li><a href="/cookies">Cookies</a></li></ul></div>
-  </div><div class="footer-bottom">© 2026 Pasaporte Negro · Buenos Aires · Todos los derechos reservados.</div></footer>
+  </header>
+
+  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="drawer-inner">
+      <a href='/journeys'>Expediciones</a>
+      <a href='/blog/'>Cuaderno</a>
+      <a href='/catalogos'>Dossiers</a>
+      <a class='btn btn-dark' href='/contact'>Consultar</a>
+    </div>
+  </aside>
+
+  <!-- Hero split (cream text left, image right) -->
+  <section class="page-hero-split">
+    <div class="page-hero-text">
+      <span class="eyebrow">Calendario 2026 · 2027</span>
+      <h1>Once expediciones,<br /><em>cada destino una sola vez.</em></h1>
+      
+      <a href="#explorer" class="btn btn-dark">Ver todos los viajes</a>
+    </div>
+    <div class="page-hero-image">
+      <img srcset="assets/img/way-group-480.webp 480w, assets/img/way-group-960.webp 960w, assets/img/way-group-1440.webp 1440w, assets/img/way-group.webp 1920w" sizes="(max-width: 768px) 100vw, 50vw" decoding="async" src="assets/img/way-group.webp" alt="Pequeño grupo de viajeros en exterior" />
+    </div>
+  </section>
+
+
+  <!-- Why choose us — 5 columns with icons -->
+  <!-- Recommended journeys (3 large horizontal cards) -->
+  <!-- About small group: text left + image right -->
+  <!-- Brochure CTA (copper band) -->
+  <section class="brochures-cta" id="brochures">
+    <div class="brochures-cta-inner">
+      <div class="brochures-stack">
+        <img srcset="assets/img/brochure-1-480.webp 480w, assets/img/brochure-1-960.webp 960w, assets/img/brochure-1-1440.webp 1440w, assets/img/brochure-1.webp 1920w" sizes="(max-width: 768px) 100vw, 50vw" decoding="async" src="assets/img/brochure-1.webp" alt="Catálogo Pequeñas expediciones" loading="lazy" />
+        <img srcset="assets/img/brochure-2-480.webp 480w, assets/img/brochure-2-960.webp 960w, assets/img/brochure-2.webp 1024w" sizes="(max-width: 768px) 100vw, 50vw" decoding="async" src="assets/img/brochure-2.webp" alt="Catálogo Pequeñas expediciones 2" loading="lazy" />
+        <img srcset="assets/img/brochure-3-480.webp 480w, assets/img/brochure-3-960.webp 960w, assets/img/brochure-3.webp 1024w" sizes="(max-width: 768px) 100vw, 50vw" decoding="async" src="assets/img/brochure-3.webp" alt="Catálogo Pequeñas expediciones 3" loading="lazy" />
+      </div>
+      <div class="brochures-cta-text">
+        <small>Catálogo</small>
+        <h2>Calendario 2026 · 2027</h2>
+        <p>El catálogo en papel reúne nuestros once viajes de autor en pequeño grupo, una salida por mes, con los itinerarios día por día y las novedades para 2026–2027. Lectura ideal para una tarde tranquila.</p>
+        <a href="contact.html" class="btn btn-laurel">Solicitar catálogo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Good to know -->
+  
+  <!-- Explorer reuse -->
+  <section class="journeys-explorer" id="explorer">
+    <div class="container">
+      <div class="explorer-head">
+        <h2>Descubrí dónde podemos llevarte</h2>
+        <p style="color:var(--ink-mute); margin: 6px 0 0;">Once viajes en el calendario 2026 · 2027</p>
+      </div>
+
+      <div class="explorer-grid">
+        <aside class="filters">
+          <input type="search" id="jSearch" class="j-search" placeholder="Buscar viaje…" aria-label="Buscar viaje" />
+          <details open>
+            <summary>Regiones</summary>
+            <div class="filter-list">
+              <a href="#">Europa</a>
+              <a href="#">Asia</a>
+              <a href="#">África</a>
+              <a href="#">Norteamérica</a>
+              <a href="#">Sudamérica</a>
+              <a href="#">Norte de África</a>
+            </div>
+          </details>
+          <details>
+            <summary>Estilo de viaje</summary>
+            <div class="filter-list">
+              <a href="#">Pequeño grupo</a>
+              <a href="#">Cultura</a>
+              <a href="#">Gastronomía</a>
+              <a href="#">Vida salvaje</a>
+              <a href="#">Safari</a>
+              <a href="#">Crucero</a>
+            </div>
+          </details>
+          <details>
+            <summary>Mes de salida</summary>
+            <div class="filter-list">
+              <a href="#">Enero</a>
+              <a href="#">Febrero</a>
+              <a href="#">Marzo</a>
+              <a href="#">Abril</a>
+              <a href="#">Mayo</a>
+              <a href="#">Junio</a>
+              <a href="#">Julio</a>
+              <a href="#">Agosto</a>
+              <a href="#">Septiembre</a>
+              <a href="#">Octubre</a>
+              <a href="#">Noviembre</a>
+              <a href="#">Diciembre</a>
+            </div>
+          </details>
+          <details>
+            <summary>Duración</summary>
+            <div class="filter-list">
+              <a href="#">6–10 días</a>
+              <a href="#">11–15 días</a>
+            </div>
+          </details>
+        </aside>
+        <div class="journey-grid">
+          <a class="j-card" href="/piamonte-tartufo" data-region="europa" data-style="pequeno-grupo,gastronomia,cultura" data-duration="7" data-months="octubre" data-year="2026">
+            <div class="j-img"><img srcset="assets/img/hero-piamonte-tartufo-480.webp 480w, assets/img/hero-piamonte-tartufo-960.webp 960w, assets/img/hero-piamonte-tartufo.webp 1600w" sizes="(max-width: 768px) 100vw, 33vw" decoding="async" src="assets/img/hero-piamonte-tartufo.webp" alt="Piemonte" loading="lazy" /><span class="j-pill">Octubre 2026</span></div>
+            <div class="j-body">
+              <h3>Piemonte</h3>
+              <span class="j-meta">Italia · 19 — 25 de octubre de 2026</span>
+              <p class="j-itin">Seis noches en una villa privada de Castiglione Tinella, en la línea que separa las Langhe del Monferrato, durante la semana de la trufa blanca.</p>
+              <div class="j-bottom"><span class="j-price">Seis noches · Hasta diez viajeros · Desde <strong>USD 9.001</strong></span><span class="j-link">Ver la expedición →</span></div>
+            </div></a>
+            <a class="j-card" href="/namibia-dunas" data-region="africa" data-style="pequeno-grupo,vida-salvaje" data-duration="11" data-months="noviembre" data-year="2026">
+            <div class="j-img"><img srcset="assets/img/hero-namibia-dunas-480.webp 480w, assets/img/hero-namibia-dunas-960.webp 960w, assets/img/hero-namibia-dunas-1440.webp 1440w, assets/img/hero-namibia-dunas.webp 1600w" sizes="(max-width: 768px) 100vw, 33vw" decoding="async" src="assets/img/hero-namibia-dunas.webp" alt="Namibia" loading="lazy" /><span class="j-pill">Noviembre 2026</span></div>
+            <div class="j-body">
+              <h3>Namibia</h3>
+              <span class="j-meta">África austral · 7 — 17 de noviembre de 2026</span>
+              <p class="j-itin">Diez noches por el desierto más antiguo del mundo, de las dunas de Sossusvlei a la fauna de Etosha.</p>
+              <div class="j-bottom"><span class="j-price">Diez noches · Hasta diez viajeros · Desde <strong>USD 10.800</strong></span><span class="j-link">Ver la expedición →</span></div>
+            </div></a>
+            <a class="j-card" href="/engadin-navidad" data-region="europa" data-style="pequeno-grupo,cultura" data-duration="8" data-months="diciembre" data-year="2026">
+            <div class="j-img"><img srcset="assets/img/hero-engadin-navidad-480.webp 480w, assets/img/hero-engadin-navidad-960.webp 960w, assets/img/hero-engadin-navidad-1440.webp 1440w, assets/img/hero-engadin-navidad.webp 1600w" sizes="(max-width: 768px) 100vw, 33vw" decoding="async" src="assets/img/hero-engadin-navidad.webp" alt="Engadina" loading="lazy" /><span class="j-pill">Diciembre 2026</span></div>
+            <div class="j-body">
+              <h3>Engadina</h3>
+              <span class="j-meta">Suiza · 19 — 26 de diciembre de 2026</span>
+              <p class="j-itin">Siete noches en una casa engadina de Zuoz, entera para el grupo.</p>
+              <div class="j-bottom"><span class="j-price">Siete noches · Hasta diez viajeros · Desde <strong>USD 8.695</strong></span><span class="j-link">Ver la expedición →</span></div>
+            </div></a>
+            <a class="j-card" href="/laponia-auroras" data-region="europa" data-style="pequeno-grupo,vida-salvaje,activo" data-duration="10" data-months="enero" data-year="2027">
+            <div class="j-img"><img srcset="assets/img/hero-laponia-auroras-480.webp 480w, assets/img/hero-laponia-auroras-960.webp 960w, assets/img/hero-laponia-auroras-1440.webp 1440w, assets/img/hero-laponia-auroras.webp 1600w" sizes="(max-width: 768px) 100vw, 33vw" decoding="async" src="assets/img/hero-laponia-auroras.webp" alt="Laponia" loading="lazy" /><span class="j-pill">Enero 2027</span></div>
+            <div class="j-body">
+              <h3>Laponia</h3>
+              <span class="j-meta">Finlandia y Noruega · 8 — 17 de enero de 2027</span>
+              <p class="j-itin">Nueve noches por el norte del norte, de la Laponia finlandesa a los fiordos de Lyngen.</p>
+              <div class="j-bottom"><span class="j-price">Nueve noches · Hasta diez viajeros · Desde <strong>USD 10.800</strong></span><span class="j-link">Ver la expedición →</span></div>
+            </div></a>
+            <a class="j-card" href="/bahia-otro-carnaval" data-region="sudamerica" data-style="pequeno-grupo,cultura,festivales" data-duration="9" data-months="febrero" data-year="2027">
+            <div class="j-img"><img srcset="assets/img/hero-bahia-otro-carnaval-480.webp 480w, assets/img/hero-bahia-otro-carnaval-960.webp 960w, assets/img/hero-bahia-otro-carnaval.webp 1600w" sizes="(max-width: 768px) 100vw, 33vw" decoding="async" src="assets/img/hero-bahia-otro-carnaval.webp" alt="Bahía" loading="lazy" /><span class="j-pill">Febrero 2027</span></div>
+            <div class="j-body">
+              <h3>Bahía</h3>
+              <span class="j-meta">Brasil · 3 — 11 de febrero de 2027</span>
+              <p class="j-itin">Ocho noches en la Bahía negra, del Pelourinho de Salvador a las playas del sur.</p>
+              <div class="j-bottom"><span class="j-price">Ocho noches · Hasta diez viajeros · Desde <strong>USD 10.200</strong></span><span class="j-link">Ver la expedición →</span></div>
+            </div></a>
+            <a class="j-card" href="/japon-mono-no-aware" data-region="asia" data-style="pequeno-grupo,cultura" data-duration="12" data-months="marzo" data-year="2027">
+            <div class="j-img"><img srcset="assets/img/hero-japon-mono-no-aware-480.webp 480w, assets/img/hero-japon-mono-no-aware-960.webp 960w, assets/img/hero-japon-mono-no-aware-1440.webp 1440w, assets/img/hero-japon-mono-no-aware.webp 1600w" sizes="(max-width: 768px) 100vw, 33vw" decoding="async" src="assets/img/hero-japon-mono-no-aware.webp" alt="Japón" loading="lazy" /><span class="j-pill">Marzo 2027</span></div>
+            <div class="j-body">
+              <h3>Japón</h3>
+              <span class="j-meta">Japón · 22 de marzo — 2 de abril de 2027</span>
+              <p class="j-itin">Once noches por el Japón de la flor que cae, de Tokio a las islas de arte del mar interior.</p>
+              <div class="j-bottom"><span class="j-price">Once noches · Hasta diez viajeros · Desde <strong>USD 11.000</strong></span><span class="j-link">Ver la expedición →</span></div>
+            </div></a>
+            <a class="j-card" href="/butan-nepal-himalaya" data-region="asia" data-style="pequeno-grupo,cultura,activo" data-duration="13" data-months="abril" data-year="2027">
+            <div class="j-img"><img srcset="assets/img/hero-butan-nepal-himalaya-480.webp 480w, assets/img/hero-butan-nepal-himalaya-960.webp 960w, assets/img/hero-butan-nepal-himalaya.webp 1600w" sizes="(max-width: 768px) 100vw, 33vw" decoding="async" src="assets/img/hero-butan-nepal-himalaya.webp" alt="Bután y Nepal" loading="lazy" /><span class="j-pill">Abril 2027</span></div>
+            <div class="j-body">
+              <h3>Bután y Nepal</h3>
+              <span class="j-meta">Bután y Nepal · 8 — 20 de abril de 2027</span>
+              <p class="j-itin">Doce noches por el Himalaya budista, del valle de Kathmandu a los de Bután.</p>
+              <div class="j-bottom"><span class="j-price">Doce noches · Hasta diez viajeros · Desde <strong>USD 11.500</strong></span><span class="j-link">Ver la expedición →</span></div>
+            </div></a>
+            <a class="j-card" href="/marruecos-imperial" data-region="oriente-medio" data-style="pequeno-grupo,cultura" data-duration="10" data-months="mayo" data-year="2027">
+            <div class="j-img"><img srcset="assets/img/hero-marruecos-imperial-480.webp 480w, assets/img/hero-marruecos-imperial-960.webp 960w, assets/img/hero-marruecos-imperial.webp 1600w" sizes="(max-width: 768px) 100vw, 33vw" decoding="async" src="assets/img/hero-marruecos-imperial.webp" alt="Marruecos" loading="lazy" /><span class="j-pill">Mayo 2027</span></div>
+            <div class="j-body">
+              <h3>Marruecos</h3>
+              <span class="j-meta">Marruecos · 8 — 17 de mayo de 2027</span>
+              <p class="j-itin">Nueve noches por el Marruecos de las ciudades imperiales, de Rabat a Marrakech, con el Alto Atlas en el medio.</p>
+              <div class="j-bottom"><span class="j-price">Nueve noches · Hasta diez viajeros · Desde <strong>USD 10.800</strong></span><span class="j-link">Ver la expedición →</span></div>
+            </div></a>
+            <a class="j-card" href="/croacia-islas-dalmatas" data-region="europa" data-style="pequeno-grupo,crucero,gastronomia" data-duration="9" data-months="junio" data-year="2027">
+            <div class="j-img"><img srcset="assets/img/hero-croacia-islas-dalmatas-480.webp 480w, assets/img/hero-croacia-islas-dalmatas-960.webp 960w, assets/img/hero-croacia-islas-dalmatas-1440.webp 1440w, assets/img/hero-croacia-islas-dalmatas.webp 1600w" sizes="(max-width: 768px) 100vw, 33vw" decoding="async" src="assets/img/hero-croacia-islas-dalmatas.webp" alt="Dalmacia" loading="lazy" /><span class="j-pill">Junio 2027</span></div>
+            <div class="j-body">
+              <h3>Dalmacia</h3>
+              <span class="j-meta">Croacia · 5 — 13 de junio de 2027</span>
+              <p class="j-itin">Ocho noches por las islas dálmatas a bordo de un catamarán tomado entero para el grupo, de Split a Dubrovnik.</p>
+              <div class="j-bottom"><span class="j-price">Ocho noches · Hasta diez viajeros · Desde <strong>USD 10.500</strong></span><span class="j-link">Ver la expedición →</span></div>
+            </div></a>
+            <a class="j-card" href="/alaska-salvaje" data-region="norteamerica" data-style="pequeno-grupo,vida-salvaje,activo" data-duration="11" data-months="julio" data-year="2027">
+            <div class="j-img"><img srcset="assets/img/hero-alaska-salvaje-480.webp 480w, assets/img/hero-alaska-salvaje-960.webp 960w, assets/img/hero-alaska-salvaje.webp 1600w" sizes="(max-width: 768px) 100vw, 33vw" decoding="async" src="assets/img/hero-alaska-salvaje.webp" alt="Alaska" loading="lazy" /><span class="j-pill">Julio 2027</span></div>
+            <div class="j-body">
+              <h3>Alaska</h3>
+              <span class="j-meta">Estados Unidos · 5 — 15 de julio de 2027</span>
+              <p class="j-itin">Diez noches por la Alaska salvaje, de los osos de Lake Clark a los glaciares del mar.</p>
+              <div class="j-bottom"><span class="j-price">Diez noches · Hasta diez viajeros · Desde <strong>USD 11.000</strong></span><span class="j-link">Ver la expedición →</span></div>
+            </div></a>
+            <a class="j-card" href="/uzbekistan-ruta-seda" data-region="asia" data-style="pequeno-grupo,cultura,patrimonio" data-duration="11" data-months="septiembre" data-year="2027">
+            <div class="j-img"><img srcset="assets/img/hero-uzbekistan-ruta-seda-480.webp 480w, assets/img/hero-uzbekistan-ruta-seda-960.webp 960w, assets/img/hero-uzbekistan-ruta-seda.webp 1600w" sizes="(max-width: 768px) 100vw, 33vw" decoding="async" src="assets/img/hero-uzbekistan-ruta-seda.webp" alt="Uzbekistán" loading="lazy" /><span class="j-pill">Septiembre 2027</span></div>
+            <div class="j-body">
+              <h3>Uzbekistán</h3>
+              <span class="j-meta">Uzbekistán · 12 — 22 de septiembre de 2027</span>
+              <p class="j-itin">Diez noches por la Ruta de la Seda uzbeka, de Tashkent a Samarcanda.</p>
+              <div class="j-bottom"><span class="j-price">Diez noches · Hasta diez viajeros · Desde <strong>USD 9.800</strong></span><span class="j-link">Ver la expedición →</span></div>
+            </div></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (compact reuse) -->
+  <footer class="site-footer" id="contact">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-row">
+          <img class="footer-sello" src="assets/brand/simbolo_marfil.svg" alt="Pasaporte Negro" />
+          <h3>Pasaporte Negro</h3>
+        </div>
+        <p>Turismo de lujo en expediciones de hasta diez viajeros. Buenos Aires, Argentina.</p>
+        <p style="margin: 8px 0 14px;">Escribinos a <a href="mailto:pasaportenegroviajes@gmail.com" style="color:rgba(232,230,224,0.85); border-bottom:1px solid rgba(232,230,224,0.3);">pasaportenegroviajes@gmail.com</a></p>
+        <div class="socials">
+          <a href="https://www.instagram.com/pasaportenegro" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm5.5-.5a1 1 0 100 2 1 1 0 000-2z"/></svg></a>
+          <a href="https://www.tiktok.com/@pasaportenegro" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 1 1-2.59-2.59c.27 0 .53.04.78.12V9.77a5.76 5.76 0 0 0-.78-.05 5.68 5.68 0 1 0 5.68 5.68V9.29a7.35 7.35 0 0 0 4.29 1.37V7.57a4.28 4.28 0 0 1-3.23-1.75z"/></svg></a>
+        </div>
+        <form class="newsletter" id="newsletter" name="newsletter" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/gracias.html"><input type="hidden" name="form-name" value="newsletter" /><p class="hidden-field"><label>No completar: <input name="bot-field" /></label></p>
+          <strong style="color:var(--ink); font-family:var(--serif); font-size:24px; line-height:1.1;">Una carta al mes</strong>
+          <span class="terms" style="margin: 4px 0 8px;">Un destino, una historia, una recomendación. Nada más.</span>
+          <div class="newsletter-row">
+            <input type="text" name="nombre" placeholder="Nombre" />
+            <input type="text" name="apellido" placeholder="Apellido" />
+          </div>
+          <input type="email" name="email" placeholder="Correo electrónico" required />
+          <span class="terms">Al registrarte aceptás nuestros <a href="/terminos">Términos de uso</a> y la <a href="/privacidad">Política de privacidad</a>, incluyendo el envío de comunicaciones.</span>
+          <button class="btn btn-laurel" type="submit">Suscribirme</button>
+        </form>
+      </div>
+
+      <div class="footer-col">
+        <h5>La casa</h5>
+        <a href="/#casa">Quién está detrás</a>
+        <a href="/#acceso">Qué es un acceso</a>
+        <a href="/contact">Contacto</a>
+      </div>
+      <div class="footer-col">
+        <h5>Expediciones</h5>
+        <a href="/journeys">El calendario</a>
+        <a href="/catalogos">Dossiers</a>
+        <a href="/blog/">Cuaderno</a>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <a href="/terminos">Términos y condiciones</a>
+        <a href="/privacidad">Privacidad</a>
+        <a href="/cookies">Cookies</a>
+      </div>
+    </div>
+    <div class="container footer-legal">
+      <span>© 2026 Pasaporte Negro · Buenos Aires · Todos los derechos reservados.</span>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>

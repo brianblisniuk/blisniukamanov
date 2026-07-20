@@ -4,128 +4,277 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Engadina · Pasaporte Negro</title>
-  <meta name="description" content="Siete noches en una casa engadina de Zuoz, entera para el grupo. Desde ahí, la semana de Navidad como la vive el valle: el trineo por el Val Fex, la terraza de Corviglia …" />
-  <meta property="og:type" content="article" />
+  <meta name="description" content="Siete noches en una casa engadina de Zuoz, entera para el grupo." />
+  <meta property="og:type" content="website" />
   <meta property="og:title" content="Engadina · Pasaporte Negro" />
-  <meta property="og:description" content="Siete noches en una casa engadina de Zuoz, entera para el grupo. Desde ahí, la semana de Navidad como la vive el valle: el trineo por el Val Fex, la terraza de Corviglia …" />
-  <meta property="og:image" content="assets/img/hero-engadin.jpg" />
+  <meta property="og:description" content="Siete noches en una casa engadina de Zuoz, entera para el grupo." />
+  <meta property="og:image" content="assets/img/hero-engadin-navidad.webp" />
   <meta property="og:locale" content="es_AR" />
   <meta property="og:site_name" content="Pasaporte Negro" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Engadina · Pasaporte Negro" />
+  <meta name="twitter:description" content="Siete noches en una casa engadina de Zuoz, entera para el grupo." />
+  <meta name="twitter:image" content="assets/img/hero-engadin-navidad.webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="pn.css" />
+  <link rel="stylesheet" href="styles.css" /><link rel="stylesheet" href="pn.css" />
 </head>
 <body>
 
   <header class="site-header" id="siteHeader">
     <div class="header-inner">
       <div class="nav-left">
-        <button class="menu-trigger" id="menuTrigger" aria-label="Abrir menú"><span class="bars"><span></span><span></span><span></span></span>Menú</button>
-        <a href="/journeys">Expediciones</a>
+        <button class="menu-trigger" id="menuTrigger" aria-label="Abrir menú">
+          <span class="bars"><span></span><span></span><span></span></span>
+          Menú
+        </button>
+        <a href='/journeys'>Expediciones</a>
       </div>
-      <a aria-label="Pasaporte Negro, inicio" class="brand" href="/"><img class="brand-lockup" src="assets/brand/lockup-horizontal_marfil.svg" alt="Pasaporte Negro · Turismo de lujo" /></a>
-      <div class="nav-right"><a class="btn btn-ghost" href="#consultar">Consultar</a></div>
+
+      <a aria-label='Pasaporte Negro, inicio' class='brand' href='/'>
+        <img class="brand-lockup" src="assets/brand/lockup-horizontal_marfil.svg" alt="Pasaporte Negro · Turismo de lujo" />
+      </a>
+
+      <div class="nav-right">
+        <a class='btn btn-ghost' href='/contact'>Consultar</a>
+      </div>
     </div>
   </header>
 
-  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true"><div class="drawer-inner">
-    <a href="/journeys">Expediciones</a><a href="/">Inicio</a><a class="btn btn-dark" href="#consultar">Consultar</a>
-  </div></aside>
-
-  <section class="pn-hero">
-    <img src="assets/img/hero-engadin.jpg" alt="Engadina" />
-    <div class="container pn-hero-inner">
-      <nav class="pn-crumb"><a href="/journeys">Expediciones</a> <span>/</span> <span>Engadina</span></nav>
-      <span class="pn-eyebrow">Navidad en los Alpes · 19 — 26 de diciembre de 2026</span>
-      <h1>Engadina</h1>
-      <a href="#consultar" class="btn btn-laurel">Consultar</a>
+  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="drawer-inner">
+      <a href='/journeys'>Expediciones</a>
+      <a href='/blog/'>Cuaderno</a>
+      <a href='/catalogos'>Dossiers</a>
+      <a class='btn btn-dark' href='/contact'>Consultar</a>
     </div>
-    <div class="pn-hero-facts">
-      <div><small>Duración</small><strong>Siete noches</strong></div>
-      <div><small>Grupo</small><strong>Hasta diez</strong></div>
-      <div><small>Salida</small><strong>Diciembre 2026</strong></div>
-      <div><small>Base</small><strong>Zuoz</strong></div>
-      <div><small>Desde</small><strong>USD 8.695</strong></div>
+  </aside>
+
+  <section class="journey-detail-hero">
+    <img srcset="assets/img/hero-engadin-navidad-480.webp 480w, assets/img/hero-engadin-navidad-960.webp 960w, assets/img/hero-engadin-navidad-1440.webp 1440w, assets/img/hero-engadin-navidad.webp 1600w" sizes="100vw" decoding="async" src="assets/img/hero-engadin-navidad.webp" alt="Engadina — Suiza" fetchpriority="high" />
+    <div class="container journey-hero-inner">
+      <nav class="breadcrumb light">
+        <a href="/journeys">Expediciones</a>
+        <span>/</span>
+        <span class="current">Engadina</span>
+      </nav>
+      <span class="eyebrow light">Grupo reducido · Suiza · 19 — 26 de diciembre de 2026</span>
+      <h1>Engadina</h1>
+      <p class="hero-sub"><em>Siete noches en una casa engadina de Zuoz, entera para el grupo.</em></p>
+      <a href="#fechas" class="btn btn-laurel">Ver fechas y tarifa</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card"><small>Duración</small><strong>Ocho días</strong><span>Siete noches</span></div>
+      <div class="stat-card"><small>El grupo</small><strong>Hasta diez</strong><span>Dos anfitriones de la casa</span></div>
+      <div class="stat-card"><small>Salida</small><strong>Diciembre 2026</strong><span>Sáb 19 – Sáb 26</span></div>
+      <div class="stat-card"><small>Tarifa</small><strong>Desde USD 8.695</strong><span>Por persona, todo adentro</span></div>
     </div>
   </section>
 
-  <section class="pn-intro"><div class="container"><p>Siete noches en una casa engadina de Zuoz, entera para el grupo. Desde ahí, la semana de Navidad como la vive el valle: el trineo por el Val Fex, la terraza de Corviglia al mediodía, la hora azul desde Muottas Muragl, la mesa de Nochebuena en un gran hotel de St. Moritz y el 25 en casa, con raclette y la chimenea encendida. El regreso, recién el 26.</p></div></section>
-
-  <section class="pn-accesos"><div class="container">
-    <div class="pn-sec-head"><span class="pn-kicker">Acceso, no exceso</span><h2>Los accesos</h2>
-    <p>Cada expedición de la casa incluye dos accesos: puertas que no se compran con una entrada. El detalle es de los que viajan.</p></div>
-    <div class="pn-acceso-grid">
-      <article class="pn-acceso"><span class="pn-rom">Acceso I</span>
-        <h3>La casa engadina, entera</h3>
-        <p>Una casa histórica en el pueblo mejor conservado del valle, tomada entera para el grupo durante las siete noches.</p></article>
-      <article class="pn-acceso"><span class="pn-rom">Acceso II</span>
-        <h3>La mesa de Nochebuena, en St. Moritz</h3>
-        <p>La mesa del 24 de diciembre en uno de los grandes hoteles históricos sobre St. Moritz, en plena temporada alta.</p></article>
-    </div></div></section>
-
-  <section class="pn-itin"><div class="container">
-    <div class="pn-sec-head"><span class="pn-kicker">Día por día</span><h2>El itinerario</h2></div>
-    <ol class="pn-dias">
-      <li class="pn-dia"><div class="pn-dia-n"><span>01</span><small>19 · XII</small></div>
-        <div class="pn-dia-txt"><h3>La llegada y la primera mesa</h3><p>Traslados desde Zúrich hacia el valle. Llaves de la casa, chimenea encendida y la primera cena servida en la mesa grande de la casa.</p></div></li>
-      <li class="pn-dia"><div class="pn-dia-n"><span>02</span><small>20 · XII</small></div>
-        <div class="pn-dia-txt"><h3>El trineo en el Val Fex</h3><p>El valle lateral más silencioso de la Engadina se recorre en trineo tirado por caballos. A la vuelta, el mercado de Navidad del valle, vino caliente en mano.</p></div></li>
-      <li class="pn-dia"><div class="pn-dia-n"><span>03</span><small>21 · XII</small></div>
-        <div class="pn-dia-txt"><h3>La montaña y la terraza de Corviglia</h3><p>Mañana de nieve según cada uno: esquí o caminata. El mediodía encuentra al grupo en la terraza de Corviglia, sobre St. Moritz, con la Engadina entera abajo.</p></div></li>
-      <li class="pn-dia"><div class="pn-dia-n"><span>04</span><small>22 · XII</small></div>
-        <div class="pn-dia-txt"><h3>La hora azul en Muottas Muragl</h3><p>Al caer la tarde, el funicular sube a Muottas Muragl. Desde el mirador, la cadena de lagos del valle se apaga en azul antes de bajar a cenar.</p></div></li>
-      <li class="pn-dia"><div class="pn-dia-n"><span>05</span><small>23 · XII</small></div>
-        <div class="pn-dia-txt"><h3>Zuoz de día, Talvo de noche</h3><p>La mañana entre las casas pintadas del casco antiguo de Zuoz. De noche, mesa en Talvo by Dalsass, en una antigua casa de Champfèr.</p></div></li>
-      <li class="pn-dia"><div class="pn-dia-n"><span>06</span><small>24 · XII</small></div>
-        <div class="pn-dia-txt"><h3>La mesa de Nochebuena</h3><p>La noche del 24, la mesa está puesta en un gran hotel de St. Moritz. Vestirse para la ocasión; el regreso a casa es corto.</p></div></li>
-      <li class="pn-dia"><div class="pn-dia-n"><span>07</span><small>25 · XII</small></div>
-        <div class="pn-dia-txt"><h3>Navidad, entera, en el chalet</h3><p>El 25 no se sale: raclette comunal, sobremesa larga y el valle blanco del otro lado de la ventana.</p></div></li>
-      <li class="pn-dia"><div class="pn-dia-n"><span>08</span><small>26 · XII</small></div>
-        <div class="pn-dia-txt"><h3>La despedida</h3><p>Desayuno sin apuro y traslados escalonados a Zúrich, según el vuelo de cada uno.</p></div></li>
-    </ol></div></section>
-
-  <section class="pn-cond"><div class="container">
-    <div class="pn-cols"><div><h4>La expedición incluye</h4><ul class="pn-list"><li>Siete noches en la casa engadina, entera para el grupo</li><li>Las mesas y cenas del programa, Nochebuena incluida</li><li>Traslados internos y desde y hacia Zúrich</li><li>Trineo, funiculares y entradas del programa</li><li>Anfitriones de la casa durante todo el viaje</li></ul></div>
-    <div><h4>No incluye</h4><ul class="pn-list"><li>Vuelos internacionales</li><li>Seguro de viaje</li><li>Consumos fuera del programa</li></ul></div></div>
-    <div class="pn-reglas"><h4>Las reglas de la casa</h4><ul class="pn-list"><li>Grupo de hasta diez viajeros</li><li>El lugar se reserva con seña</li><li>El detalle de los accesos se comparte con los viajeros de la expedición</li><li>El detalle contractual se entrega junto con la propuesta</li></ul></div>
-    <div class="pn-cta"><div class="pn-precio"><small>Por persona</small><strong>USD 8.695</strong></div><a href="#consultar" class="btn btn-laurel">Consultar por esta expedición</a></div>
-  </div></section>
-
-  <section class="pn-consulta" id="consultar"><div class="container">
-    <div class="pn-sec-head"><span class="pn-kicker">Sin compromiso</span><h2>Consultar por esta expedición</h2>
-    <p>Escribime y te contesto yo, por correo, con lo que necesites saber antes de decidir. El lugar se reserva con seña; hasta entonces no hay nada firmado.</p></div>
-    <form class="pn-form" novalidate>
-      <input type="hidden" name="destino" data-valor="Engadina" value="Engadina" />
-      <div class="pn-hp"><label>No completar <input name="hp" tabindex="-1" autocomplete="off" /></label></div>
-      <div class="pn-form-grid">
-        <label class="pn-campo"><span>Nombre</span><input name="nombre" autocomplete="given-name" required /></label>
-        <label class="pn-campo"><span>Apellido</span><input name="apellido" autocomplete="family-name" /></label>
-        <label class="pn-campo"><span>Correo</span><input name="email" type="email" autocomplete="email" required /></label>
-        <label class="pn-campo"><span>Teléfono</span><input name="telefono" autocomplete="tel" /></label>
-        <label class="pn-campo"><span>Cuántos viajan</span><input name="viajeros" type="number" min="1" max="10" /></label>
+  <section class="journey-intro">
+    <div class="container">
+      <div class="intro-grid">
+        <div class="intro-text">
+          <h2>Siete noches en una casa engadina de Zuoz, entera para el grupo.</h2>
+          <p>Desde ahí, la semana de Navidad como la vive el valle: el trineo por el Val Fex, la terraza de Corviglia al mediodía, la hora azul desde Muottas Muragl, la mesa de Nochebuena en un gran hotel de St. Moritz y el 25 en casa, con raclette y la chimenea encendida.</p><p>El regreso, recién el 26.</p>
+        </div>
+        <div class="intro-portrait"><img srcset="assets/img/wildlife-engadin-navidad-480.webp 480w, assets/img/wildlife-engadin-navidad-960.webp 960w, assets/img/wildlife-engadin-navidad-1440.webp 1440w, assets/img/wildlife-engadin-navidad.webp 1600w" sizes="(max-width: 768px) 100vw, 50vw" decoding="async" src="assets/img/wildlife-engadin-navidad.webp" alt="Engadina" loading="lazy" /></div>
       </div>
-      <label class="pn-campo pn-campo-ancho"><span>Mensaje</span><textarea name="mensaje" rows="4" placeholder="Lo que quieras preguntar."></textarea></label>
-      <div class="pn-form-pie"><button class="btn btn-laurel" type="submit">Enviar consulta</button><p class="pn-form-estado" role="status"></p></div>
-    </form>
-  </div></section>
 
-  <footer class="site-footer"><div class="container footer-grid">
-    <div class="footer-brand"><div class="footer-brand-row"><img class="footer-sello" src="assets/brand/simbolo_marfil.svg" alt="Pasaporte Negro" /><h3>Pasaporte Negro</h3></div>
-      <p>Turismo de lujo en expediciones de hasta diez viajeros. Buenos Aires, Argentina.</p>
-      <p>Escribinos a <a href="mailto:pasaportenegroviajes@gmail.com">pasaportenegroviajes@gmail.com</a></p>
-      <div class="socials"><a href="https://www.instagram.com/pasaportenegro" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm5.5-.5a1 1 0 100 2 1 1 0 000-2z"/></svg></a>
-      <a href="https://www.tiktok.com/@pasaportenegro" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.81 20.1a6.34 6.34 0 0 0 10.86-4.43V8.45a8.16 8.16 0 0 0 4.77 1.52V6.69h-1.85z"/></svg></a></div>
+      <div class="acc-head"><span class="eyebrow">Acceso, no exceso</span><h3 class="acc-title">Dos accesos de la casa</h3></div>
+      <div class="highlights">
+        <div class="highlight"><span class="hi-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.2 1 5.8L12 16.5 6.8 19.2l1-5.8L3.5 9.2l5.9-.9z"/></svg></span><h4>La casa engadina, entera</h4><p>Una casa histórica en el pueblo mejor conservado del valle, tomada entera para el grupo durante las siete noches.</p></div><div class="highlight"><span class="hi-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.2 1 5.8L12 16.5 6.8 19.2l1-5.8L3.5 9.2l5.9-.9z"/></svg></span><h4>La mesa de Nochebuena, en St. Moritz</h4><p>La mesa del 24 de diciembre en uno de los grandes hoteles históricos sobre St. Moritz, en plena temporada alta.</p></div>
+        <div class="highlight"><span class="hi-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 118 0v3"/></svg></span><h4>La regla de la casa</h4><p>El detalle de cada acceso —el nombre, la hora, la puerta— se comparte con los viajeros de la expedición, no antes.</p></div>
+      </div>
     </div>
-    <div class="footer-col"><h5>La casa</h5><ul><li><a href="/contact">Contacto</a></li></ul></div>
-    <div class="footer-col"><h5>Expediciones</h5><ul><li><a href="/journeys">El calendario</a></li><li><a href="/catalogos">Dossiers</a></li></ul></div>
-    <div class="footer-col"><h5>Legal</h5><ul><li><a href="/terminos">Términos y condiciones</a></li><li><a href="/privacidad">Privacidad</a></li><li><a href="/cookies">Cookies</a></li></ul></div>
-  </div><div class="footer-bottom">© 2026 Pasaporte Negro · Buenos Aires · Todos los derechos reservados.</div></footer>
+  </section>
 
-  <script src="script.js"></script>
-  <script src="pn.js"></script>
+  <section class="itinerary-sticky">
+    <div class="container itinerary-sticky-grid">
+      <aside class="itinerary-aside">
+        <h2>Itinerario</h2>
+        <p class="itin-lede">El itinerario, día por día. Base en Zuoz.</p>
+        
+      </aside>
+      <div class="itinerary-days">
+      <article class="day" data-day="01">
+        <div class="day-text">
+          <span class="day-num">Día 1 · Sábado 19 de diciembre</span>
+          <h3>La llegada y la primera mesa</h3>
+          <p>Traslados desde Zúrich hacia el valle. Llaves de la casa, chimenea encendida y la primera cena servida en la mesa grande de la casa.</p>
+        </div>
+        <div class="day-img"><img srcset="assets/img/day-engadin-navidad-1-480.webp 480w, assets/img/day-engadin-navidad-1-960.webp 960w, assets/img/day-engadin-navidad-1-1440.webp 1440w, assets/img/day-engadin-navidad-1.webp 1600w" sizes="(max-width: 768px) 100vw, 50vw" decoding="async" src="assets/img/day-engadin-navidad-1.webp" alt="Engadina — día 1" loading="lazy" /></div>
+      </article><article class="day" data-day="02">
+        <div class="day-text">
+          <span class="day-num">Día 2 · Domingo 20 de diciembre</span>
+          <h3>El trineo en el Val Fex</h3>
+          <p>El valle lateral más silencioso de la Engadina se recorre en trineo tirado por caballos. A la vuelta, el mercado de Navidad del valle, vino caliente en mano.</p>
+        </div>
+        
+      </article><article class="day" data-day="03">
+        <div class="day-text">
+          <span class="day-num">Día 3 · Lunes 21 de diciembre</span>
+          <h3>La montaña y la terraza de Corviglia</h3>
+          <p>Mañana de nieve según cada uno: esquí o caminata. El mediodía encuentra al grupo en la terraza de Corviglia, sobre St. Moritz, con la Engadina entera abajo.</p>
+        </div>
+        <div class="day-img"><img srcset="assets/img/day-engadin-navidad-2-480.webp 480w, assets/img/day-engadin-navidad-2-960.webp 960w, assets/img/day-engadin-navidad-2.webp 1600w" sizes="(max-width: 768px) 100vw, 50vw" decoding="async" src="assets/img/day-engadin-navidad-2.webp" alt="Engadina — día 3" loading="lazy" /></div>
+      </article><article class="day" data-day="04">
+        <div class="day-text">
+          <span class="day-num">Día 4 · Martes 22 de diciembre</span>
+          <h3>La hora azul en Muottas Muragl</h3>
+          <p>Al caer la tarde, el funicular sube a Muottas Muragl. Desde el mirador, la cadena de lagos del valle se apaga en azul antes de bajar a cenar.</p>
+        </div>
+        
+      </article><article class="day" data-day="05">
+        <div class="day-text">
+          <span class="day-num">Día 5 · Miércoles 23 de diciembre</span>
+          <h3>Zuoz de día, Talvo de noche</h3>
+          <p>La mañana entre las casas pintadas del casco antiguo de Zuoz. De noche, mesa en Talvo by Dalsass, en una antigua casa de Champfèr.</p>
+        </div>
+        
+      </article><article class="day" data-day="06">
+        <div class="day-text">
+          <span class="day-num">Día 6 · Jueves 24 de diciembre</span>
+          <h3>La mesa de Nochebuena</h3>
+          <p>La noche del 24, la mesa está puesta en un gran hotel de St. Moritz. Vestirse para la ocasión; el regreso a casa es corto.</p>
+        </div>
+        <div class="day-img"><img srcset="assets/img/day-engadin-navidad-3-480.webp 480w, assets/img/day-engadin-navidad-3-960.webp 960w, assets/img/day-engadin-navidad-3-1440.webp 1440w, assets/img/day-engadin-navidad-3.webp 1600w" sizes="(max-width: 768px) 100vw, 50vw" decoding="async" src="assets/img/day-engadin-navidad-3.webp" alt="Engadina — día 6" loading="lazy" /></div>
+      </article><article class="day" data-day="07">
+        <div class="day-text">
+          <span class="day-num">Día 7 · Viernes 25 de diciembre</span>
+          <h3>Navidad, entera, en el chalet</h3>
+          <p>El 25 no se sale: raclette comunal, sobremesa larga y el valle blanco del otro lado de la ventana.</p>
+        </div>
+        
+      </article><article class="day climax" data-day="08">
+        <div class="day-text">
+          <span class="day-num">Día 8 · Sábado 26 de diciembre</span>
+          <h3>La despedida</h3>
+          <p>Desayuno sin apuro y traslados escalonados a Zúrich, según el vuelo de cada uno.</p>
+        </div>
+        <div class="day-img"><img srcset="assets/img/day-engadin-navidad-4-480.webp 480w, assets/img/day-engadin-navidad-4-960.webp 960w, assets/img/day-engadin-navidad-4-1440.webp 1440w, assets/img/day-engadin-navidad-4.webp 1600w" sizes="(max-width: 768px) 100vw, 50vw" decoding="async" src="assets/img/day-engadin-navidad-4.webp" alt="Engadina — día 8" loading="lazy" /></div>
+      </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="lodges">
+    <div class="container">
+      <span class="eyebrow">La base</span>
+      <h2>Zuoz</h2>
+      <p class="lodge-intro">Siete noches en la casa engadina, entera para el grupo</p>
+      
+    </div>
+  </section>
+
+  <section class="dates-prices" id="fechas">
+    <div class="container dates-grid">
+      <div class="inclusions">
+        <h2>Lo que incluye</h2>
+        <ul class="check-list"><li>Siete noches en la casa engadina, entera para el grupo</li><li>Las mesas y cenas del programa, Nochebuena incluida</li><li>Traslados internos y desde y hacia Zúrich</li><li>Trineo, funiculares y entradas del programa</li><li>Anfitriones de la casa durante todo el viaje</li></ul>
+        <h3 class="excludes-head">Lo que no incluye</h3>
+        <ul class="check-list excludes-list"><li>Vuelos internacionales</li><li>Seguro de viaje</li><li>Consumos fuera del programa</li></ul>
+      </div>
+      <div class="price-panel">
+        <span class="eyebrow">La salida</span>
+        <h3 class="pp-fecha">19 — 26 de diciembre de 2026</h3>
+        <p class="pp-precio"><strong>Desde USD 8.695</strong> por persona</p>
+        <h4 class="pp-reglas-t">Las reglas de la casa</h4>
+        <ul class="pp-reglas"><li>Grupo de hasta diez viajeros</li><li>El lugar se reserva con seña</li><li>El detalle de los accesos se comparte con los viajeros de la expedición</li><li>El detalle contractual se entrega junto con la propuesta</li></ul>
+        <a class="btn btn-laurel" href="/contact?exp=engadin-navidad">Consultar por Engadina</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="similar">
+    <div class="container">
+      <span class="eyebrow">El calendario sigue</span>
+      <h2>Otras expediciones de la casa</h2>
+      <div class="cards-4"><a href="/laponia-auroras" class="img-card" style="aspect-ratio:4/5;">
+          <img srcset="assets/img/hero-laponia-auroras-480.webp 480w, assets/img/hero-laponia-auroras-960.webp 960w, assets/img/hero-laponia-auroras-1440.webp 1440w, assets/img/hero-laponia-auroras.webp 1600w" sizes="(max-width: 768px) 50vw, 25vw" decoding="async" src="assets/img/hero-laponia-auroras.webp" alt="Laponia" loading="lazy" />
+          <span class="label-pill">Enero 2027</span>
+          <div class="img-card-body">
+            <small>Finlandia y Noruega</small>
+            <h3>Laponia</h3>
+          </div>
+        </a><a href="/bahia-otro-carnaval" class="img-card" style="aspect-ratio:4/5;">
+          <img srcset="assets/img/hero-bahia-otro-carnaval-480.webp 480w, assets/img/hero-bahia-otro-carnaval-960.webp 960w, assets/img/hero-bahia-otro-carnaval.webp 1600w" sizes="(max-width: 768px) 50vw, 25vw" decoding="async" src="assets/img/hero-bahia-otro-carnaval.webp" alt="Bahía" loading="lazy" />
+          <span class="label-pill">Febrero 2027</span>
+          <div class="img-card-body">
+            <small>Brasil</small>
+            <h3>Bahía</h3>
+          </div>
+        </a><a href="/japon-mono-no-aware" class="img-card" style="aspect-ratio:4/5;">
+          <img srcset="assets/img/hero-japon-mono-no-aware-480.webp 480w, assets/img/hero-japon-mono-no-aware-960.webp 960w, assets/img/hero-japon-mono-no-aware-1440.webp 1440w, assets/img/hero-japon-mono-no-aware.webp 1600w" sizes="(max-width: 768px) 50vw, 25vw" decoding="async" src="assets/img/hero-japon-mono-no-aware.webp" alt="Japón" loading="lazy" />
+          <span class="label-pill">Marzo 2027</span>
+          <div class="img-card-body">
+            <small>Japón</small>
+            <h3>Japón</h3>
+          </div>
+        </a><a href="/butan-nepal-himalaya" class="img-card" style="aspect-ratio:4/5;">
+          <img srcset="assets/img/hero-butan-nepal-himalaya-480.webp 480w, assets/img/hero-butan-nepal-himalaya-960.webp 960w, assets/img/hero-butan-nepal-himalaya.webp 1600w" sizes="(max-width: 768px) 50vw, 25vw" decoding="async" src="assets/img/hero-butan-nepal-himalaya.webp" alt="Bután y Nepal" loading="lazy" />
+          <span class="label-pill">Abril 2027</span>
+          <div class="img-card-body">
+            <small>Bután y Nepal</small>
+            <h3>Bután y Nepal</h3>
+          </div>
+        </a></div>
+    </div>
+  </section>
+
+  <footer class="site-footer" id="contact">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-row">
+          <img class="footer-sello" src="assets/brand/simbolo_marfil.svg" alt="Pasaporte Negro" />
+          <h3>Pasaporte Negro</h3>
+        </div>
+        <p>Turismo de lujo en expediciones de hasta diez viajeros. Buenos Aires, Argentina.</p>
+        <p style="margin: 8px 0 14px;">Escribinos a <a href="mailto:pasaportenegroviajes@gmail.com" style="color:rgba(232,230,224,0.85); border-bottom:1px solid rgba(232,230,224,0.3);">pasaportenegroviajes@gmail.com</a></p>
+        <div class="socials">
+          <a href="https://www.instagram.com/pasaportenegro" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm5.5-.5a1 1 0 100 2 1 1 0 000-2z"/></svg></a>
+          <a href="https://www.tiktok.com/@pasaportenegro" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 1 1-2.59-2.59c.27 0 .53.04.78.12V9.77a5.76 5.76 0 0 0-.78-.05 5.68 5.68 0 1 0 5.68 5.68V9.29a7.35 7.35 0 0 0 4.29 1.37V7.57a4.28 4.28 0 0 1-3.23-1.75z"/></svg></a>
+        </div>
+        <form class="newsletter" id="newsletter" name="newsletter" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/gracias.html"><input type="hidden" name="form-name" value="newsletter" /><p class="hidden-field"><label>No completar: <input name="bot-field" /></label></p>
+          <strong style="color:var(--ink); font-family:var(--serif); font-size:24px; line-height:1.1;">Una carta al mes</strong>
+          <span class="terms" style="margin: 4px 0 8px;">Un destino, una historia, una recomendación. Nada más.</span>
+          <div class="newsletter-row">
+            <input type="text" name="nombre" placeholder="Nombre" />
+            <input type="text" name="apellido" placeholder="Apellido" />
+          </div>
+          <input type="email" name="email" placeholder="Correo electrónico" required />
+          <span class="terms">Al registrarte aceptás nuestros <a href="/terminos">Términos de uso</a> y la <a href="/privacidad">Política de privacidad</a>, incluyendo el envío de comunicaciones.</span>
+          <button class="btn btn-laurel" type="submit">Suscribirme</button>
+        </form>
+      </div>
+
+      <div class="footer-col">
+        <h5>La casa</h5>
+        <a href="/#casa">Quién está detrás</a>
+        <a href="/#acceso">Qué es un acceso</a>
+        <a href="/contact">Contacto</a>
+      </div>
+      <div class="footer-col">
+        <h5>Expediciones</h5>
+        <a href="/journeys">El calendario</a>
+        <a href="/catalogos">Dossiers</a>
+        <a href="/blog/">Cuaderno</a>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <a href="/terminos">Términos y condiciones</a>
+        <a href="/privacidad">Privacidad</a>
+        <a href="/cookies">Cookies</a>
+      </div>
+    </div>
+    <div class="container footer-legal">
+      <span>© 2026 Pasaporte Negro · Buenos Aires · Todos los derechos reservados.</span>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TouristTrip", "name": "Engadina — Pasaporte Negro", "description": "Siete noches en una casa engadina de Zuoz, entera para el grupo.", "provider": {"@type": "TravelAgency", "name": "Pasaporte Negro", "email": "pasaportenegroviajes@gmail.com", "address": {"@type": "PostalAddress", "addressLocality": "Buenos Aires", "addressCountry": "AR"}}, "offers": {"@type": "Offer", "price": "8695", "priceCurrency": "USD", "availability": "https://schema.org/PreOrder"}, "startDate": "2026-12-19", "endDate": "2026-12-26"}</script>
+  <script src="script.js" defer></script>
 </body>
 </html>
