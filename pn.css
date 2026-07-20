@@ -230,3 +230,6 @@ a[href="/catalogos"], a[href="/catalogos.html"] { display: none; }
   font-size: 16px; line-height: 1.7; color: var(--sobre-oscuro);
   max-width: 640px; margin: 18px 0 0;
 }
+
+/* Tercer ejemplo de acceso: ocupa el ancho de la grilla */
+.acceso-ejemplos .ae-ancho { grid-column: 1 / -1; }
