@@ -68,14 +68,14 @@
   <section class="spotlight">
     <div class="spotlight-frame" id="spotlightFrame">
       <div class="slide active">
-        <video class="slide-media" autoplay muted loop playsinline preload="auto" poster="assets/img/hero-namibia-dunas.jpg">
-          <source src="assets/video/hero-1.mp4" type="video/mp4" />
+        <video class="slide-media" muted loop playsinline preload="none" poster="assets/img/hero-namibia-dunas.jpg">
+          <source data-src="assets/video/hero-1.mp4" type="video/mp4" />
         </video>
       </div>
 
       <div class="slide">
-        <video class="slide-media" muted loop playsinline preload="metadata" poster="assets/img/hero-piamonte-tartufo.jpg">
-          <source src="assets/video/hero-2.mp4" type="video/mp4" />
+        <video class="slide-media" muted loop playsinline preload="none" poster="assets/img/hero-piamonte-tartufo.jpg">
+          <source data-src="assets/video/hero-2.mp4" type="video/mp4" />
         </video>
       </div>
 
@@ -426,5 +426,17 @@
     <input type="text" name="bot-field" />
     <input type="email" name="email" />
   </form>
+<script>
+(function () {
+  var conn = navigator.connection || {};
+  if (window.matchMedia("(max-width: 768px)").matches || conn.saveData) return;
+  document.querySelectorAll(".spotlight-frame video.slide-media").forEach(function (v) {
+    var s = v.querySelector("source[data-src]");
+    if (s && !s.getAttribute("src")) { s.src = s.getAttribute("data-src"); v.load(); }
+  });
+  var first = document.querySelector(".spotlight-frame .slide.active video.slide-media");
+  if (first) { var p = first.play(); if (p && p.catch) p.catch(function () {}); }
+})();
+</script>
 </body>
 </html>
