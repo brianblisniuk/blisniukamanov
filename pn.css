@@ -222,8 +222,8 @@ a[href="/catalogos"], a[href="/catalogos.html"] { display: none; }
 .journey-hero-inner h1 { color: var(--sobre-oscuro); }
 
 /* Wordmark del header: pedía más presencia */
-.pn-wordmark { font-size: clamp(19px, 2.1vw, 29px); letter-spacing: 0.28em; margin-right: -0.28em; }
-@media (max-width: 700px) { .pn-wordmark { font-size: 16px; letter-spacing: 0.16em; margin-right: -0.16em; } }
+.pn-wordmark { font-size: clamp(19px, 2.1vw, 29px); letter-spacing: 0.28em; margin-right: 0; padding-left: 0.28em; }
+@media (max-width: 700px) { .pn-wordmark { font-size: 16px; letter-spacing: 0.16em; margin-right: 0; padding-left: 0.16em; } }
 
 /* Respuesta del banner "por qué viajar" */
 .why-lead {
