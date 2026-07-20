@@ -87,3 +87,45 @@ h1 em, h2 em, h3 em, blockquote em {
   .catalogos-grid { grid-template-columns: 1fr; }
   .cat-card, .cat-cover { max-width: 100%; }
 }
+
+/* ===== Corrección de roles de color — contraste (auditado con navegador real) =====
+   --white cumplía dos papeles: superficie clara (correcto) y texto claro sobre
+   fondo oscuro o sobre foto (roto: quedaba Carbón sobre Carbón, ratio 1.00).
+   Acá se separa el segundo rol. */
+:root { --sobre-oscuro: #E8E6E0; }
+
+.spotlight-text,
+.spotlight-text h1,
+.spotlight-text h1 em,
+.spotlight-controls button,
+.img-card,
+.img-card .img-card-body h3,
+.stay-with .img-card-body .btn,
+.quote-band,
+.quote-band blockquote,
+.why-banner,
+.why-banner h2,
+.why-banner h2 em,
+.footer-brand h3,
+.footer-col h5,
+.newsletter input[type="text"],
+.newsletter input[type="email"],
+.socials svg,
+.btn-outline-light { color: var(--sobre-oscuro); }
+
+.btn-outline-light:hover { background: var(--sobre-oscuro); color: var(--black); }
+.stay-with .img-card-body .btn:hover { background: var(--sobre-oscuro); color: var(--black); }
+
+/* Hero de contacto: la superficie es Marfil, así que el texto va oscuro */
+.contact-hero p { color: rgba(10,10,11,0.74); }
+.contact-hero .breadcrumb.light,
+.contact-hero .breadcrumb.light a { color: rgba(10,10,11,0.62); }
+.contact-hero .breadcrumb.light a:hover,
+.contact-hero .breadcrumb.light .current { color: var(--black); }
+
+/* Desborde lateral en móvil: la banda de catálogos no colapsaba a una columna */
+@media (max-width: 760px) {
+  .brochures-cta-inner { grid-template-columns: 1fr; }
+  .brochures-stack { flex-wrap: wrap; justify-content: center; }
+  .brochures-stack img { width: calc(33.333% - 10px); }
+}
