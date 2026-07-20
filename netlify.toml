@@ -3,6 +3,129 @@
 [build]
   publish = "."
 
+# Expediciones todavia no publicadas: la pagina no se sirve.
+# El click abre el formulario de interes; sin JS cae en /contacto con el destino cargado.
+# Para abrir una expedicion: borrar sus dos reglas de aca y sacar el slug de ABIERTAS en script.js.
+
+[[redirects]]
+  from = "/namibia-dunas"
+  to = "/contacto?exp=namibia-dunas"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/namibia-dunas.html"
+  to = "/contacto?exp=namibia-dunas"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/engadin-navidad"
+  to = "/contacto?exp=engadin-navidad"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/engadin-navidad.html"
+  to = "/contacto?exp=engadin-navidad"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/laponia-auroras"
+  to = "/contacto?exp=laponia-auroras"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/laponia-auroras.html"
+  to = "/contacto?exp=laponia-auroras"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/bahia-otro-carnaval"
+  to = "/contacto?exp=bahia-otro-carnaval"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/bahia-otro-carnaval.html"
+  to = "/contacto?exp=bahia-otro-carnaval"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/japon-mono-no-aware"
+  to = "/contacto?exp=japon-mono-no-aware"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/japon-mono-no-aware.html"
+  to = "/contacto?exp=japon-mono-no-aware"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/butan-nepal-himalaya"
+  to = "/contacto?exp=butan-nepal-himalaya"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/butan-nepal-himalaya.html"
+  to = "/contacto?exp=butan-nepal-himalaya"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/marruecos-imperial"
+  to = "/contacto?exp=marruecos-imperial"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/marruecos-imperial.html"
+  to = "/contacto?exp=marruecos-imperial"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/croacia-islas-dalmatas"
+  to = "/contacto?exp=croacia-islas-dalmatas"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/croacia-islas-dalmatas.html"
+  to = "/contacto?exp=croacia-islas-dalmatas"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/alaska-salvaje"
+  to = "/contacto?exp=alaska-salvaje"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/alaska-salvaje.html"
+  to = "/contacto?exp=alaska-salvaje"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/uzbekistan-ruta-seda"
+  to = "/contacto?exp=uzbekistan-ruta-seda"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/uzbekistan-ruta-seda.html"
+  to = "/contacto?exp=uzbekistan-ruta-seda"
+  status = 302
+  force = true
 # Clean URLs — visitors don't need to type .html
 [[redirects]]
   from = "/viajes"

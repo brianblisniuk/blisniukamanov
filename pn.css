@@ -129,3 +129,41 @@ h1 em, h2 em, h3 em, blockquote em {
   .brochures-stack { flex-wrap: wrap; justify-content: center; }
   .brochures-stack img { width: calc(33.333% - 10px); }
 }
+
+/* ===== Modal de interés (expediciones no publicadas) ===== */
+.pn-modal { position: fixed; inset: 0; z-index: 9000; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.pn-modal[hidden] { display: none; }
+.pn-modal-fondo { position: absolute; inset: 0; background: rgba(10,10,11,0.86); backdrop-filter: blur(6px); }
+.pn-modal-caja {
+  position: relative; z-index: 1; width: 100%; max-width: 460px;
+  max-height: calc(100vh - 40px); overflow-y: auto;
+  background: var(--bone-2); border: 1px solid var(--line);
+  padding: 40px 36px 32px; border-radius: var(--r);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+}
+.pn-modal-x {
+  position: absolute; top: 12px; right: 14px;
+  background: none; border: 0; cursor: pointer; padding: 6px;
+  font-size: 22px; line-height: 1; color: var(--stone); transition: color var(--t-fast);
+}
+.pn-modal-x:hover { color: var(--sobre-oscuro); }
+.pn-modal-caja h2 { font-family: var(--serif); font-size: 34px; font-weight: 400; margin: 10px 0 14px; color: var(--sobre-oscuro); }
+.pn-modal-txt { font-size: 15px; line-height: 1.7; color: var(--ink-2); margin: 0 0 26px; }
+.pn-modal-form label { display: block; margin-bottom: 16px; }
+.pn-modal-form label span {
+  display: block; font-family: var(--sans); font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--stone); margin-bottom: 7px;
+}
+.pn-modal-form input {
+  width: 100%; background: transparent; border: 1px solid var(--line);
+  border-radius: var(--r); color: var(--sobre-oscuro);
+  padding: 12px 14px; font: inherit; font-size: 15px;
+}
+.pn-modal-form input:focus { outline: 0; border-color: var(--laurel); }
+.pn-modal-fila { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.pn-modal-form .btn { width: 100%; text-align: center; margin-top: 6px; }
+.pn-modal-nota { font-size: 12px; line-height: 1.6; color: var(--stone); margin: 14px 0 0; text-align: center; }
+@media (max-width: 520px) {
+  .pn-modal-caja { padding: 34px 22px 26px; }
+  .pn-modal-fila { grid-template-columns: 1fr; gap: 0; }
+}

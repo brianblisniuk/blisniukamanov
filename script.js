@@ -999,3 +999,132 @@
     if (sel.options[i].value === nombre) { sel.selectedIndex = i; break; }
   }
 })();
+
+/* ==========================================================
+   Expediciones no publicadas -> formulario de interes en modal
+   Solo los slugs de ABIERTAS llevan a su pagina. El resto abre
+   un modal que registra el interes por public-lead (mismo
+   handler .inquiry-form de mas arriba).
+   Para abrir una expedicion: agregar su slug a ABIERTAS.
+   ========================================================== */
+(function () {
+  "use strict";
+
+  var ABIERTAS = ["piamonte-tartufo"];
+
+  var NOMBRE = {
+    "piamonte-tartufo": "Piemonte",
+    "namibia-dunas": "Namibia",
+    "engadin-navidad": "Engadina",
+    "laponia-auroras": "Laponia",
+    "bahia-otro-carnaval": "Bah\u00eda",
+    "japon-mono-no-aware": "Jap\u00f3n",
+    "butan-nepal-himalaya": "But\u00e1n y Nepal",
+    "marruecos-imperial": "Marruecos",
+    "croacia-islas-dalmatas": "Dalmacia",
+    "alaska-salvaje": "Alaska",
+    "uzbekistan-ruta-seda": "Uzbekist\u00e1n"
+  };
+
+  function slugDe(href) {
+    if (!href) return "";
+    var u = href.split("#")[0].split("?")[0];
+    u = u.replace(/^https?:\/\/[^/]+/, "");
+    u = u.replace(/^\.?\//, "").replace(/\.html$/, "");
+    return Object.prototype.hasOwnProperty.call(NOMBRE, u) ? u : "";
+  }
+
+  var modal = null;
+  var ultimoFoco = null;
+
+  function construir() {
+    if (modal) return modal;
+    var d = document.createElement("div");
+    d.className = "pn-modal";
+    d.setAttribute("hidden", "");
+    d.innerHTML =
+      '<div class="pn-modal-fondo" data-pn-cerrar></div>' +
+      '<div class="pn-modal-caja" role="dialog" aria-modal="true" aria-labelledby="pnModalTitulo">' +
+      '<button class="pn-modal-x" type="button" data-pn-cerrar aria-label="Cerrar">&#215;</button>' +
+      '<span class="eyebrow">Lista de inter\u00e9s</span>' +
+      '<h2 id="pnModalTitulo"></h2>' +
+      '<p class="pn-modal-txt">Todav\u00eda no publiqu\u00e9 el itinerario de esta expedici\u00f3n. Dej\u00e1 tus datos y te aviso cuando abra, con las fechas y la tarifa.</p>' +
+      '<form class="inquiry-form pn-modal-form" name="consulta-interes" action="/gracias.html" novalidate>' +
+      '<input type="hidden" name="destino" value="" />' +
+      '<input type="hidden" name="tipo" value="Inter\u00e9s \u2014 expedici\u00f3n no publicada" />' +
+      '<p hidden><label>No completar <input name="bot-field" /></label></p>' +
+      '<div class="pn-modal-fila">' +
+      '<label><span>Nombre</span><input type="text" name="nombre" autocomplete="given-name" /></label>' +
+      '<label><span>Apellido</span><input type="text" name="apellido" autocomplete="family-name" /></label>' +
+      "</div>" +
+      '<label><span>Correo electr\u00f3nico</span><input type="email" name="email" autocomplete="email" required /></label>' +
+      '<label><span>Tel\u00e9fono</span><input type="tel" name="telefono" autocomplete="tel" /></label>' +
+      '<button class="btn btn-laurel" type="submit">Anotarme</button>' +
+      '<p class="pn-modal-nota">Del otro lado del correo estoy yo. Sin llamados.</p>' +
+      "</form>" +
+      "</div>";
+    document.body.appendChild(d);
+    modal = d;
+    return d;
+  }
+
+  function abrir(slug) {
+    var m = construir();
+    var nombre = NOMBRE[slug] || "";
+    m.querySelector("#pnModalTitulo").textContent = nombre;
+    m.querySelector('input[name="destino"]').value = nombre;
+    var f = m.querySelector("form");
+    if (f) {
+      f.reset();
+      m.querySelector('input[name="destino"]').value = nombre;
+      var b = f.querySelector('button[type="submit"]');
+      if (b) b.disabled = false;
+    }
+    ultimoFoco = document.activeElement;
+    m.removeAttribute("hidden");
+    document.documentElement.style.overflow = "hidden";
+    var primero = m.querySelector('input[name="nombre"]');
+    if (primero) setTimeout(function () { primero.focus(); }, 40);
+  }
+
+  function cerrar() {
+    if (!modal || modal.hasAttribute("hidden")) return;
+    modal.setAttribute("hidden", "");
+    document.documentElement.style.overflow = "";
+    if (ultimoFoco && ultimoFoco.focus) ultimoFoco.focus();
+  }
+
+  function marcar() {
+    var as = document.querySelectorAll("a[href]");
+    for (var i = 0; i < as.length; i++) {
+      var a = as[i];
+      if (a.hasAttribute("data-pn-cerrada")) continue;
+      var s = slugDe(a.getAttribute("href"));
+      if (!s || ABIERTAS.indexOf(s) !== -1) continue;
+      a.setAttribute("data-pn-cerrada", s);
+      a.setAttribute("href", "/contacto?exp=" + s);
+      var link = a.querySelector(".j-link");
+      if (link) link.textContent = "Anotarme en la lista \u2192";
+      else if (/^\s*Ver la expedici/i.test(a.textContent || "")) a.textContent = "Anotarme en la lista";
+    }
+  }
+
+  function arrancar() {
+    marcar();
+    document.addEventListener("click", function (e) {
+      var cerrarEl = e.target.closest ? e.target.closest("[data-pn-cerrar]") : null;
+      if (cerrarEl) { e.preventDefault(); cerrar(); return; }
+      var a = e.target.closest ? e.target.closest("a[data-pn-cerrada]") : null;
+      if (!a) return;
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
+      e.preventDefault();
+      abrir(a.getAttribute("data-pn-cerrada"));
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") cerrar();
+    });
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", arrancar);
+  else arrancar();
+})();
