@@ -187,3 +187,36 @@ h1 em, h2 em, h3 em, blockquote em {
    Se oculta el acceso hasta que haya dossier propio. Para reponerlo:
    borrar esta regla y la redirección de /catalogos en netlify.toml. */
 a[href="/catalogos"], a[href="/catalogos.html"] { display: none; }
+
+/* ===== Wordmark del header: texto real en Marcellus =====
+   El SVG del lockup no puede usar las fuentes de la página (se carga como
+   <img>), y a 24px de alto el texto quedaba en 5px. Esto escala, es
+   seleccionable y respeta la tipografía de marca. */
+.pn-wordmark {
+  display: inline-block;
+  font-family: var(--serif);
+  font-size: clamp(15px, 1.35vw, 19px);
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--sobre-oscuro);
+  line-height: 1;
+  white-space: nowrap;
+  margin-right: -0.26em; /* compensa el tracking de la última letra */
+}
+.pn-wordmark i { font-style: normal; color: var(--stone); }
+.brand { display: inline-flex; align-items: center; }
+@media (max-width: 700px) {
+  .pn-wordmark { font-size: 13px; letter-spacing: 0.2em; margin-right: -0.2em; }
+}
+
+/* ===== Retrato en La casa ===== */
+.casa-retrato { margin: 28px 0 0; }
+.casa-retrato img {
+  width: 100%; max-width: 300px;
+  aspect-ratio: 3/4; object-fit: cover;
+  display: block; border: 1px solid var(--line-soft);
+}
+@media (max-width: 900px) { .casa-retrato img { max-width: 220px; } }
+
+/* ===== Último nodo de contraste: H1 del hero de expedición ===== */
+.journey-hero-inner h1 { color: var(--sobre-oscuro); }
