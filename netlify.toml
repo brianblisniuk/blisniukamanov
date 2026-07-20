@@ -126,6 +126,19 @@
   to = "/contacto?exp=uzbekistan-ruta-seda"
   status = 302
   force = true
+# Dossiers: contenido heredado, fuera de la marca. Sin publicar por ahora.
+[[redirects]]
+  from = "/catalogos"
+  to = "/viajes"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/catalogos.html"
+  to = "/viajes"
+  status = 302
+  force = true
+
 # Clean URLs — visitors don't need to type .html
 [[redirects]]
   from = "/viajes"

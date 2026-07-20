@@ -167,3 +167,23 @@ h1 em, h2 em, h3 em, blockquote em {
   .pn-modal-caja { padding: 34px 22px 26px; }
   .pn-modal-fila { grid-template-columns: 1fr; gap: 0; }
 }
+
+/* ===== Contraste: hero de expedición y tapas de dossier ===== */
+.journey-detail-hero,
+.journey-detail-hero .breadcrumb.light .current,
+.breadcrumb.light .current { color: var(--sobre-oscuro); }
+
+/* Las tapas llevan foto: la superficie va oscura y el texto Marfil */
+.cat-cover { background: var(--bone-2); color: var(--sobre-oscuro); }
+.cat-cover.dark { background: var(--black); }
+.cat-cover.cream { background: var(--carbon, #101012); color: var(--sobre-oscuro); }
+.cat-cover::after {
+  content: ""; position: absolute; inset: 0; z-index: 0;
+  background: linear-gradient(180deg, rgba(10,10,11,0.25) 0%, rgba(10,10,11,0.72) 100%);
+}
+.cat-cover h3, .cat-cover .cat-mark { color: var(--sobre-oscuro); }
+
+/* Dossiers: contenido heredado que no es de la casa (cruceros, jets).
+   Se oculta el acceso hasta que haya dossier propio. Para reponerlo:
+   borrar esta regla y la redirección de /catalogos en netlify.toml. */
+a[href="/catalogos"], a[href="/catalogos.html"] { display: none; }
