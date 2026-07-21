@@ -1,0 +1,11 @@
+/* Pasaporte Negro — tokens de marca */
+:root {
+  --pn-negro-abismo: #0A0A0B;  /* fondo principal */
+  --pn-negro-carbon: #101012;  /* superficies */
+  --pn-marfil:       #E8E6E0;  /* marca y texto */
+  --pn-humo:         #8A8F97;  /* secundario */
+  --pn-grafito:      #3A3B3F;  /* lineas */
+  --pn-font-display: 'Marcellus', serif;
+  --pn-font-editorial: 'Cormorant Garamond', serif;
+  --pn-font-funcional: 'Jost', sans-serif;
+}
