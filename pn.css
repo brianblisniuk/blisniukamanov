@@ -251,7 +251,9 @@ a[href="/catalogos"], a[href="/catalogos.html"] { display: none; }
 .pn-opcion input:checked + .pn-caja { background: var(--sobre-oscuro); border-color: var(--sobre-oscuro); }
 .pn-opcion input:checked + .pn-caja::after { opacity: 1; }
 .pn-opcion input:focus-visible + .pn-caja { outline: 2px solid var(--sobre-oscuro); outline-offset: 2px; }
-.pn-opcion-txt { font-size: 14px; line-height: 1.55; color: var(--ink-2); }
+.pn-modal-form .pn-opcion span { display: inline; margin: 0; letter-spacing: normal; text-transform: none; }
+.pn-modal-form .pn-opcion .pn-opcion-txt { font-size: 14px; line-height: 1.55; color: var(--ink-2); }
+.pn-modal-form .pn-opcion .pn-caja { display: block; }
 .pn-opcion-viaje { font-weight: 500; color: var(--sobre-oscuro); }
 
 /* Bloque legal del pie */
