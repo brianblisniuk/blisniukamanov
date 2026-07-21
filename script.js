@@ -1155,4 +1155,34 @@
   else arrancar();
 })();
 
-/* ==========================================================\n   Calendario en orden de salida.\n   Cada tarjeta lleva data-start="AAAA-MM-DD". El orden del DOM\n   se recalcula solo al cargar, asi que sumar o mover una\n   expedicion no exige reordenar el HTML a mano.\n   ========================================================== */\n(function () {\n  "use strict";\n  function ordenarPorFecha() {\n    var contenedores = [];\n    var conFecha = document.querySelectorAll("[data-start]");\n    for (var i = 0; i < conFecha.length; i++) {\n      var p = conFecha[i].parentElement;\n      if (p && contenedores.indexOf(p) === -1) contenedores.push(p);\n    }\n    contenedores.forEach(function (cont) {\n      var hijos = [];\n      for (var k = 0; k < cont.children.length; k++) {\n        if (cont.children[k].hasAttribute("data-start")) hijos.push(cont.children[k]);\n      }\n      if (hijos.length < 2) return;\n      hijos.sort(function (a, b) {\n        return a.getAttribute("data-start").localeCompare(b.getAttribute("data-start"));\n      });\n      hijos.forEach(function (n) { cont.appendChild(n); });\n    });\n  }\n  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", ordenarPorFecha);\n  else ordenarPorFecha();\n})();\n
+/* ==========================================================
+   Calendario en orden de salida.
+   Cada tarjeta lleva data-start="AAAA-MM-DD". El orden del DOM se
+   recalcula solo al cargar, asi que sumar o mover una expedicion
+   no exige reordenar el HTML a mano.
+   ========================================================== */
+(function () {
+  "use strict";
+  function ordenarPorFecha() {
+    var contenedores = [];
+    var conFecha = document.querySelectorAll("[data-start]");
+    for (var i = 0; i < conFecha.length; i++) {
+      var p = conFecha[i].parentElement;
+      if (p && contenedores.indexOf(p) === -1) contenedores.push(p);
+    }
+    for (var j = 0; j < contenedores.length; j++) {
+      var cont = contenedores[j];
+      var hijos = [];
+      for (var k = 0; k < cont.children.length; k++) {
+        if (cont.children[k].hasAttribute("data-start")) hijos.push(cont.children[k]);
+      }
+      if (hijos.length < 2) continue;
+      hijos.sort(function (a, b) {
+        return a.getAttribute("data-start").localeCompare(b.getAttribute("data-start"));
+      });
+      for (var m = 0; m < hijos.length; m++) cont.appendChild(hijos[m]);
+    }
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", ordenarPorFecha);
+  else ordenarPorFecha();
+})();
