@@ -1048,10 +1048,11 @@
       '<button class="pn-modal-x" type="button" data-pn-cerrar aria-label="Cerrar">&#215;</button>' +
       '<span class="eyebrow">Lista de inter\u00e9s</span>' +
       '<h2 id="pnModalTitulo"></h2>' +
-      '<p class="pn-modal-txt">Todav\u00eda no publiqu\u00e9 el itinerario de esta expedici\u00f3n. Dej\u00e1 tus datos y te aviso cuando abra, con las fechas y la tarifa.</p>' +
+      '<p class="pn-modal-txt">Todav\u00eda no est\u00e1 publicado este itinerario. Dej\u00e1 tus datos y te avisamos cuando abra, con las fechas y la tarifa.</p>' +
       '<form class="inquiry-form pn-modal-form" name="consulta-interes" action="/gracias.html" novalidate>' +
       '<input type="hidden" name="destino" value="" />' +
-      '<input type="hidden" name="tipo" value="Inter\u00e9s \u2014 expedici\u00f3n no publicada" />' +
+      '<input type="hidden" name="tipo" value="" />' +
+      '<input type="hidden" name="mensaje" value="" />' +
       '<p hidden><label>No completar <input name="bot-field" /></label></p>' +
       '<div class="pn-modal-fila">' +
       '<label><span>Nombre</span><input type="text" name="nombre" autocomplete="given-name" /></label>' +
@@ -1059,8 +1060,11 @@
       "</div>" +
       '<label><span>Correo electr\u00f3nico</span><input type="email" name="email" autocomplete="email" required /></label>' +
       '<label><span>Tel\u00e9fono</span><input type="tel" name="telefono" autocomplete="tel" /></label>' +
+      '<fieldset class="pn-opciones">' +
+      '<label class="pn-opcion"><input type="radio" name="preferencia" value="ahora" /><span class="pn-caja" aria-hidden="true"></span><span class="pn-opcion-txt">Quiero que me contacten ahora para evaluar opciones de viajes.</span></label>' +
+      '<label class="pn-opcion"><input type="radio" name="preferencia" value="aviso" checked /><span class="pn-caja" aria-hidden="true"></span><span class="pn-opcion-txt">Solo cont\u00e1ctenme cuando est\u00e9 disponible el viaje de <b class="pn-opcion-viaje"></b></span></label>' +
+      "</fieldset>" +
       '<button class="btn btn-laurel" type="submit">Anotarme</button>' +
-      '<p class="pn-modal-nota">Del otro lado del correo estoy yo. Sin llamados.</p>' +
       "</form>" +
       "</div>";
     document.body.appendChild(d);
@@ -1068,17 +1072,38 @@
     return d;
   }
 
+  function sincronizar(f, nombre) {
+    var sel = f.querySelector('input[name="preferencia"]:checked');
+    var v = sel ? sel.value : "aviso";
+    var tipo = v === "ahora"
+      ? "Contacto inmediato \u2014 evaluar opciones de viaje"
+      : "Aviso de apertura \u2014 " + nombre;
+    var msg = v === "ahora"
+      ? "Quiere que lo contacten ahora para evaluar opciones de viaje. Entr\u00f3 por " + nombre + "."
+      : "Solo quiere que lo contacten cuando abra el viaje de " + nombre + ".";
+    f.querySelector('input[name="tipo"]').value = tipo;
+    f.querySelector('input[name="mensaje"]').value = msg;
+  }
+
   function abrir(slug) {
     var m = construir();
     var nombre = NOMBRE[slug] || "";
     m.querySelector("#pnModalTitulo").textContent = nombre;
     m.querySelector('input[name="destino"]').value = nombre;
+    var etiq = m.querySelector(".pn-opcion-viaje");
+    if (etiq) etiq.textContent = nombre;
     var f = m.querySelector("form");
     if (f) {
       f.reset();
       m.querySelector('input[name="destino"]').value = nombre;
       var b = f.querySelector('button[type="submit"]');
       if (b) b.disabled = false;
+      var porDefecto = f.querySelector('input[name="preferencia"][value="aviso"]');
+      if (porDefecto) porDefecto.checked = true;
+      sincronizar(f, nombre);
+      f.addEventListener("change", function (ev) {
+        if (ev.target && ev.target.name === "preferencia") sincronizar(f, nombre);
+      });
     }
     ultimoFoco = document.activeElement;
     m.removeAttribute("hidden");

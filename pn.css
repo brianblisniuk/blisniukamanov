@@ -233,3 +233,27 @@ a[href="/catalogos"], a[href="/catalogos.html"] { display: none; }
 
 /* Tercer ejemplo de acceso: ocupa el ancho de la grilla */
 .acceso-ejemplos .ae-ancho { grid-column: 1 / -1; }
+
+/* Opciones del modal de interés */
+.pn-opciones { border: 0; padding: 0; margin: 6px 0 20px; display: grid; gap: 10px; }
+.pn-opcion { display: flex; align-items: flex-start; gap: 11px; cursor: pointer; margin: 0; }
+.pn-opcion input { position: absolute; opacity: 0; width: 0; height: 0; }
+.pn-caja {
+  flex: 0 0 auto; width: 18px; height: 18px; margin-top: 2px;
+  border: 1px solid var(--line); border-radius: 2px; position: relative;
+  transition: border-color var(--t-fast), background var(--t-fast);
+}
+.pn-caja::after {
+  content: ""; position: absolute; left: 5px; top: 1px;
+  width: 5px; height: 10px; border: solid var(--black);
+  border-width: 0 2px 2px 0; transform: rotate(45deg); opacity: 0;
+}
+.pn-opcion input:checked + .pn-caja { background: var(--sobre-oscuro); border-color: var(--sobre-oscuro); }
+.pn-opcion input:checked + .pn-caja::after { opacity: 1; }
+.pn-opcion input:focus-visible + .pn-caja { outline: 2px solid var(--sobre-oscuro); outline-offset: 2px; }
+.pn-opcion-txt { font-size: 14px; line-height: 1.55; color: var(--ink-2); }
+.pn-opcion-viaje { font-weight: 500; color: var(--sobre-oscuro); }
+
+/* Bloque legal del pie */
+.footer-registro { display: block; margin-top: 6px; }
+.footer-registro a { text-decoration: underline; text-underline-offset: 2px; }
