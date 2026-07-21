@@ -8,18 +8,6 @@
 # Para abrir una expedicion: borrar sus dos reglas de aca y sacar el slug de ABIERTAS en script.js.
 
 [[redirects]]
-  from = "/namibia-dunas"
-  to = "/contacto?exp=namibia-dunas"
-  status = 302
-  force = true
-
-[[redirects]]
-  from = "/namibia-dunas.html"
-  to = "/contacto?exp=namibia-dunas"
-  status = 302
-  force = true
-
-[[redirects]]
   from = "/engadin-navidad"
   to = "/contacto?exp=engadin-navidad"
   status = 302
