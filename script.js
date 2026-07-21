@@ -1010,12 +1010,11 @@
 (function () {
   "use strict";
 
-  var ABIERTAS = ["piamonte-tartufo", "namibia-dunas", "namibia-dunas-2027"];
+  var ABIERTAS = ["piamonte-tartufo", "namibia-dunas", "engadin-navidad", "laponia-auroras"];
 
   var NOMBRE = {
     "piamonte-tartufo": "Piemonte",
     "namibia-dunas": "Namibia",
-    "namibia-dunas-2027": "Namibia 2027",
     "engadin-navidad": "Engadina",
     "laponia-auroras": "Laponia",
     "bahia-otro-carnaval": "Bah\u00eda",
