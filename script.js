@@ -1010,7 +1010,7 @@
 (function () {
   "use strict";
 
-  var ABIERTAS = ["piamonte-tartufo", "namibia-dunas", "engadin-navidad", "laponia-auroras"];
+  var ABIERTAS = ["piamonte-tartufo", "namibia-dunas", "engadin-navidad", "laponia-auroras", "bahia-otro-carnaval"];
 
   var NOMBRE = {
     "piamonte-tartufo": "Piemonte",

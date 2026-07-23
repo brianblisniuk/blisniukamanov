@@ -8,18 +8,6 @@
 # Para abrir una expedicion: borrar sus dos reglas de aca y sacar el slug de ABIERTAS en script.js.
 
 [[redirects]]
-  from = "/bahia-otro-carnaval"
-  to = "/contacto?exp=bahia-otro-carnaval"
-  status = 302
-  force = true
-
-[[redirects]]
-  from = "/bahia-otro-carnaval.html"
-  to = "/contacto?exp=bahia-otro-carnaval"
-  status = 302
-  force = true
-
-[[redirects]]
   from = "/japon-mono-no-aware"
   to = "/contacto?exp=japon-mono-no-aware"
   status = 302
